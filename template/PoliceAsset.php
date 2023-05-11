@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Star Admin2 </title>
+  <title>Police Management System </title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/feather/feather.css">
   <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
@@ -62,21 +62,54 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Police Asset</h4>
-               
-                  <form class="forms-sample">
+                  <?php  
+                    include 'config.php'; 
+
+                      if(isset($_GET["btnsubmit"]))
+                      {
+                        //echo "working";
+                        $assetID = $_GET['assetid'];
+                        $register_date =$_GET['assetdate'];
+                        $itemName = $_GET['itemname'];
+                        $itemHight = $_GET['itemhight'];
+                        $itemColor = $_GET['itemcolor'];
+                        $itemWeight = $_GET['itemweight'];
+                        $itemQuantity = $_GET['itemquantity'];
+                        $itemCatogery = $_GET['itemcategory'];
+                        $storeNumber = $_GET['storenumber'];
+                        $guardingName = $_GET['guardingname'];
+                        $guardingID = $_GET['guardingid'];
+                        $itemCondition =$_GET['itemcondition'];
+                        $itemNote = $_GET['itemnote'];
+                        $deliveryName = $_GET['deliveryname'];
+                        
+                             
+                      }
+                      $sql = "INSERT INTO AssetRegistration_table (id, item_Register_Date, item_Name, item_Hight, item_Color, item_Weight, item_Quantity, item_Catogery, Store_Number, Guarding_Name, Guarding_Police_ID, item_Condition, item_Note, item_Delivery)
+                         VALUES ('', '$register_date', '$itemName', '$itemHight', '$itemColor', '$itemWeight', '$itemQuantity', '$itemCatogery', '$storeNumber', '$guardingName', '$guardingID', '$itemCondition', '$itemNote', '$deliveryName')";
+
+                 
+
+                           if (mysqli_query($con, $sql)) {
+                                echo "New record created successfully";
+                          } else {
+                                echo "Error: " . $sql . "<br>" . mysqli_error($con);
+                          }
+                    ?>
+                  <form class="forms-sample" action="PoliceAsset.php" method ="GET" >
                   <div class="container">
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="number" class="form-control" id="exampleInputUsername1" placeholder="Item ID">
+                        <input type="number" class="form-control" id="assetID" name="assetid" placeholder="Item ID">
                         </div>
                         <div class="col-lg-6">
                               <div class="row mt-4">
                                   <div class="col-6"> 
-                                      <label for="exampleInputUsername1" class=" text text-secondary">Registerd Date</label>
+                                      <label for="exampleInputUsername1" class=" text text-secondary ">Date</label>
                                   </div>
                                     <div class="col">
-                                    <input type="date" class="form-control" id="dayofbirth" placeholder="date">
+                                    <input type="date" class="form-control" id="assetDate" name="assetdate"placeholder="date">
                                     </div>
                               </div> 
                           </div>
@@ -84,21 +117,21 @@
                       <div class="row">
                         <div class="col-lg-6">
                           <label for="exampleInputUsername1"></label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Item Name">
+                          <input type="text" class="form-control" id="#" name="itemname" placeholder="Item Name">
                         </div>
                         <div class="col-lg-6">
                           <div class="row">
                             <div class="col-lg-4">
                               <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="exampleInputPassword1" placeholder=" Item Hight">
+                              <input type="number" class="form-control" id="#" name="itemhight" placeholder=" Item Hight">
                             </div>
                             <div class="col-lg-4">
                               <label for="exampleInputUsername1"></label>
-                              <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Color">
+                              <input type="text" class="form-control" id="#" name="itemcolor" placeholder="Color">
                             </div>
                             <div class="col-lg-4">
                               <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="exampleInputPassword1" placeholder=" Item weight">
+                              <input type="number" class="form-control" id="#" name="itemweight" placeholder=" Item weight">
                             </div>
                          </div> 
                         </div>
@@ -106,7 +139,7 @@
                       <div class="row">
                           <div class="col-lg-6">
                             <label for="exampleInputUsername1"></label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Quantity">
+                            <input type="text" class="form-control" id="#" name="itemquantity" placeholder="Quantity">
                           </div>
                           <div class="col-6">
                           <div class="row mt-4">
@@ -114,13 +147,14 @@
                             <label for="inputmarriagestatus" class=" text text-secondary">Category</label>
                             </div>
                             <div class="col">
-                            <select id="inputmarriagestatus" class="form-control">
+                            <input type="text" class="form-control" id="#" name="itemcategory" placeholder="Catogery">
+                            <!-- <select id="inputmarriagestatus"  name="#" class="form-control">
                             <option selected>Choose</option>
                             <option value="#">Arsenal</option>
                             <option value="#">clothe</option>
                             <option value="#">transport</option>
                             <option value="#">Files</option>
-                          </select>
+                          </select> -->
                             </div>
                           </div>
                         </div>
@@ -129,38 +163,38 @@
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Store Number">
+                        <input type="number" class="form-control" id="#" name="storenumber" placeholder="Store Number">
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="tel" class="form-control" id="exampleInputPassword1" placeholder="Guarding Name">
+                        <input type="text" class="form-control" id="#" name="guardingname" placeholder="Guarding Name">
                         </div>
                       </div>
                       <div class="row">
                        
                         <div class="col">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Guarding Police ID">
+                        <input type="number" class="form-control" id="#" name="guardingid" placeholder="Guarding Police ID">
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Item Condition">
+                        <input type="text" class="form-control" id="#" name="itemcondition" placeholder="Item Condition">
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="tel" class="form-control" id="exampleInputPassword1" placeholder="Note">
+                        <input type="text" class="form-control" id="#" name="itemnote" placeholder="Note">
                         </div>
                       </div>
                       <div class="row">
-                        <div class="col">
+                        <div class="col ">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Person Who bring">
+                        <input type="text" class="form-control" id="#" name="deliveryname"placeholder="Delivery Name">
                         </div>
                       </div>
-                      <button type="submit" class="btn btn-primary m-2">Submit</button>
-                    <button class="btn btn-light">Cancel</button>
+                      <button type="submit" id="btnassetsubmit" name="btnsubmit" class="btn btn-primary mt-2 ">Submit</button>
+                    <button class="btn btn-light" id="btnassetcancel">Cancel</button>
                   </div>
                     
                     
