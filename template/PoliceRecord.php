@@ -1,4 +1,5 @@
 
+
  <!DOCTYPE html><html lang="en">
 
 <head>
@@ -62,13 +63,48 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Police Record</h4>
-               
-                  <form class="forms-sample">
+                  <?php   
+                    include 'config.php';
+
+                    if(isset($_POST['btnpoliceRecord'])){
+                      //echo 'working';
+                      $ID = $_GET['pid'];
+                      $RegisterDate = $_GET['pregisterdate'];
+                      $PoliceFullname = $_GET['pfullname'];
+                      $PoliceHeight= $_GET['pheight'];
+                      $PoliceAge = $_GET['page'];
+                      $PoliceWeight = $_GET['pweight'];
+                      $PoliceBirthDate = $_GET['pdateofbirth'];
+                      $PolicePlaceOfBirth = $_GET['pplaceofbirth'];
+                      $PoliceAddress = $_GET['paddress'];
+                      $PolicePhone = $_GET['ptelephone'];
+                      $PoliceEmail = $_GET['pemail'];
+                      $PoliceParentName = $_GET['pmothername'];
+                      $PoliceEducation = $_GET['peducationlevel'];
+                      $PoliceMarriageStatus = $_GET['pmarriagestatus'];
+                      $PoliceMedicalStatus = $_GET['pmedicalstatus'];
+                      $PoliceTrainingSpot = $_GET['ptrainedspot'];
+                      $PoliceRank = $_GET['prank'];
+                      $PoliceNote = $_GET['pnote'];
+                      
+                    }
+                    $sql = "INSERT INTO `PoliceRegistration_table` (`id`, `p_registration_date`, `p_fullname`, `p_height`, `p_Age`, `p_weight`, `p_dateOf_Birth`, `p_placeOf_Birth`, `p_address`, `p_phone`, `p_email`, `p_mothers_name`, `p_education`, `p_trained_spot`, `p_marriage_status`, `p_medical_status`, `p_rank`, `p_note`)
+                    VALUES ('', '$RegisterDate', '$PoliceFullname', '$PoliceHeight', '$PoliceAge', '$PoliceWeight', '$PoliceBirthDate', '$PolicePlaceOfBirth', '$PoliceAddress', '$PolicePhone', '$PoliceEmail', '$PoliceParentName', '$PoliceEducation', '$PoliceTrainingSpot', '$PoliceMarriageStatus', '$PoliceMedicalStatus', '$PoliceRank', '$PoliceNote ')";
+                 
+                    if(mysqli_query($con, $sql)){
+                      echo "New record created successfully";
+                    } else {
+                      echo mysqli_error($con);
+                    }
+
+
+                    ?>
+                  <form class="forms-sample" method='post'>
                   <div class="container">
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="POLICE ID">
+                        <input type="text" class="form-control" id="#" name='pid' placeholder="POLICE ID">
                         </div>
                         <div class="col-lg-6">
                               <div class="row mt-4">
@@ -76,7 +112,7 @@
                                       <label for="exampleInputUsername1" class=" text text-secondary">Register Date</label>
                                   </div>
                                     <div class="col">
-                                    <input type="date" class="form-control" id="dayofbirth" placeholder="date">
+                                    <input type="date" class="form-control" id="#" name='pregisterdate' placeholder="date">
                                     </div>
                               </div> 
                           </div>
@@ -84,21 +120,21 @@
                       <div class="row">
                         <div class="col-lg-6">
                           <label for="exampleInputUsername1"></label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="FULLNAME">
+                          <input type="text" class="form-control" id="#" name='pfullname' placeholder="FULLNAME">
                         </div>
                         <div class="col-lg-6">
                           <div class="row">
                             <div class="col-lg-4">
                               <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Hight">
+                              <input type="number" class="form-control" id="#" name='pheight' placeholder="Height">
                             </div>
                             <div class="col-lg-4">
                               <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Age">
+                              <input type="number" class="form-control" id="#" name='page' placeholder="Age">
                             </div>
                             <div class="col-lg-4">
                               <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="exampleInputPassword1" placeholder="wight">
+                              <input type="number" class="form-control" id="#" name='pweigth' placeholder="weight">
                             </div>
                          </div> 
                         </div>
@@ -110,13 +146,13 @@
                                       <label for="exampleInputUsername1" class=" text text-secondary">Day Of Birth</label>
                                   </div>
                                     <div class="col">
-                                    <input type="date" class="form-control" id="dayofbirth" placeholder="date">
+                                    <input type="date" class="form-control" id="#" name='pdateofbirth' placeholder="date">
                                     </div>
                               </div> 
                           </div>
                           <div class="col-lg-6">
                             <label for="exampleInputUsername1"></label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Place of Birth">
+                            <input type="text" class="form-control" id="#" name='pplaceofbirth'placeholder="Place of Birth">
                           </div>
                         
                       </div>
@@ -124,31 +160,31 @@
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Address">
+                        <input type="text" class="form-control" id="#" name='paddress' placeholder="Address">
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="tel" class="form-control" id="exampleInputPassword1" placeholder="Telephone">
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-lg-6">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="Email" class="form-control" id="exampleInputUsername1" placeholder="Email">
-                        </div>
-                        <div class="col-lg-6">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Mother's Name">
+                        <input type="tel" class="form-control" id="#" name='ptelephone' placeholder="Telephone">
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Education Level">
+                        <input type="Email" class="form-control" id="#" name='pemail' placeholder="Email">
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="tel" class="form-control" id="exampleInputPassword1" placeholder="Trained Spot">
+                        <input type="text" class="form-control" id="#" name='pmothername'placeholder="Mother's Name">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="#" name="peducationlevel" placeholder="Education Level">
+                        </div>
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="tel" class="form-control" id="#" name="ptrainedspot" placeholder="Trained Spot">
                         </div>
                       </div>
                       <div class="row">
@@ -158,19 +194,20 @@
                             <label for="inputmarriagestatus" class=" text text-secondary">Marriage status</label>
                             </div>
                             <div class="col">
-                            <select id="inputmarriagestatus" class="form-control">
+                            <input type="tel" class="form-control" id="exampleInputPassword1" name='pmarriagestatus'placeholder="Trained Spot">
+                            <!-- <select id="inputmarriagestatus" class="form-control">
                             <option selected>Choose</option>
                             <option value="Married">Married</option>
                             <option value="Single">Single</option>
                             <option value="Separated">Saperated</option>
                             <option value="Divorce">Divorce</option>
-                          </select>
+                          </select> -->
                             </div>
                           </div>
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="MEDICAL STATUS">
+                        <input type="text" class="form-control" id="#" name='pmedicalstatus' placeholder="MEDICAL STATUS">
                         </div>
                       </div>
 
@@ -178,16 +215,16 @@
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Police Rank">
+                        <input type="text" class="form-control" id="#" name='prank' placeholder="Police Rank">
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="NOTES">
+                        <input type="text" class="form-control" id="#" name="pnote" placeholder="NOTES">
                         </div>
                       </div>
                       
                   </div>
-                      <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                      <button type="submit" class="btn btn-primary mt-2" name= 'btnpoliceRecord'>Submit</button>
                       <button class="btn btn-light">Cancel</button>
                   </form>
                 </div>
