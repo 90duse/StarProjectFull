@@ -64,43 +64,106 @@
                   <h4 class="card-title">Police Asset</h4>
                
                   <form class="forms-sample">
-
-                    <div class="form-group">
-                      <label for="exampleInputUsername1">ID</label>
-                      <input type="text" class="form-control" id="exampleInputUsername1" placeholder="ID">
-                    </div>
-
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Asset Categories  </label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Asset Categories ">
-                    </div>
-
-                          <div class="form-group">
-                      <label for="exampleInputConfirmPassword1">Asset Name</label>
-                      <input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Asset Name">
-                    </div>
-
-
-                    <div class="form-group">
-                      <label for="exampleInputPassword1"> Asset Quantity </label>
-                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Asset Quantity">
-                    </div>
-
-                    <div class="form-group">
-                      <label for="exampleInputConfirmPassword1">store place</label>
-                      <input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Crime Type">
-                    </div>
-
-                     <div class="form-group">
-                      <label for="exampleInputConfirmPassword1">Respnsible Person </label>
-                      <input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Period ">
-                    </div>
-
-
-        
-
-                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                  <div class="container">
+                      <div class="row">
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="number" class="form-control" id="exampleInputUsername1" placeholder="Item ID">
+                        </div>
+                        <div class="col-lg-6">
+                              <div class="row mt-4">
+                                  <div class="col-6"> 
+                                      <label for="exampleInputUsername1" class=" text text-secondary">Registerd Date</label>
+                                  </div>
+                                    <div class="col">
+                                    <input type="date" class="form-control" id="dayofbirth" placeholder="date">
+                                    </div>
+                              </div> 
+                          </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <label for="exampleInputUsername1"></label>
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Item Name">
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="row">
+                            <div class="col-lg-4">
+                              <label for="exampleInputUsername1"></label>
+                              <input type="number" class="form-control" id="exampleInputPassword1" placeholder=" Item Hight">
+                            </div>
+                            <div class="col-lg-4">
+                              <label for="exampleInputUsername1"></label>
+                              <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Color">
+                            </div>
+                            <div class="col-lg-4">
+                              <label for="exampleInputUsername1"></label>
+                              <input type="number" class="form-control" id="exampleInputPassword1" placeholder=" Item weight">
+                            </div>
+                         </div> 
+                        </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-lg-6">
+                            <label for="exampleInputUsername1"></label>
+                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Quantity">
+                          </div>
+                          <div class="col-6">
+                          <div class="row mt-4">
+                            <div class="col-4">
+                            <label for="inputmarriagestatus" class=" text text-secondary">Category</label>
+                            </div>
+                            <div class="col">
+                            <select id="inputmarriagestatus" class="form-control">
+                            <option selected>Choose</option>
+                            <option value="#">Arsenal</option>
+                            <option value="#">clothe</option>
+                            <option value="#">transport</option>
+                            <option value="#">Files</option>
+                          </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="row">
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Store Number">
+                        </div>
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="tel" class="form-control" id="exampleInputPassword1" placeholder="Guarding Name">
+                        </div>
+                      </div>
+                      <div class="row">
+                       
+                        <div class="col">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Guarding Police ID">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Item Condition">
+                        </div>
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="tel" class="form-control" id="exampleInputPassword1" placeholder="Note">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Person Who bring">
+                        </div>
+                      </div>
+                      <button type="submit" class="btn btn-primary m-2">Submit</button>
                     <button class="btn btn-light">Cancel</button>
+                  </div>
+                    
+                    
                   </form>
                 </div>
               </div>
