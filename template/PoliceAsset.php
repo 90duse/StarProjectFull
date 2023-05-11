@@ -68,7 +68,7 @@
                       if(isset($_GET["btnsubmit"]))
                       {
                         //echo "working";
-                        $assetID = $_GET['assetid'];
+                        // $assetID = $_GET['assetid'];
                         $register_date = $_GET['assetdate'];
                         $itemName = $_GET['itemname'];
                         $itemHight = $_GET['itemhight'];
@@ -94,7 +94,7 @@
                                 echo mysqli_error($con);
                           }
                     ?>
-                  <form class="forms-sample" action="PoliceAsset.php" method ="post" >
+                  <form class="forms-sample" action="PoliceAsset.php" method ="GET" >
                   <div class="container">
                       <div class="row">
                         <div class="col-lg-6">
