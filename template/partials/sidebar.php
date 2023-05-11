@@ -80,12 +80,12 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
+            <a class="nav-link" data-bs-toggle="collapse" href="#iconss" aria-expanded="false" aria-controls="icons">
               <i class="menu-icon mdi mdi-home-analytics"></i>
               <span class="menu-title">Police Asset Record</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="icons">
+            <div class="collapse" id="iconss">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="../template/PoliceAsset.php">Add New</a></li>
               </ul>
