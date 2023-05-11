@@ -61,48 +61,73 @@
             <div class="col-sm-12">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Complaint form </h4>
+                  <h4 class="card-title text-center">Complaint form </h4>
                
                   <form class="forms-sample">
-
-                    <div class="form-group">
-                      <label for="exampleInputUsername1">ID</label>
-                      <input type="text" class="form-control" id="exampleInputUsername1" placeholder="ID">
-                    </div>
-
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Name </label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Name">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Address</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Address">
-                    </div>
-
-                    <div class="form-group">
-                      <label for="exampleInputConfirmPassword1">Email</label>
-                      <input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Email">
-                    </div>
-
-                     <div class="form-group">
-                      <label for="exampleInputConfirmPassword1">Number</label>
-                      <input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Number">
-                    </div>
-
-
-                     <div class="form-group">
-                      <label for="exampleInputConfirmPassword1">Complaint</label>
-                      <input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Complaint">
-                    </div>
-
-                 
-
-
-                    
-
-
-                    <button type="submit" class="btn btn-primary me-2">Submit</button>
-                    <button class="btn btn-light">Cancel</button>
+                  <div class="container">
+                      <div class="row">
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="number" class="form-control" id="exampleInputUsername1" placeholder="Police ID">
+                        </div>
+                        <div class="col-lg-6">
+                              <div class="row mt-4">
+                                  <div class="col-6"> 
+                                      <label for="exampleInputUsername1" class=" text text-secondary">Date</label>
+                                  </div>
+                                    <div class="col">
+                                    <input type="date" class="form-control" id="dayofbirth" placeholder="date">
+                                    </div>
+                              </div> 
+                          </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <label for="exampleInputUsername1"></label>
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="FULLNAME">
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="exampleInputUsername1"></label>
+                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="RANK">
+                          </div>
+                      </div>
+                      
+           
+                      <div class="row">
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Complainment Subject">
+                        </div>
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="tel" class="form-control" id="exampleInputPassword1" placeholder="Against whom to complain">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                        <label for="exampleInputUsername1"></label>
+                        <textarea type="text" class="form-control h-100" id="exampleInputUsername1" placeholder="Complainment"></textarea>
+                        </div>
+                        
+                      </div> 
+                      <div class="row">
+                        <div class="col">
+                        <div class="input-group mt-5">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">
+                              <input type="checkbox" aria-label="Checkbox for following text input">
+                            </div>
+                          </div>
+                          <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="I as Name I am sure this and I am ready to face the result">
+                        </div>
+                        </div>
+                        
+                      </div>
+                          <div class="button mt-5">
+                          <button type="submit" class="btn btn-primary ">Submit</button>
+                          <button class="btn btn-light">Cancel</button>
+                          </div>
+                  </div>
                   </form>
                 </div>
               </div>
