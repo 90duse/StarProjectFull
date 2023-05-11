@@ -69,7 +69,7 @@
                       {
                         //echo "working";
                         $assetID = $_GET['assetid'];
-                        $register_date =$_GET['assetdate'];
+                        $register_date = $_GET['assetdate'];
                         $itemName = $_GET['itemname'];
                         $itemHight = $_GET['itemhight'];
                         $itemColor = $_GET['itemcolor'];
@@ -86,17 +86,15 @@
                              
                       }
                       $sql = "INSERT INTO AssetRegistration_table (id, item_Register_Date, item_Name, item_Hight, item_Color, item_Weight, item_Quantity, item_Catogery, Store_Number, Guarding_Name, Guarding_Police_ID, item_Condition, item_Note, item_Delivery)
-                         VALUES ('', '$register_date', '$itemName', '$itemHight', '$itemColor', '$itemWeight', '$itemQuantity', '$itemCatogery', '$storeNumber', '$guardingName', '$guardingID', '$itemCondition', '$itemNote', '$deliveryName')";
-
-                 
+                         VALUES (' ', '$register_date', '$itemName', '$itemHight', '$itemColor', '$itemWeight', '$itemQuantity', '$itemCatogery', '$storeNumber', '$guardingName', '$guardingID', '$itemCondition', '$itemNote', '$deliveryName')";
 
                            if (mysqli_query($con, $sql)) {
                                 echo "New record created successfully";
                           } else {
-                                echo "Error: " . $sql . "<br>" . mysqli_error($con);
+                                echo mysqli_error($con);
                           }
                     ?>
-                  <form class="forms-sample" action="PoliceAsset.php" method ="GET" >
+                  <form class="forms-sample" action="PoliceAsset.php" method ="post" >
                   <div class="container">
                       <div class="row">
                         <div class="col-lg-6">
