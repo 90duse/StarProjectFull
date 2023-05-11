@@ -1,6 +1,6 @@
 <?php 
 //session_start();
 
-$con=mysqli_connect('localhost','root','','police');
+$con= mysqli_connect('localhost','root','','police');
   
  ?>
