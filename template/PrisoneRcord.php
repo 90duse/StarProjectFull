@@ -61,51 +61,167 @@
             <div class="col-sm-12">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Prison Record</h4>
+                  <h4 class="card-title text-center">Prison Record</h4>
                
                   <form class="forms-sample">
 
-                    <div class="form-group">
-                      <label for="exampleInputUsername1">ID</label>
-                      <input type="text" class="form-control" id="exampleInputUsername1" placeholder="ID">
-                    </div>
+                  <div class="container">
+                      <div class="row">
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="number" class="form-control" id="exampleInputUsername1" placeholder="Prosinor ID">
+                        </div>
+                        <div class="col-lg-6">
+                              <div class="row mt-4">
+                                  <div class="col-6"> 
+                                      <label for="exampleInputUsername1" class=" text text-secondary">Registerd Date</label>
+                                  </div>
+                                    <div class="col">
+                                    <input type="date" class="form-control" id="dayofbirth" placeholder="date">
+                                    </div>
+                              </div> 
+                          </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <label for="exampleInputUsername1"></label>
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="FULLNAME">
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="row">
+                            <div class="col-lg-4">
+                              <label for="exampleInputUsername1"></label>
+                              <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Hight">
+                            </div>
+                            <div class="col-lg-4">
+                              <label for="exampleInputUsername1"></label>
+                              <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Age">
+                            </div>
+                            <div class="col-lg-4">
+                              <label for="exampleInputUsername1"></label>
+                              <input type="number" class="form-control" id="exampleInputPassword1" placeholder="wight">
+                            </div>
+                         </div> 
+                        </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-lg-6">
+                              <div class="row mt-4">
+                                  <div class="col-6"> 
+                                      <label for="exampleInputUsername1" class=" text text-secondary">Day Of Birth</label>
+                                  </div>
+                                    <div class="col">
+                                    <input type="date" class="form-control" id="dayofbirth" placeholder="date">
+                                    </div>
+                              </div> 
+                          </div>
+                          <div class="col-lg-6">
+                            <label for="exampleInputUsername1"></label>
+                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Place of Birth">
+                          </div>
+                        
+                      </div>
+                      
+                      <div class="row">
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Address">
+                        </div>
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="tel" class="form-control" id="exampleInputPassword1" placeholder="Telephone">
+                        </div>
+                      </div>
+                      <div class="row">
+                       
+                        <div class="col">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Mother's Name">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Education Level">
+                        </div>
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="tel" class="form-control" id="exampleInputPassword1" placeholder="Crime Type">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-6">
+                          <div class="row mt-4">
+                            <div class="col-4">
+                            <label for="inputmarriagestatus" class=" text text-secondary">Marriage status</label>
+                            </div>
+                            <div class="col">
+                            <select id="inputmarriagestatus" class="form-control">
+                            <option selected>Choose</option>
+                            <option value="Married">Married</option>
+                            <option value="Single">Single</option>
+                            <option value="Separated">Saperated</option>
+                            <option value="Divorce">Divorce</option>
+                          </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="MEDICAL STATUS">
+                        </div>
+                      </div>
 
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Name </label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Name">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Parents</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Parents">
-                    </div>
 
-                    <div class="form-group">
-                      <label for="exampleInputConfirmPassword1">Crime Type</label>
-                      <input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Crime Type">
-                    </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Jail Period">
+                        </div>
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Asset">
+                        </div>
+                      </div>
+                      <div class="row">
+                      <div class="col-lg-6">
+                              <div class="row mt-4">
+                                  <div class="col-6"> 
+                                      <label for="exampleInputUsername1" class=" text text-secondary">Release Time</label>
+                                  </div>
+                                    <div class="col">
+                                    <input type="date" class="form-control" id="dayofbirth" placeholder="date">
+                                    </div>
+                              </div> 
+                          </div>
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="judiciary Trial">
+                        </div>
+                      </div> 
+                      <div class="row">
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Lawyer">
+                        </div>
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Cell Number">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Behavier">
+                        </div>
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Notes">
+                        </div>
+                      </div>
 
-                     <div class="form-group">
-                      <label for="exampleInputConfirmPassword1">Period </label>
-                      <input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Period ">
-                    </div>
-
-
-                     <div class="form-group">
-                      <label for="exampleInputConfirmPassword1">get out time</label>
-                      <input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="get out time">
-                    </div>
-
-                     <div class="form-group">
-                      <label for="exampleInputConfirmPassword1">medical status</label>
-                      <input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder=" medical status">
-                    </div>
-
-
-                   
-
-
-
-                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                  </div>
+                    <button type="submit" class="btn btn-primary m-2">Submit</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>
                 </div>
