@@ -186,9 +186,9 @@
                         </div>
                       </div>
                       
-                    </div>
-                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
-                    <button class="btn btn-light">Cancel</button>
+                  </div>
+                      <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                      <button class="btn btn-light">Cancel</button>
                   </form>
                 </div>
               </div>
