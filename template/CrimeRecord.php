@@ -1,28 +1,29 @@
 
- <!DOCTYPE html><html lang="en">
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Star Admin2 </title>
-  <!-- plugins:css -->
-  <link rel="stylesheet" href="vendors/feather/feather.css">
-  <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" href="vendors/typicons/typicons.css">
-  <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
-  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
-  <!-- endinject -->
-  <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-  <link rel="stylesheet" href="js/select.dataTables.min.css">
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <link rel="stylesheet" href="css/vertical-layout-light/style.css">
-  <!-- endinject -->
-  <link rel="shortcut icon" href="images/favicon.png" />
-</head>
+ <!DOCTYPE html>
+ <html lang="en">
+  <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>POLICE MANAGEENT SYSTEM </title>
+      <!-- plugins:css -->
+      <link rel="stylesheet" href="vendors/feather/feather.css">
+      <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
+      <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+      <link rel="stylesheet" href="vendors/typicons/typicons.css">
+      <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
+      <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+      <!-- endinject -->
+      <!-- Plugin css for this page -->
+      <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+      <link rel="stylesheet" href="js/select.dataTables.min.css">
+      <!-- End plugin css for this page -->
+      <!-- inject:css -->
+      <link rel="stylesheet" href="css/vertical-layout-light/style.css">
+      <!-- endinject -->
+      <link rel="shortcut icon" href="images/favicon.png" />
+ </head>
 <body class="">
 
   <div class="container-scroller ">
@@ -62,74 +63,124 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title text-center">Crime Record</h4>
-               
-                  <form class="forms-sample">
+                  <?php    
+                      include 'config.php';
+
+                      if(isset($_GET['btncrime'])){
+                        //echo 'working';
+                          @$CASEID = $_GET['crimeid'];
+                          @$crimeRegisterDate = $_GET['crimeregisterdate'];
+                          @$crimeType = $_GET['crimetype'];
+                          @$crimePlace= $_GET['crimeplace'];
+                          @$crimeVictam = $_GET['crimevictam'];
+                          @$crimeCriminal = $_GET['crimecriminal'];
+                          @$crimeOfficer = $_GET['crimeofficer'];
+                          @$crimeWitness = $_GET['crimewitness'];
+                          @$crimeEvidence = $_GET['crimeevidence'];
+                          @$crimeItems = $_GET['crimeitems'];
+                          @$crimeStatus = $_GET['crimestatus'];
+                          @$crimeNote = $_GET['crimenote'];
+                          
+
+                      }
+
+                      $sql = "INSERT INTO `CrimeRecord_Table` (`id`, `cr_registerDate`, `cr_type`, `cr_place`, `cr_victam`, `cr_criminal`, `cr_officer`, `cr_witness`, `cr_evindence`, `cr_items`, `cr_status`, `cr_note`) 
+                      VALUES ('', '$crimeRegisterDate', '$crimeType', '$crimePlace', '$crimeVictam', '$crimeCriminal', '$crimeOfficer', '$crimeWitness ', '$crimeEvidence', '$crimeItems', '$crimeStatus', '$crimeNote')";
+                        
+                        if (mysqli_query($con, $sql)){
+                          echo 'New Crime Has successfully Recorded';
+                        }
+   
+                      else {
+                        //echo 'Not working';
+                        echo mysqli_error($con);
+                      }
+
+
+
+
+
+                    ?>
+                  <form class="forms-sample" method="GET">
                     <div class="container">
                       <div class="row">
                         <div class="col-lg-6">
-                        <label for="exampleInputUsername1">Case ID</label>
-                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Case ID">
+                        <div class="row mt-4">
+                                  <div class="col-6"> 
+                                      <label for="exampleInputUsername1" class=" text text-secondary">Case ID</label>
+                                  </div>
+                                    <div class="col">
+                                    <input type="number" class="form-control" id="#" name="crimeid" placeholder="Case ID" >
+                                    </div>
+                              </div> 
                         </div>
                         <div class="col-lg-6">
-                        <label for="exampleInputUsername1">Case Date</label>
-                        <input type="date" class="form-control" id="exampleInputPassword1" placeholder="time">
+                        <div class="row mt-4">
+                                  <div class="col-6"> 
+                                      <label for="exampleInputUsername1" class=" text text-secondary">Register Date</label>
+                                  </div>
+                                    <div class="col">
+                                    <input type="date" class="form-control" id="#" name="crimeregisterdate" placeholder="date" Required>
+                                    </div>
+                              </div> 
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Crime type">
+                        <input type="text" class="form-control" id="#" name="crimetype" placeholder="Crime type">
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Place">
+                        <input type="text" class="form-control" id="#" name="crimeplace" placeholder="Place">
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Victam/Victams">
+                        <input type="text" class="form-control" id="#" name="crimevictam" placeholder="Victam/Victams">
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Criminal">
+                        <input type="text" class="form-control" id="#" name="crimecriminal" placeholder="Criminal">
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Officer on Charge">
+                        <input type="text" class="form-control" id="#" name="crimeofficer" placeholder="Officer on Charge">
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="WITNESSES">
+                        <input type="text" class="form-control" id="#" name="crimewitness" placeholder="WITNESSES">
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="EVIDENCE">
+                        <input type="text" class="form-control" id="#" name="crimeevidence" placeholder="EVIDENCE">
                         </div>
                         <div class="col-lg-6">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="ITEMS IN THE SCENE">
+                        <label for="#"></label>
+                        <input type="text" class="form-control" id="#" name="crimeitems" placeholder="ITEMS IN THE SCENE">
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-lg-6">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="STATUS">
+                        <label for="#"></label>
+                        <input type="text" class="form-control" id="#" name="crimestatus" placeholder="STATUS">
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="textarea" class="form-control" id="exampleInputPassword1" placeholder="NOTES">
+                        <input type="textarea" class="form-control" id="#" name="crimenote" placeholder="NOTES">
                         </div>
                       </div>
+                        <div class="button">
+                          <button type="submit" class="btn btn-primary  m-2" name="btncrime">Submit</button>
+                          <button class="btn btn-light">Cancel</button>
+                        </div>
                     </div>
-                    <div class="button">
-                    <button type="submit" class="btn btn-primary  m-2">Submit</button>
-                    <button class="btn btn-light">Cancel</button>
-                    </div>
+                   
                   </form>
                 </div>
               </div>
