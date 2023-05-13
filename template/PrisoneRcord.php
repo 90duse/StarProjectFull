@@ -1,10 +1,4 @@
-<?php    
-include 'config.php';
 
-if
-
-
-?>
 
 
  <!DOCTYPE html>
@@ -71,14 +65,57 @@ if
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title text-center">Prison Record</h4>
-               
-                  <form class="forms-sample">
+                      <?php    
+                        include 'config.php';
+                        
+                        if(isset($_GET['btnprisoner'])){
+                          //echo 'working';
+                          @$ID = $_GET['prisonerid'];
+                          @$RegisterDate = $_GET['prisonerregisterdate'];
+                          @$prisonerFullname = $_GET['prisonerfullname'];
+                          @$prisonerHeight= $_GET['prisonerheight'];
+                          @$prisonerAge = $_GET['prisonerage'];
+                          @$prisonerWeight = $_GET['prisonerweight'];
+                          @$prisonerBirthDate = $_GET['prisonerdateofbirth'];
+                          @$prisonerPlaceOfBirth = $_GET['prisonerplaceofbirth'];
+                          @$prisonerAddress = $_GET['prisoneraddress'];
+                          @$prisonerPhone = $_GET['prisonertellephone'];
+                          @$prisonerEmail = $_GET['prisoneremail'];
+                          @$prisonerParentName = $_GET['prisonermothername'];
+                          @$prisonerEducation = $_GET['prisonereducationlevel'];
+                          @$prisonerCrimeType = $_GET['prisonercrimetype'];
+                          @$prisonerMarriageStatus = $_GET['prisonermarriagestatus'];
+                          @$prisonerSentencePeriod = $_GET['prisonersentenceperiod'];
+                          @$prisonerMedicalStatus = $_GET['prisonermedicalstatus'];
+                          @$prisonerPersonalBelongs = $_GET['prisonerpersonalbelongs'];
+                          @$prisonerReleaseDate = $_GET['prisonerreleasedate'];
+                          @$prisonerJudiciaryTrial =$_GET['prsionerjudiciarytrial'];
+                          @$prisonerLawyer = $_GET['prisonerlawyer'];
+                          @$prisonerCellNo = $_GET['prisonercellnumber'];
+                          @$prisonerBehavier=$_GET['prisonerbehavier'];
+                          @$prisonerNote = $_GET['prisonernote'];
+                        } 
+                         $sql = "INSERT INTO `PrisonerRecord` (`id`, `pri_registerdate`, `pri_fullname`, `pri_height`, `pri_age`, `pri_weight`, `pri_dateof_birth`, `pri_placeof_birth`, `pri_address`, `pri_tellephone`, `pri_mothers_name`, `pri_education`, `pri_crimeType`, `pri_marriage`, `pri_medicalStatus`, `pri_sentenceperiod`, `pri_prersonalBelongs`, `pri_releaseDay`, `pri_trail`, `pri_lawyer`, `pri_cellNo`, `pri_behavier`, `pri_notes`) 
+                         VALUES ('', '$RegisterDate', '$prisonerFullname', '$prisonerHeight', '$prisonerAge', '$prisonerWeight', '$prisonerBirthDate', '$prisonerPlaceOfBirth', '$prisonerAddress', '$prisonerPhone', '$prisonerParentName', '$prisonerEducation', '$prisonerCrimeType', '$prisonerMarriageStatus', '$prisonerMedicalStatus', '$prisonerSentencePeriod', '$prisonerPersonalBelongs', '$prisonerReleaseDate', '$prisonerJudiciaryTrial', '$prisonerLawyer', '$prisonerCellNo', '$prisonerBehavier', '$prisonerNote')";
+                         if(mysqli_query($con, $sql)){
+                          echo 'New Record is being saved Successfully';
+                         }
+
+                        else{
+                          //echo mysqli_error($con);
+                          echo 'not working';
+                        }
+
+
+
+                        ?>
+                  <form class="forms-sample" method="GET">
 
                   <div class="container">
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="number" class="form-control" id="#" name="Prisonerid" placeholder="Prosinor ID">
+                        <input type="number" class="form-control" id="#" name="prisonerid" placeholder="Prosinor ID">
                         </div>
                         <div class="col-lg-6">
                               <div class="row mt-4">
@@ -100,7 +137,7 @@ if
                           <div class="row">
                             <div class="col-lg-4">
                               <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="#" name="prisonerhight" placeholder="Hight" Required>
+                              <input type="number" class="form-control" id="#" name="prisonerheight" placeholder="Height" Required>
                             </div>
                             <div class="col-lg-4">
                               <label for="exampleInputUsername1"></label>
@@ -120,13 +157,13 @@ if
                                       <label for="exampleInputUsername1" class=" text text-secondary">Day Of Birth</label>
                                   </div>
                                     <div class="col">
-                                    <input type="date" class="form-control" id="dayofbirth" name="prisonerdayofbirth" placeholder="date" Required>>
+                                    <input type="date" class="form-control" id="dayofbirth" name="prisonerdayofbirth" placeholder="date" Required>
                                     </div>
                               </div> 
                           </div>
                           <div class="col-lg-6">
                             <label for="exampleInputUsername1"></label>
-                            <input type="text" class="form-control" id="#" name="prisonerplaceofbirth" placeholder="Place of Birth" Required>>
+                            <input type="text" class="form-control" id="#" name="prisonerplaceofbirth" placeholder="Place of Birth" Required>
                           </div>
                         
                       </div>
@@ -134,28 +171,28 @@ if
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisoneraddress" placeholder="Address" Required>>
+                        <input type="text" class="form-control" id="#" name="prisoneraddress" placeholder="Address" Required>
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="tel" class="form-control" id="#" name="prisonertellephone" placeholder="Tellephone" Required>>
+                        <input type="tel" class="form-control" id="#" name="prisonertellephone" placeholder="Tellephone" Required>
                         </div>
                       </div>
                       <div class="row">
                        
                         <div class="col">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisonermothername" placeholder="Mother's Name" Required>>
+                        <input type="text" class="form-control" id="#" name="prisonermothername" placeholder="Mother's Name" Required>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisonereducationlevel" placeholder="Education Level" Required>>
+                        <input type="text" class="form-control" id="#" name="prisonereducationlevel" placeholder="Education Level" Required>
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="tel" class="form-control" id="#" name="prisonercrimetype" placeholder="Crime Type" Required>>
+                        <input type="tel" class="form-control" id="#" name="prisonercrimetype" placeholder="Crime Type" Required>
                         </div>
                       </div>
                       <div class="row">
@@ -187,7 +224,7 @@ if
                         </div>
                       </div>
                       <div class="row">
-                      <div class="col-lg-6">
+                       <div class="col-lg-6">
                               <div class="row mt-4">
                                   <div class="col-6"> 
                                       <label for="exampleInputUsername1" class=" text text-secondary">Release Time</label>
@@ -222,10 +259,12 @@ if
                         <input type="text" class="form-control" id="#" name="prisonernotes" placeholder="Notes">
                         </div>
                       </div>
-
+                      <div class="button">
+                        <button type="submit" class="btn btn-primary m-2" name="btnprisoner">Submit</button>
+                        <button class="btn btn-light">Cancel</button>
+                      </div>
                   </div>
-                    <button type="submit" class="btn btn-primary m-2">Submit</button>
-                    <button class="btn btn-light">Cancel</button>
+                   
                   </form>
                 </div>
               </div>
