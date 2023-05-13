@@ -1,11 +1,20 @@
+<?php    
+include 'config.php';
 
- <!DOCTYPE html><html lang="en">
+if
 
+
+?>
+
+
+ <!DOCTYPE html>
+ <html lang="en">
+  
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Star Admin2 </title>
+  <title>POLICE MANAGEMENT SYSTEM </title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/feather/feather.css">
   <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
@@ -69,7 +78,7 @@
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="number" class="form-control" id="exampleInputUsername1" placeholder="Prosinor ID">
+                        <input type="number" class="form-control" id="#" name="Prisonerid" placeholder="Prosinor ID">
                         </div>
                         <div class="col-lg-6">
                               <div class="row mt-4">
@@ -77,7 +86,7 @@
                                       <label for="exampleInputUsername1" class=" text text-secondary">Registerd Date</label>
                                   </div>
                                     <div class="col">
-                                    <input type="date" class="form-control" id="dayofbirth" placeholder="date">
+                                    <input type="date" class="form-control" id="#" name="prisonerregisterdate" placeholder="date" Required>
                                     </div>
                               </div> 
                           </div>
@@ -85,21 +94,21 @@
                       <div class="row">
                         <div class="col-lg-6">
                           <label for="exampleInputUsername1"></label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="FULLNAME">
+                          <input type="text" class="form-control" id="#" name="prisonername" placeholder="FULLNAME" Required>
                         </div>
                         <div class="col-lg-6">
                           <div class="row">
                             <div class="col-lg-4">
                               <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Hight">
+                              <input type="number" class="form-control" id="#" name="prisonerhight" placeholder="Hight" Required>
                             </div>
                             <div class="col-lg-4">
                               <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Age">
+                              <input type="number" class="form-control" id="#" name="prisonerage" placeholder="Age" Required>
                             </div>
                             <div class="col-lg-4">
                               <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="exampleInputPassword1" placeholder="wight">
+                              <input type="number" class="form-control" id="#" name="prisonerweight" placeholder="weight" Required>>
                             </div>
                          </div> 
                         </div>
@@ -111,13 +120,13 @@
                                       <label for="exampleInputUsername1" class=" text text-secondary">Day Of Birth</label>
                                   </div>
                                     <div class="col">
-                                    <input type="date" class="form-control" id="dayofbirth" placeholder="date">
+                                    <input type="date" class="form-control" id="dayofbirth" name="prisonerdayofbirth" placeholder="date" Required>>
                                     </div>
                               </div> 
                           </div>
                           <div class="col-lg-6">
                             <label for="exampleInputUsername1"></label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Place of Birth">
+                            <input type="text" class="form-control" id="#" name="prisonerplaceofbirth" placeholder="Place of Birth" Required>>
                           </div>
                         
                       </div>
@@ -125,28 +134,28 @@
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Address">
+                        <input type="text" class="form-control" id="#" name="prisoneraddress" placeholder="Address" Required>>
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="tel" class="form-control" id="exampleInputPassword1" placeholder="Telephone">
+                        <input type="tel" class="form-control" id="#" name="prisonertellephone" placeholder="Tellephone" Required>>
                         </div>
                       </div>
                       <div class="row">
                        
                         <div class="col">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Mother's Name">
+                        <input type="text" class="form-control" id="#" name="prisonermothername" placeholder="Mother's Name" Required>>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Education Level">
+                        <input type="text" class="form-control" id="#" name="prisonereducationlevel" placeholder="Education Level" Required>>
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="tel" class="form-control" id="exampleInputPassword1" placeholder="Crime Type">
+                        <input type="tel" class="form-control" id="#" name="prisonercrimetype" placeholder="Crime Type" Required>>
                         </div>
                       </div>
                       <div class="row">
@@ -156,19 +165,13 @@
                             <label for="inputmarriagestatus" class=" text text-secondary">Marriage status</label>
                             </div>
                             <div class="col">
-                            <select id="inputmarriagestatus" class="form-control">
-                            <option selected>Choose</option>
-                            <option value="Married">Married</option>
-                            <option value="Single">Single</option>
-                            <option value="Separated">Saperated</option>
-                            <option value="Divorce">Divorce</option>
-                          </select>
+                            <input type="text"  class="form-control" id="#" name="prisonermarriagestatus" Required>
                             </div>
                           </div>
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="MEDICAL STATUS">
+                        <input type="text" class="form-control" id="#" name="prisonermedicalstatus" placeholder="MEDICAL STATUS" Required>
                         </div>
                       </div>
 
@@ -176,11 +179,11 @@
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Jail Period">
+                        <input type="text" class="form-control" id="#" name="prisonersentenceperiod" placeholder="Sentence Period" Required>
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Asset">
+                        <input type="text" class="form-control" id="#" name="prisonerpersonalbelongs" placeholder="Personal Belongs" Required>
                         </div>
                       </div>
                       <div class="row">
@@ -190,33 +193,33 @@
                                       <label for="exampleInputUsername1" class=" text text-secondary">Release Time</label>
                                   </div>
                                     <div class="col">
-                                    <input type="date" class="form-control" id="dayofbirth" placeholder="date">
+                                    <input type="date" class="form-control" id="#" name="prisonerreleasedate" placeholder="date" Required>
                                     </div>
                               </div> 
                           </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="judiciary Trial">
+                        <input type="text" class="form-control" id="#" name="prisonerjudiciarytrial" placeholder="judiciary Trial">
                         </div>
                       </div> 
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Lawyer">
+                        <input type="text" class="form-control" id="#" name="prisonerlawyer" placeholder="Lawyer" Required>
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Cell Number">
+                        <input type="text" class="form-control" id="#" name="prisonercellnumber" placeholder="Cell Number" Required>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Behavier">
+                        <input type="text" class="form-control" id="#" name="prisonerbehavier" placeholder="Behavier" Required>
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Notes">
+                        <input type="text" class="form-control" id="#" name="prisonernotes" placeholder="Notes">
                         </div>
                       </div>
 
