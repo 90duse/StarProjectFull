@@ -6,7 +6,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Star Admin2 </title>
+  <title>POLICE MANAGEMENT SYSTEM </title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/feather/feather.css">
   <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
@@ -62,34 +62,34 @@
             <div class="col-sm-12">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Police Record</h4>
+                  <h4 class="card-title text-center">Police Record</h4>
                   <?php   
                     include 'config.php';
 
                     if(isset($_POST['btnpoliceRecord'])){
                       //echo 'working';
                       $ID = $_GET['pid'];
-                      $RegisterDate = $_GET['pregisterdate'];
-                      $PoliceFullname = $_GET['pfullname'];
-                      $PoliceHeight= $_GET['pheight'];
-                      $PoliceAge = $_GET['page'];
-                      $PoliceWeight = $_GET['pweight'];
-                      $PoliceBirthDate = $_GET['pdateofbirth'];
-                      $PolicePlaceOfBirth = $_GET['pplaceofbirth'];
-                      $PoliceAddress = $_GET['paddress'];
-                      $PolicePhone = $_GET['ptelephone'];
-                      $PoliceEmail = $_GET['pemail'];
-                      $PoliceParentName = $_GET['pmothername'];
-                      $PoliceEducation = $_GET['peducationlevel'];
-                      $PoliceMarriageStatus = $_GET['pmarriagestatus'];
-                      $PoliceMedicalStatus = $_GET['pmedicalstatus'];
-                      $PoliceTrainingSpot = $_GET['ptrainedspot'];
-                      $PoliceRank = $_GET['prank'];
-                      $PoliceNote = $_GET['pnote'];
+                      @$RegisterDate = $_GET['pregisterdate'];
+                      @$PoliceFullname = $_GET['pfullname'];
+                      @$PoliceHeight= $_GET['pheight'];
+                      @$PoliceAge = $_GET['page'];
+                      @$PoliceWeight = $_GET['pweight'];
+                      @$PoliceBirthDate = $_GET['pdateofbirth'];
+                      @$PolicePlaceOfBirth = $_GET['pplaceofbirth'];
+                      @$PoliceAddress = $_GET['paddress'];
+                      @$PolicePhone = $_GET['ptelephone'];
+                      @$PoliceEmail = $_GET['pemail'];
+                      @$PoliceParentName = $_GET['pmothername'];
+                      @$PoliceEducation = $_GET['peducationlevel'];
+                      @$PoliceMarriageStatus = $_GET['pmarriagestatus'];
+                      @$PoliceMedicalStatus = $_GET['pmedicalstatus'];
+                      @$PoliceTrainingSpot = $_GET['ptrainedspot'];
+                      @$PoliceRank = $_GET['prank'];
+                      @$PoliceNote = $_GET['pnote'];
                       
                     }
                     $sql = "INSERT INTO `PoliceRegistration_table` (`id`, `p_registration_date`, `p_fullname`, `p_height`, `p_Age`, `p_weight`, `p_dateOf_Birth`, `p_placeOf_Birth`, `p_address`, `p_phone`, `p_email`, `p_mothers_name`, `p_education`, `p_trained_spot`, `p_marriage_status`, `p_medical_status`, `p_rank`, `p_note`)
-                    VALUES ('', '$RegisterDate', '$PoliceFullname', '$PoliceHeight', '$PoliceAge', '$PoliceWeight', '$PoliceBirthDate', '$PolicePlaceOfBirth', '$PoliceAddress', '$PolicePhone', '$PoliceEmail', '$PoliceParentName', '$PoliceEducation', '$PoliceTrainingSpot', '$PoliceMarriageStatus', '$PoliceMedicalStatus', '$PoliceRank', '$PoliceNote ')";
+                    VALUES ('$ID', '$RegisterDate', '$PoliceFullname', '$PoliceHeight', '$PoliceAge', '$PoliceWeight', '$PoliceBirthDate', '$PolicePlaceOfBirth', '$PoliceAddress', '$PolicePhone', '$PoliceEmail', '$PoliceParentName', '$PoliceEducation', '$PoliceTrainingSpot', '$PoliceMarriageStatus', '$PoliceMedicalStatus', '$PoliceRank', '$PoliceNote ')";
                  
                     if(mysqli_query($con, $sql)){
                       echo "New record created successfully";
@@ -112,7 +112,7 @@
                                       <label for="exampleInputUsername1" class=" text text-secondary">Register Date</label>
                                   </div>
                                     <div class="col">
-                                    <input type="date" class="form-control" id="#" name='pregisterdate' placeholder="date">
+                                    <input type="date" class="form-control" id="#" name='pregisterdate' placeholder="date" Required>
                                     </div>
                               </div> 
                           </div>

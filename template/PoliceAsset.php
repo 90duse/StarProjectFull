@@ -1,4 +1,35 @@
+<?php  
+                    include 'config.php'; 
 
+                      if(isset($_POST["btnsubmit"]))
+                      {
+                        //echo "working";
+                        // $assetID = $_GET['assetid'];
+                        $register_date = $_GET['assetdate'];
+                        $itemName = $_GET['itemname'];
+                        $itemHight = $_GET['itemhight'];
+                        $itemColor = $_GET['itemcolor'];
+                        $itemWeight = $_GET['itemweight'];
+                        $itemQuantity = $_GET['itemquantity'];
+                        $itemCatogery = $_GET['itemcategory'];
+                        $storeNumber = $_GET['storenumber'];
+                        $guardingName = $_GET['guardingname'];
+                        $guardingID = $_GET['guardingid'];
+                        $itemCondition =$_GET['itemcondition'];
+                        $itemNote = $_GET['itemnote'];
+                        $deliveryName = $_GET['deliveryname'];
+                        
+                             
+                      }
+                      $sql = "INSERT INTO AssetRegistration_table (id, item_Register_Date, item_Name, item_Hight, item_Color, item_Weight, item_Quantity, item_Catogery, Store_Number, Guarding_Name, Guarding_Police_ID, item_Condition, item_Note, item_Delivery)
+                         VALUES (' ', '$register_date', '$itemName', '$itemHight', '$itemColor', '$itemWeight', '$itemQuantity', '$itemCatogery', '$storeNumber', '$guardingName', '$guardingID', '$itemCondition', '$itemNote', '$deliveryName')";
+
+                           if (mysqli_query($con, $sql)) {
+                                echo "New record created successfully";
+                          } else {
+                                echo mysqli_error($con);
+                          }
+                    ?>
  <!DOCTYPE html><html lang="en">
 
 <head>
@@ -62,39 +93,8 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Police Asset</h4>
-                  <?php  
-                    include 'config.php'; 
-
-                      if(isset($_GET["btnsubmit"]))
-                      {
-                        //echo "working";
-                        // $assetID = $_GET['assetid'];
-                        $register_date = $_GET['assetdate'];
-                        $itemName = $_GET['itemname'];
-                        $itemHight = $_GET['itemhight'];
-                        $itemColor = $_GET['itemcolor'];
-                        $itemWeight = $_GET['itemweight'];
-                        $itemQuantity = $_GET['itemquantity'];
-                        $itemCatogery = $_GET['itemcategory'];
-                        $storeNumber = $_GET['storenumber'];
-                        $guardingName = $_GET['guardingname'];
-                        $guardingID = $_GET['guardingid'];
-                        $itemCondition =$_GET['itemcondition'];
-                        $itemNote = $_GET['itemnote'];
-                        $deliveryName = $_GET['deliveryname'];
-                        
-                             
-                      }
-                      $sql = "INSERT INTO AssetRegistration_table (id, item_Register_Date, item_Name, item_Hight, item_Color, item_Weight, item_Quantity, item_Catogery, Store_Number, Guarding_Name, Guarding_Police_ID, item_Condition, item_Note, item_Delivery)
-                         VALUES (' ', '$register_date', '$itemName', '$itemHight', '$itemColor', '$itemWeight', '$itemQuantity', '$itemCatogery', '$storeNumber', '$guardingName', '$guardingID', '$itemCondition', '$itemNote', '$deliveryName')";
-
-                           if (mysqli_query($con, $sql)) {
-                                echo "New record created successfully";
-                          } else {
-                                echo mysqli_error($con);
-                          }
-                    ?>
-                  <form class="forms-sample" action="PoliceAsset.php" method ="GET" >
+                 
+                  <form class="forms-sample" action="PoliceAsset.php" method ="POST" >
                   <div class="container">
                       <div class="row">
                         <div class="col-lg-6">
@@ -107,7 +107,7 @@
                                       <label for="exampleInputUsername1" class=" text text-secondary ">Date</label>
                                   </div>
                                     <div class="col">
-                                    <input type="date" class="form-control" id="assetDate" name="assetdate"placeholder="date">
+                                    <input type="date" class="form-control" id="assetDate" name="assetdate"placeholder="date" Required>
                                     </div>
                               </div> 
                           </div>
@@ -115,21 +115,21 @@
                       <div class="row">
                         <div class="col-lg-6">
                           <label for="exampleInputUsername1"></label>
-                          <input type="text" class="form-control" id="#" name="itemname" placeholder="Item Name">
+                          <input type="text" class="form-control" id="#" name="itemname" placeholder="Item Name" Requierd>
                         </div>
                         <div class="col-lg-6">
                           <div class="row">
                             <div class="col-lg-4">
                               <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="#" name="itemhight" placeholder=" Item Hight">
+                              <input type="number" class="form-control" id="#" name="itemhight" placeholder=" Item Hight" Required>
                             </div>
                             <div class="col-lg-4">
                               <label for="exampleInputUsername1"></label>
-                              <input type="text" class="form-control" id="#" name="itemcolor" placeholder="Color">
+                              <input type="text" class="form-control" id="#" name="itemcolor" placeholder="Color" Required>
                             </div>
                             <div class="col-lg-4">
                               <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="#" name="itemweight" placeholder=" Item weight">
+                              <input type="number" class="form-control" id="#" name="itemweight" placeholder=" Item weight" Required>
                             </div>
                          </div> 
                         </div>
@@ -137,7 +137,7 @@
                       <div class="row">
                           <div class="col-lg-6">
                             <label for="exampleInputUsername1"></label>
-                            <input type="text" class="form-control" id="#" name="itemquantity" placeholder="Quantity">
+                            <input type="text" class="form-control" id="#" name="itemquantity" placeholder="Quantity" Required>
                           </div>
                           <div class="col-6">
                           <div class="row mt-4">
@@ -145,7 +145,7 @@
                             <label for="inputmarriagestatus" class=" text text-secondary">Category</label>
                             </div>
                             <div class="col">
-                            <input type="text" class="form-control" id="#" name="itemcategory" placeholder="Catogery">
+                            <input type="text" class="form-control" id="#" name="itemcategory" placeholder="Catogery" Required>
                             <!-- <select id="inputmarriagestatus"  name="#" class="form-control">
                             <option selected>Choose</option>
                             <option value="#">Arsenal</option>
@@ -161,34 +161,34 @@
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="number" class="form-control" id="#" name="storenumber" placeholder="Store Number">
+                        <input type="number" class="form-control" id="#" name="storenumber" placeholder="Store Number" Required>
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="guardingname" placeholder="Guarding Name">
+                        <input type="text" class="form-control" id="#" name="guardingname" placeholder="Guarding Name" Required>
                         </div>
                       </div>
                       <div class="row">
                        
                         <div class="col">
                         <label for="exampleInputUsername1"></label>
-                        <input type="number" class="form-control" id="#" name="guardingid" placeholder="Guarding Police ID">
+                        <input type="number" class="form-control" id="#" name="guardingid" placeholder="Guarding Police ID" Required>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="itemcondition" placeholder="Item Condition">
+                        <input type="text" class="form-control" id="#" name="itemcondition" placeholder="Item Condition" Required>
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="itemnote" placeholder="Note">
+                        <input type="text" class="form-control" id="#" name="itemnote" placeholder="Note" Required>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col ">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="deliveryname"placeholder="Delivery Name">
+                        <input type="text" class="form-control" id="#" name="deliveryname"placeholder="Delivery Name" Required>
                         </div>
                       </div>
                       <button type="submit" id="btnassetsubmit" name="btnsubmit" class="btn btn-primary mt-2 ">Submit</button>
