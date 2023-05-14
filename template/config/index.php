@@ -842,14 +842,16 @@
                                         <div class="text-muted text-small">
                                           1h ago
                                         </div>
+
                                       </div>
                                     </div>
                                   </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
                         </div>
+
+                       </div>
                       </div>
                     </div>
                   </div>
