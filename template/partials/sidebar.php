@@ -39,7 +39,8 @@
             </a>
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="../template/CrimeRecord.php">Add New</a></li>
+                <li class="nav-item"><a class="nav-link" href="../config/CrimeRecord.php">Add New</a></li>
+                <li class="nav-item"><a class="nav-link" href="../config/viewCrime.php">View Cases</a></li>
               </ul>
             </div>
           </li>
@@ -51,7 +52,7 @@
             </a>
             <div class="collapse" id="charts">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../template/PoliceRecord.php">Add New</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../config/PoliceRecord.php">Add New</a></li>
               </ul>
             </div>
           </li>
@@ -63,7 +64,7 @@
             </a>
             <div class="collapse" id="tables">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../template/PrisoneRcord.php">Add New</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../config/PrisoneRcord.php">Add New</a></li>
               </ul>
             </div>
           </li>
@@ -75,7 +76,7 @@
             </a>
             <div class="collapse" id="icons">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../template/ComplaintForm.php">Add New</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../config/ComplaintForm.php">Add New</a></li>
               </ul>
             </div>
           </li>
@@ -87,7 +88,7 @@
             </a>
             <div class="collapse" id="iconss">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../template/PoliceAsset.php">Add New</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../config/PoliceAsset.php">Add New</a></li>
               </ul>
             </div>
           </li>
