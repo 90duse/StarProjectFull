@@ -1,11 +1,12 @@
 
- <!DOCTYPE html><html lang="en">
+ <!DOCTYPE html>
+ <html lang="en">
 
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Star Admin2 </title>
+  <title>POLICE MANAGEMENT SYSTEM </title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/feather/feather.css">
   <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
@@ -44,15 +45,15 @@
         </div>
       </div>
     </div>
-    <!-- partial:partials/_navbar.html -->
+    <!-- partial:partials/_navbar.php -->
    <?php  include "/partials/navbar.php";?>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
-      <!-- partial:partials/_settings-panel.html -->
+      <!-- partial:partials/_settings-panel.php -->
       <?php  include "partials/settings-panel.php";?>
      
       <!-- partial -->
-      <!-- partial:partials/_sidebar.html -->
+      <!-- partial:partials/_sidebar.php -->
      <?php   include "partials/sidebar.php";?>
       <!-- partial -->
       <div class="main-panel">
@@ -62,51 +63,80 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title text-center">Complaint form </h4>
+                  <?php   
+                        include 'config.php';
+
+                        if(isset($_GET['btncomplain'])){
+                          //echo 'working';
+                          //@$complainID = $_GET['complainid'];
+                          @$complainRegisterDate = $_GET['complairegisterdate'];
+                          @$complainFullname = $_GET['complainfullname'];
+                          @$complainRank= $_GET['complainrank'];
+                          @$complainSubject = $_GET['complainsubject'];
+                          @$complainAgainstWhom = $_GET['complainagainstwhom'];
+                          @$complainment = $_GET['complainment'];
+                           
+                          
+                        }
+
+                         $sql = "INSERT INTO `complainmentRegistration_table` (`id`, `co_registrationDate`, `co_fullname`, `co_ranka`, `co_subject`, `co_againstWhom`, `co_coplainment`)
+                          VALUES ('', '$complainRegisterDate', '$complainFullname', '$complainRank', '$complainSubject', '$complainAgainstWhom', '$complainment')";
+                          if (mysqli_query($con, $sql)){
+
+                            echo 'Your Complainment is recorded successfully';
+                          }
+                        else {
+
+                          echo 'Not working';
+                        }
+
+
+                    ?>
                
-                  <form class="forms-sample">
+                  <form class="forms-sample" method="GET">
                   <div class="container">
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="number" class="form-control" id="exampleInputUsername1" placeholder="Police ID">
+                        <input type="number" class="form-control" id="#" name="complainid" placeholder="Police ID">
                         </div>
                         <div class="col-lg-6">
                               <div class="row mt-4">
                                   <div class="col-6"> 
-                                      <label for="exampleInputUsername1" class=" text text-secondary">Date</label>
+                                      <label for="#" class=" text text-secondary">Date</label>
                                   </div>
                                     <div class="col">
-                                    <input type="date" class="form-control" id="dayofbirth" placeholder="date">
+                                    <input type="date" class="form-control" id="#" name="complainregisterdate" placeholder="date">
                                     </div>
                               </div> 
                           </div>
                       </div>
                       <div class="row">
                         <div class="col-lg-6">
-                          <label for="exampleInputUsername1"></label>
-                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="FULLNAME">
+                          <label for="#"></label>
+                          <input type="text" class="form-control" id="#" name="complainfullname" placeholder="FULLNAME">
                         </div>
                         <div class="col-lg-6">
-                            <label for="exampleInputUsername1"></label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="RANK">
+                            <label for="#"></label>
+                            <input type="text" class="form-control" id="#" name="complainrank"placeholder="RANK">
                           </div>
                       </div>
                       
            
                       <div class="row">
                         <div class="col-lg-6">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Complainment Subject">
+                        <label for="#"></label>
+                        <input type="text" class="form-control" id="#" name="complainsubject" placeholder="Complainment Subject">
                         </div>
                         <div class="col-lg-6">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="tel" class="form-control" id="exampleInputPassword1" placeholder="Against whom to complain">
+                        <label for="#"></label>
+                        <input type="tel" class="form-control" id="#" name="complainagainstwhom" placeholder="Against whom to complain">
                         </div>
                       </div>
                       <div class="row">
                         <div class="col">
-                        <label for="exampleInputUsername1"></label>
-                        <textarea type="text" class="form-control h-100" id="exampleInputUsername1" placeholder="Complainment"></textarea>
+                        <label for="#"></label>
+                        <textarea type="text" class="form-control h-100" id="#" name="complainment" placeholder="Complainment"></textarea>
                         </div>
                         
                       </div> 
@@ -118,14 +148,14 @@
                               <input type="checkbox" aria-label="Checkbox for following text input">
                             </div>
                           </div>
-                          <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="I as Name I am sure this and I am ready to face the result">
+                          <input type="text" class="form-control" aria-label="Text input with checkbox" name="complainsigniture" placeholder="I as Name I am sure this and I am ready to face the result">
                         </div>
                         </div>
                         
                       </div>
                           <div class="button mt-5">
-                          <button type="submit" class="btn btn-primary ">Submit</button>
-                          <button class="btn btn-light">Cancel</button>
+                            <button type="submit" class="btn btn-primary" name="btncomplain">Submit</button>
+                            <button class="btn btn-light">Cancel</button>
                           </div>
                   </div>
                   </form>
