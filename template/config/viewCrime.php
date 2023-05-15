@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
  <html lang="en">
  <head>
@@ -70,12 +69,12 @@
                                   <table class="table select-table">
                                     <thead>
                                       <tr>
-                                        <th>
+                                        <!-- <th>
                                           <div class="form-check form-check-flat mt-0">
                                             <label class="form-check-label">
                                               <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
                                           </div>
-                                        </th>
+                                        </th> -->
                                         <th>CrimeID</th>
                                         <th>Register Date</th>
                                         <th>Crime Type</th>
@@ -92,51 +91,119 @@
                                     </thead>
                                     <tbody>
                                       <tr>
-                                        <td>
+                                        <?php 
+                                         include '../config.php';
+                                         
+                                         $sql = "SELECT  * FROM crimerecord_table";
+                                         
+                                          $result = mysqli_query($con, $sql);
+
+                                        while ($row = mysqli_fetch_assoc($result)){
+
+                                          ?>
+                                        <!-- <td>
                                             <div class="form-check form-check-flat mt-0">
                                               <label class="form-check-label">
                                               <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
                                             </div> 
+                                        </td> -->
+                                        <td>
+                                        <p>
+                                          <?php 
+                                            echo @$row['id']; 
+                                          ?>
+                                        </p>
                                         </td>
                                         <td>
-                                        <p>004</p>
+                                        <p>
+                                          <?php 
+                                            echo @$row['cr_registerDate']; 
+                                          ?>
+                                        </p>
                                         </td>
                                         <td>
-                                          <p>20/20/2020</p>
+                                        <p>
+                                          <?php 
+                                            echo $row['cr_type']; 
+                                          ?>
+                                        </p>
                                         </td>
                                         <td>
-                                          <p>Murder</p>
+                                        <p>
+                                          <?php 
+                                            echo $row['cr_place']; 
+                                          ?>
+                                        </p>
                                         </td>
                                         <td>
-                                         LONDON
+                                        <p>
+                                          <?php 
+                                            echo $row['cr_victam']; 
+                                          ?>
+                                        </p>
                                         </td>
                                         <td>
-                                          <p>Sophia</p>
+                                        <p>
+                                          <?php 
+                                            echo $row['cr_criminal']; 
+                                          ?>
+                                        </p>
                                         </td>
                                         <td>
-                                         <p>Jack</p>
+                                        <p>
+                                          <?php 
+                                            echo $row['cr_officer']; 
+                                          ?>
+                                        </p>
                                         </td>
                                         <td>
-                                          <p>Logan</p>
+                                        <p>
+                                          <?php 
+                                            echo $row['cr_witness']; 
+                                          ?>
+                                        </p>
                                         </td>
                                         <td>
-                                          <p>Hanna</p>
+                                        <p>
+                                          <?php 
+                                            echo @$row['cr_evindence']; 
+                                          ?>
+                                        </p>
                                         </td>
                                         <td>
-                                          <p>Gun</p>
+                                        <p>
+                                          <?php 
+                                            echo $row['cr_items']; 
+                                          ?>
+                                        </p>
                                         </td>
                                         <td>
-                                          <p>Laptop</p>
+                                        <p>
+                                          <?php 
+                                            echo $row['cr_status']; 
+                                          ?>
+                                        </p>
                                         </td>
                                         <td>
-                                          <p>unsolve</p>
+                                        <p>
+                                          <?php 
+                                            echo $row['cr_note']; 
+                                          ?>
+                                        </p>
                                         </td>
                                         <td>
-                                          <p>Nothing</p>
+                                          <a href="#" class="btn btn-success">EDIT</a>
+                                        </td>
+                                        <td>
+                                          <a href="#" class="btn btn-danger">DELETE</a>
                                         </td>
 
-
+                                       
                                       </tr>
+                                      <?php  
+
+                                        };
+                                        ?>
                                       
                                        
                                     </tbody>
