@@ -65,45 +65,59 @@
                   <h4 class="card-title text-center">Crime Record</h4>
                   <?php    
                       include '../config.php';
+                      
+                      // $errorMessage = 'Error';
+                      // $successMessage = 'Successfully recorded';
+                      // $crimeRegisterDate = '';
+                      // $crimeType = '';
+                      // $crimePlace= '';
+                      // $crimeVictam = '';
+                      // $crimeCriminal = '';
+                      // $crimeOfficer = '';
+                      // $crimeWitness = '';
+                      // $crimeEvidence = '';
+                      // $crimeItems = '';
+                      // $crimeStatus = '';
+                      // $crimeNote = '';
 
-                      if(isset($_GET['btncrime'])){
-                        //echo 'working';
-                          //@$CASEID = $_GET['crimeid'];
-                          @$crimeRegisterDate = $_GET['crimeregisterdate'];
-                          @$crimeType = $_GET['crimetype'];
-                          @$crimePlace= $_GET['crimeplace'];
-                          @$crimeVictam = $_GET['crimevictam'];
-                          @$crimeCriminal = $_GET['crimecriminal'];
-                          @$crimeOfficer = $_GET['crimeofficer'];
-                          @$crimeWitness = $_GET['crimewitness'];
-                          @$crimeEvidence = $_GET['crimeevidence'];
-                          @$crimeItems = $_GET['crimeitems'];
-                          @$crimeStatus = $_GET['crimestatus'];
-                          @$crimeNote = $_GET['crimenote'];
-                          
-
-                      }
-
-                      $sql = "INSERT INTO `CrimeRecord_Table` (`id`, `cr_registerDate`, `cr_type`, `cr_place`, `cr_victam`, `cr_criminal`, `cr_officer`, `cr_witness`, `cr_evindence`, `cr_items`, `cr_status`, `cr_note`) 
-                      VALUES ('', '$crimeRegisterDate', '$crimeType', '$crimePlace', '$crimeVictam', '$crimeCriminal', '$crimeOfficer', '$crimeWitness ', '$crimeEvidence', '$crimeItems', '$crimeStatus', '$crimeNote')";
                         
-                        if (mysqli_query($con, $sql)){
-                          echo 'New Crime Has successfully Recorded';
-                        }
+                        if(isset($_GET['btncrime']))
+                        {
+                            //echo 'working';
+                              @$CASEID = $_GET['crimeid'];
+                              @$crimeRegisterDate = $_GET['crimeregisterdate'];
+                              @$crimeType = $_GET['crimetype'];
+                              @$crimePlace= $_GET['crimeplace'];
+                              @$crimeVictam = $_GET['crimevictam'];
+                              @$crimeCriminal = $_GET['crimecriminal'];
+                              @$crimeOfficer = $_GET['crimeofficer'];
+                              @$crimeWitness = $_GET['crimewitness'];
+                              @$crimeEvidence = $_GET['crimeevidence'];
+                              @$crimeItems = $_GET['crimeitems'];
+                              @$crimeStatus = $_GET['crimestatus'];
+                              @$crimeNote = $_GET['crimenote'];
+
+
+                        } 
+                          $sql = "INSERT INTO `CrimeRecord_Table` (`cr_id`,`cr_registerDate`, `cr_type`, `cr_place`, `cr_victam`, `cr_criminal`, `cr_officer`, `cr_witness`, `cr_evindence`, `cr_items`, `cr_status`, `cr_note`) 
+                          VALUES ('', '$crimeRegisterDate', '$crimeType', '$crimePlace', '$crimeVictam', '$crimeCriminal', '$crimeOfficer', '$crimeWitness ', '$crimeEvidence', '$crimeItems', '$crimeStatus', '$crimeNote')";
+                        
+                            if (mysqli_query($con, $sql))
+                            {
+                              echo $successMessage;
+                            }
    
-                      else {
-                        echo 'Not working';
-                        //echo mysqli_error($con);
-                      }
-
-
-
+                            else 
+                            {
+                              //echo $errorMessage;
+                              echo mysqli_error($con);
+                            }
 
 
                     ?>
                   <form class="forms-sample" method="GET">
                     <div class="container">
-                      <div class="row">
+                        <div class="row">
                         <div class="col-lg-6">
                         <div class="row mt-4">
                                   <div class="col-6"> 
@@ -120,7 +134,7 @@
                                       <label for="exampleInputUsername1" class=" text text-secondary">Register Date</label>
                                   </div>
                                     <div class="col">
-                                    <input type="date" class="form-control" id="#" name="crimeregisterdate" placeholder="date" Required>
+                                    <input type="date" class="form-control" id="#" name="crimeregisterdate" placeholder="date" >
                                     </div>
                               </div> 
                         </div>
@@ -132,17 +146,17 @@
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="crimeplace" placeholder="Place">
+                        <input type="text" class="form-control" id="#" name="crimeplace" placeholder="Place" >
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="crimevictam" placeholder="Victam/Victams">
+                        <input type="text" class="form-control" id="#" name="crimevictam" placeholder="Victam/Victams" >
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="crimecriminal" placeholder="Criminal">
+                        <input type="text" class="form-control" id="#" name="crimecriminal" placeholder="Criminal" >
                         </div>
                       </div>
                       <div class="row">
@@ -158,7 +172,7 @@
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="crimeevidence" placeholder="EVIDENCE">
+                        <input type="text" class="form-control" id="#" name="crimeevidence" placeholder="EVIDENCE" >
                         </div>
                         <div class="col-lg-6">
                         <label for="#"></label>
@@ -168,11 +182,11 @@
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="#"></label>
-                        <input type="text" class="form-control" id="#" name="crimestatus" placeholder="STATUS">
+                        <input type="text" class="form-control" id="#" name="crimestatus" placeholder="STATUS" >
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="textarea" class="form-control" id="#" name="crimenote" placeholder="NOTES">
+                        <input type="textarea" class="form-control" id="#" name="crimenote" placeholder="NOTES" >
                         </div>
                       </div>
                         <div class="button">
