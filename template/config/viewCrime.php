@@ -51,7 +51,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title text-center">Crime View</h4>
-                  
+                  <form action="" method="GET">
                   <div class="row flex-grow">
                           <div class="col-12 grid-margin stretch-card">
                             <div class="card card-rounded">
@@ -62,7 +62,7 @@
                                    <p class="card-subtitle card-subtitle-dash">You have 50+ new requests</p>
                                   </div>
                                   <div>
-                                    <button class="btn btn-primary btn-lg text-white mb-0 me-0" type="button"><i class="mdi mdi-account-plus"></i>Add new member</button>
+                                    <a href="CrimeRecord.php"><button class="btn btn-primary btn-lg text-white mb-0 me-0" type="submit">Add new member</button></a>
                                   </div>
                                 </div>
                                 <div class="table-responsive  mt-1">
@@ -93,116 +93,114 @@
                                       <tr>
                                         <?php 
                                          include '../config.php';
-                                         
-                                         $sql = "SELECT  * FROM crimerecord_table";
+
+                                         $sql = " SELECT * FROM crimerecord_table";
                                          
                                           $result = mysqli_query($con, $sql);
+                                          
 
                                         while ($row = mysqli_fetch_assoc($result)){
-
+                                          
+                                         
+                                          
+                                  
                                           ?>
-                                        <!-- <td>
-                                            <div class="form-check form-check-flat mt-0">
-                                              <label class="form-check-label">
-                                              <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
-                                            </div> 
-                                        </td> -->
-                                        <td>
+                                          <td>
                                         <p>
                                           <?php 
-                                            echo @$row['id']; 
+                                            echo $row['cr_id'];
                                           ?>
                                         </p>
                                         </td>
                                         <td>
                                         <p>
                                           <?php 
-                                            echo @$row['cr_registerDate']; 
+                                            echo $row['cr_registerDate'];
                                           ?>
                                         </p>
                                         </td>
                                         <td>
                                         <p>
                                           <?php 
-                                            echo $row['cr_type']; 
+                                            echo @$row['cr_type'];
                                           ?>
                                         </p>
                                         </td>
                                         <td>
                                         <p>
                                           <?php 
-                                            echo $row['cr_place']; 
+                                            echo @$row['cr_place'];
                                           ?>
                                         </p>
                                         </td>
                                         <td>
                                         <p>
                                           <?php 
-                                            echo $row['cr_victam']; 
+                                            echo @$row['cr_victam'];
                                           ?>
                                         </p>
                                         </td>
                                         <td>
                                         <p>
                                           <?php 
-                                            echo $row['cr_criminal']; 
+                                            echo @$row['cr_criminal'];
                                           ?>
                                         </p>
                                         </td>
                                         <td>
                                         <p>
                                           <?php 
-                                            echo $row['cr_officer']; 
+                                            echo @$row['cr_officer'];
                                           ?>
                                         </p>
                                         </td>
                                         <td>
                                         <p>
                                           <?php 
-                                            echo $row['cr_witness']; 
+                                            echo @$row['cr_witness'];
                                           ?>
                                         </p>
                                         </td>
                                         <td>
                                         <p>
                                           <?php 
-                                            echo @$row['cr_evindence']; 
+                                            echo  @$row['cr_evidence'];
                                           ?>
                                         </p>
                                         </td>
                                         <td>
                                         <p>
                                           <?php 
-                                            echo $row['cr_items']; 
+                                            echo @$row['cr_items'];
                                           ?>
                                         </p>
                                         </td>
                                         <td>
                                         <p>
                                           <?php 
-                                            echo $row['cr_status']; 
+                                            echo @$row['cr_status'];
                                           ?>
                                         </p>
                                         </td>
                                         <td>
                                         <p>
                                           <?php 
-                                            echo $row['cr_note']; 
+                                            echo @$row['cr_note']; 
                                           ?>
                                         </p>
                                         </td>
                                         <td>
-                                          <a href="#" class="btn btn-success">EDIT</a>
+                                          <a href="Update.php"  class="btn btn-success">EDIT</a>
                                         </td>
                                         <td>
-                                          <a href="#" class="btn btn-danger">DELETE</a>
+                                          <a href="Delete.php?id=$row['cr_id']" class="btn btn-danger">DELETE</a>
                                         </td>
 
                                        
                                       </tr>
                                       <?php  
 
-                                        };
+                                        }
                                         ?>
                                       
                                        
@@ -213,6 +211,7 @@
                             </div>
                           </div>
                         </div>
+                        </form>
               </div>
              </div>
             </div>
