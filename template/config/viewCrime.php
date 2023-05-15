@@ -51,7 +51,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title text-center">Crime View</h4>
-                  <form action="" method="GET">
+                  <form action="#" method="GET">
                   <div class="row flex-grow">
                           <div class="col-12 grid-margin stretch-card">
                             <div class="card card-rounded">
@@ -94,12 +94,11 @@
                                         <?php 
                                          include '../config.php';
 
-                                         $sql = " SELECT * FROM crimerecord_table";
-                                         
-                                          $result = mysqli_query($con, $sql);
+                                          $result = mysqli_query($con, "SELECT * FROM crimerecord_table" );
                                           
 
-                                        while ($row = mysqli_fetch_assoc($result)){
+                                           while ($row = mysqli_fetch_assoc($result)){
+                                            $id = $row['cr_id'];
                                           
                                          
                                           
@@ -108,7 +107,7 @@
                                           <td>
                                         <p>
                                           <?php 
-                                            echo $row['cr_id'];
+                                            echo $id;
                                           ?>
                                         </p>
                                         </td>
@@ -193,7 +192,7 @@
                                           <a href="Update.php"  class="btn btn-success">EDIT</a>
                                         </td>
                                         <td>
-                                          <a href="Delete.php?id=$row['cr_id']" class="btn btn-danger">DELETE</a>
+                                          <a href="Delete.php?ID=17"  class="btn btn-danger">DELETE</a>
                                         </td>
 
                                        
@@ -201,6 +200,7 @@
                                       <?php  
 
                                         }
+                                      
                                         ?>
                                       
                                        
