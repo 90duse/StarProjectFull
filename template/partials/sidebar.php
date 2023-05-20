@@ -66,6 +66,7 @@
             <div class="collapse" id="tables">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="../config/PrisoneRcord.php">Add New</a></li>
+                <li class="nav-item"><a class="nav-link" href="../config/viewPrisonerRecord.php">View Complainment</a></li>
               </ul>
             </div>
           </li>
@@ -91,6 +92,7 @@
             <div class="collapse" id="iconss">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="../config/PoliceAsset.php">Add New</a></li>
+                <li class="nav-item"><a class="nav-link" href="../config/viewPoliceAsset.php">View Complainment</a></li>
               </ul>
             </div>
           </li>
