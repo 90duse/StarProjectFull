@@ -16,6 +16,9 @@ if(isset($_GET['id'])){
     }
       header('location: viewCrime.php');
       exit();
-     //$con->close();
+     $con->close();
 
+
+    
 ?>
+<!-- Police record delete code -->
