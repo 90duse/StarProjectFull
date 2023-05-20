@@ -67,6 +67,31 @@
                   <h4 class="card-title text-center">Prison Record</h4>
                       <?php    
                         include '../config.php';
+                        $ID = '';
+                        $RegisterDate = '';
+                        $prisonerFullname = '';
+                        $prisonerHeight= '';
+                        $prisonerAge = '';
+                        $prisonerWeight = '';
+                        $prisonerBirthDate = '';
+                        $prisonerPlaceOfBirth = '';
+                        $prisonerAddress = '';
+                        $prisonerPhone = '';
+                        $prisonerEmail = '';
+                        $prisonerParentName = '';
+                        $prisonerEducation = '';
+                        $prisonerCrimeType = '';
+                        $prisonerMarriageStatus = '';
+                        $prisonerSentencePeriod = '';
+                        $prisonerMedicalStatus = '';
+                        $prisonerPersonalBelongs = '';
+                        $prisonerReleaseDate = '';
+                        $prisonerJudiciaryTrial = '';
+                        $prisonerLawyer = '';
+                        $prisonerCellNo = '';
+                        $prisonerBehavier= '';
+                        $prisonerNote =  '';
+
                         
                         if(isset($_GET['btnprisoner'])){
                           //echo 'working';
