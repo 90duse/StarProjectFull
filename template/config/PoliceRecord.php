@@ -65,10 +65,28 @@
                   <h4 class="card-title text-center">Police Record</h4>
                   <?php   
                     include '../config.php';
+                      @$RegisterDate= "";
+                      @$PoliceFullname = "";
+                      @$PoliceHeight= "";
+                      @$PoliceAge = "";
+                      @$PoliceWeight = "";
+                      @$PoliceBirthDate = "";
+                      @$PolicePlaceOfBirth = "";
+                      @$PoliceAddress = "";
+                      @$PolicePhone = "";
+                      @$PoliceEmail = "";
+                      @$PoliceParentName = "";
+                      @$PoliceEducation = "";
+                      @$PoliceMarriageStatus = "";
+                      @$PoliceMedicalStatus = "";
+                      @$PoliceTrainingSpot = "";
+                      @$PoliceRank = "";
+                      @$PoliceNote = "";
+                      
 
-                    if(isset($_POST['btnpoliceRecord'])){
+                    if(isset($_GET['btnpoliceRecord'])){
                       //echo 'working';
-                      $ID = $_GET['pid'];
+                      //$ID = $_GET['pid'];
                       @$RegisterDate = $_GET['pregisterdate'];
                       @$PoliceFullname = $_GET['pfullname'];
                       @$PoliceHeight= $_GET['pheight'];
@@ -88,8 +106,8 @@
                       @$PoliceNote = $_GET['pnote'];
                       
                     }
-                    $sql = "INSERT INTO `PoliceRegistration_table` (`id`, `p_registration_date`, `p_fullname`, `p_height`, `p_Age`, `p_weight`, `p_dateOf_Birth`, `p_placeOf_Birth`, `p_address`, `p_phone`, `p_email`, `p_mothers_name`, `p_education`, `p_trained_spot`, `p_marriage_status`, `p_medical_status`, `p_rank`, `p_note`)
-                    VALUES ('$ID', '$RegisterDate', '$PoliceFullname', '$PoliceHeight', '$PoliceAge', '$PoliceWeight', '$PoliceBirthDate', '$PolicePlaceOfBirth', '$PoliceAddress', '$PolicePhone', '$PoliceEmail', '$PoliceParentName', '$PoliceEducation', '$PoliceTrainingSpot', '$PoliceMarriageStatus', '$PoliceMedicalStatus', '$PoliceRank', '$PoliceNote ')";
+                    $sql = "INSERT INTO `PoliceRegistration_table` (`p_ID`, `p_registration_date`, `p_fullname`, `p_height`, `p_Age`, `p_weight`, `p_dateOf_Birth`, `p_placeOf_Birth`, `p_address`, `p_phone`, `p_email`, `p_mothers_name`, `p_education`, `p_trained_spot`, `p_marriage_status`, `p_medical_status`, `p_rank`, `p_note`)
+                    VALUES (' ', '$RegisterDate', '$PoliceFullname', '$PoliceHeight', '$PoliceAge', '$PoliceWeight', '$PoliceBirthDate', '$PolicePlaceOfBirth', '$PoliceAddress', '$PolicePhone', '$PoliceEmail', '$PoliceParentName', '$PoliceEducation', '$PoliceTrainingSpot', '$PoliceMarriageStatus', '$PoliceMedicalStatus', '$PoliceRank', '$PoliceNote ')";
                  
                     if(mysqli_query($con, $sql)){
                       echo "New record created successfully";
@@ -99,7 +117,7 @@
 
 
                     ?>
-                  <form class="forms-sample" method='post'>
+                  <form class="forms-sample" method='GET'>
                   <div class="container">
                       <div class="row">
                         <div class="col-lg-6">
