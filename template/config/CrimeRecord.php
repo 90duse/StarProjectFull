@@ -67,18 +67,19 @@
                       include '../config.php';
                       
                       // $errorMessage = 'Error';
-                      // $successMessage = 'Successfully recorded';
-                      // $crimeRegisterDate = '';
-                      // $crimeType = '';
-                      // $crimePlace= '';
-                      // $crimeVictam = '';
-                      // $crimeCriminal = '';
-                      // $crimeOfficer = '';
-                      // $crimeWitness = '';
-                      // $crimeEvidence = '';
-                      // $crimeItems = '';
-                      // $crimeStatus = '';
-                      // $crimeNote = '';
+                       $successMessage = 'Successfully recorded';
+                      $CASEID ='';
+                      $crimeRegisterDate = '';
+                      $crimeType = '';
+                      $crimePlace= '';
+                      $crimeVictam = '';
+                      $crimeCriminal = '';
+                      $crimeOfficer = '';
+                      $crimeWitness = '';
+                      $crimeEvidence = '';
+                      $crimeItems = '';
+                      $crimeStatus = '';
+                      $crimeNote = '';
 
                         
                         if(isset($_GET['btncrime']))
