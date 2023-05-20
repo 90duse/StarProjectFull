@@ -66,6 +66,14 @@
                   <?php   
                         include '../config.php';
 
+                          $complainID = " ";
+                          $complainRegisterDate =" "; 
+                          $complainFullname = " "; 
+                          $complainRank = " "; 
+                          $complainSubject = " "; 
+                          $complainAgainstWhom = " "; 
+                          $complainment = " "; 
+
                         if(isset($_GET['btncomplain'])){
                           //echo 'working';
                           @$complainID = $_GET['complainid'];
