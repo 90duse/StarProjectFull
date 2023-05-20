@@ -78,6 +78,7 @@
             <div class="collapse" id="icons">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="../config/ComplaintForm.php">Add New</a></li>
+                <li class="nav-item"><a class="nav-link" href="../config/viewComplainment.php">View Complainment</a></li>
               </ul>
             </div>
           </li>
