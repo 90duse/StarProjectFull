@@ -3,18 +3,19 @@
 include '../config.php';
 
 
-if(isset($_GET['ID'])){
-    $ID = $_GET['ID']; 
-    $result = mysqli_query($con, "DELETE FROM crimerecord_table WHERE  id=17");
+if(isset($_GET['id'])){
+    $id = $_GET['id']; 
+     $sql = "DELETE FROM crimerecord_table WHERE cr_id =$id";
+     $result = mysqli_query($con, $sql);
      if($result){
-        echo 'workin';
+        echo 'working';
      } else{
-        //echo mysqli_error($con);
+        echo mysqli_error($con);
      }
       
     }
-      //header('location: viewCrime.php');
-      //exit;
+      header('location: viewCrime.php');
+      exit();
      //$con->close();
 
 ?>

@@ -108,6 +108,7 @@
                                         <p>
                                           <?php 
                                             echo $id;
+                                            //echo $row['cr_id'];
                                           ?>
                                         </p>
                                         </td>
@@ -192,7 +193,7 @@
                                           <a href="Update.php"  class="btn btn-success">EDIT</a>
                                         </td>
                                         <td>
-                                          <a href="Delete.php?ID=17"  class="btn btn-danger">DELETE</a>
+                                          <a href="Delete.php?id=<?php echo $id; ?>"  class="btn btn-danger">DELETE</a>
                                         </td>
 
                                        
