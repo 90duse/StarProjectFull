@@ -50,7 +50,7 @@
             <div class="col-sm-12">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title text-center">Crime View</h4>
+                  <h4 class="card-title text-center">Complainment View</h4>
                   <form action="#" method="GET">
                   <div class="row flex-grow">
                           <div class="col-12 grid-margin stretch-card">
@@ -58,8 +58,8 @@
                               <div class="card-body">
                                 <div class="d-sm-flex justify-content-between align-items-start">
                                   <div>
-                                    <h4 class="card-title card-title-dash">Pending Requests</h4>
-                                   <p class="card-subtitle card-subtitle-dash">You have 50+ new requests</p>
+                                    <!-- <h4 class="card-title card-title-dash">Pending Requests</h4> -->
+                                   <!-- <p class="card-subtitle card-subtitle-dash">You have 50+ new requests</p> -->
                                   </div>
                                   <div>
                                     <a href="CrimeRecord.php"><button class="btn btn-primary btn-lg text-white mb-0 me-0" type="submit">Add new member</button></a>
