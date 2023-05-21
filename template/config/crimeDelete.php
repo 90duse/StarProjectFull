@@ -16,7 +16,7 @@ if(isset($_GET['id'])){
     }
       header('location: viewCrime.php');
       exit();
-     $con->close();
+  
 
 
     

@@ -191,7 +191,7 @@
                         </div>
                       </div>
                         <div class="button">
-                          <button type="submit" class="btn btn-primary  m-2" name="btncrime">Submit</button>
+                          <button type="submit"  class="btn btn-primary  m-2" name="btncrime">Submit</button>
                           <button class="btn btn-light">Cancel</button>
                         </div>
                     </div>

@@ -193,7 +193,7 @@
                                           <a href="Update.php"  class="btn btn-success">EDIT</a>
                                         </td>
                                         <td>
-                                          <a href="Delete.php?id=<?php echo $id; ?>"  class="btn btn-danger">DELETE</a>
+                                          <a href="crimeDelete.php?id=<?php echo $id; ?>"  class="btn btn-danger">DELETE</a>
                                         </td>
 
                                        
