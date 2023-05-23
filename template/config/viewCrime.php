@@ -58,8 +58,8 @@
                               <div class="card-body">
                                 <div class="d-sm-flex justify-content-between align-items-start">
                                   <div>
-                                    <h4 class="card-title card-title-dash">Pending Requests</h4>
-                                   <p class="card-subtitle card-subtitle-dash">You have 50+ new requests</p>
+                                    <!-- <h4 class="card-title card-title-dash">Pending Requests</h4>
+                                   <p class="card-subtitle card-subtitle-dash">You have 50+ new requests</p> -->
                                   </div>
                                   <div>
                                     <a href="CrimeRecord.php"><button class="btn btn-primary btn-lg text-white mb-0 me-0" type="submit">Add new member</button></a>
@@ -87,6 +87,7 @@
                                         <th>CRIME ITEMS</th>
                                         <th>Crime Status</th>
                                         <th>NOTES</th>
+                                        <th>ACTION</th>
                                       </tr>
                                     </thead>
                                     <tbody>
@@ -94,7 +95,7 @@
                                         <?php 
                                          include '../config.php';
 
-                                          $result = mysqli_query($con, "SELECT * FROM crimerecord_table" );
+                                          $result = mysqli_query($con, "SELECT * FROM crimerecord_table " );
                                           
 
                                            while ($row = mysqli_fetch_assoc($result)){
@@ -190,7 +191,7 @@
                                         </p>
                                         </td>
                                         <td>
-                                          <a href="Update.php"  class="btn btn-success">EDIT</a>
+                                          <a href="testUpdate.php?id=<?php echo $id; ?>"  class="btn btn-success">EDIT</a>
                                         </td>
                                         <td>
                                           <a href="crimeDelete.php?id=<?php echo $id; ?>"  class="btn btn-danger">DELETE</a>
