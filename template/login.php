@@ -6,14 +6,14 @@ if(isset($_POST["login"])){
 
 $UsernameorEmail= $_POST["UsernameorEmail"];
 $Password=$_POST["Password"];
-$result=mysqli_query($con,"select* from registration where Username='$UsernameorEmail' or Email='$UsernameorEmail' ");
+$result=mysqli_query($con,"select * from registration where Username='$UsernameorEmail' or Email='$UsernameorEmail' ");
 $row=mysqli_fetch_assoc($result);
 
  if(mysqli_num_rows($result) > 0){
       if( $Password == $row["Password"]   ){
         $_SESSION ["log"]=true;
         $_SESSION ["id"]=$row["iD"];
-        header("location:PoliceRecord.php");
+        header("location:config/index.php");
         
  
      }
@@ -50,7 +50,7 @@ else{
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Star Admin2 </title>
+  <title>POLICE MANAGEMENT SYSTEM</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/feather/feather.css">
   <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
@@ -74,12 +74,12 @@ else{
         <div class="row w-100 mx-0">
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-              <div class="brand-logo">
-                <img src="images/logo.svg" alt="logo">
+              <div class="brand-logo ">
+                <img src="images/POLICEL.png " width = "100" height ="100" alt="logo">
               </div>
-              <h4>Hello! let's get started</h4>
+              <h4>Hello! OFFICER, let's get started</h4>
               <h6 class="fw-light">Sign in to continue.</h6>
-              <form      method="post"  autocomplete="off" class="pt-3">
+              <form      method="post"  autocomplete="on" class="pt-3">
 
                 <div class="form-group">
                   <input type="text" class="form-control form-control-lg" id="exampleInputEmail1"  name="UsernameorEmail" placeholder="Username or Email">
@@ -94,7 +94,7 @@ else{
                
                 
                 <div class="text-center mt-4 fw-light">
-                  Don't have an account? <a href="registration.php" class="text-primary">Register</a>
+                  Don't have an account? <a href="./config/registration.php" class="text-primary">Register</a>
                 </div>
               </form>
             </div>
