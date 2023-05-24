@@ -104,7 +104,7 @@
                                       <label for="exampleInputUsername1" class=" text text-secondary">Case ID</label>
                                   </div>
                                     <div class="col">
-                                    <input type="number"  hidden ="True" class="form-control" id="#" name="crimeid" placeholder="Case ID"  value="<?php echo @$id; ?>">
+                                    <input type="number"  class="form-control" id="#" name="crimeid" placeholder="Case ID"  value="<?php echo @$id; ?>">
                                     </div>
                               </div> 
                         </div>
