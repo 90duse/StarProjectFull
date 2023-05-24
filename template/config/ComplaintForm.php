@@ -87,7 +87,7 @@
                           
                         }
 
-                         $sql = "INSERT INTO `complainmentRegistration_table` (`id`, `co_registrationDate`, `co_fullname`, `co_ranka`, `co_subject`, `co_againstWhom`, `co_coplainment`)
+                         $sql = "INSERT INTO `complainmentRegistration_table` (`co_id`, `co_registrationDate`, `co_fullname`, `co_rank`, `co_subject`, `co_againstWhom`, `co_complainment`)
                           VALUES ('', '$complainRegisterDate', '$complainFullname', '$complainRank', '$complainSubject', '$complainAgainstWhom', '$complainment')";
                           if (mysqli_query($con, $sql)){
 
@@ -95,14 +95,14 @@
                           }
                         else {
 
-                          echo 'Not working';
+                          echo mysqli_error($con);
                         }
 
 
                     ?>
                
                   <form class="forms-sample" method="GET">
-                  <div class="container">
+                     <div class="container">
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
@@ -165,7 +165,7 @@
                             <button type="submit" class="btn btn-primary" name="btncomplain">Submit</button>
                             <button class="btn btn-light">Cancel</button>
                           </div>
-                  </div>
+                     </div>
                   </form>
                 </div>
               </div>
