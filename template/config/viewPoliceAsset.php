@@ -92,9 +92,8 @@
                                         <th class="text-dark">Item_Condition</th>
                                         <th class="text-dark">Note</th>
                                         <th class="text-dark">Deliver</th>
-                                       
-                                        <th class="text-dark">EDIT</th>
-                                        <th class="text-dark">DELETE</th>
+                                        <th class="text-dark">ACTION</th>
+
 
                                         
                                       </tr>
@@ -217,7 +216,7 @@
                                         </td>
                                         
                                         <td>
-                                          <a href="Update.php"  class="btn btn-success">EDIT</a>
+                                          <a href="PoliceAssetEdit.php?id=<?php echo $itemID; ?>"  class="btn btn-success">EDIT</a>
                                         </td>
                                         <td>
                                           <a href="PoliceAssetDelete.php?id=<?php echo $itemID; ?>"  class="btn btn-danger">DELETE</a>
