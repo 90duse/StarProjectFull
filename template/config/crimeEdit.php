@@ -54,70 +54,165 @@
                   <h4 class="card-title text-center">Crime Record</h4>
                   <?php    
                       include '../config.php';
-
-                      
-                       $errorMessage = 'Error';
-                      $successMessage = 'Successfully recorded';
-                      $CASEID ='';
-                      $crimeRegisterDate = '';
-                      $crimeType = '';
-                      $crimePlace= '';
-                      $crimeVictam = '';
-                      $crimeCriminal = '';
-                      $crimeOfficer = '';
-                      $crimeWitness = '';
-                      $crimeEvidence = '';
-                      $crimeItems = '';
-                      $crimeStatus = '';
-                      $crimeNote = '';
-
                       if(isset($_GET['id'])){
                         $id = $_GET['id']; 
+                
+                        echo 'it is working', $id;
+                        $row ='';
                       
-                       $result = mysqli_query($con, "SELECT * FROM crimerecord_table where cr_id ='$id'");
+                
+                        $sql = "SELECT * FROM crimerecord_table where cr_id ='$id'";
+                        $result = mysqli_query($con, $sql);
+                         if(mysqli_num_rows($result) > 0){
+                          while ( $row = mysqli_fetch_assoc($result)){
+                
+                            $id ='';
+                            $crimeRegisterDate = '';
+                            $crimeType = '';
+                            $crimePlace= '';
+                            $crimeVictam = '';
+                            $crimeCriminal = '';
+                            $crimeOfficer = '';
+                            $crimeWitness = '';
+                            $crimeEvidence = '';
+                            $crimeItems = '';
+                            $crimeStatus = '';
+                            $crimeNote = '';
+                
+                            @$id = $row['cr_id'];
+                            @$crimeRegisterDate = $row['cr_registerDate'];
+                            @$crimeType = $row['cr_type'];
+                            @$crimePlace= $row['cr_place'];
+                            @$crimeVictam = $row['cr_victam'];
+                            @$crimeCriminal = $row['cr_criminal'];
+                            @$crimeOfficer = $row['cr_officer'];
+                            @$crimeWitness = $row['cr_witness'];
+                            @$crimeEvidence = $row['cr_evindence'];
+                            @$crimeItems = $row['cr_items'];
+                            @$crimeStatus = $row['cr_status'];
+                            @$crimeNote = $row['cr_note'];
+                
+                          }   //$sql =  "UPDATE crimerecord_table SET   `cr_witness` = '$witness' WHERE `cr_id` = '$id'";
+                
+                
+                           } 
+                         
+                           else {
+                            echo mysqli_error($con);
+                           }
+                                                          
+                         
+                    
+                    } 
+                   
+                       
+                      //$id = ''; 
+                      $officer =''; 
+                      $RegisterDate='';
+                      $caseId = '';
+                      $witness ='';
+                      $evidence ='';
+                      $criminal ='';
+                      $note = '';
+                      $items = '';
+                      $type = '';
+                      $status ='';
+                      $place ='';
+                      $victam ='';
+                
+                
+                
+                      @$caseId = $_GET['crimeid'];
+                      @$items =  $_GET['crimeitems'];
+                      @$witness =  $_GET['crimewitness'];
+                      @$evidence = $_GET['crimeevidence'];
+                      @$criminal =  $_GET['crimecriminal'];
+                      @$status =  $_GET['crimestatus'];
+                      @$note =  $_GET['crimenote'];
+                      @$type =  $_GET['crimetype'];
+                      @$place  =  $_GET['crimeplace'];
+                      @$victam =  $_GET['crimevictam'];
+                      @$RegisterDate = $_GET['crimeregisterdate'];
+                      @$officer = $_GET['crimeofficer'];
+                        
+                       
+                             
+                             $sql = "UPDATE crimerecord_table SET `cr_id` = '', `cr_registerDate` = '$RegisterDate', `cr_type` = '$type', `cr_place` = '$place', `cr_victam` = '$victam', `cr_criminal` = '$criminal ',`cr_officer` = '$officer', 
+                             `cr_witness` = '$witness', `cr_evindence` = '$evidence', `cr_items` = '$items',`cr_status` = '$status', `cr_note` = '$note'  WHERE `cr_id` = '$id'";
+                         
+                          if (mysqli_query($con, $sql))
+                              {
+                                echo 'Data Updated Successfully';
+                              }
+                 
+                              else 
+                              {
+                                //echo $errorMessage;
+                                echo mysqli_error($con);
+                              }
+                      
+                    //    $errorMessage = 'Error';
+                    //   $successMessage = 'Successfully recorded';
+                    //   $CASEID ='';
+                    //   $crimeRegisterDate = '';
+                    //   $crimeType = '';
+                    //   $crimePlace= '';
+                    //   $crimeVictam = '';
+                    //   $crimeCriminal = '';
+                    //   $crimeOfficer = '';
+                    //   $crimeWitness = '';
+                    //   $crimeEvidence = '';
+                    //   $crimeItems = '';
+                    //   $crimeStatus = '';
+                    //   $crimeNote = '';
+
+                    //   if(isset($_GET['id'])){
+                    //     $id = $_GET['id']; 
+                      
+                    //    $result = mysqli_query($con, "SELECT * FROM crimerecord_table where cr_id ='$id'");
                                           
                       
-                         while ($row = mysqli_fetch_assoc($result)){
+                    //      while ($row = mysqli_fetch_assoc($result)){
                              
                         
                       
-                              $ID = $row['cr_id'];
-                              $crimeRegisterDate = $row['cr_registerDate'];
-                              $crimeType = $row['cr_type'];
-                              $crimePlace= $row['cr_place'];
-                              $crimeVictam = $row['cr_victam'];
-                              $crimeCriminal = $row['cr_criminal'];
-                              $crimeOfficer = $row['cr_officer'];
-                              $crimeWitness = $row['cr_witness'];
-                              $crimeEvidence = $row['cr_evindence'];
-                              $crimeItems = $row['cr_items'];
-                              $crimeStatus = $row['cr_status'];
-                              $crimeNote = $row['cr_note'];
+                    //           $ID = $row['cr_id'];
+                    //           $crimeRegisterDate = $row['cr_registerDate'];
+                    //           $crimeType = $row['cr_type'];
+                    //           $crimePlace= $row['cr_place'];
+                    //           $crimeVictam = $row['cr_victam'];
+                    //           $crimeCriminal = $row['cr_criminal'];
+                    //           $crimeOfficer = $row['cr_officer'];
+                    //           $crimeWitness = $row['cr_witness'];
+                    //           $crimeEvidence = $row['cr_evindence'];
+                    //           $crimeItems = $row['cr_items'];
+                    //           $crimeStatus = $row['cr_status'];
+                    //           $crimeNote = $row['cr_note'];
 
                              
-                        } 
+                    //     } 
                       
-                        if (isset($_GET['btncrime'])){
-                          $sql = ("UPDATE `crimerecord_table` SET `cr_id` = '$id', `cr_registerDate` = '$crimeRegisterDate', `cr_type` = '$crimeType', `cr_place` = '$crimePlace', `cr_victam` = '$crimeVictam', `cr_criminal` = '$crimeCriminal', 
-                            `cr_officer` = '$crimeOfficer', `cr_witness` = '$crimeWitness', `cr_evindence` = '$crimeEvidence', `cr_items` = '$crimeItems', `cr_status` = '$crimeStatus', `cr_note` = '$crimeNote'  WHERE  `cr_id`='$id'");
+                    //     if (isset($_GET['btncrime'])){
+                    //       $sql = ("UPDATE `crimerecord_table` SET `cr_id` = '$id', `cr_registerDate` = '$crimeRegisterDate', `cr_type` = '$crimeType', `cr_place` = '$crimePlace', `cr_victam` = '$crimeVictam', `cr_criminal` = '$crimeCriminal', 
+                    //         `cr_officer` = '$crimeOfficer', `cr_witness` = '$crimeWitness', `cr_evindence` = '$crimeEvidence', `cr_items` = '$crimeItems', `cr_status` = '$crimeStatus', `cr_note` = '$crimeNote'  WHERE  `cr_id`='$id'");
                           
                           
-                             if (mysqli_query($con, $sql))
-                             {
-                               echo $successMessage;
-                             }
+                    //          if (mysqli_query($con, $sql))
+                    //          {
+                    //            echo $successMessage;
+                    //          }
                           
-                                else 
-                                {
-                                  //echo $errorMessage;
-                                  echo mysqli_error($con);
-                                }
+                    //             else 
+                    //             {
+                    //               //echo $errorMessage;
+                    //               echo mysqli_error($con);
+                    //             }
                      
     
-                              }
-                            }
-                          // header('location: viewCrime.php');
-                          // exit();
+                    //           }
+                    //         }
+                    //       // header('location: viewCrime.php');
+                    //       // exit();
                       
 
                       
@@ -131,16 +226,13 @@
 
                           
                         
-                    ?>
-                    <?php if(isset($_GET['btncrime'])){
-                      echo $successMessage;
-                    } else{
-                      echo $errorMessage;
-                    }
+                    
+                    
+                    
                      
                       
                       ?>
-                  <form class="forms-sample" method="GET">
+                  <!-- <form class="forms-sample" method="GET">
                     <div class="container">
                         <div class="row">
                         <div class="col-lg-6">
@@ -218,6 +310,89 @@
                         <div class="button">
                           <button type="submit"  class="btn btn-primary  m-2" name="btncrime">Submit</button>
                           <button class="btn btn-light">Cancel</button>
+                        </div>
+                    </div>
+                   
+                  </form> -->
+                  <form class="forms-sample" method="GET">
+                    <div class="container">
+                        <div class="row">
+                        <div class="col-lg-6">
+                        <div class="row mt-4">
+                                  <div class="col-6"> 
+                                      <label for="exampleInputUsername1" class=" text text-secondary">Case ID</label>
+                                  </div>
+                                    <div class="col">
+                                    <input type="number"  class="form-control" id="#" name="crimeid" placeholder="Case ID"  value="<?php echo @$id; ?>">
+                                    </div>
+                              </div> 
+                        </div>
+                        <div class="col-lg-6">
+                        <div class="row mt-4">
+                                  <div class="col-6"> 
+                                      <label for="exampleInputUsername1" class=" text text-secondary">Register Date</label>
+                                  </div>
+                                    <div class="col">
+                                    <input type="date" class="form-control" id="#" name="crimeregisterdate" placeholder="date"  value="<?php echo  @$crimeRegisterDate; ?>">
+                                    </div>
+                              </div> 
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="#" name="crimetype" placeholder="Crime type" value="<?php echo @$crimeType; ?>">
+                        </div>
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="#" name="crimeplace" placeholder="Place" value="<?php echo @$crimePlace;?>" >
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="#" name="crimevictam" placeholder="Victam/Victams" value="<?php echo @$crimeVictam;?>" >
+                        </div>
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="#" name="crimecriminal" placeholder="Criminal"  value ="<?php echo @$crimeCriminal;?>">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="#" name="crimeofficer" placeholder="Officer on Charge" value="<?php echo @$crimeOfficer;?>">
+                        </div>
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="#" name="crimewitness" placeholder="WITNESSES" value="<?php echo @$crimeWitness;?>">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="#" name="crimeevidence" placeholder="EVIDENCE"  value="<?php echo @$crimeEvidence;?>">
+                        </div>
+                        <div class="col-lg-6">
+                        <label for="#"></label>
+                        <input type="text" class="form-control" id="#" name="crimeitems" placeholder="ITEMS IN THE SCENE" value="<?php echo @$crimeItems; ?>">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                        <label for="#"></label>
+                        <input type="text" class="form-control" id="#" name="crimestatus" placeholder="STATUS"  value="<?php echo @$crimeStatus; ?>">
+                        </div>
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="textarea" class="form-control" id="#" name="crimenote" placeholder="NOTES" value="<?php echo @$crimeNote; ?>">
+                        </div>
+                      </div>
+                     
+                        <div class="button">
+                          <button type="submit"  class="btn btn-primary  m-2" name="btncrimeupdate">Submit</button>
+                          <!-- <button class="btn btn-light">Cancel</button> -->
+                          <a href="viewCrime.php"  class="btn btn-danger">BACK</a>
                         </div>
                     </div>
                    
