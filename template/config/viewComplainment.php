@@ -82,8 +82,7 @@
                                         <th>Com_Subject</th>
                                         <th>Against Whome</th>
                                         <th>Complainment</th>
-                                        <th>EDIT</th>
-                                        <th>DELETE</th>
+                                         <th>ACTION</th>
                                         
                                       </tr>
                                     </thead>
@@ -155,7 +154,7 @@
                                         
                                         
                                         <td>
-                                          <a href="Update.php"  class="btn btn-success">EDIT</a>
+                                          <a href="complainEdit.php?id=<?php echo $id; ?>"  class="btn btn-success">EDIT</a>
                                         </td>
                                         <td>
                                           <a href="complainDelete.php?id=<?php echo $id; ?>"  class="btn btn-danger">DELETE</a>
