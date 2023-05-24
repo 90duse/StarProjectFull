@@ -112,7 +112,7 @@
                     } 
                    
                         
-                    $register_date = '';
+                    $register_Date = '';
                     $itemName = '';
                     $itemHight = '';
                     $itemColor = '';
@@ -128,7 +128,7 @@
 
                     //echo "working";
                     // $assetID = $_GET['assetid'];
-                    @$register_date = $_GET['assetdate'];
+                    @$register_Date = $_GET['assetdate'];
                     @$itemName = $_GET['itemname'];
                     @$itemHight = $_GET['itemhight'];
                     @$itemColor = $_GET['itemcolor'];
@@ -143,11 +143,9 @@
                     @$deliveryName = $_GET['deliveryname'];
                     
                        
-                          // $sql = "UPDATE assetregistration_table SET `Guarding_Name` ='$guardingName' WHERE id = '$id'";  
-                     $sql = "UPDATE `assetregistration_table` SET `id` = '', `item_Register_Date` = '$register_date', `item_Name` = '$itemName', 
-                     `item_Hight` = '$itemHight', `item_Color` = '$itemColor', `item_Weight` = '$itemWeight',`item_Quantity`= '$itemQuantity', `item_Catogery`='$itemCatogery', 
-                     `Store_Number`= '$storeNumber', `Guarding_Name`= '$guardingName', `Guarding_Police_ID` ='$guardingID', `item_Condition`= '$itemCondition', `item_Note` ='$itemNote', `item_Delivery` = '$deliveryName' 
-                      WHERE `id` = '$id'";
+                      
+                      $sql = "UPDATE `assetregistration_table` SET `id` = '', `item_Register_Date` = '$register_Date', `Item_Name` = '$itemName', `item_Hight` = '$itemHight', `item_Color` = '$itemColor', `item_Weight` = '$itemWeight', `item_Quantity` = '$itemQuantity', `item_Catogery` = '$itemCatogery', `Store_Number` = '$storeNumber', `Guarding_Name` = '$guardingName', `Guarding_Police_ID` = '$guardingID', 
+                      `item_Condition` = '$itemCondition', `item_Note` = '$itemNote', `item_Delivery` = '$deliveryName' WHERE `assetregistration_table`.`id` = '$id'";
                      
                            if (mysqli_query($con, $sql)) {
                                 echo "New record created successfully";
@@ -156,7 +154,7 @@
                           }
                     ?>
                  
-                  <form class="forms-sample" action="#" method ="POST" >
+                  <form class="forms-sample" action="#" method ="GET" >
                   <div class="container">
                       <div class="row">
                         <div class="col-lg-6">
