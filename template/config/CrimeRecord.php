@@ -82,7 +82,7 @@
                       $crimeNote = '';
 
                         
-                        if(isset($_GET['btncrime']))
+                        if(!empty(isset($_GET['btncrime'])))
                         {
                             //echo 'working';
                               @$CASEID = $_GET['crimeid'];
@@ -100,6 +100,13 @@
 
 
                         } 
+                        // if (empty($crimeRegisterDate) || empty($crimeType) || empty($crimeVictam) || empty($crimeCriminal)|| empty($crimeOfficer)
+                        //     || empty($crimeWitness) || empty($crimeEvidence) || empty($crimeItems) || empty($crimeStatus) || empty($crimeNote)){
+                        //         $errorMessage = 'All fields must be fullfil';
+                               
+                        //     } 
+
+                            
                           $sql = "INSERT INTO `CrimeRecord_Table` (`cr_id`,`cr_registerDate`, `cr_type`, `cr_place`, `cr_victam`, `cr_criminal`, `cr_officer`, `cr_witness`, `cr_evindence`, `cr_items`, `cr_status`, `cr_note`) 
                           VALUES ('', '$crimeRegisterDate', '$crimeType', '$crimePlace', '$crimeVictam', '$crimeCriminal', '$crimeOfficer', '$crimeWitness ', '$crimeEvidence', '$crimeItems', '$crimeStatus', '$crimeNote')";
                         
@@ -114,9 +121,9 @@
                               echo mysqli_error($con);
                             }
 
-
+                          
                     ?>
-                  <form class="forms-sample" method="GET">
+                  <form  name="myForm "class="forms-sample" onsubmit="return validateForm()" method="GET" action ="functions.js">>
                     <div class="container">
                         <div class="row">
                         <div class="col-lg-6">
@@ -135,7 +142,7 @@
                                       <label for="exampleInputUsername1" class=" text text-secondary">Register Date</label>
                                   </div>
                                     <div class="col">
-                                    <input type="date" class="form-control" id="#" name="crimeregisterdate" placeholder="date" >
+                                    <input type="date" class="form-control" id="#" name="crimeregisterdate" placeholder="date" required >
                                     </div>
                               </div> 
                         </div>
@@ -143,7 +150,7 @@
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="crimetype" placeholder="Crime type">
+                        <input type="text" class="form-control" id="#" name="crimetype" placeholder="Crime type" value="">
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
