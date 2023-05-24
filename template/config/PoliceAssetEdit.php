@@ -59,6 +59,20 @@
                 
                         //echo 'it is working', $id;
                         $row ='';
+                        $assetID ='';
+                        $registerDate = '';
+                        $nameItem = '';
+                        $Height = '';
+                        $Color = '';
+                        $Weight = '';
+                        $Quantity ='';
+                        $Catogery = '';
+                        $Store ='';
+                        $Guarding ='';
+                        $GuardingNo ='';
+                        $Condition ='';
+                        $Note = '';
+                        $Delivery = '';
                     
                 
                         $sql = "SELECT * FROM `assetregistration_table` where id ='$id'";
@@ -66,27 +80,14 @@
                          if(mysqli_num_rows($result) > 0){
                           while ( $row = mysqli_fetch_assoc($result)){
 
-                             $assetID ='';
-                            $registerDate = '';
-                            $Name = '';
-                            $Height = '';
-                            $Color = '';
-                            $Weight = '';
-                            $Quantity ='';
-                            $Catogery = '';
-                            $Store ='';
-                            $Guarding ='';
-                            $GuardingNo ='';
-                            $Condition ='';
-                            $Note = '';
-                            $Delivery = '';
+                            
 
                              $assetID = $row['id'];
                             $registerDate = $row['item_Register_Date'];
-                            @$Name =  $row['item_Name'];
+                            $nameItem =  $row['Item_Name'];
                             $Height =  $row['item_Hight'];
-                            @$Color =  $row['item_Color'];
-                            @$Weight =  $row['item_Weight'];
+                            $Color =  $row['item_Color'];
+                            $Weight =  $row['item_Weight'];
                             $Quantity =  $row['item_Quantity'];
                             $Catogery =  $row['item_Catogery'];
                             $Store = $row['Store_Number'];
@@ -159,7 +160,7 @@
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="number" class="form-control" id="assetID" name="assetid" placeholder="Item ID" value="<?php echo $assetID?>">
+                        <input type="number" class="form-control" id="assetID" name="assetid" placeholder="Item ID" value="<?php echo $assetID; ?>">
                         </div>
                         <div class="col-lg-6">
                               <div class="row mt-4">
@@ -175,7 +176,7 @@
                       <div class="row">
                         <div class="col-lg-6">
                           <label for="exampleInputUsername1"></label>
-                          <input type="text" class="form-control" id="#" name="itemname" placeholder="Item Name" value="<?php echo @$Name; ?>" >
+                          <input type="text" class="form-control" id="#" name="itemname" placeholder="Item Name" value="<?php echo @$nameItem; ?>" >
                         </div>
                         <div class="col-lg-6">
                           <div class="row">

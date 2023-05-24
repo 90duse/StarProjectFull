@@ -80,16 +80,16 @@
                                       
                                         <th><strong class =" text text-dark">ID</strong></th>
                                         <th class="text-dark">RegisterDate</th>
-                                        <th class="text-dark">Item_Name</th>
-                                        <th class="text-dark">Item_Height</th>
-                                        <th class="text-dark">Item_Color</th>
-                                        <th class="text-dark">Item_Weight</th>
+                                        <th class="text-dark">Name</th>
+                                        <th class="text-dark">Height</th>
+                                        <th class="text-dark">Color</th>
+                                        <th class="text-dark">Weight</th>
                                         <th class="text-dark">Quantity</th>
                                         <th class="text-dark">Catogery</th>
                                         <th class="text-dark">Store_Number</th>
                                         <th class="text-dark">Gaurdian_Name</th>
                                         <th class="text-dark">Gaurdian_ID</th>
-                                        <th class="text-dark">Item_Condition</th>
+                                        <th class="text-dark">Condition</th>
                                         <th class="text-dark">Note</th>
                                         <th class="text-dark">Deliver</th>
                                         <th class="text-dark">ACTION</th>
@@ -132,14 +132,14 @@
                                         <td>
                                         <p>
                                           <?php 
-                                            echo @$row['item_Name'];
+                                            echo @$row['Item_Name'];
                                           ?>
                                         </p>
                                         </td>
                                         <td>
                                         <p>
                                           <?php 
-                                            echo @$row['item_Height'];
+                                            echo @$row['item_Hight'];
                                           ?>
                                         </p>
                                         </td>
