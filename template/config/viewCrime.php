@@ -51,6 +51,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title text-center">Crime View</h4>
+
                   <form action="#" method="GET">
                   <div class="row flex-grow">
                           <div class="col-12 grid-margin stretch-card">
@@ -66,7 +67,7 @@
                                   </div>
                                 </div>
                                 <div class="table-responsive  mt-1">
-                                  <table class="table select-table">
+                                  <table class="table select-table table table-striped">
                                     <thead>
                                       <tr>
                                         <!-- <th>
@@ -191,7 +192,7 @@
                                         </p>
                                         </td>
                                         <td>
-                                          <a href="testUpdate.php?id=<?php echo $id; ?>"  class="btn btn-success">EDIT</a>
+                                          <a href="crimeEdit.php?id=<?php echo $id; ?>"  class="btn btn-success">EDIT</a>
                                         </td>
                                         <td>
                                           <a href="crimeDelete.php?id=<?php echo $id; ?>"  class="btn btn-danger">DELETE</a>
