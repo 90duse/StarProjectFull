@@ -78,7 +78,9 @@
                                           </div>
                                         </th> -->
                                       
+                                        
                                         <th><strong class =" text text-dark">ID</strong></th>
+                                        <th><strong class =" text text-dark">Image</strong></th>
                                         <th class="text-dark">RegisterDate</th>
                                         <th class="text-dark">Fullname</th>
                                         <th class="text-dark">Height</th>
@@ -101,8 +103,8 @@
                                         <th class="text-dark">CellNo</th>
                                         <th class="text-dark">Behaiver</th>
                                         <th class="text-dark">Note</th>
-                                        <th class="text-dark">EDIT</th>
-                                        <th class="text-dark">DELETE</th>
+                                        <th class="text-dark">ACTION</th>
+                                        
 
                                         
                                       </tr>
@@ -123,6 +125,7 @@
                                           
                                          
                                           ?>
+                                         
                                           <td>
                                         <p>
                                           <?php 
@@ -131,6 +134,14 @@
                                           ?>
                                         </p>
                                         </td>
+                                        <td>
+                                        <p>
+                                          <?php 
+                                            echo $row['pri_photo'];
+                                           
+                                          ?>
+                                        </p>
+                                           </td>
                                         <td>
                                         <p>
                                           <?php 
@@ -288,7 +299,7 @@
                                         </p>
                                         </td>
                                         <td>
-                                          <a href="Update.php"  class="btn btn-success">EDIT</a>
+                                          <a href="PrisonerEdit?id=<?php echo $prisonerID; ?>"  class="btn btn-success">EDIT</a>
                                         </td>
                                         <td>
                                           <a href="PrisonerDelete.php?id=<?php echo $prisonerID; ?>"  class="btn btn-danger">DELETE</a>
