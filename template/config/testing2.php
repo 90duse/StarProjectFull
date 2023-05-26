@@ -27,7 +27,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-        <table id="example" class="table table-striped" style="width:100%">
+<!-- <table id="example" class="table table-striped" style="width:100%">
         <thead>
             <tr>
                 <th>Name</th>
@@ -156,11 +156,71 @@
            
             
         </tfoot>
-</table>
+</table> -->
+
+<?php 
+
+include '../config.php';
+                
+
+if(isset($_GET['btnprisoner'])){
+  $file = $_FILES['prisonerimage'];
+                          
+    $fileName = $_FILES['prisonerimage']['name'];
+    $filetmpName = $_FILES['prisonerimage']['tmp_name'];
+    $fileSize = $_FILES['prisonerimage']['size'];
+    $fileError = $_FILES['prisonerimage']['error'];
+    $fileType= $_FILES['prisonerimage']['type'];
+
+
+    $fileExt = explode('.', $fileName);
+    $fileActualExt = strtolower(end($fileExt));
+    $allowed =  array('jpg','jpeg');
+    if(in_array($fileActualExt, $allowed)){
+      if($fileError === 0){
+        if($fileSize < 1000000){
+          $fileNewName = uniqid('.', true) . "." . $fileActualExt;
+          $fileDestination = '../images/' .$fileNewName; 
+          move_uploaded_file($filetmpName, $fileDestination);
+
+
+        } else {
+          echo "Your file is too big";
+        }
+
+      } else {
+
+        echo "There is an Error!";
+
+      }
+
+    } else {
+      echo 'You can not upload this type of files';
+    }
+}     $sql =  "INSERT INTO imagetesting (id, sawir) VALUE ('', $file)";
+                 
+?>
+                <form action="#" method="GET" enctype ="multipart/form-data">
+
+                 
+                    <div class="row">
+                            <div class="col-lg-6">
+                            <label for="exampleInputUsername1"></label>
+                            <input type="file" class="form-control " id="#" name="prisonerimage" placeholder="Prisoner Image">
+                            </div>
+                            <!-- <div class="col-lg-6">
+                            <label for="exampleInputUsername1"></label>
+                            <input type="text" class="form-control" id="#" name="prisonername" placeholder="FULLNAME" Required>
+                            </div>     -->
+                            <button type="submit" class="btn btn-primary m-2" name="btnprisoner">Submit</button>
+                    </div>
+                </form>
             
         </div>
     </div>
 </div>
+
+
 
 
 
