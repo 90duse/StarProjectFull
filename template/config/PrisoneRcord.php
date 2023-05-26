@@ -91,9 +91,45 @@
                         $prisonerCellNo = '';
                         $prisonerBehavier= '';
                         $prisonerNote =  '';
+                        $prisonerPhoto ='';
 
                         
                         if(isset($_GET['btnprisoner'])){
+
+                          
+                          $fileName = $_FILES['prisonerimage']['name'];
+                          $filetmpName = $_FILES['prisonerimage']['tmp_name'];
+                          $fileSize = $_FILES['prisonerimage']['size'];
+                          $fileError = $_FILES['prisonerimage']['error'];
+                          $fileType= $_FILES['prisonerimage']['type'];
+
+
+                          $fileExt = explode('.', $fileName);
+                          $fileActualExt = strtolower(end($fileExt));
+                          $allowed =  array('jpg','jpeg','png');
+                          if(in_array($fileActualExt, $allowed)){
+                            if($fileError === 0){
+                              if($fileSize < 1000000){
+                                $fileNewName = uniqid('.', true) . "." . $fileActualExt;
+                                $fileDestination = '../images/' .$fileNewName; 
+                                move_uploaded_file($filetmpName, $fileDestination);
+
+
+                              } else {
+                                echo "Your file is too big";
+                              }
+
+                            } else {
+
+                              echo "There is an Error!";
+
+                            }
+
+                          } else {
+                            echo 'You can not upload this type of files';
+                          }
+
+                          
                           //echo 'working';
                           @$ID = $_GET['prisonerid'];
                           @$RegisterDate = $_GET['prisonerregisterdate'];
@@ -119,22 +155,24 @@
                           @$prisonerCellNo = $_GET['prisonercellnumber'];
                           @$prisonerBehavier=$_GET['prisonerbehavier'];
                           @$prisonerNote = $_GET['prisonernote'];
+
+                          
                         } 
-                         $sql = "INSERT INTO `PrisonerRecord` (`id`, `pri_registerdate`, `pri_fullname`, `pri_height`, `pri_age`, `pri_weight`, `pri_dateof_birth`, `pri_placeof_birth`, `pri_address`, `pri_tellephone`, `pri_mothers_name`, `pri_education`, `pri_crimeType`, `pri_marriage`, `pri_medicalStatus`, `pri_sentenceperiod`, `pri_prersonalBelongs`, `pri_releaseDay`, `pri_trail`, `pri_lawyer`, `pri_cellNo`, `pri_behavier`, `pri_notes`) 
-                         VALUES ('', '$RegisterDate', '$prisonerFullname', '$prisonerHeight', '$prisonerAge', '$prisonerWeight', '$prisonerBirthDate', '$prisonerPlaceOfBirth', '$prisonerAddress', '$prisonerPhone', '$prisonerParentName', '$prisonerEducation', '$prisonerCrimeType', '$prisonerMarriageStatus', '$prisonerMedicalStatus', '$prisonerSentencePeriod', '$prisonerPersonalBelongs', '$prisonerReleaseDate', '$prisonerJudiciaryTrial', '$prisonerLawyer', '$prisonerCellNo', '$prisonerBehavier', '$prisonerNote')";
+                         $sql = "INSERT INTO `PrisonerRecord` (`id`, `pri_registerdate`,`pri_photo`, `pri_fullname`, `pri_height`, `pri_age`, `pri_weight`, `pri_dateof_birth`, `pri_placeof_birth`, `pri_address`, `pri_tellephone`, `pri_mothers_name`, `pri_education`, `pri_crimeType`, `pri_marriage`, `pri_medicalStatus`, `pri_sentenceperiod`, `pri_prersonalBelongs`, `pri_releaseDay`, `pri_trail`, `pri_lawyer`, `pri_cellNo`, `pri_behavier`, `pri_notes`) 
+                         VALUES ('', '$RegisterDate','$prisonerPhoto', '$prisonerFullname', '$prisonerHeight', '$prisonerAge', '$prisonerWeight', '$prisonerBirthDate', '$prisonerPlaceOfBirth', '$prisonerAddress', '$prisonerPhone', '$prisonerParentName', '$prisonerEducation', '$prisonerCrimeType', '$prisonerMarriageStatus', '$prisonerMedicalStatus', '$prisonerSentencePeriod', '$prisonerPersonalBelongs', '$prisonerReleaseDate', '$prisonerJudiciaryTrial', '$prisonerLawyer', '$prisonerCellNo', '$prisonerBehavier', '$prisonerNote')";
                          if(mysqli_query($con, $sql)){
                           echo 'New Record is being saved Successfully';
                          }
 
                         else{
-                          //echo mysqli_error($con);
-                          echo 'not working';
+                          echo mysqli_error($con);
+                          // echo 'not working';
                         }
 
 
 
                         ?>
-                  <form class="forms-sample" method="GET">
+                  <form class="forms-sample" method="GET" enctype ="multipart/form-data">
 
                   <div class="container">
                       <div class="row">
@@ -155,10 +193,18 @@
                       </div>
                       <div class="row">
                         <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="file" class="form-control " id="#" name="prisonerimage" placeholder="Prisoner Image">
+                        </div>
+                        <div class="col-lg-6">
                           <label for="exampleInputUsername1"></label>
                           <input type="text" class="form-control" id="#" name="prisonername" placeholder="FULLNAME" Required>
                         </div>
-                        <div class="col-lg-6">
+                        
+                      </div>
+
+                      <div class="row">
+                      <div class="col-lg-6">
                           <div class="row">
                             <div class="col-lg-4">
                               <label for="exampleInputUsername1"></label>
@@ -170,9 +216,16 @@
                             </div>
                             <div class="col-lg-4">
                               <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="#" name="prisonerweight" placeholder="weight" Required>>
+                              <input type="number" class="form-control" id="#" name="prisonerweight" placeholder="weight" Required>
                             </div>
                          </div> 
+                        </div>
+                        <div class="col-lg-6">
+                        <div class="col">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="#" name="prisonermothername" placeholder="Mother's Name" Required>
+                        </div>
+                          
                         </div>
                       </div>
                       <div class="row">
@@ -203,13 +256,7 @@
                         <input type="tel" class="form-control" id="#" name="prisonertellephone" placeholder="Tellephone" Required>
                         </div>
                       </div>
-                      <div class="row">
-                       
-                        <div class="col">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisonermothername" placeholder="Mother's Name" Required>
-                        </div>
-                      </div>
+                      
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
