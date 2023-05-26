@@ -244,7 +244,7 @@
                                         </p>
                                         </td>
                                         <td>
-                                          <a href="Update.php"  class="btn btn-success">EDIT</a>
+                                          <a href="PoliceEdit.php?id=<?php echo $policeID; ?>"  class="btn btn-success">EDIT</a>
                                         </td>
                                         <td>
                                           <a href="PoliceDelete.php?ID=<?php echo $policeID; ?>"  class="btn btn-danger">DELETE</a>
