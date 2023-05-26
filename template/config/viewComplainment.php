@@ -51,24 +51,48 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title text-center">Complainment View</h4>
+                  <?php 
+                  include '../config.php';
+
+                  if (isset($_GET['searchsubmit'])){
+                    $search = $_GET['searchsubmit'];
+                    $sql = "SELECT * FROM complainmentregistration_table WHERE cr_id LIKE '%$search%' OR co_registrationDate LIKE `%$search%` OR co_fullname LIKE `%$search%` 
+                    OR  co_rank LIKE '%$search%' OR co_subject LIKE '%$search%' OR co_againstWhom LIKE '%$search%' co_complainment LIKE '%$search%' " ;
+                    $Natiijo = mysqli_query($con, $sql);
+                    //$queryResult = myqsli_num_rows($Natiijo);
+                    
+                      if ($Natiijo > 0){
+                        while ($row = mysqli_fetch_assoc($Natiijo))
+                        {
+                          
+                           
+                          
+                 
+                          
+                          
+                          
+
+                        }
+
+
+                      } else {
+                        echo "There is no resualt matching your search";
+                      }
+                    
+                  }
+                  
+                  
+                  ?>
                   <form action="#" method="GET">
-                  <div class="row flex-grow">
-                          <div class="col-12 grid-margin stretch-card">
-                            <div class="card card-rounded">
-                              <div class="card-body">
-                                <div class="d-sm-flex justify-content-between align-items-start">
-                                  <div>
-                                    <!-- <h4 class="card-title card-title-dash">Pending Requests</h4> -->
-                                   <!-- <p class="card-subtitle card-subtitle-dash">You have 50+ new requests</p> -->
-                                  </div>
-                                  <div>
-                                    <a href="CrimeRecord.php"><button class="btn btn-primary btn-lg text-white mb-0 me-0" type="submit">Add new member</button></a>
-                                  </div>
-                                </div>
+                     <div class="row flex-grow">
+                          <div class="search">
+                            <input type="search" name="search">
+                            <button name="searchsubmit" type="submit">Search</button>
+                           </div>
                                 <div class="table-responsive  mt-1">
-                                  <table class="table select-table">
+                                  <table class="table select-table" id="example">
                                     <thead>
-                                      <tr>
+                                      <tr>  
                                         <!-- <th>
                                           <div class="form-check form-check-flat mt-0">
                                             <label class="form-check-label">
@@ -101,55 +125,55 @@
                                           
                                   
                                           ?>
-                                          <td>
-                                        <p>
+                                          <td name="td_id">
+                                        
                                           <?php 
                                             echo $id;
                                             //echo $row['cr_id'];
                                           ?>
-                                        </p>
+                                        
                                         </td>
                                         <td>
-                                        <p>
+                                        
                                           <?php 
                                             echo $row['co_registrationDate'];
                                           ?>
-                                        </p>
+                                        
                                         </td>
                                         <td>
-                                        <p>
+                                        
                                           <?php 
                                             echo @$row['co_fullname'];
                                           ?>
-                                        </p>
+                                        
                                         </td>
                                         <td>
-                                        <p>
+                                        
                                           <?php 
                                             echo @$row['co_rank'];
                                           ?>
-                                        </p>
+                                        
                                         </td>
                                         <td>
-                                        <p>
+                                        
                                           <?php 
                                             echo @$row['co_subject'];
                                           ?>
-                                        </p>
+                                        
                                         </td>
                                         <td>
-                                        <p>
+                                        
                                           <?php 
                                             echo @$row['co_againstWhom'];
                                           ?>
-                                        </p>
+                                        
                                         </td>
                                         <td>
-                                        <p>
+                                        
                                           <?php 
                                             echo @$row['co_complainment'];
                                           ?>
-                                        </p>
+                                        
                                         </td>
                                         
                                         
@@ -219,7 +243,14 @@
   <script src="../js/dashboard.js"></script>
   <script src="../js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+
+  <!-- data table js links -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+ <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
 </body>
 
 </html>
 
+
+   
