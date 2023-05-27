@@ -64,7 +64,8 @@
                         $prisonerBehavier= '';
                         $prisonerNote =  '';
                         $prisonerPhoto ='';
-                        if(isset($_POST['id'])){
+                        $successMessage = 'New Record is being saved Successfully';
+                        if(isset($_GET['id'])){
                           $id = $_GET['id'];
                         
                       
@@ -75,33 +76,35 @@
                           while ( $row = mysqli_fetch_assoc($result)){
 
                             // declare variables to read form the data base
-                            @$RegisterDate = $_GET['pri_registerdate'];
-                            @$pri_Fullname = $_GET['pri_fullname'];
-                            @$pri_Height= $_GET['pri_height'];
-                            @$pri_Age = $_GET['pri_age'];
-                            @$pri_Weight = $_GET['pri_weight'];
-                            @$pri_BirthDate = $_GET['pri_dateof_birth'];
-                            @$pri_PlaceOfBirth = $_GET['pri_placeof_birth'];
-                            @$pri_Address = $_GET['pri_address'];
-                            @$pri_Phone = $_GET['pri_tellephone'];
-                            @$pri_Email = $_GET['pri_email'];
-                            @$pri_ParentName = $_GET['pri_mothers_name'];
-                            @$pri_Education = $_GET['pri_education'];
-                            @$pri_CrimeType = $_GET['pri_crimeType'];
-                            @$pri_MarriageStatus = $_GET['pri_marriage'];
-                            @$pri_SentencePeriod = $_GET['pri_sentenceperiod'];
-                            @$pri_MedicalStatus = $_GET['pri_medicalStatus'];
-                            @$pri_PersonalBelongs = $_GET['pri_personalBelongs'];
-                            @$pri_ReleaseDate = $_GET['pri_releaseDay'];
-                            @$pri_JudiciaryTrial =$_GET['pri_trial'];
-                            @$pri_Lawyer = $_GET['pri_lawyer'];
-                            @$pri_CellNo = $_GET['pri_cellNo'];
-                            @$pri_Behavier=$_GET['pri_behavier'];
-                            @$pri_Note = $_GET['pri_note'];
+                            @$ID = $row['pri_id'];
+                            @$RegisterDate = $row['pri_registerdate'];
+                            @$pri_Fullname = $row['pri_fullname'];
+                            @$pri_Height= $row['pri_height'];
+                            @$pri_Age = $row['pri_age'];
+                            @$pri_Weight = $row['pri_weight'];
+                            @$pri_BirthDate = $row['pri_dateof_birth'];
+                            @$pri_PlaceOfBirth = $row['pri_placeof_birth'];
+                            @$pri_Address = $row['pri_address'];
+                            @$pri_Phone = $row['pri_tellephone'];
+                            @$pri_Email = $row['pri_email'];
+                            @$pri_ParentName = $row['pri_mothers_name'];
+                            @$pri_Education = $row['pri_education'];
+                            @$pri_CrimeType = $row['pri_crimeType'];
+                            @$pri_MarriageStatus = $row['pri_marriage'];
+                            @$pri_SentencePeriod = $row['pri_sentenceperiod'];
+                            @$pri_MedicalStatus = $row['pri_medicalStatus'];
+                            @$pri_PersonalBelongs = $row['pri_personalBelongs'];
+                            @$pri_ReleaseDate = $row['pri_releaseDay'];
+                            @$pri_JudiciaryTrial =$row['pri_trial'];
+                            @$pri_Lawyer = $row['pri_lawyer'];
+                            @$pri_CellNo = $row['pri_cellNo'];
+                            @$pri_Behavier=$row['pri_behavier'];
+                            @$pri_Note = $row['pri_note'];
+                           // @$pri_image = $row['pri_image'];
                             
-                            @$pri_Image = $_FILES['prisonerimage']['name'];
-                            $tmp_name = $_FILES['prisonerimage']['tmp_name'];
-                            $imageLocation = "../images/"; 
+                            // @$pri_Image = $_FILES['prisonerimage']['name'];
+                            // $tmp_name = $_FILES['prisonerimage']['tmp_name'];
+                            // $imageLocation = "../images/"; 
 
                           
                           }
@@ -111,8 +114,8 @@
 
                       
                           //echo 'working';
-                          //@$ID = $_GET['prisonerid'];
-                          @$RegisterDate = $_GET['prisonerregisterdate'];
+                          @$ID = $_GET['prisonerid'];
+                          @$Register_Date = $_GET['prisonerregisterdate'];
                           @$prisonerFullname = $_GET['prisonerfullname'];
                           @$prisonerHeight= $_GET['prisonerheight'];
                           @$prisonerAge = $_GET['prisonerage'];
@@ -135,25 +138,25 @@
                           @$prisonerCellNo = $_GET['prisonercellnumber'];
                           @$prisonerBehavier=$_GET['prisonerbehavier'];
                           @$prisonerNote = $_GET['prisonernote'];
-                          @$prisonerImage = $_FILES['prisonerimage']['name'];
-                          $tmp_name = $_FILES['prisonerimage']['tmp_name'];
-                          $imageLocation = "../images/"; 
+                          // @$prisonerImage = $_FILES['prisonerimage']['name'];
+                          // $tmp_name = $_FILES['prisonerimage']['tmp_name'];
+                          // $imageLocation = "../images/"; 
 
-                          if(move_uploaded_file($tmp_name, $imageLocation.$prisonerImage)){
-                            echo "Your image is saved "; 
-                          } else{
-                            echo mysqli_error($con);
-                          }
+                          // if(move_uploaded_file($tmp_name, $imageLocation.$prisonerImage)){
+                          //   echo "Your image is saved "; 
+                          // } else{
+                          //   echo mysqli_error($con);
+                          // }
 
                        
                         
-                         $sql = "INSERT INTO `PrisonerRecord` (`id`, `pri_registerdate`, `pri_photo`, `pri_fullname`, `pri_height`, `pri_age`, `pri_weight`, `pri_dateof_birth`, `pri_placeof_birth`, `pri_address`, `pri_tellephone`, `pri_mothers_name`,
-                          `pri_education`, `pri_crimeType`, `pri_marriage`, `pri_medicalStatus`, `pri_sentenceperiod`, `pri_prersonalBelongs`, `pri_releaseDay`, `pri_trail`, `pri_lawyer`, `pri_cellNo`, `pri_behavier`, `pri_notes`) 
-                         VALUES ('', '$RegisterDate', '$prisonerImage', '$prisonerFullname', '$prisonerHeight', '$prisonerAge', '$prisonerWeight', '$prisonerBirthDate', '$prisonerPlaceOfBirth', '$prisonerAddress', '$prisonerPhone', 
-                         '$prisonerParentName', '$prisonerEducation', '$prisonerCrimeType', '$prisonerMarriageStatus', '$prisonerMedicalStatus', '$prisonerSentencePeriod', '$prisonerPersonalBelongs', 
-                         '$prisonerReleaseDate', '$prisonerJudiciaryTrial', '$prisonerLawyer', '$prisonerCellNo', '$prisonerBehavier', '$prisonerNote')";
+                         $sql = " UPDATE `prisonerrecord` SET `pri_id` = '', `pri_registerdate` = '$Register_Date', `pri_photo` = '', `pri_fullname` = '$prisonerFullname', `pri_height` = '$prisonerHeight', `pri_age` = '$prisonerAge',
+                          `pri_weight` = '$prisonerWeight', `pri_dateof_birth` = '$prisonerBirthDate', `pri_placeof_birth` = '$prisonerPlaceOfBirth', `pri_address` = '$prisonerAddress', `pri_tellephone` = '$prisonerPhone', 
+                          `pri_mothers_name` = '$prisonerParentName', `pri_education` = '$prisonerEducation', `pri_crimeType` = '$prisonerCrimeType', `pri_marriage` = '$prisonerMarriageStatus', `pri_medicalStatus` = '$prisonerMedicalStatus',
+                           `pri_sentenceperiod` = '$prisonerSentencePeriod', `pri_prersonalBelongs` = '$prisonerPersonalBelongs', `pri_releaseDay` = '$prisonerReleaseDate', `pri_trail` = '$prisonerJudiciaryTrial', `pri_lawyer` = '$prisonerLawyer',
+                            `pri_cellNo` = '$prisonerCellNo', `pri_behavier` = '$prisonerBehavier', `pri_notes` = '$prisonerNote' WHERE `pri_id` = '$id'";
                          if(mysqli_query($con, $sql)){
-                          echo 'New Record is being saved Successfully';
+                          echo $successMessage ;
                          }
 
                         else{
@@ -164,13 +167,13 @@
 
 
                         ?>
-                  <form class="forms-sample" method="POST" enctype ="multipart/form-data">
+                  <form class="forms-sample" method="GET" enctype ="multipart/form-data">
 
                   <div class="container">
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="number" class="form-control" id="#" name="prisonerid" placeholder="Prosinor ID">
+                        <input type="number" class="form-control" id="#" name="prisonerid" placeholder="Prosinor ID" value="<?php echo @$ID;?>">
                         </div>
                         <div class="col-lg-6">
                               <div class="row mt-4">
@@ -178,7 +181,7 @@
                                       <label for="exampleInputUsername1" class=" text text-secondary">Registerd Date</label>
                                   </div>
                                     <div class="col">
-                                    <input type="date" class="form-control" id="#" name="prisonerregisterdate" placeholder="date" >
+                                    <input type="date" class="form-control" id="#" name="prisonerregisterdate" placeholder="date"  value="<?php echo @$RegisterDate ;?>">
                                     </div>
                               </div> 
                           </div>
@@ -190,7 +193,7 @@
                         </div>
                         <div class="col-lg-6">
                           <label for="exampleInputUsername1"></label>
-                          <input type="text" class="form-control" id="#" name="prisonername" placeholder="FULLNAME" >
+                          <input type="text" class="form-control" id="#" name="prisonername" placeholder="FULLNAME" value="<?php echo @$pri_Fullname;?>">
                         </div>
                         
                       </div>
@@ -200,22 +203,22 @@
                           <div class="row">
                             <div class="col-lg-4">
                               <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="#" name="prisonerheight" placeholder="Height" >
+                              <input type="number" class="form-control" id="#" name="prisonerheight" placeholder="Height" value="<?php echo @$pri_Height ;?>" >
                             </div>
                             <div class="col-lg-4">
                               <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="#" name="prisonerage" placeholder="Age" >
+                              <input type="number" class="form-control" id="#" name="prisonerage" placeholder="Age" value="<?php echo @$pri_Age;?>" >
                             </div>
                             <div class="col-lg-4">
                               <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="#" name="prisonerweight" placeholder="weight" >
+                              <input type="number" class="form-control" id="#" name="prisonerweight" placeholder="weight" value="<?php echo @$pri_Weight;?>" >
                             </div>
                          </div> 
                         </div>
                         <div class="col-lg-6">
                         <div class="col">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisonermothername" placeholder="Mother's Name" >
+                        <input type="text" class="form-control" id="#" name="prisonermothername" placeholder="Mother's Name" value="<?php echo @$pri_ParentName;?>">
                         </div>
                           
                         </div>
@@ -227,13 +230,13 @@
                                       <label for="exampleInputUsername1" class=" text text-secondary">Day Of Birth</label>
                                   </div>
                                     <div class="col">
-                                    <input type="date" class="form-control" id="dayofbirth" name="prisonerdayofbirth" placeholder="date" >
+                                    <input type="date" class="form-control" id="dayofbirth" name="prisonerdayofbirth" placeholder="date" value="<?php echo @$pri_BirthDate;?>" >
                                     </div>
                               </div> 
                           </div>
                           <div class="col-lg-6">
                             <label for="exampleInputUsername1"></label>
-                            <input type="text" class="form-control" id="#" name="prisonerplaceofbirth" placeholder="Place of Birth" >
+                            <input type="text" class="form-control" id="#" name="prisonerplaceofbirth" placeholder="Place of Birth" value="<?php echo @$pri_PlaceOfBirth;?>">
                           </div>
                         
                       </div>
@@ -241,22 +244,22 @@
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisoneraddress" placeholder="Address" >
+                        <input type="text" class="form-control" id="#" name="prisoneraddress" placeholder="Address" value="<?php echo @$pri_Address;?>" >
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="tel" class="form-control" id="#" name="prisonertellephone" placeholder="Tellephone" >
+                        <input type="tel" class="form-control" id="#" name="prisonertellephone" placeholder="Tellephone" value="<?php echo @$pri_Phone;?>">
                         </div>
                       </div>
                       
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisonereducationlevel" placeholder="Education Level" >
+                        <input type="text" class="form-control" id="#" name="prisonereducationlevel" placeholder="Education Level" value="<?php echo @$pri_Education;?>" >
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="tel" class="form-control" id="#" name="prisonercrimetype" placeholder="Crime Type" >
+                        <input type="tel" class="form-control" id="#" name="prisonercrimetype" placeholder="Crime Type" value="<?php echo @$pri_CrimeType;?>" >
                         </div>
                       </div>
                       <div class="row">
@@ -266,13 +269,13 @@
                             <label for="inputmarriagestatus" class=" text text-secondary">Marriage status</label>
                             </div>
                             <div class="col">
-                            <input type="text"  class="form-control" id="#" name="prisonermarriagestatus" >
+                            <input type="text"  class="form-control" id="#" name="prisonermarriagestatus" value="<?php echo @$pri_MarriageStatus ;?>" >
                             </div>
                           </div>
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisonermedicalstatus" placeholder="MEDICAL STATUS" >
+                        <input type="text" class="form-control" id="#" name="prisonermedicalstatus" placeholder="MEDICAL STATUS" value="<?php echo @$pri_MedicalStatus;?>" >
                         </div>
                       </div>
 
@@ -280,11 +283,11 @@
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisonersentenceperiod" placeholder="Sentence Period" >
+                        <input type="text" class="form-control" id="#" name="prisonersentenceperiod" placeholder="Sentence Period" value="<?php echo @$pri_SentencePeriod;?>">
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisonerpersonalbelongs" placeholder="Personal Belongs" >
+                        <input type="text" class="form-control" id="#" name="prisonerpersonalbelongs" placeholder="Personal Belongs" value="<?php echo @$pri_PersonalBelongs ;?>">
                         </div>
                       </div>
                       <div class="row">
@@ -294,38 +297,38 @@
                                       <label for="exampleInputUsername1" class=" text text-secondary">Release Time</label>
                                   </div>
                                     <div class="col">
-                                    <input type="date" class="form-control" id="#" name="prisonerreleasedate" placeholder="date" >
+                                    <input type="date" class="form-control" id="#" name="prisonerreleasedate" placeholder="date" value="<?php echo @$pri_ReleaseDate;?>" >
                                     </div>
                               </div> 
                           </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisonerjudiciarytrial" placeholder="judiciary Trial">
+                        <input type="text" class="form-control" id="#" name="prisonerjudiciarytrial" placeholder="judiciary Trial" value="<?php echo @$pri_JudiciaryTrial;?>">
                         </div>
                       </div> 
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisonerlawyer" placeholder="Lawyer" >
+                        <input type="text" class="form-control" id="#" name="prisonerlawyer" placeholder="Lawyer" value="<?php echo @$pri_Lawyer;?>" >
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisonercellnumber" placeholder="Cell Number" >
+                        <input type="text" class="form-control" id="#" name="prisonercellnumber" placeholder="Cell Number" value="<?php echo @$pri_CellNo;?>" >
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisonerbehavier" placeholder="Behavier" >
+                        <input type="text" class="form-control" id="#" name="prisonerbehavier" placeholder="Behavier" value="<?php echo @$pri_Behavier;?>" >
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisonernotes" placeholder="Notes">
+                        <input type="text" class="form-control" id="#" name="prisonernotes" placeholder="Notes" value="<?php echo @$pri_Note;?>">
                         </div>
                       </div>
                       <div class="button">
                         <button type="submit" class="btn btn-primary m-2" name="btnprisoner">Submit</button>
-                        <button class="btn btn-light">Cancel</button>
+                        <a href="viewPrisonerRecord.php"  class="btn btn-danger">BACK</a>
                       </div>
                   </div>
                    
