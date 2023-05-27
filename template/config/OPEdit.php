@@ -329,7 +329,7 @@
                       </div>
                       <div class="button">
                         <button type="submit" class="btn btn-primary m-2" name="opbtnsubmit">Submit</button>
-                        <a href="viewCrime.php"  class="btn btn-danger">BACK</a>
+                        <a href="viewOP.php"  class="btn btn-danger">BACK</a>
                       </div>
                   </div>
                    
