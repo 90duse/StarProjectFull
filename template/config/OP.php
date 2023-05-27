@@ -64,105 +64,111 @@
             <div class="col-sm-12">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title text-center">Prison Record</h4>
+                  <h4 class="card-title text-center">OP</h4>
                       <?php    
                         include '../config.php';
-                        $ID = '';
-                        $RegisterDate = '';
-                        $prisonerFullname = '';
-                        $prisonerHeight= '';
-                        $prisonerAge = '';
-                        $prisonerWeight = '';
-                        $prisonerBirthDate = '';
-                        $prisonerPlaceOfBirth = '';
-                        $prisonerAddress = '';
-                        $prisonerPhone = '';
-                        $prisonerEmail = '';
-                        $prisonerParentName = '';
-                        $prisonerEducation = '';
-                        $prisonerCrimeType = '';
-                        $prisonerMarriageStatus = '';
-                        $prisonerSentencePeriod = '';
-                        $prisonerMedicalStatus = '';
-                        $prisonerPersonalBelongs = '';
-                        $prisonerReleaseDate = '';
-                        $prisonerJudiciaryTrial = '';
-                        $prisonerLawyer = '';
-                        $prisonerCellNo = '';
-                        $prisonerBehavier= '';
-                        $prisonerNote =  '';
-                        $prisonerPhoto ='';
+                      
 
                         
-                        if(isset($_GET['btnprisoner'])){
+                        // if(isset($_POST['btnprisoner'])){
+                        //   $fileName = $_FILES['prisonerimage']['name'];
+                        //   $filetmpName = $_FILES['prisonerimage']['tmp_name'];
+                        //   $fileSize = $_FILES['prisonerimage']['size'];
+                        //   $fileError = $_FILES['prisonerimage']['error'];
+                        //   $fileType= $_FILES['prisonerimage']['type'];
+                          // $fileExt = explode('.', $fileName);
+                          // $fileActualExt = strtolower(end($fileExt));
+                          // $allowed =  array('jpg','jpeg','png');
+                          // if(in_array($fileActualExt, $allowed)){
+                          //   if($fileError === 0){
+                          //     if($fileSize < 1000000){
+                          //       $fileNewName = uniqid('.', true) . "." . $fileActualExt;
+                          //       $fileDestination = '../images/' .$fileNewName; 
+                          //       move_uploaded_file($filetmpName, $fileDestination);
+                          //     } else {
+                          //       echo "Your file is too big";
+                          //     }
 
-                          
-                          $fileName = $_FILES['prisonerimage']['name'];
-                          $filetmpName = $_FILES['prisonerimage']['tmp_name'];
-                          $fileSize = $_FILES['prisonerimage']['size'];
-                          $fileError = $_FILES['prisonerimage']['error'];
-                          $fileType= $_FILES['prisonerimage']['type'];
+                          //   } else {
+
+                          //     echo "There is an Error!";
+
+                          //   }
+
+                          // } else {
+                          //   echo 'You can not upload this type of files';
+                          // }
+                          //}
+                          if(isset($_POST['opbtnsubmit'])){
+                              echo 'working';
+
+                          // Variable Declaration 
+                              $ID = '';
+                              $Register_Date = '';
+                              $op_Fullname = '';
+                              $op_Height= '';
+                              $op_Age = '';
+                              $op_Weight = '';
+                              $op_BirthDate = '';
+                              $op_PlaceOfBirth = '';
+                              $op_Address = '';
+                              $op_Phone = '';
+                              $op_ParentName = '';
+                              $op_Job = '';
+                              $op_Reason = '';
+                              $op_MarriageStatus = '';
+                              $op_MedicalStatus = '';
+                              $op_PersonalBelongs = '';
+                              $op_Officer ='';
+                              $op_CellNo = '';
+                              $op_Note =  '';
+                              $op_Photo ='';
+
+                              // Variable Assigment
+
+                          $ID = $_POST['opid'];
+                          $Register_Date = $_POST['opregisterdate'];
+                          $op_Fullname = $_POST['opname'];
+                          $op_Height= $_POST['opheight'];
+                          $op_Age = $_POST['opage'];
+                          $op_Weight = $_POST['opweight'];
+                          $op_BirthDate = $_POST['opdayofbirth'];
+                          $op_PlaceOfBirth = $_POST['opplaceofbirth'];
+                          $op_Address = $_POST['opaddress'];
+                          $op_Phone = $_POST['opphone'];
+                          $op_ParentName = $_POST['opmothername'];
+                          $op_Job = $_POST['opjob'];
+                          $op_Reason = $_POST['opreason'];
+                          $op_MarriageStatus = $_POST['opmarriagestatus'];
+                          $op_MedicalStatus = $_POST['opmedicalstatus'];
+                          $op_PersonalBelongs = $_POST['oppersonalbelongs'];
+                          $op_Officer = $_POST['opofficer'];
+                          $op_CellNo = $_POST['opcellno'];
+                          $op_Note =  $_POST['opnote'];
+                          //$op_Photo = $_FILE['opimage'];
+                          // $tmp_name = $_FILES['opimage']['tmp_name'];
+                          // $imageLocation = "../images/"; 
+
+                          // if(move_uploaded_file($tmp_name, $imageLocation.$prisonerImage)){
+                          //   echo "Your image is saved "; 
+                          // } else{
+                          //   echo mysqli_error($con);
+                          // }
 
 
-                          $fileExt = explode('.', $fileName);
-                          $fileActualExt = strtolower(end($fileExt));
-                          $allowed =  array('jpg','jpeg','png');
-                          if(in_array($fileActualExt, $allowed)){
-                            if($fileError === 0){
-                              if($fileSize < 1000000){
-                                $fileNewName = uniqid('.', true) . "." . $fileActualExt;
-                                $fileDestination = '../images/' .$fileNewName; 
-                                move_uploaded_file($filetmpName, $fileDestination);
 
-
-                              } else {
-                                echo "Your file is too big";
-                              }
-
-                            } else {
-
-                              echo "There is an Error!";
-
-                            }
-
-                          } else {
-                            echo 'You can not upload this type of files';
-                          }
-
-                          
-                          //echo 'working';
-                          @$ID = $_GET['prisonerid'];
-                          @$RegisterDate = $_GET['prisonerregisterdate'];
-                          @$prisonerFullname = $_GET['prisonerfullname'];
-                          @$prisonerHeight= $_GET['prisonerheight'];
-                          @$prisonerAge = $_GET['prisonerage'];
-                          @$prisonerWeight = $_GET['prisonerweight'];
-                          @$prisonerBirthDate = $_GET['prisonerdateofbirth'];
-                          @$prisonerPlaceOfBirth = $_GET['prisonerplaceofbirth'];
-                          @$prisonerAddress = $_GET['prisoneraddress'];
-                          @$prisonerPhone = $_GET['prisonertellephone'];
-                          @$prisonerEmail = $_GET['prisoneremail'];
-                          @$prisonerParentName = $_GET['prisonermothername'];
-                          @$prisonerEducation = $_GET['prisonereducationlevel'];
-                          @$prisonerCrimeType = $_GET['prisonercrimetype'];
-                          @$prisonerMarriageStatus = $_GET['prisonermarriagestatus'];
-                          @$prisonerSentencePeriod = $_GET['prisonersentenceperiod'];
-                          @$prisonerMedicalStatus = $_GET['prisonermedicalstatus'];
-                          @$prisonerPersonalBelongs = $_GET['prisonerpersonalbelongs'];
-                          @$prisonerReleaseDate = $_GET['prisonerreleasedate'];
-                          @$prisonerJudiciaryTrial =$_GET['prsionerjudiciarytrial'];
-                          @$prisonerLawyer = $_GET['prisonerlawyer'];
-                          @$prisonerCellNo = $_GET['prisonercellnumber'];
-                          @$prisonerBehavier=$_GET['prisonerbehavier'];
-                          @$prisonerNote = $_GET['prisonernote'];
-
-                          
-                        } 
-                         $sql = "INSERT INTO `PrisonerRecord` (`id`, `pri_registerdate`,`pri_photo`, `pri_fullname`, `pri_height`, `pri_age`, `pri_weight`, `pri_dateof_birth`, `pri_placeof_birth`, `pri_address`, `pri_tellephone`, `pri_mothers_name`, `pri_education`, `pri_crimeType`, `pri_marriage`, `pri_medicalStatus`, `pri_sentenceperiod`, `pri_prersonalBelongs`, `pri_releaseDay`, `pri_trail`, `pri_lawyer`, `pri_cellNo`, `pri_behavier`, `pri_notes`) 
-                         VALUES ('', '$RegisterDate','$prisonerPhoto', '$prisonerFullname', '$prisonerHeight', '$prisonerAge', '$prisonerWeight', '$prisonerBirthDate', '$prisonerPlaceOfBirth', '$prisonerAddress', '$prisonerPhone', '$prisonerParentName', '$prisonerEducation', '$prisonerCrimeType', '$prisonerMarriageStatus', '$prisonerMedicalStatus', '$prisonerSentencePeriod', '$prisonerPersonalBelongs', '$prisonerReleaseDate', '$prisonerJudiciaryTrial', '$prisonerLawyer', '$prisonerCellNo', '$prisonerBehavier', '$prisonerNote')";
+                        }
+                        
+                         $sql = "INSERT INTO `op_table` (`op_id`, `op_register_date`, `op_fullname`, `op_image`, `op_height`, `op_age`, 
+                         `op_weight`, `op_mothers_name`, `op_dayof_birth`,`op_placeof_birth`, `op_address`, `op_tellephone`, 
+                         `op_job`, `op_marriage_status`, `op_medical_status`, `op_reason`, `op_personal_belongs`, `op_cell_no`, `op_officer`, `op_notes`) 
+                         VALUES ('', '$Register_Date', '$op_Fullname', '', '$op_Height', '$op_Age', '$op_Weight', '$op_ParentName', '$op_BirthDate', 
+                         '$op_PlaceOfBirth', '$op_Address', '$op_Phone','$op_Job', '$op_MarriageStatus', '$op_MedicalStatus', '$op_Reason', '$op_PersonalBelongs', '$op_CellNo', '$op_Officer', '$op_Note')";
                          if(mysqli_query($con, $sql)){
                           echo 'New Record is being saved Successfully';
                          }
+                         
+                         
 
                         else{
                           echo mysqli_error($con);
@@ -172,13 +178,13 @@
 
 
                         ?>
-                  <form class="forms-sample" method="GET" enctype ="multipart/form-data">
+                  <form class="forms-sample" method="POST" enctype ="multipart/form-data">
 
                   <div class="container">
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="number" class="form-control" id="#" name="personid" placeholder="Prosinor ID">
+                        <input type="number" class="form-control" id="#" name="opid" placeholder="Person ID">
                         </div>
                         <div class="col-lg-6">
                               <div class="row mt-4">
@@ -186,7 +192,7 @@
                                       <label for="exampleInputUsername1" class=" text text-secondary">Registerd Date</label>
                                   </div>
                                     <div class="col">
-                                    <input type="date" class="form-control" id="#" name="prisonerregisterdate" placeholder="date" Required>
+                                    <input type="date" class="form-control" id="#" name="opregisterdate" placeholder="date" Required>
                                     </div>
                               </div> 
                           </div>
@@ -194,11 +200,11 @@
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="file" class="form-control " id="#" name="prisonerimage" placeholder="Prisoner Image">
+                        <input type="file" class="form-control " id="#" name="opimage" placeholder="Image">
                         </div>
                         <div class="col-lg-6">
                           <label for="exampleInputUsername1"></label>
-                          <input type="text" class="form-control" id="#" name="prisonername" placeholder="FULLNAME" Required>
+                          <input type="text" class="form-control" id="#" name="opname" placeholder="FULLNAME" Required>
                         </div>
                         
                       </div>
@@ -208,22 +214,22 @@
                           <div class="row">
                             <div class="col-lg-4">
                               <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="#" name="prisonerheight" placeholder="Height" Required>
+                              <input type="number" class="form-control" id="#" name="opheight" placeholder="Height" Required>
                             </div>
                             <div class="col-lg-4">
                               <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="#" name="prisonerage" placeholder="Age" Required>
+                              <input type="number" class="form-control" id="#" name="opage" placeholder="Age" Required>
                             </div>
                             <div class="col-lg-4">
                               <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="#" name="prisonerweight" placeholder="weight" Required>
+                              <input type="number" class="form-control" id="#" name="opweight" placeholder="weight" Required>
                             </div>
                          </div> 
                         </div>
                         <div class="col-lg-6">
                         <div class="col">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisonermothername" placeholder="Mother's Name" Required>
+                        <input type="text" class="form-control" id="#" name="opmothername" placeholder="Mother's Name" Required>
                         </div>
                           
                         </div>
@@ -235,13 +241,13 @@
                                       <label for="exampleInputUsername1" class=" text text-secondary">Day Of Birth</label>
                                   </div>
                                     <div class="col">
-                                    <input type="date" class="form-control" id="dayofbirth" name="prisonerdayofbirth" placeholder="date" Required>
+                                    <input type="date" class="form-control" id="#" name="opdayofbirth" placeholder="date" Required>
                                     </div>
                               </div> 
                           </div>
                           <div class="col-lg-6">
                             <label for="exampleInputUsername1"></label>
-                            <input type="text" class="form-control" id="#" name="prisonerplaceofbirth" placeholder="Place of Birth" Required>
+                            <input type="text" class="form-control" id="#" name="opplaceofbirth" placeholder="Place of Birth" Required>
                           </div>
                         
                       </div>
@@ -249,22 +255,22 @@
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisoneraddress" placeholder="Address" Required>
+                        <input type="text" class="form-control" id="#" name="opaddress" placeholder="Address" Required>
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="tel" class="form-control" id="#" name="prisonertellephone" placeholder="Tellephone" Required>
+                        <input type="tel" class="form-control" id="#" name="opphone" placeholder="Tellephone" Required>
                         </div>
                       </div>
                       
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisonereducationlevel" placeholder="Education Level" Required>
+                        <input type="text" class="form-control" id="#" name="opjob" placeholder="Job" Required>
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="tel" class="form-control" id="#" name="prisonercrimetype" placeholder="Crime Type" Required>
+                        <input type="tel" class="form-control" id="#" name="opreason" placeholder="Reason for the Arrest" Required>
                         </div>
                       </div>
                       <div class="row">
@@ -274,65 +280,41 @@
                             <label for="inputmarriagestatus" class=" text text-secondary">Marriage status</label>
                             </div>
                             <div class="col">
-                            <input type="text"  class="form-control" id="#" name="prisonermarriagestatus" Required>
+                            <input type="text"  class="form-control" id="#" name="opmarriagestatus" Required>
                             </div>
                           </div>
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisonermedicalstatus" placeholder="MEDICAL STATUS" Required>
+                        <input type="text" class="form-control" id="#" name="opmedicalstatus" placeholder="MEDICAL STATUS" Required>
                         </div>
                       </div>
 
 
                       <div class="row">
-                        <div class="col-lg-6">
+                      <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisonersentenceperiod" placeholder="Sentence Period" Required>
+                        <input type="text" class="form-control" id="#" name="opcellno" placeholder="Cell Number" Required>
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisonerpersonalbelongs" placeholder="Personal Belongs" Required>
-                        </div>
-                      </div>
-                      <div class="row">
-                       <div class="col-lg-6">
-                              <div class="row mt-4">
-                                  <div class="col-6"> 
-                                      <label for="exampleInputUsername1" class=" text text-secondary">Release Time</label>
-                                  </div>
-                                    <div class="col">
-                                    <input type="date" class="form-control" id="#" name="prisonerreleasedate" placeholder="date" Required>
-                                    </div>
-                              </div> 
-                          </div>
-                        <div class="col-lg-6">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisonerjudiciarytrial" placeholder="judiciary Trial">
-                        </div>
-                      </div> 
-                      <div class="row">
-                        <div class="col-lg-6">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisonerlawyer" placeholder="Lawyer" Required>
-                        </div>
-                        <div class="col-lg-6">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisonercellnumber" placeholder="Cell Number" Required>
+                        <input type="text" class="form-control" id="#" name="oppersonalbelongs" placeholder="Personal Belongs" Required>
                         </div>
                       </div>
+                    
                       <div class="row">
-                        <div class="col-lg-6">
+                      <div class="col-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisonerbehavier" placeholder="Behavier" Required>
+                        <input type="text" class="form-control" id="#" name="opofficer" placeholder="Officer On Charge">
                         </div>
-                        <div class="col-lg-6">
+                       
+                        <div class="col">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisonernotes" placeholder="Notes">
+                        <input type="text" class="form-control" id="#" name="opnotes" placeholder="Notes">
                         </div>
                       </div>
                       <div class="button">
-                        <button type="submit" class="btn btn-primary m-2" name="btnprisoner">Submit</button>
+                        <button type="submit" class="btn btn-primary m-2" name="opbtnsubmit">Submit</button>
                         <button class="btn btn-light">Cancel</button>
                       </div>
                   </div>
