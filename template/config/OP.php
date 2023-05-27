@@ -102,7 +102,7 @@
                           if(isset($_POST['opbtnsubmit'])){
                               echo 'working';
 
-                          // Variable Declaration 
+                          //Variable Declaration 
                               $ID = '';
                               $Register_Date = '';
                               $op_Fullname = '';
@@ -124,27 +124,29 @@
                               $op_Note =  '';
                               $op_Photo ='';
 
+                              $successMessage = 'New Record is being saved Successfully';
+
                               // Variable Assigment
 
-                          $ID = $_POST['opid'];
-                          $Register_Date = $_POST['opregisterdate'];
-                          $op_Fullname = $_POST['opname'];
-                          $op_Height= $_POST['opheight'];
-                          $op_Age = $_POST['opage'];
-                          $op_Weight = $_POST['opweight'];
-                          $op_BirthDate = $_POST['opdayofbirth'];
-                          $op_PlaceOfBirth = $_POST['opplaceofbirth'];
-                          $op_Address = $_POST['opaddress'];
-                          $op_Phone = $_POST['opphone'];
-                          $op_ParentName = $_POST['opmothername'];
-                          $op_Job = $_POST['opjob'];
-                          $op_Reason = $_POST['opreason'];
-                          $op_MarriageStatus = $_POST['opmarriagestatus'];
-                          $op_MedicalStatus = $_POST['opmedicalstatus'];
-                          $op_PersonalBelongs = $_POST['oppersonalbelongs'];
-                          $op_Officer = $_POST['opofficer'];
-                          $op_CellNo = $_POST['opcellno'];
-                          $op_Note =  $_POST['opnote'];
+                          @$ID = $_POST['opid'];
+                          @$Register_Date = $_POST['opregisterdate'];
+                          @$op_Fullname = $_POST['opname'];
+                          @$op_Height= $_POST['opheight'];
+                          @$op_Age = $_POST['opage'];
+                          @$op_Weight = $_POST['opweight'];
+                          @$op_BirthDate = $_POST['opdayofbirth'];
+                          @$op_PlaceOfBirth = $_POST['opplaceofbirth'];
+                          @$op_Address = $_POST['opaddress'];
+                          @$op_Phone = $_POST['opphone'];
+                          @$op_ParentName = $_POST['opmothername'];
+                          @$op_Job = $_POST['opjob'];
+                          @$op_Reason = $_POST['opreason'];
+                          @$op_MarriageStatus = $_POST['opmarriagestatus'];
+                          @$op_MedicalStatus = $_POST['opmedicalstatus'];
+                          @$op_PersonalBelongs = $_POST['oppersonalbelongs'];
+                          @$op_Officer = $_POST['opofficer'];
+                          @$op_CellNo = $_POST['opcellno'];
+                          @$op_Note =  $_POST['opnote'];
                           //$op_Photo = $_FILE['opimage'];
                           // $tmp_name = $_FILES['opimage']['tmp_name'];
                           // $imageLocation = "../images/"; 
@@ -159,13 +161,14 @@
 
                         }
                         
-                         $sql = "INSERT INTO `op_table` (`op_id`, `op_register_date`, `op_fullname`, `op_image`, `op_height`, `op_age`, 
+                         @$sql = "INSERT INTO `op_table` (`op_id`, `op_register_date`, `op_fullname`, `op_image`, `op_height`, `op_age`, 
                          `op_weight`, `op_mothers_name`, `op_dayof_birth`,`op_placeof_birth`, `op_address`, `op_tellephone`, 
                          `op_job`, `op_marriage_status`, `op_medical_status`, `op_reason`, `op_personal_belongs`, `op_cell_no`, `op_officer`, `op_notes`) 
                          VALUES ('', '$Register_Date', '$op_Fullname', '', '$op_Height', '$op_Age', '$op_Weight', '$op_ParentName', '$op_BirthDate', 
                          '$op_PlaceOfBirth', '$op_Address', '$op_Phone','$op_Job', '$op_MarriageStatus', '$op_MedicalStatus', '$op_Reason', '$op_PersonalBelongs', '$op_CellNo', '$op_Officer', '$op_Note')";
+                         
                          if(mysqli_query($con, $sql)){
-                          echo 'New Record is being saved Successfully';
+                          echo @$successMessage;
                          }
                          
                          
