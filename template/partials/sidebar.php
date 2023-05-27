@@ -45,6 +45,19 @@
             </div>
           </li>
           <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#op" aria-expanded="false" aria-controls="form-elements">
+              <i class="menu-icon mdi mdi-book"></i>
+              <span class="menu-title">OP</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="op">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="../config/OP.php">Add New</a></li>
+                <li class="nav-item"><a class="nav-link" href="../config/viewOP.php">View Cases</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
               <i class="menu-icon mdi mdi-podium"></i>
               <span class="menu-title">Police Record</span>
