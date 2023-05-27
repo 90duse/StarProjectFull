@@ -164,7 +164,7 @@
                                         <td>
                                         <p>
                                           <?php 
-                                            echo @$row['op_Age'];
+                                            echo @$row['op_age'];
                                           ?>
                                         </p>
                                         </td>
@@ -244,14 +244,14 @@
                                         <td>
                                         <p>
                                           <?php 
-                                            echo @$row['op_prersonal_belongs']; 
+                                            echo @$row['op_personal_belongs']; 
                                           ?>
                                         </p>
                                         </td>
                                         <td>
                                         <p>
                                           <?php 
-                                            echo @$row['op_cellNo']; 
+                                            echo @$row['op_cell_no']; 
                                           ?>
                                         </p>
                                         </td>
