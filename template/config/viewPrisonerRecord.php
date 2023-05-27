@@ -299,7 +299,7 @@
                                         </p>
                                         </td>
                                         <td>
-                                          <a href="PrisonerEdit?id=<?php echo $prisonerID; ?>"  class="btn btn-success">EDIT</a>
+                                          <a href="PrisonerEdit.php?id=<?php echo $prisonerID; ?>"  class="btn btn-success">EDIT</a>
                                         </td>
                                         <td>
                                           <a href="PrisonerDelete.php?id=<?php echo $prisonerID; ?>"  class="btn btn-danger">DELETE</a>
