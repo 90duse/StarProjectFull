@@ -88,11 +88,16 @@
                   
 
                         if($_SERVER["REQUEST_METHOD"] == "POST"){
-                          // if(empty($_POST['crimetype']) && empty($_POST['crimeplace'])) {
-                          //   exit(); 
-                          //   echo $ErrMessage;
+                          if(empty($_POST['crimetype']) && empty($_POST['crimeplace']) && empty($_POST['crimevictam'])
+                          && empty($_POST['crimecriminal']) && empty($_POST['crimeofficer']) && empty($_POST['crimewitness'])
+                          && empty($_POST['crimeevidence']) && empty($_POST['crimeitems']) && empty($_POST['crimestatus'])
+                          && empty($_POST['crimenote']) && empty($_POST['crimeregisterdate']) && empty($_POST['crimeid'])) 
+                          {
+                            //exit(); 
+                            $_SESSION['status'] = 'They canot be empty ';
+                            $_SESSION['status_code'] = 'error';
                         
-                          // } else {
+                          } else {
                             
                        
                            if(isset($_POST['btncrime'])){
@@ -101,6 +106,11 @@
                               @$CASEID = test_input($_POST['crimeid']);
                               @$crimeRegisterDate = test_input($_POST['crimeregisterdate']);
                               @$crimeType = test_input($_POST['crimetype']);
+                              // if(!preg_match("/^['a-zA-Z']*$/", $crimeType)){
+                              //    $_SESSION['status'] = 'Crimetype!! Only letters and white spcae is allowed' ;
+                              //    $_SESSION['status_code'] = 'error';
+                              //    //echo 'Only letters and white space is allowed';
+                              //     } 
                               @$crimePlace= test_input($_POST['crimeplace']);
                               @$crimeVictam = test_input($_POST['crimevictam']);
                               @$crimeCriminal = test_input($_POST['crimecriminal']);
@@ -115,11 +125,7 @@
 
                             
                         
-                        // if (empty($crimeRegisterDate) || empty($crimeType) || empty($crimeVictam) || empty($crimeCriminal)|| empty($crimeOfficer)
-                        //     || empty($crimeWitness) || empty($crimeEvidence) || empty($crimeItems) || empty($crimeStatus) || empty($crimeNote)){
-                        //         $errorMessage = 'All fields must be fullfil';
-                               
-                        //     } 
+                       
 
                             
                           $sql = "INSERT INTO `CrimeRecord_Table` (`cr_id`,`cr_registerDate`, `cr_type`, `cr_place`, `cr_victam`, `cr_criminal`, `cr_officer`, `cr_witness`, `cr_evindence`, `cr_items`, `cr_status`, `cr_note`) 
@@ -134,7 +140,7 @@
    
                             else 
                             {
-                              $_SESSION['status'] = 'Admin Profile Not Added New Data ' ;
+                              $_SESSION['status'] = 'All fields must be filled' ;
                               $_SESSION['status_code'] = 'error';
                               //echo $errorMessage;
                               echo mysqli_error($con);
@@ -143,6 +149,7 @@
                           }
                           
                         } 
+                      }
                     ?>
                   <form  name="myForm "class="forms-sample"  method="POST" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
                     <div class="container">
@@ -165,17 +172,29 @@
                         <div class="col-lg-6">
                         <div class="row mt-4">
                                   <div class="col-6"> 
+                                    <?php if(isset($_POST['crimeregisterdate']) && empty($_POST['crimeregisterdate'])){
+                                      $_SESSION['status'] = 'All fields must be filled' ;
+                                      $_SESSION['status_code'] = 'error';
+                                    }?>
                                       <label for="exampleInputUsername1" class=" text text-secondary">Register Date</label>
                                   </div>
                                     <div class="col">
-                                    <input type="date" class="form-control" id="#" name="crimeregisterdate" placeholder="date" required >
+                                    <input type="date" class="form-control" id="#" name="crimeregisterdate" placeholder="date"  >
                                     </div>
                               </div> 
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-lg-6">
+                        <?php   
+                            //if(!preg_match("/^['a-zA-Z']*$/", $crimeType)){
+                            // $_SESSION['status'] = 'Only letters and white spcae is allowed' ;
+                            // $_SESSION['status_code'] = 'error';
+                             echo 'Only letters and white space is allowed';
 
+                              //} 
+                                
+                              ?>
                         <label for="exampleInputUsername1"></label>
                         <input type="text" class="form-control" id="#" name="crimetype" placeholder="Crime type" value="">
                         </div>
@@ -290,7 +309,7 @@
     title: "<?php  echo $_SESSION['status']; ?>",
   //text: "You clicked the button!",
     icon: "<?php  echo $_SESSION['status_code']; ?>",
-    button: "Aww yiss!",
+    button: "OK!",
 });
   <?php unset($_SESSION['status']); ?>
   </script>
