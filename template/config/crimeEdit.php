@@ -103,8 +103,10 @@
                                                           
                          
                     
-                    } 
-                   
+                    }  
+                    if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+                    if(isset($_POST['btncrimeupdate'])){
                        
                       //$id = ''; 
                       $officer =''; 
@@ -122,18 +124,18 @@
                 
                 
                 
-                      @$caseId = $_GET['crimeid'];
-                      @$items =  $_GET['crimeitems'];
-                      @$witness =  $_GET['crimewitness'];
-                      @$evidence = $_GET['crimeevidence'];
-                      @$criminal =  $_GET['crimecriminal'];
-                      @$status =  $_GET['crimestatus'];
-                      @$note =  $_GET['crimenote'];
-                      @$type =  $_GET['crimetype'];
-                      @$place  =  $_GET['crimeplace'];
-                      @$victam =  $_GET['crimevictam'];
-                      @$RegisterDate = $_GET['crimeregisterdate'];
-                      @$officer = $_GET['crimeofficer'];
+                      @$caseId = $_POST['crimeid'];
+                      @$items =  $_POST['crimeitems'];
+                      @$witness =  $_POST['crimewitness'];
+                      @$evidence = $_POST['crimeevidence'];
+                      @$criminal =  $_POST['crimecriminal'];
+                      @$status =  $_POST['crimestatus'];
+                      @$note =  $_POST['crimenote'];
+                      @$type =  $_POST['crimetype'];
+                      @$place  =  $_POST['crimeplace'];
+                      @$victam =  $_POST['crimevictam'];
+                      @$RegisterDate = $_POST['crimeregisterdate'];
+                      @$officer = $_POST['crimeofficer'];
                         
                        
                              
@@ -142,7 +144,8 @@
                          
                           if (mysqli_query($con, $sql))
                               {
-                                echo 'Data Updated Successfully';
+                                $_SESSION['status'] = 'Congrates! You Added New Data ' ;
+                                $_SESSION['status_code'] = 'success';
                               }
                  
                               else 
@@ -151,86 +154,10 @@
                                 echo mysqli_error($con);
                               }
                       
-                    //    $errorMessage = 'Error';
-                    //   $successMessage = 'Successfully recorded';
-                    //   $CASEID ='';
-                    //   $crimeRegisterDate = '';
-                    //   $crimeType = '';
-                    //   $crimePlace= '';
-                    //   $crimeVictam = '';
-                    //   $crimeCriminal = '';
-                    //   $crimeOfficer = '';
-                    //   $crimeWitness = '';
-                    //   $crimeEvidence = '';
-                    //   $crimeItems = '';
-                    //   $crimeStatus = '';
-                    //   $crimeNote = '';
-
-                    //   if(isset($_GET['id'])){
-                    //     $id = $_GET['id']; 
-                      
-                    //    $result = mysqli_query($con, "SELECT * FROM crimerecord_table where cr_id ='$id'");
-                                          
-                      
-                    //      while ($row = mysqli_fetch_assoc($result)){
-                             
-                        
-                      
-                    //           $ID = $row['cr_id'];
-                    //           $crimeRegisterDate = $row['cr_registerDate'];
-                    //           $crimeType = $row['cr_type'];
-                    //           $crimePlace= $row['cr_place'];
-                    //           $crimeVictam = $row['cr_victam'];
-                    //           $crimeCriminal = $row['cr_criminal'];
-                    //           $crimeOfficer = $row['cr_officer'];
-                    //           $crimeWitness = $row['cr_witness'];
-                    //           $crimeEvidence = $row['cr_evindence'];
-                    //           $crimeItems = $row['cr_items'];
-                    //           $crimeStatus = $row['cr_status'];
-                    //           $crimeNote = $row['cr_note'];
-
-                             
-                    //     } 
-                      
-                    //     if (isset($_GET['btncrime'])){
-                    //       $sql = ("UPDATE `crimerecord_table` SET `cr_id` = '$id', `cr_registerDate` = '$crimeRegisterDate', `cr_type` = '$crimeType', `cr_place` = '$crimePlace', `cr_victam` = '$crimeVictam', `cr_criminal` = '$crimeCriminal', 
-                    //         `cr_officer` = '$crimeOfficer', `cr_witness` = '$crimeWitness', `cr_evindence` = '$crimeEvidence', `cr_items` = '$crimeItems', `cr_status` = '$crimeStatus', `cr_note` = '$crimeNote'  WHERE  `cr_id`='$id'");
-                          
-                          
-                    //          if (mysqli_query($con, $sql))
-                    //          {
-                    //            echo $successMessage;
-                    //          }
-                          
-                    //             else 
-                    //             {
-                    //               //echo $errorMessage;
-                    //               echo mysqli_error($con);
-                    //             }
-                     
-    
-                    //           }
-                    //         }
-                    //       // header('location: viewCrime.php');
-                    //       // exit();
-                      
-
-                      
-                     
-                            
-                        
-                          
-                          
-                          
-          
-
-                          
-                        
                     
-                    
-                    
-                     
                       
+                             }
+                            }
                       ?>
                   <!-- <form class="forms-sample" method="GET">
                     <div class="container">
@@ -314,7 +241,7 @@
                     </div>
                    
                   </form> -->
-                  <form class="forms-sample" method="GET">
+                  <form class="forms-sample" method="POST">
                     <div class="container">
                         <div class="row">
                         <div class="col-lg-6">
@@ -438,6 +365,23 @@
   <script src="../js/dashboard.js"></script>
   <script src="../js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+
+  <!-- sweet alert -->
+  <script src="../js/sweetalert.min.js"></script>
+
+  <?php   if (isset($_SESSION['status'])){
+
+  }  ?> 
+
+  <script>
+    swal({
+    title: "<?php  echo $_SESSION['status']; ?>",
+  //text: "You clicked the button!",
+    icon: "<?php  echo $_SESSION['status_code']; ?>",
+    button: "OK!",
+});
+  <?php unset($_SESSION['status']); ?>
+  </script>
 </body>
 
 </html>
