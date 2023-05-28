@@ -52,7 +52,7 @@
                 <div class="card-body">
                   <h4 class="card-title text-center">Crime View</h4>
 
-                  <form action="#" method="GET">
+                  <form action="#" method="POST">
                   <div class="row flex-grow">
                           <div class="col-12 grid-margin stretch-card">
                             <div class="card card-rounded">
@@ -195,7 +195,7 @@
                                           <a href="crimeEdit.php?id=<?php echo $id; ?>"  class="btn btn-success">EDIT</a>
                                         </td>
                                         <td>
-                                          <a href="crimeDelete.php?id=<?php echo $id; ?>"  class="btn btn-danger">DELETE</a>
+                                          <a href="crimeDelete.php?id=<?php echo $id; ?>"  class="btn btn-danger btn-delete" id="btndelete">DELETE</a>
                                         </td>
 
                                        
@@ -242,7 +242,7 @@
   <!-- Plugin js for this page -->
   <script src="../vendors/chart.js/Chart.min.js"></script>
   <script src="../vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-  <script src="../vendors/progressbar.js/progressbar.min.js"></script>
+  <!-- <script src="../vendors/progressbar.js/progressbar.min.js"></script> -->
 
   <!-- End plugin js for this page -->
   <!-- inject:js -->
@@ -255,8 +255,99 @@
   <!-- Custom js for this page-->
   <script src="../js/jquery.cookie.js" type="text/javascript"></script>
   <script src="../js/dashboard.js"></script>
-  <script src="../js/Chart.roundedBarCharts.js"></script>
+  <!-- <script src="../js/Chart.roundedBarCharts.js"></script> -->
   <!-- End custom js for this page-->
+
+  <!-- sweetAlert code -->
+  <script src="../js/sweetalert.min.js"></script>
+  <script src="../js/jquery-3.7.0.min.js"></script>
+  <script src="confirmDelete.js" type="text/javascript"></script>
+
+
+ 
+<script>
+  
+
+$(document).ready(function (){
+  $('#btndelete').on('click', function(e){
+    e.preventDefault();
+    var ID = $(this).val();
+    alert(ID);
+
+    swal({
+  title: "Are You Sure ",
+  text: "Once deleted, you will not be able to recover this file!",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+        $.ajax({
+          type: "POST",
+          url: "crimeDelete.php",
+          data:
+          {
+            'id': ID,
+            '#btndelete': true
+
+          },
+  
+          success: function (response) 
+          {
+                if (response == 200) {
+                  swal ("Success!", "Your Data is Deleted", "success");
+
+                  
+                } else if (response == 500){
+                  swal ("Success!", "Your Data is Deleted", "success");
+                }
+           };
+
+    });
+  }
+   
+    });
+
+
+   });
+
+});
+
+
+
+
+//   $('.btndelete').on('click', function(e){
+//     e.preventDefault();
+
+//     const href = $(this).attr('href')
+//     swal ({
+//       type: 'success',
+//     title: 'Your title',
+//     text: 'Your text',
+//     showCancelButton: true,
+//     confirmButtonColor: 'grey',
+//     confirmButtonText: 'Delete Record'
+
+//     }).then ((resul) => { 
+//       if(result.value){
+//         document.location.href = href;
+//       }
+
+//     })
+//   })
+// $(#btnDelete).on('click', function(){
+
+//   swal.fire({
+//     type: 'success',
+//     title: 'Your title',
+//     text: 'Your text'
+// })
+
+// })
+
+
+</script>
 </body>
 
 </html>
