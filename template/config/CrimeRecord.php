@@ -64,42 +64,57 @@
                 <div class="card-body">
                   <h4 class="card-title text-center">Crime Record</h4>
                   <?php    
+                    //session_start();
                       include '../config.php';
+                    
                       
                       // $errorMessage = 'Error';
-                       $successMessage = 'Successfully recorded';
-                      $CASEID ='';
-                      $crimeRegisterDate = '';
-                      $crimeType = '';
-                      $crimePlace= '';
-                      $crimeVictam = '';
-                      $crimeCriminal = '';
-                      $crimeOfficer = '';
-                      $crimeWitness = '';
-                      $crimeEvidence = '';
-                      $crimeItems = '';
-                      $crimeStatus = '';
-                      $crimeNote = '';
+                       $successMessage = "<div class='alert alert-success' role='alert'>
+                      Successfully Recorded Your Data 
+                     </div>";
+                       $ErrMessage = "<div class='alert alert-danger' role='alert'>
+                       All Fields must be filled 
+                     </div>";
+                      $CASEID = $crimeRegisterDate = $crimeType =  $crimePlace=  $crimeVictam = 
+                      $crimeCriminal =  $crimeOfficer = $crimeWitness = $crimeEvidence = $crimeItems = 
+                      $crimeStatus =  $crimeNote = '';
+                      
+                       function test_input($data){
+                        $data = trim($data);
+                        $data = stripslashes($data);
+                        $data = htmlspecialchars($data);
+                        return $data ;
+                       }
+                  
 
+                        if($_SERVER["REQUEST_METHOD"] == "POST"){
+                          // if(empty($_POST['crimetype']) && empty($_POST['crimeplace'])) {
+                          //   exit(); 
+                          //   echo $ErrMessage;
                         
-                        if(!empty(isset($_GET['btncrime'])))
-                        {
+                          // } else {
+                            
+                       
+                           if(isset($_POST['btncrime'])){
+                          
                             //echo 'working';
-                              @$CASEID = $_GET['crimeid'];
-                              @$crimeRegisterDate = $_GET['crimeregisterdate'];
-                              @$crimeType = $_GET['crimetype'];
-                              @$crimePlace= $_GET['crimeplace'];
-                              @$crimeVictam = $_GET['crimevictam'];
-                              @$crimeCriminal = $_GET['crimecriminal'];
-                              @$crimeOfficer = $_GET['crimeofficer'];
-                              @$crimeWitness = $_GET['crimewitness'];
-                              @$crimeEvidence = $_GET['crimeevidence'];
-                              @$crimeItems = $_GET['crimeitems'];
-                              @$crimeStatus = $_GET['crimestatus'];
-                              @$crimeNote = $_GET['crimenote'];
+                              @$CASEID = test_input($_POST['crimeid']);
+                              @$crimeRegisterDate = test_input($_POST['crimeregisterdate']);
+                              @$crimeType = test_input($_POST['crimetype']);
+                              @$crimePlace= test_input($_POST['crimeplace']);
+                              @$crimeVictam = test_input($_POST['crimevictam']);
+                              @$crimeCriminal = test_input($_POST['crimecriminal']);
+                              @$crimeOfficer = test_input($_POST['crimeofficer']);
+                              @$crimeWitness = test_input($_POST['crimewitness']);
+                              @$crimeEvidence = test_input($_POST['crimeevidence']);
+                              @$crimeItems = test_input($_POST['crimeitems']);
+                              @$crimeStatus = test_input($_POST['crimestatus']);
+                              @$crimeNote = test_input($_POST['crimenote']);
 
+                              
 
-                        } 
+                            
+                        
                         // if (empty($crimeRegisterDate) || empty($crimeType) || empty($crimeVictam) || empty($crimeCriminal)|| empty($crimeOfficer)
                         //     || empty($crimeWitness) || empty($crimeEvidence) || empty($crimeItems) || empty($crimeStatus) || empty($crimeNote)){
                         //         $errorMessage = 'All fields must be fullfil';
@@ -112,19 +127,30 @@
                         
                             if (mysqli_query($con, $sql))
                             {
-                              echo $successMessage;
+                             $_SESSION['status'] = 'Congrates! You Added New Data ' ;
+                             $_SESSION['status_code'] = 'success';
+                             
                             }
    
                             else 
                             {
+                              $_SESSION['status'] = 'Admin Profile Not Added New Data ' ;
+                              $_SESSION['status_code'] = 'error';
                               //echo $errorMessage;
                               echo mysqli_error($con);
                             }
 
+                          }
                           
+                        } 
                     ?>
-                  <form  name="myForm "class="forms-sample" onsubmit="return validateForm()" method="GET" action ="functions.js">>
+                  <form  name="myForm "class="forms-sample"  method="POST" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
                     <div class="container">
+                      <?php  //if (isset($_SESSION['status'])){
+                        // echo $_SESSION['status'];
+                        // session_destroy();
+                      //}
+                            ?>
                         <div class="row">
                         <div class="col-lg-6">
                         <div class="row mt-4">
@@ -149,6 +175,7 @@
                       </div>
                       <div class="row">
                         <div class="col-lg-6">
+
                         <label for="exampleInputUsername1"></label>
                         <input type="text" class="form-control" id="#" name="crimetype" placeholder="Crime type" value="">
                         </div>
@@ -250,6 +277,24 @@
   <script src="../js/dashboard.js"></script>
   <script src="../js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+
+  <!-- sweet alert -->
+  <script src="../js/sweetalert.min.js"></script>
+
+  <?php   if (isset($_SESSION['status'])){
+
+  }  ?> 
+
+  <script>
+    swal({
+    title: "<?php  echo $_SESSION['status']; ?>",
+  //text: "You clicked the button!",
+    icon: "<?php  echo $_SESSION['status_code']; ?>",
+    button: "Aww yiss!",
+});
+  <?php unset($_SESSION['status']); ?>
+  </script>
+
 </body>
 
 </html>
