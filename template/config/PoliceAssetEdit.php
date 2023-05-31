@@ -110,7 +110,10 @@
                                                           
                          
                     
-                    } 
+                    }  
+                    if (isset($_GET['btnsubmit'])){
+
+                    
                    
                         
                     $register_Date = '';
@@ -149,10 +152,13 @@
                       `item_Condition` = '$itemCondition', `item_Note` = '$itemNote', `item_Delivery` = '$deliveryName' WHERE `assetregistration_table`.`id` = '$id'";
                      
                            if (mysqli_query($con, $sql)) {
-                                echo "New record created successfully";
+                            $_SESSION['status'] = 'Congrates! You Added New Data ' ;
+                            $_SESSION['status_code'] = 'success';
                           } else {
                                 echo mysqli_error($con);
                           }
+
+                        }
                     ?>
                  
                   <form class="forms-sample" action="#" method ="GET" >
@@ -305,6 +311,23 @@
   <script src="../js/dashboard.js"></script>
   <script src="../js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+
+  <script src="../js/sweetalert.min.js"></script>
+  <!-- <script def src="validation.js"></script> -->
+
+  <?php   if (isset($_SESSION['status'])){
+
+  }  ?> 
+
+  <script>
+    swal({
+    title: "<?php  echo $_SESSION['status']; ?>",
+  //text: "You clicked the button!",
+    icon: "<?php  echo $_SESSION['status_code']; ?>",
+    button: "OK!",
+});
+  <?php unset($_SESSION['status']); ?>
+  </script>
 </body>
 
 </html>
