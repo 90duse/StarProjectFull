@@ -88,6 +88,7 @@
                   
 
                         if($_SERVER["REQUEST_METHOD"] == "POST"){
+
                           if(empty($_POST['crimetype']) && empty($_POST['crimeplace']) && empty($_POST['crimevictam'])
                           && empty($_POST['crimecriminal']) && empty($_POST['crimeofficer']) && empty($_POST['crimewitness'])
                           && empty($_POST['crimeevidence']) && empty($_POST['crimeitems']) && empty($_POST['crimestatus'])
@@ -102,10 +103,21 @@
                        
                            if(isset($_POST['btncrime'])){
                           
-                            //echo 'working';
+                            //echo 'working'; 
+                            if(empty($_POST['crimetype'])){
+                               echo $ErrMessage ;
+                            } else {
+                              @$crimeType = test_input($_POST['crimetype']);
+                              if(!preg_match("/^['a-zA-Z']*$/", $crimeType)){
+                                $_SESSION['status'] = 'Crime Type - Only letters and white spcae is allowed' ;
+                                $_SESSION['status_code'] = 'error';
+                                echo 'Only letters and white space is allowed';
+   
+                                 } 
+                            }
                               @$CASEID = test_input($_POST['crimeid']);
                               @$crimeRegisterDate = test_input($_POST['crimeregisterdate']);
-                              @$crimeType = test_input($_POST['crimetype']);
+                              
                               // if(!preg_match("/^['a-zA-Z']*$/", $crimeType)){
                               //    $_SESSION['status'] = 'Crimetype!! Only letters and white spcae is allowed' ;
                               //    $_SESSION['status_code'] = 'error';
@@ -151,7 +163,7 @@
                         } 
                       }
                     ?>
-                  <form  name="myForm "class="forms-sample"  method="POST" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
+                  <form   id = "form" name="myForm "class="forms-sample"  method="POST" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> "  onsubmit="return validateForm()" >
                     <div class="container">
                       <?php  //if (isset($_SESSION['status'])){
                         // echo $_SESSION['status'];
@@ -172,79 +184,80 @@
                         <div class="col-lg-6">
                         <div class="row mt-4">
                                   <div class="col-6"> 
-                                    <?php if(isset($_POST['crimeregisterdate']) && empty($_POST['crimeregisterdate'])){
-                                      $_SESSION['status'] = 'All fields must be filled' ;
-                                      $_SESSION['status_code'] = 'error';
-                                    }?>
+                                    <?php //if(isset($_POST['crimeregisterdate']) && empty($_POST['crimeregisterdate'])){
+                                      // $_SESSION['status'] = 'All fields must be filled' ;
+                                      // $_SESSION['status_code'] = 'error';
+                                    //}?>
                                       <label for="exampleInputUsername1" class=" text text-secondary">Register Date</label>
                                   </div>
                                     <div class="col">
-                                    <input type="date" class="form-control" id="#" name="crimeregisterdate" placeholder="date"  >
+                                    <input type="date" class="form-control" id="crimeRegisterDate" name="crimeregisterdate" placeholder="date"  >
                                     </div>
                               </div> 
                         </div>
                       </div>
                       <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 " >
                         <?php   
-                            //if(!preg_match("/^['a-zA-Z']*$/", $crimeType)){
-                            // $_SESSION['status'] = 'Only letters and white spcae is allowed' ;
-                            // $_SESSION['status_code'] = 'error';
-                             echo 'Only letters and white space is allowed';
+                            // if(!preg_match("/^['a-zA-Z']*$/", $crimeType)){
+                            //  $_SESSION['status'] = 'Only letters and white spcae is allowed' ;
+                            //  $_SESSION['status_code'] = 'error';
+                            //  echo 'Only letters and white space is allowed';
 
-                              //} 
+                            //   } 
                                 
                               ?>
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="crimetype" placeholder="Crime type" value="">
+                        <input type="text" class="form-control" id="crimeType" name="crimetype" placeholder="Crime type" value="" >
+                        <div class="error"></div>
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="crimeplace" placeholder="Place" >
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-lg-6">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="crimevictam" placeholder="Victam/Victams" >
-                        </div>
-                        <div class="col-lg-6">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="crimecriminal" placeholder="Criminal" >
+                        <input type="text" class="form-control" id="crimePlace" name="crimeplace" placeholder="Place" >
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="crimeofficer" placeholder="Officer on Charge">
+                        <input type="text" class="form-control" id="crimeVictam" name="crimevictam" placeholder="Victam/Victams" >
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="crimewitness" placeholder="WITNESSES">
+                        <input type="text" class="form-control" id="crimeCriminal" name="crimecriminal" placeholder="Criminal" >
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="crimeevidence" placeholder="EVIDENCE" >
+                        <input type="text" class="form-control" id="crimeOfficer" name="crimeofficer" placeholder="Officer on Charge">
+                        </div>
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="crimeWitness" name="crimewitness" placeholder="WITNESSES">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="crimeEvidence" name="crimeevidence" placeholder="EVIDENCE" >
                         </div>
                         <div class="col-lg-6">
                         <label for="#"></label>
-                        <input type="text" class="form-control" id="#" name="crimeitems" placeholder="ITEMS IN THE SCENE">
+                        <input type="text" class="form-control" id="crimeItem" name="crimeitems" placeholder="ITEMS IN THE SCENE">
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="#"></label>
-                        <input type="text" class="form-control" id="#" name="crimestatus" placeholder="STATUS" >
+                        <input type="text" class="form-control" id="crimeStatus" name="crimestatus" placeholder="STATUS" >
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="textarea" class="form-control" id="#" name="crimenote" placeholder="NOTES" >
+                        <input type="textarea" class="form-control" id="crimeNote" name="crimenote" placeholder="NOTES" >
                         </div>
                       </div>
                         <div class="button">
-                          <button type="submit"  class="btn btn-primary  m-2" name="btncrime">Submit</button>
+                          <button type="submit"  class="btn btn-primary  m-2" name="btncrime" value = "submit" >Submit</button>
                           <button class="btn btn-light">Cancel</button>
                         </div>
                     </div>
@@ -299,6 +312,7 @@
 
   <!-- sweet alert -->
   <script src="../js/sweetalert.min.js"></script>
+  <script def src="validation.js"></script>
 
   <?php   if (isset($_SESSION['status'])){
 
@@ -313,6 +327,9 @@
 });
   <?php unset($_SESSION['status']); ?>
   </script>
+
+
+
 
 </body>
 
