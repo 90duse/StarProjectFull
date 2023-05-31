@@ -99,29 +99,27 @@
                           //   echo 'You can not upload this type of files';
                           // }
                           //}
+                          if($_SERVER["REQUEST_METHOD"] == "POST"){
+                            if(empty($_POST['opregisterdate']) && empty($_POST['opname']) && empty($_POST['opheight'])
+                            && empty($_POST['opage']) && empty($_POST['opweight']) && empty($_POST['opdayofbirth'])
+                            && empty($_POST['opplaceofbirth']) && empty($_POST['opaddress']) && empty($_POST['opphone'])
+                            && empty($_POST['opmothername']) && empty($_POST['opjob']) && empty($_POST['opreason'])
+                            && empty($_POST['opmarriagestatus']) && empty($_POST['opmedicalstatus']) && empty($_POST['oppersonalbelongs'])
+                            && empty($_POST['opofficer']) && empty($_POST['opcellno']) && empty($_POST['opnote'])) 
+                            { 
+
+                            $_SESSION['status'] = 'They canot be empty ';
+                            $_SESSION['status_code'] = 'error';
+                            }
                           if(isset($_POST['opbtnsubmit'])){
-                              echo 'working';
+                              //echo 'working';
 
                           //Variable Declaration 
-                              $ID = '';
-                              $Register_Date = '';
-                              $op_Fullname = '';
-                              $op_Height= '';
-                              $op_Age = '';
-                              $op_Weight = '';
-                              $op_BirthDate = '';
-                              $op_PlaceOfBirth = '';
-                              $op_Address = '';
-                              $op_Phone = '';
-                              $op_ParentName = '';
-                              $op_Job = '';
-                              $op_Reason = '';
-                              $op_MarriageStatus = '';
-                              $op_MedicalStatus = '';
-                              $op_PersonalBelongs = '';
-                              $op_Officer ='';
-                              $op_CellNo = '';
-                              $op_Note =  '';
+                              $ID = $Register_Date = $op_Fullname = $op_Height= $op_Age = 
+                              $op_Weight = $op_BirthDate = $op_PlaceOfBirth =$op_Address = 
+                              $op_Phone = $op_ParentName = $op_Job =  $op_Reason =  $op_MarriageStatus = 
+                              $op_MedicalStatus = $op_PersonalBelongs =  $op_Officer =  $op_CellNo =  $op_Note =  '';
+                        
                               $op_Photo ='';
 
                               $successMessage = 'New Record is being saved Successfully';
@@ -168,7 +166,8 @@
                          '$op_PlaceOfBirth', '$op_Address', '$op_Phone','$op_Job', '$op_MarriageStatus', '$op_MedicalStatus', '$op_Reason', '$op_PersonalBelongs', '$op_CellNo', '$op_Officer', '$op_Note')";
                          
                          if(mysqli_query($con, $sql)){
-                          echo @$successMessage;
+                          $_SESSION['status'] = 'Your Data is Saved Succcessfully ';
+                          $_SESSION['status_code'] = 'success';
                          }
                          
                          
@@ -178,7 +177,7 @@
                           // echo 'not working';
                         }
 
-
+                      }
 
                         ?>
                   <form class="forms-sample" method="POST" enctype ="multipart/form-data">
@@ -195,7 +194,7 @@
                                       <label for="exampleInputUsername1" class=" text text-secondary">Registerd Date</label>
                                   </div>
                                     <div class="col">
-                                    <input type="date" class="form-control" id="#" name="opregisterdate" placeholder="date" Required>
+                                    <input type="date" class="form-control" id="#" name="opregisterdate" placeholder="date" >
                                     </div>
                               </div> 
                           </div>
@@ -207,7 +206,7 @@
                         </div>
                         <div class="col-lg-6">
                           <label for="exampleInputUsername1"></label>
-                          <input type="text" class="form-control" id="#" name="opname" placeholder="FULLNAME" Required>
+                          <input type="text" class="form-control" id="#" name="opname" placeholder="FULLNAME" >
                         </div>
                         
                       </div>
@@ -217,22 +216,22 @@
                           <div class="row">
                             <div class="col-lg-4">
                               <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="#" name="opheight" placeholder="Height" Required>
+                              <input type="number" class="form-control" id="#" name="opheight" placeholder="Height" >
                             </div>
                             <div class="col-lg-4">
                               <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="#" name="opage" placeholder="Age" Required>
+                              <input type="number" class="form-control" id="#" name="opage" placeholder="Age" >
                             </div>
                             <div class="col-lg-4">
                               <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="#" name="opweight" placeholder="weight" Required>
+                              <input type="number" class="form-control" id="#" name="opweight" placeholder="weight" >
                             </div>
                          </div> 
                         </div>
                         <div class="col-lg-6">
                         <div class="col">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="opmothername" placeholder="Mother's Name" Required>
+                        <input type="text" class="form-control" id="#" name="opmothername" placeholder="Mother's Name" >
                         </div>
                           
                         </div>
@@ -244,13 +243,13 @@
                                       <label for="exampleInputUsername1" class=" text text-secondary">Day Of Birth</label>
                                   </div>
                                     <div class="col">
-                                    <input type="date" class="form-control" id="#" name="opdayofbirth" placeholder="date" Required>
+                                    <input type="date" class="form-control" id="#" name="opdayofbirth" placeholder="date" >
                                     </div>
                               </div> 
                           </div>
                           <div class="col-lg-6">
                             <label for="exampleInputUsername1"></label>
-                            <input type="text" class="form-control" id="#" name="opplaceofbirth" placeholder="Place of Birth" Required>
+                            <input type="text" class="form-control" id="#" name="opplaceofbirth" placeholder="Place of Birth" >
                           </div>
                         
                       </div>
@@ -258,22 +257,22 @@
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="opaddress" placeholder="Address" Required>
+                        <input type="text" class="form-control" id="#" name="opaddress" placeholder="Address" >
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="tel" class="form-control" id="#" name="opphone" placeholder="Tellephone" Required>
+                        <input type="tel" class="form-control" id="#" name="opphone" placeholder="Tellephone" >
                         </div>
                       </div>
                       
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="opjob" placeholder="Job" Required>
+                        <input type="text" class="form-control" id="#" name="opjob" placeholder="Job" >
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="tel" class="form-control" id="#" name="opreason" placeholder="Reason for the Arrest" Required>
+                        <input type="tel" class="form-control" id="#" name="opreason" placeholder="Reason for the Arrest" >
                         </div>
                       </div>
                       <div class="row">
@@ -283,13 +282,13 @@
                             <label for="inputmarriagestatus" class=" text text-secondary">Marriage status</label>
                             </div>
                             <div class="col">
-                            <input type="text"  class="form-control" id="#" name="opmarriagestatus" Required>
+                            <input type="text"  class="form-control" id="#" name="opmarriagestatus" >
                             </div>
                           </div>
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="opmedicalstatus" placeholder="MEDICAL STATUS" Required>
+                        <input type="text" class="form-control" id="#" name="opmedicalstatus" placeholder="MEDICAL STATUS" >
                         </div>
                       </div>
 
@@ -297,11 +296,11 @@
                       <div class="row">
                       <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="opcellno" placeholder="Cell Number" Required>
+                        <input type="text" class="form-control" id="#" name="opcellno" placeholder="Cell Number" >
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="oppersonalbelongs" placeholder="Personal Belongs" Required>
+                        <input type="text" class="form-control" id="#" name="oppersonalbelongs" placeholder="Personal Belongs" >
                         </div>
                       </div>
                     
@@ -366,6 +365,23 @@
   <script src="../js/dashboard.js"></script>
   <script src="../js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+  <!-- sweet alert -->
+  <script src="../js/sweetalert.min.js"></script>
+
+  <?php   if (isset($_SESSION['status'])){
+
+  }  ?> 
+
+  <script>
+    swal({
+    title: "<?php  echo $_SESSION['status']; ?>",
+  //text: "You clicked the button!",
+    icon: "<?php  echo $_SESSION['status_code']; ?>",
+    button: "OK!",
+});
+  <?php unset($_SESSION['status']); ?>
+  </script>
+
 </body>
 
 </html>
