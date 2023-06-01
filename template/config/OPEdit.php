@@ -180,6 +180,8 @@
 
                          if(mysqli_query($con, $sql)){
                         //   echo @$successMessage;
+                                $_SESSION['status'] = 'Congrates! You Added New Data ' ;
+                                $_SESSION['status_code'] = 'success';
                          }
                          
                          
@@ -369,6 +371,23 @@
   <script src="../js/dashboard.js"></script>
   <script src="../js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+
+  <!-- sweet alert -->
+  <script src="../js/sweetalert.min.js"></script>
+
+  <?php   if (isset($_SESSION['status'])){
+
+  }  ?> 
+
+  <script>
+    swal({
+    title: "<?php  echo $_SESSION['status']; ?>",
+  //text: "You clicked the button!",
+    icon: "<?php  echo $_SESSION['status_code']; ?>",
+    button: "OK!",
+});
+  <?php unset($_SESSION['status']); ?>
+  </script>
 </body>
 
 </html>
