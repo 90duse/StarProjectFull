@@ -124,11 +124,38 @@
                               //    //echo 'Only letters and white space is allowed';
                               //     } 
                               @$crimePlace= test_input($_POST['crimeplace']);
+                            
+
                               @$crimeVictam = test_input($_POST['crimevictam']);
+                              if(!preg_match("/^['a-zA-Z']*$/", $crimeVictam)){
+                                $_SESSION['status'] = 'Crime Type - Only letters and white spcae is allowed' ;
+                                $_SESSION['status_code'] = 'error';
+                                echo 'Only letters and white space is allowed';
+   
+                                 } 
                               @$crimeCriminal = test_input($_POST['crimecriminal']);
+                              if(!preg_match("/^['a-zA-Z']*$/", $crimeCriminal)){
+                                $_SESSION['status'] = 'Crime Type - Only letters and white spcae is allowed' ;
+                                $_SESSION['status_code'] = 'error';
+                                echo 'Only letters and white space is allowed';
+   
+                                 } 
                               @$crimeOfficer = test_input($_POST['crimeofficer']);
+                              if(!preg_match("/^['a-zA-Z']*$/", $crimeOfficer)){
+                                $_SESSION['status'] = 'Crime Type - Only letters and white spcae is allowed' ;
+                                $_SESSION['status_code'] = 'error';
+                                echo 'Only letters and white space is allowed';
+   
+                                 } 
                               @$crimeWitness = test_input($_POST['crimewitness']);
+                              if(!preg_match("/^['a-zA-Z']*$/", $crimeWitness)){
+                                $_SESSION['status'] = 'Crime Type - Only letters and white spcae is allowed' ;
+                                $_SESSION['status_code'] = 'error';
+                                echo 'Only letters and white space is allowed';
+   
+                                 } 
                               @$crimeEvidence = test_input($_POST['crimeevidence']);
+
                               @$crimeItems = test_input($_POST['crimeitems']);
                               @$crimeStatus = test_input($_POST['crimestatus']);
                               @$crimeNote = test_input($_POST['crimenote']);
@@ -184,10 +211,10 @@
                         <div class="col-lg-6">
                         <div class="row mt-4">
                                   <div class="col-6"> 
-                                    <?php //if(isset($_POST['crimeregisterdate']) && empty($_POST['crimeregisterdate'])){
-                                      // $_SESSION['status'] = 'All fields must be filled' ;
-                                      // $_SESSION['status_code'] = 'error';
-                                    //}?>
+                                    <?php if(isset($_POST['crimeregisterdate']) && empty($_POST['crimeregisterdate'])){
+                                       $_SESSION['status'] = 'All fields must be filled' ;
+                                       $_SESSION['status_code'] = 'error';
+                                    }?>
                                       <label for="exampleInputUsername1" class=" text text-secondary">Register Date</label>
                                   </div>
                                     <div class="col">
@@ -199,12 +226,12 @@
                       <div class="row">
                         <div class="col-lg-6 " >
                         <?php   
-                            // if(!preg_match("/^['a-zA-Z']*$/", $crimeType)){
-                            //  $_SESSION['status'] = 'Only letters and white spcae is allowed' ;
-                            //  $_SESSION['status_code'] = 'error';
-                            //  echo 'Only letters and white space is allowed';
+                            if(!preg_match("/^['a-zA-Z']*$/", $crimeType)){
+                             $_SESSION['status'] = 'Only letters and white spcae is allowed' ;
+                             $_SESSION['status_code'] = 'error';
+                             echo 'Only letters and white space is allowed';
 
-                            //   } 
+                              } 
                                 
                               ?>
                         <label for="exampleInputUsername1"></label>
@@ -212,12 +239,28 @@
                         <div class="error"></div>
                         </div>
                         <div class="col-lg-6">
+                          <?php   if(!preg_match("/^['a-zA-Z']*$/", $crimePlace)){
+                                $_SESSION['status'] = 'Crime Place - Only letters and white spcae is allowed' ;
+                                $_SESSION['status_code'] = 'error';
+                                echo 'Only letters and white space is allowed';
+   
+                                 } 
+                          
+                          ?>
                         <label for="exampleInputUsername1"></label>
                         <input type="text" class="form-control" id="crimePlace" name="crimeplace" placeholder="Place" >
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-lg-6">
+                        <?php   if(!preg_match("/^['a-zA-Z']*$/", $crimeVictam)){
+                                $_SESSION['status'] = 'Crime Victam- Only letters and white spcae is allowed' ;
+                                $_SESSION['status_code'] = 'error';
+                                echo 'Only letters and white space is allowed';
+   
+                                 } 
+                          
+                          ?>
                         <label for="exampleInputUsername1"></label>
                         <input type="text" class="form-control" id="crimeVictam" name="crimevictam" placeholder="Victam/Victams" >
                         </div>
