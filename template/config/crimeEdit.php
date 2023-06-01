@@ -57,7 +57,7 @@
                       if(isset($_GET['id'])){
                         $id = $_GET['id']; 
                 
-                        echo 'it is working', $id;
+                        //echo 'it is working', $id;
                         $row ='';
                       
                 
