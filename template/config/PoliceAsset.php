@@ -83,41 +83,45 @@
                     $itemNote = '';
                     $deliveryName = '';
 
-                      if(isset($_GET["btnsubmit"])){
+                    //if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+                      if(isset($_POST["btnsubmit"])){
 
                      
 
                       //echo "working";
-                      //$assetID = $_GET['assetid'];
-                      @$register_date = $_GET['assetdate'];
-                      @$itemName = $_GET['itemname'];
-                      @$itemHight = $_GET['itemheight'];
-                      @$itemColor = $_GET['itemcolor'];
-                      @$itemWeight = $_GET['itemweight'];
-                      @$itemQuantity = $_GET['itemquantity'];
-                      @$itemCatogery = $_GET['itemcategory'];
-                      @$storeNumber = $_GET['storenumber'];
-                      @$guardingName = $_GET['guardingname'];
-                      @$guardingID = $_GET['guardingid'];
-                      @$itemCondition =$_GET['itemcondition'];
-                      @$itemNote = $_GET['itemnote'];
-                      @$deliveryName = $_GET['deliveryname'];
+                      //$assetID = $_POST['assetid'];
+                      @$register_date = $_POST['assetdate'];
+                      @$itemName = $_POST['itemname'];
+                      @$itemHight = $_POST['itemheight'];
+                      @$itemColor = $_POST['itemcolor'];
+                      @$itemWeight = $_POST['itemweight'];
+                      @$itemQuantity = $_POST['itemquantity'];
+                      @$itemCatogery = $_POST['itemcategory'];
+                      @$storeNumber = $_POST['storenumber'];
+                      @$guardingName = $_POST['guardingname'];
+                      @$guardingID = $_POST['guardingid'];
+                      @$itemCondition =$_POST['itemcondition'];
+                      @$itemNote = $_POST['itemnote'];
+                      @$deliveryName = $_POST['deliveryname'];
 
                       $sql = "INSERT INTO `assetregistration_table` (`id`, `item_Register_Date`, `Item_Name`, `item_Hight`, `item_Color`, `item_Weight`, `item_Quantity`, `item_Catogery`, `Store_Number`, `Guarding_Name`, `Guarding_Police_ID`, `item_Condition`, `item_Note`, `item_Delivery`)
                       VALUES ('', '$register_date', '$itemName', '$itemHight', '$itemColor', '$itemWeight', '$itemQuantity', '$itemCatogery', '$storeNumber', '$guardingName', '$guardingID', '$itemCondition', '$itemNote', '$deliveryName')";
                    
                           if (mysqli_query($con, $sql)) {
                                //echo "New record created successfully";
-                               echo $successMessage ;
+                               //echo $successMessage ;
+                               $_SESSION['status'] = 'Congrates! You Added New Data ' ;
+                               $_SESSION['status_code'] = 'success';
                          } else {
                                echo mysqli_error($con);
                          }   
                       } 
                      
-                     
+                   // }
                     ?>
                  
-                  <form class="forms-sample" action="#" method ="GET" >
+                  <form class="forms-sample" action="#" method ="POST" >
                   <div class="container">
                       <div class="row">
                         <div class="col-lg-6">
@@ -259,6 +263,22 @@
   <script src="../js/dashboard.js"></script>
   <script src="../js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+  <!-- sweet alert -->
+  <script src="../js/sweetalert.min.js"></script>
+
+  <?php   if (isset($_SESSION['status'])){
+
+  }  ?> 
+
+  <script>
+    swal({
+    title: "<?php  echo $_SESSION['status']; ?>",
+  //text: "You clicked the button!",
+    icon: "<?php  echo $_SESSION['status_code']; ?>",
+    button: "OK!",
+});
+  <?php unset($_SESSION['status']); ?>
+  </script>
 </body>
 
 </html>
