@@ -66,42 +66,52 @@
                   <?php   
                         include '../config.php';
 
-                          $complainID = " ";
-                          $complainRegisterDate =" "; 
-                          $complainFullname = " "; 
-                          $complainRank = " "; 
-                          $complainSubject = " "; 
-                          $complainAgainstWhom = " "; 
-                          $complainment = " "; 
+                            // varaible declaration
 
-                        if(isset($_GET['btncomplain'])){
-                          //echo 'working';
-                          @$complainID = $_GET['complainid'];
-                          @$complainRegisterDate = $_GET['complairegisterdate'];
-                          @$complainFullname = $_GET['complainfullname'];
-                          @$complainRank= $_GET['complainrank'];
-                          @$complainSubject = $_GET['complainsubject'];
-                          @$complainAgainstWhom = $_GET['complainagainstwhom'];
-                          @$complainment = $_GET['complainment'];
-                           
+                          $complainID = $complainRegisterDate = $complainFullname =  $complainRank = 
+                          $complainSubject =  $complainAgainstWhom =  $complainment = " ";
                           
-                        }
+                          if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+                            if(empty($_POST['complainID']) && empty($_POST['complairegisterdate']) && empty($_POST['complainfullname'])
+                            && empty($_POST['complainrank']) && empty($_POST['complainsubject']) && empty($_POST['complainagainstwhom'])
+                            && empty($_POST['complainsubject']) && empty($_POST['complainment']))
+                            { 
+                               //exit(); 
+                               $_SESSION['status'] = 'All fields Must be Filled, They canot be empty ';
+                               $_SESSION['status_code'] = 'error';
+                            }
+                           else {
+                            if(isset($_POST['btncomplain'])){
+                              //echo 'working';
+                              @$complainID = $_POST['complainid'];
+                              @$complainRegisterDate = $_POST['complairegisterdate'];
+                              @$complainFullname = $_POST['complainfullname'];
+                              @$complainRank= $_POST['complainrank'];
+                              @$complainSubject = $_POST['complainsubject'];
+                              @$complainAgainstWhom = $_POST['complainagainstwhom'];
+                              @$complainment = $_POST['complainment'];
+                              
+                              
+                            }
 
                          $sql = "INSERT INTO `complainmentRegistration_table` (`co_id`, `co_registrationDate`, `co_fullname`, `co_rank`, `co_subject`, `co_againstWhom`, `co_complainment`)
                           VALUES ('', '$complainRegisterDate', '$complainFullname', '$complainRank', '$complainSubject', '$complainAgainstWhom', '$complainment')";
                           if (mysqli_query($con, $sql)){
 
-                            echo 'Your Complainment is recorded successfully';
+                            $_SESSION['status'] = 'Your Data is Saved Succcessfully ';
+                            $_SESSION['status_code'] = 'success';
                           }
                         else {
 
                           echo mysqli_error($con);
                         }
 
-
+                      }
+                    }
                     ?>
                
-                  <form class="forms-sample" method="GET">
+                  <form class="forms-sample" method="POST">
                      <div class="container">
                       <div class="row">
                         <div class="col-lg-6">
@@ -213,6 +223,21 @@
   <script src="../js/dashboard.js"></script>
   <script src="../js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+  <script src="../js/sweetalert.min.js"></script>
+
+  <?php   if (isset($_SESSION['status'])){
+
+  }  ?> 
+
+  <script>
+    swal({
+    title: "<?php  echo $_SESSION['status']; ?>",
+  //text: "You clicked the button!",
+    icon: "<?php  echo $_SESSION['status_code']; ?>",
+    button: "OK!",
+});
+  <?php unset($_SESSION['status']); ?>
+  </script>
 </body>
 
 </html>
