@@ -110,8 +110,9 @@
 
                             $_SESSION['status'] = 'They canot be empty ';
                             $_SESSION['status_code'] = 'error';
-                            }
-                          if(isset($_POST['opbtnsubmit'])){
+                            } 
+                             else {
+                           if(isset($_POST['opbtnsubmit'])){
                               //echo 'working';
 
                           //Variable Declaration 
@@ -158,6 +159,7 @@
 
 
                         }
+                      
                         
                          @$sql = "INSERT INTO `op_table` (`op_id`, `op_register_date`, `op_fullname`, `op_image`, `op_height`, `op_age`, 
                          `op_weight`, `op_mothers_name`, `op_dayof_birth`,`op_placeof_birth`, `op_address`, `op_tellephone`, 
@@ -178,6 +180,7 @@
                         }
 
                       }
+                    }
 
                         ?>
                   <form class="forms-sample" method="POST" enctype ="multipart/form-data">
@@ -186,7 +189,7 @@
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="number" class="form-control" id="#" name="opid" placeholder="Person ID">
+                        <input type="number"   class="form-control" id="#" name="opid" placeholder="Person ID">
                         </div>
                         <div class="col-lg-6">
                               <div class="row mt-4">
