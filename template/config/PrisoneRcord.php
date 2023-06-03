@@ -67,122 +67,96 @@
                   <h4 class="card-title text-center">Prison Record</h4>
                       <?php    
                         include '../config.php';
-                        $ID = '';
-                        $RegisterDate = '';
-                        $prisonerFullname = '';
-                        $prisonerHeight= '';
-                        $prisonerAge = '';
-                        $prisonerWeight = '';
-                        $prisonerBirthDate = '';
-                        $prisonerPlaceOfBirth = '';
-                        $prisonerAddress = '';
-                        $prisonerPhone = '';
-                        $prisonerEmail = '';
-                        $prisonerParentName = '';
-                        $prisonerEducation = '';
-                        $prisonerCrimeType = '';
-                        $prisonerMarriageStatus = '';
-                        $prisonerSentencePeriod = '';
-                        $prisonerMedicalStatus = '';
-                        $prisonerPersonalBelongs = '';
-                        $prisonerReleaseDate = '';
-                        $prisonerJudiciaryTrial = '';
-                        $prisonerLawyer = '';
-                        $prisonerCellNo = '';
-                        $prisonerBehavier= '';
-                        $prisonerNote =  '';
-                        $prisonerPhoto ='';
 
+                        // variable declaration
+                        $ID = $RegisterDate = $prisonerFullname =  $prisonerHeight= $prisonerAge =  $prisonerWeight = 
+                        $prisonerBirthDate = $prisonerPlaceOfBirth = $prisonerAddress = $prisonerPhone = $prisonerEmail = 
+                        $prisonerParentName = $prisonerEducation =  $prisonerCrimeType = $prisonerMarriageStatus =  $prisonerSentencePeriod = 
+                        $prisonerMedicalStatus = $prisonerPersonalBelongs = $prisonerReleaseDate = $prisonerJudiciaryTrial = $prisonerLawyer = 
+                        $prisonerCellNo = $prisonerBehavier= $prisonerNote = $prisonerPhoto = '';
+                       
+
+                        if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+                          if(empty($_POST['prisonerregisterdate']) && empty($_POST['prisonerfullname']) && empty($_POST['prisonerheight'])
+                          && empty($_POST['prisonerage']) && empty($_POST['prisonerweight']) && empty($_POST['prisonerdateofbirth'])
+                          && empty($_POST['prisonerplaceofbirth']) && empty($_POST['prisoneraddress']) && empty($_POST['prisonertellephone'])
+                          && empty($_POST['prisoneremail']) && empty($_POST['prisonermothername']) && empty($_POST['prisonerid'])
+                          && empty($_POST['prisonereducationlevel']) && empty($_POST['prisonermarriagestatus']) && empty($_POST['prisonermedicalstatus']) 
+                          && empty($_POST['prisonercrimetype']) && empty($_POST['prisonersentenceperiod']) && empty($_POST['prisonernote'])
+                          && empty($_POST['prisonerpersonalbelongs']) && empty($_POST['prisonerreleasedate']) && empty($_POST['prisonerjudiciarytrial'])
+                          && empty($_POST['prisonerlawyer']) && empty($_POST['prisonercellnumber']) && empty($_POST['prisonerbehaiver'])) 
+                          {
+                             
+                            $_SESSION['status'] = 'They canot be empty ';
+                            $_SESSION['status_code'] = 'error';
                         
-                        if(isset($_POST['btnprisoner'])){
+                          } 
+                        else {
 
-                          
-                          // $fileName = $_FILES['prisonerimage']['name'];
-                          // $filetmpName = $_FILES['prisonerimage']['tmp_name'];
-                          // $fileSize = $_FILES['prisonerimage']['size'];
-                          // $fileError = $_FILES['prisonerimage']['error'];
-                          // $fileType= $_FILES['prisonerimage']['type'];
+                          if(isset($_POST['btnprisoner']))
+                          {
 
+                            //variable Assignments
 
-                          // $fileExt = explode('.', $fileName);
-                          // $fileActualExt = strtolower(end($fileExt));
-                          // $allowed =  array('jpg','jpeg','png');
-                          // if(in_array($fileActualExt, $allowed)){
-                          //   if($fileError === 0){
-                          //     if($fileSize < 1000000){
-                          //       $fileNewName = uniqid('.', true) . "." . $fileActualExt;
-                          //       $fileDestination = '../images/' .$fileNewName; 
-                          //       move_uploaded_file($filetmpName, $fileDestination);
+                            @$ID = $_POST['prisonerid'];
+                            @$RegisterDate = $_POST['prisonerregisterdate'];
+                            @$prisonerFullname = $_POST['prisonerfullname'];
+                            @$prisonerHeight= $_POST['prisonerheight'];
+                            @$prisonerAge = $_POST['prisonerage'];
+                            @$prisonerWeight = $_POST['prisonerweight'];
+                            @$prisonerBirthDate = $_POST['prisonerdateofbirth'];
+                            @$prisonerPlaceOfBirth = $_POST['prisonerplaceofbirth'];
+                            @$prisonerAddress = $_POST['prisoneraddress'];
+                            @$prisonerPhone = $_POST['prisonertellephone'];
+                            @$prisonerEmail = $_POST['prisoneremail'];
+                            @$prisonerParentName = $_POST['prisonermothername'];
+                            @$prisonerEducation = $_POST['prisonereducationlevel'];
+                            @$prisonerCrimeType = $_POST['prisonercrimetype'];
+                            @$prisonerMarriageStatus = $_POST['prisonermarriagestatus'];
+                            @$prisonerSentencePeriod = $_POST['prisonersentenceperiod'];
+                            @$prisonerMedicalStatus = $_POST['prisonermedicalstatus'];
+                            @$prisonerPersonalBelongs = $_POST['prisonerpersonalbelongs'];
+                            @$prisonerReleaseDate = $_POST['prisonerreleasedate'];
+                            @$prisonerJudiciaryTrial =$_POST['prsionerjudiciarytrial'];
+                            @$prisonerLawyer = $_POST['prisonerlawyer'];
+                            @$prisonerCellNo = $_POST['prisonercellnumber'];
+                            @$prisonerBehavier=$_POST['prisonerbehavier'];
+                            @$prisonerNote = $_POST['prisonernote'];
+                            $prisonerImage = $_FILES['prisonerimage']['name'];
+                            $tmp_name = $_FILES['prisonerimage']['tmp_name'];
+                            $imageLocation = "../images/"; 
 
+                            if(move_uploaded_file($tmp_name, $imageLocation.$prisonerImage)){
+                              echo "Your image is saved "; 
+                            } else{
+                              echo mysqli_error($con);
+                            }
 
-                          //     } else {
-                          //       echo "Your file is too big";
-                          //     }
-
-                          //   } else {
-
-                          //     echo "There is an Error!";
-
-                          //   }
-
-                          // } else {
-                          //   echo 'You can not upload this type of files';
-                          // }
-
-                          
-                          //echo 'working';
-                          //@$ID = $_GET['prisonerid'];
-                          @$RegisterDate = $_GET['prisonerregisterdate'];
-                          @$prisonerFullname = $_GET['prisonerfullname'];
-                          @$prisonerHeight= $_GET['prisonerheight'];
-                          @$prisonerAge = $_GET['prisonerage'];
-                          @$prisonerWeight = $_GET['prisonerweight'];
-                          @$prisonerBirthDate = $_GET['prisonerdateofbirth'];
-                          @$prisonerPlaceOfBirth = $_GET['prisonerplaceofbirth'];
-                          @$prisonerAddress = $_GET['prisoneraddress'];
-                          @$prisonerPhone = $_GET['prisonertellephone'];
-                          @$prisonerEmail = $_GET['prisoneremail'];
-                          @$prisonerParentName = $_GET['prisonermothername'];
-                          @$prisonerEducation = $_GET['prisonereducationlevel'];
-                          @$prisonerCrimeType = $_GET['prisonercrimetype'];
-                          @$prisonerMarriageStatus = $_GET['prisonermarriagestatus'];
-                          @$prisonerSentencePeriod = $_GET['prisonersentenceperiod'];
-                          @$prisonerMedicalStatus = $_GET['prisonermedicalstatus'];
-                          @$prisonerPersonalBelongs = $_GET['prisonerpersonalbelongs'];
-                          @$prisonerReleaseDate = $_GET['prisonerreleasedate'];
-                          @$prisonerJudiciaryTrial =$_GET['prsionerjudiciarytrial'];
-                          @$prisonerLawyer = $_GET['prisonerlawyer'];
-                          @$prisonerCellNo = $_GET['prisonercellnumber'];
-                          @$prisonerBehavier=$_GET['prisonerbehavier'];
-                          @$prisonerNote = $_GET['prisonernote'];
-                          $prisonerImage = $_FILES['prisonerimage']['name'];
-                          $tmp_name = $_FILES['prisonerimage']['tmp_name'];
-                          $imageLocation = "../images/"; 
-
-                          if(move_uploaded_file($tmp_name, $imageLocation.$prisonerImage)){
-                            echo "Your image is saved "; 
-                          } else{
-                            echo mysqli_error($con);
-                          }
-
-
-                          
-                        } 
-                         $sql = "INSERT INTO `PrisonerRecord` (`id`, `pri_registerdate`, `pri_photo`, `pri_fullname`, `pri_height`, `pri_age`, `pri_weight`, `pri_dateof_birth`, `pri_placeof_birth`, `pri_address`, `pri_tellephone`, `pri_mothers_name`,
-                          `pri_education`, `pri_crimeType`, `pri_marriage`, `pri_medicalStatus`, `pri_sentenceperiod`, `pri_prersonalBelongs`, `pri_releaseDay`, `pri_trail`, `pri_lawyer`, `pri_cellNo`, `pri_behavier`, `pri_notes`) 
-                         VALUES ('', '$RegisterDate', '$prisonerImage', '$prisonerFullname', '$prisonerHeight', '$prisonerAge', '$prisonerWeight', '$prisonerBirthDate', '$prisonerPlaceOfBirth', '$prisonerAddress', '$prisonerPhone', 
-                         '$prisonerParentName', '$prisonerEducation', '$prisonerCrimeType', '$prisonerMarriageStatus', '$prisonerMedicalStatus', '$prisonerSentencePeriod', '$prisonerPersonalBelongs', 
+                          } 
+                         $sql = "INSERT INTO `PrisonerRecord` (`pri_id`, `pri_registerdate`, `pri_photo`, `pri_fullname`, `pri_height`, `pri_age`, 
+                         `pri_weight`, `pri_dateof_birth`, `pri_placeof_birth`, `pri_address`, `pri_tellephone`, `pri_mothers_name`,
+                          `pri_education`, `pri_crimeType`, `pri_marriage`, `pri_medicalStatus`, `pri_sentenceperiod`, `pri_prersonalBelongs`, 
+                          `pri_releaseDay`, `pri_trail`, `pri_lawyer`, `pri_cellNo`, `pri_behavier`, `pri_notes`) 
+                         VALUES ('', '$RegisterDate', ' ', '$prisonerFullname', '$prisonerHeight', '$prisonerAge', '$prisonerWeight',
+                          '$prisonerBirthDate', '$prisonerPlaceOfBirth', '$prisonerAddress', '$prisonerPhone', 
+                         '$prisonerParentName', '$prisonerEducation', '$prisonerCrimeType', '$prisonerMarriageStatus',
+                          '$prisonerMedicalStatus', '$prisonerSentencePeriod', '$prisonerPersonalBelongs', 
                          '$prisonerReleaseDate', '$prisonerJudiciaryTrial', '$prisonerLawyer', '$prisonerCellNo', '$prisonerBehavier', '$prisonerNote')";
-                         if(mysqli_query($con, $sql)){
-                          echo 'New Record is being saved Successfully';
+
+                         if(mysqli_query($con, $sql))
+                         {
+                          $_SESSION['status'] = 'Your Data is saved Successfully ';
+                          $_SESSION['status_code'] = 'success';
                          }
 
                         else{
                           echo mysqli_error($con);
                           // echo 'not working';
-                        }
+                            }
 
-
+                     }
+                    }
 
                         ?>
                   <form class="forms-sample" method="POST" enctype ="multipart/form-data">
@@ -394,6 +368,22 @@
   <script src="../js/dashboard.js"></script>
   <script src="../js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+
+  <script src="../js/sweetalert.min.js"></script>
+
+  <?php   if (isset($_SESSION['status'])){
+
+  }  ?> 
+
+  <script>
+    swal({
+    title: "<?php  echo $_SESSION['status']; ?>",
+  //text: "You clicked the button!",
+    icon: "<?php  echo $_SESSION['status_code']; ?>",
+    button: "OK!",
+});
+  <?php unset($_SESSION['status']); ?>
+  </script>
 </body>
 
 </html>
