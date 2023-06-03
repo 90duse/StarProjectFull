@@ -1,15 +1,15 @@
-//     const  form = document.getElementById("form");
-//     var crimeRegisterDate = document.getElementById("crimeRegisterDate");
-//     var crimeType =  document.getElementById("crimeType");
-//     var crimePlace = document.getElementById("crimePlace");
-//     var crimeVictam = document.getElementById("crimeVictam");
-//     var crimeCriminal = document.getElementById("crimeCriminal");
-//     var crimeOfficer = document.getElementById("crimeOfficer");
-//     var crimeWitness = document.getElementById ("crimeWitness");
-//     var crimeEvidence = doucment.getElementById("crimeEvidence");
-//     var crimeItems = document.getElementById("crimeItems");
-//     var crimeStatus = doucment.getElementById("crimeStatus");
-//     var crimeNote = document.getElementById("crimeNote");
+    const  form = document.getElementById("form");
+    var crimeRegisterDate = document.getElementById("crimeRegisterDate");
+    var crimeType =  document.getElementById("crimeType");
+    var crimePlace = document.getElementById("crimePlace");
+    var crimeVictam = document.getElementById("crimeVictam");
+    var crimeCriminal = document.getElementById("crimeCriminal");
+    var crimeOfficer = document.getElementById("crimeOfficer");
+    var crimeWitness = document.getElementById ("crimeWitness");
+    var crimeEvidence = doucment.getElementById("crimeEvidence");
+    var crimeItems = document.getElementById("crimeItems");
+    var crimeStatus = doucment.getElementById("crimeStatus");
+    var crimeNote = document.getElementById("crimeNote");
 
 // form.addEventListener('submit', e => {
 //     e.preventDefault();
@@ -33,38 +33,38 @@
 //     formControl.classlist.remove('error');
 //}
 
-// function validateInput(){
-//     const  crime = document.form['myForm']['name'].value;
-//     alert(crime);
-//     //const crRegisterDate = crimeRegisterDate.value.trim();
-//     //var crimeType =  document.getElementById("crimeType").value;
-//     // const crType = crimeType.value.trim();
-//     // const crPlace = crimePlace.value.trim();
-//     // const crVictam = crimeVictam.value.trim();
-//     // const crCriminal = crimeCriminal.value.trim();
-//     // const crOfficer = crimeOfficer.value.trim();
-//     // const crWitness = crimeWitness.value.trim();
-//     // const crEvidence =  crimeEvidence.value.trim();
-//     // const crItems = crimeItems.value.trim();
-//     // const crStatus =  crimeStatus.value.trim();
-//     // const crNote = crimeNote.value.trim();
+function validateInput(){
+    const  crime = document.form['myForm']['crimevictam'].value;
+    alert(crime);
+    //const crRegisterDate = crimeRegisterDate.value.trim();
+    //var crimeType =  document.getElementById("crimeType").value;
+    // const crType = crimeType.value.trim();
+    // const crPlace = crimePlace.value.trim();
+    // const crVictam = crimeVictam.value.trim();
+    // const crCriminal = crimeCriminal.value.trim();
+    // const crOfficer = crimeOfficer.value.trim();
+    // const crWitness = crimeWitness.value.trim();
+    // const crEvidence =  crimeEvidence.value.trim();
+    // const crItems = crimeItems.value.trim();
+    // const crStatus =  crimeStatus.value.trim();
+    // const crNote = crimeNote.value.trim();
 
-//     if (crime == "" ){
-//        alert (crime );
-//     } else {
+    if (typeof(crime) !== "string"){
+       alert ('This canot be used');
+    } else {
        
-//     }
-
-
-// };
-
-function validateForm() {
-    let x = document.forms["myForm"]["crimetype"].value;
-    if (x == "") {
-      alert("Name must be filled out");
-      return false;
     }
-  }
+
+
+};
+
+// function validateForm() {
+//     let x = document.forms["myForm"]["crimetype"].value;
+//     if (x == "") {
+//       alert("Name must be filled out");
+//       return false;
+//     }
+//   }
 
 
 // function validate(){
