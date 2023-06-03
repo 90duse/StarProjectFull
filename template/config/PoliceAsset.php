@@ -83,42 +83,56 @@
                     $itemNote = '';
                     $deliveryName = '';
 
-                    //if($_SERVER["REQUEST_METHOD"] == "POST"){
+                   
+                      if($_SERVER["REQUEST_METHOD"] == "POST")
+                      {
 
-                      if(isset($_POST["btnsubmit"])){
+                          if(empty($_POST['assetdate']) && empty($_POST['itemname']) && empty($_POST['itemheight'])
+                              && empty($_POST['itemcolor']) && empty($_POST['itemweight']) && empty($_POST['itemquantity'])
+                              && empty($_POST['itemcategory']) && empty($_POST['storenumber']) && empty($_POST['guardingid']) 
+                              && empty($_POST['guardingname']) && empty($_POST['itemcondition']) && empty($_POST['itemnote']) 
+                              && empty($_POST['deliveryname'])  )
+                              { 
+                                //exit(); 
+                                $_SESSION['status'] = 'All fields Must be Filled, They canot be empty ';
+                                $_SESSION['status_code'] = 'error';
+                              } 
+                          else {
 
-                     
-
-                      //echo "working";
-                      //$assetID = $_POST['assetid'];
-                      @$register_date = $_POST['assetdate'];
-                      @$itemName = $_POST['itemname'];
-                      @$itemHight = $_POST['itemheight'];
-                      @$itemColor = $_POST['itemcolor'];
-                      @$itemWeight = $_POST['itemweight'];
-                      @$itemQuantity = $_POST['itemquantity'];
-                      @$itemCatogery = $_POST['itemcategory'];
-                      @$storeNumber = $_POST['storenumber'];
-                      @$guardingName = $_POST['guardingname'];
-                      @$guardingID = $_POST['guardingid'];
-                      @$itemCondition =$_POST['itemcondition'];
-                      @$itemNote = $_POST['itemnote'];
-                      @$deliveryName = $_POST['deliveryname'];
-
+                          if(isset($_POST["btnsubmit"]))
+                          {
+                          //echo "working";
+                          //$assetID = $_POST['assetid'];
+                          @$register_date = $_POST['assetdate'];
+                          @$itemName = $_POST['itemname'];
+                          @$itemHight = $_POST['itemheight'];
+                          @$itemColor = $_POST['itemcolor'];
+                          @$itemWeight = $_POST['itemweight'];
+                          @$itemQuantity = $_POST['itemquantity'];
+                          @$itemCatogery = $_POST['itemcategory'];
+                          @$storeNumber = $_POST['storenumber'];
+                          @$guardingName = $_POST['guardingname'];
+                          @$guardingID = $_POST['guardingid'];
+                          @$itemCondition =$_POST['itemcondition'];
+                          @$itemNote = $_POST['itemnote'];
+                          @$deliveryName = $_POST['deliveryname'];
+                          }
                       $sql = "INSERT INTO `assetregistration_table` (`id`, `item_Register_Date`, `Item_Name`, `item_Hight`, `item_Color`, `item_Weight`, `item_Quantity`, `item_Catogery`, `Store_Number`, `Guarding_Name`, `Guarding_Police_ID`, `item_Condition`, `item_Note`, `item_Delivery`)
                       VALUES ('', '$register_date', '$itemName', '$itemHight', '$itemColor', '$itemWeight', '$itemQuantity', '$itemCatogery', '$storeNumber', '$guardingName', '$guardingID', '$itemCondition', '$itemNote', '$deliveryName')";
                    
-                          if (mysqli_query($con, $sql)) {
+                          if (mysqli_query($con, $sql)) 
+                          {
                                //echo "New record created successfully";
                                //echo $successMessage ;
                                $_SESSION['status'] = 'Congrates! You Added New Data ' ;
                                $_SESSION['status_code'] = 'success';
-                         } else {
+                          } 
+                          else {
                                echo mysqli_error($con);
-                         }   
-                      } 
+                              }   
                      
-                   // }
+                    }
+                  }
                     ?>
                  
                   <form class="forms-sample" action="#" method ="POST" >
