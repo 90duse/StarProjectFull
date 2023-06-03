@@ -65,7 +65,7 @@
                   <h4 class="card-title text-center">Police Record</h4>
                   <?php   
                     include '../config.php';
-                      @$RegisterDate= "";
+                      @$RegisterDate = "";
                       @$PoliceFullname = "";
                       @$PoliceHeight= "";
                       @$PoliceAge = "";
@@ -83,41 +83,59 @@
                       @$PoliceRank = "";
                       @$PoliceNote = "";
                       
+                      if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-                    if(isset($_GET['btnpoliceRecord'])){
+                        if(empty($_POST['pregisterdate']) && empty($_POST['pfullname']) && empty($_POST['pheight'])
+                        && empty($_POST['page']) && empty($_POST['pweight']) && empty($_POST['pdateofbirth'])
+                        && empty($_POST['pplaceofbirth']) && empty($_POST['paddress']) && empty($_POST['ptelephone'])
+                        && empty($_POST['pemail']) && empty($_POST['pmothername']) && empty($_POST['pid'])
+                        && empty($_POST['peducationlevel']) && empty($_POST['pmarriagestatus']) && empty($_POST['pmedicalstatus']) 
+                        && empty($_POST['ptrainedspot']) && empty($_POST['prank']) && empty($_POST['pnote'])) 
+                        {
+                          //exit(); 
+                          $_SESSION['status'] = 'They canot be empty ';
+                          $_SESSION['status_code'] = 'error';
+                      
+                        } else {
+
+                     
+                    if(isset($_POST['btnpoliceRecord'])){
                       //echo 'working';
-                      //$ID = $_GET['pid'];
-                      @$RegisterDate = $_GET['pregisterdate'];
-                      @$PoliceFullname = $_GET['pfullname'];
-                      @$PoliceHeight= $_GET['pheight'];
-                      @$PoliceAge = $_GET['page'];
-                      @$PoliceWeight = $_GET['pweight'];
-                      @$PoliceBirthDate = $_GET['pdateofbirth'];
-                      @$PolicePlaceOfBirth = $_GET['pplaceofbirth'];
-                      @$PoliceAddress = $_GET['paddress'];
-                      @$PolicePhone = $_GET['ptelephone'];
-                      @$PoliceEmail = $_GET['pemail'];
-                      @$PoliceParentName = $_GET['pmothername'];
-                      @$PoliceEducation = $_GET['peducationlevel'];
-                      @$PoliceMarriageStatus = $_GET['pmarriagestatus'];
-                      @$PoliceMedicalStatus = $_GET['pmedicalstatus'];
-                      @$PoliceTrainingSpot = $_GET['ptrainedspot'];
-                      @$PoliceRank = $_GET['prank'];
-                      @$PoliceNote = $_GET['pnote'];
+                      //$ID = $_POST['pid'];
+                      @$RegisterDate = $_POST['pregisterdate'];
+                      @$PoliceFullname = $_POST['pfullname'];
+                      @$PoliceHeight= $_POST['pheight'];
+                      @$PoliceAge = $_POST['page'];
+                      @$PoliceWeight = $_POST['pweight'];
+                      @$PoliceBirthDate = $_POST['pdateofbirth'];
+                      @$PolicePlaceOfBirth = $_POST['pplaceofbirth'];
+                      @$PoliceAddress = $_POST['paddress'];
+                      @$PolicePhone = $_POST['ptelephone'];
+                      @$PoliceEmail = $_POST['pemail'];
+                      @$PoliceParentName = $_POST['pmothername'];
+                      @$PoliceEducation = $_POST['peducationlevel'];
+                      @$PoliceMarriageStatus = $_POST['pmarriagestatus'];
+                      @$PoliceMedicalStatus = $_POST['pmedicalstatus'];
+                      @$PoliceTrainingSpot = $_POST['ptrainedspot'];
+                      @$PoliceRank = $_POST['prank'];
+                      @$PoliceNote = $_POST['pnote'];
                       
                     }
+                 
                     $sql = "INSERT INTO `PoliceRegistration_table` (`p_ID`, `p_registration_date`, `p_fullname`, `p_height`, `p_Age`, `p_weight`, `p_dateOf_Birth`, `p_placeOf_Birth`, `p_address`, `p_phone`, `p_email`, `p_mothers_name`, `p_education`, `p_trained_spot`, `p_marriage_status`, `p_medical_status`, `p_rank`, `p_note`)
                     VALUES (' ', '$RegisterDate', '$PoliceFullname', '$PoliceHeight', '$PoliceAge', '$PoliceWeight', '$PoliceBirthDate', '$PolicePlaceOfBirth', '$PoliceAddress', '$PolicePhone', '$PoliceEmail', '$PoliceParentName', '$PoliceEducation', '$PoliceTrainingSpot', '$PoliceMarriageStatus', '$PoliceMedicalStatus', '$PoliceRank', '$PoliceNote ')";
                  
                     if(mysqli_query($con, $sql)){
-                      echo "New record created successfully";
+                          $_SESSION['status'] = 'Your Data is Saved Succcessfully ';
+                          $_SESSION['status_code'] = 'success';
                     } else {
                       echo mysqli_error($con);
                     }
 
-
+                  }
+                }
                     ?>
-                  <form class="forms-sample" method='GET'>
+                  <form class="forms-sample" method='POST'>
                   <div class="container">
                       <div class="row">
                         <div class="col-lg-6">
@@ -130,7 +148,7 @@
                                       <label for="exampleInputUsername1" class=" text text-secondary">Register Date</label>
                                   </div>
                                     <div class="col">
-                                    <input type="date" class="form-control" id="#" name='pregisterdate' placeholder="date" Required>
+                                    <input type="date" class="form-control" id="#" name='pregisterdate' placeholder="date">
                                     </div>
                               </div> 
                           </div>
@@ -287,6 +305,21 @@
   <script src="../js/dashboard.js"></script>
   <script src="../js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+  <script src="../js/sweetalert.min.js"></script>
+
+  <?php   if (isset($_SESSION['status'])){
+
+  }  ?> 
+
+  <script>
+    swal({
+    title: "<?php  echo $_SESSION['status']; ?>",
+  //text: "You clicked the button!",
+    icon: "<?php  echo $_SESSION['status_code']; ?>",
+    button: "OK!",
+});
+  <?php unset($_SESSION['status']); ?>
+  </script>
 </body>
 
 </html>
