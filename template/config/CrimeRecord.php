@@ -117,43 +117,15 @@
                             }
                               @$CASEID = test_input($_POST['crimeid']);
                               @$crimeRegisterDate = test_input($_POST['crimeregisterdate']);
-                              
-                              // if(!preg_match("/^['a-zA-Z']*$/", $crimeType)){
-                              //    $_SESSION['status'] = 'Crimetype!! Only letters and white spcae is allowed' ;
-                              //    $_SESSION['status_code'] = 'error';
-                              //    //echo 'Only letters and white space is allowed';
-                              //     } 
                               @$crimePlace= test_input($_POST['crimeplace']);
-                            
-
                               @$crimeVictam = test_input($_POST['crimevictam']);
                               if(!preg_match("/^['a-zA-Z']*$/", $crimeVictam)){
-                                $_SESSION['status'] = 'Crime Type - Only letters and white spcae is allowed' ;
+                                $_SESSION['status'] = 'Crime Victam - Only letters and white spcae is allowed' ;
                                 $_SESSION['status_code'] = 'error';
                                 echo 'Only letters and white space is allowed';
    
-                                 } 
-                              @$crimeCriminal = test_input($_POST['crimecriminal']);
-                              if(!preg_match("/^['a-zA-Z']*$/", $crimeCriminal)){
-                                $_SESSION['status'] = 'Crime Type - Only letters and white spcae is allowed' ;
-                                $_SESSION['status_code'] = 'error';
-                                echo 'Only letters and white space is allowed';
-   
-                                 } 
-                              @$crimeOfficer = test_input($_POST['crimeofficer']);
-                              if(!preg_match("/^['a-zA-Z']*$/", $crimeOfficer)){
-                                $_SESSION['status'] = 'Crime Type - Only letters and white spcae is allowed' ;
-                                $_SESSION['status_code'] = 'error';
-                                echo 'Only letters and white space is allowed';
-   
-                                 } 
-                              @$crimeWitness = test_input($_POST['crimewitness']);
-                              if(!preg_match("/^['a-zA-Z']*$/", $crimeWitness)){
-                                $_SESSION['status'] = 'Crime Type - Only letters and white spcae is allowed' ;
-                                $_SESSION['status_code'] = 'error';
-                                echo 'Only letters and white space is allowed';
-   
-                                 } 
+                                 }
+                          
                               @$crimeEvidence = test_input($_POST['crimeevidence']);
 
                               @$crimeItems = test_input($_POST['crimeitems']);
@@ -226,12 +198,12 @@
                       <div class="row">
                         <div class="col-lg-6 " >
                         <?php   
-                            if(!preg_match("/^['a-zA-Z']*$/", $crimeType)){
-                             $_SESSION['status'] = 'Only letters and white spcae is allowed' ;
-                             $_SESSION['status_code'] = 'error';
-                             echo 'Only letters and white space is allowed';
+                            // if(!preg_match("/^['a-zA-Z']*$/", $crimeType)){
+                            //  $_SESSION['status'] = 'Only letters and white spcae is allowed' ;
+                            //  $_SESSION['status_code'] = 'error';
+                            //  echo 'Only letters and white space is allowed';
 
-                              } 
+                            //   } 
                                 
                               ?>
                         <label for="exampleInputUsername1"></label>
@@ -239,12 +211,13 @@
                         <div class="error"></div>
                         </div>
                         <div class="col-lg-6">
-                          <?php   if(!preg_match("/^['a-zA-Z']*$/", $crimePlace)){
-                                $_SESSION['status'] = 'Crime Place - Only letters and white spcae is allowed' ;
-                                $_SESSION['status_code'] = 'error';
-                                echo 'Only letters and white space is allowed';
+                          <?php   
+                              //  if(!preg_match("/^['a-zA-Z']*$/", $crimePlace)){
+                              //   $_SESSION['status'] = 'Crime Place - Only letters and white spcae is allowed' ;
+                              //   $_SESSION['status_code'] = 'error';
+                              //   echo 'Only letters and white space is allowed';
    
-                                 } 
+                              //    } 
                           
                           ?>
                         <label for="exampleInputUsername1"></label>
@@ -253,12 +226,13 @@
                       </div>
                       <div class="row">
                         <div class="col-lg-6">
-                        <?php   if(!preg_match("/^['a-zA-Z']*$/", $crimeVictam)){
-                                $_SESSION['status'] = 'Crime Victam- Only letters and white spcae is allowed' ;
-                                $_SESSION['status_code'] = 'error';
-                                echo 'Only letters and white space is allowed';
+                        <?php  
+                        //  if(!preg_match("/^['a-zA-Z']*$/", $crimeVictam)){
+                        //         $_SESSION['status'] = 'Crime Victam- Only letters and white spcae is allowed' ;
+                        //         $_SESSION['status_code'] = 'error';
+                        //         echo 'Only letters and white space is allowed';
    
-                                 } 
+                        //          } 
                           
                           ?>
                         <label for="exampleInputUsername1"></label>
