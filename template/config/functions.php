@@ -1,14 +1,17 @@
 <?php
 // PHP program to pop an alert
 // message box on the screen
-function function_alert($message) {
-	
-	// Display the alert box
-	echo "<script>alert('$message');</script>";
+// 
+
+class  myInputs {
+	static $errors = true;
+
+static function str($val) {
+	if (!is_string($val)) {
+		self::throwError('Invalid String', 902);
+	}
+	$val = trim(htmlspecialchars($val));
+	return $val;
 }
-
-
-// Function call
-function_alert("You successfully Deleted");
-
+}
 ?>
