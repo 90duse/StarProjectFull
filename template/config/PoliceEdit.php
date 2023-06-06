@@ -259,7 +259,7 @@
                      
                  </div>
                      <button type="submit" class="btn btn-primary mt-2" name= 'btnpoliceRecord'>Submit</button>
-                     <button class="btn btn-light">Cancel</button>
+                     <a href="viewPoliceRecord.php"  class="btn btn-danger">BACK</a>
                  </form>
                </div>
              </div>
