@@ -1,4 +1,4 @@
-
+ 
 <!DOCTYPE html>
  <html lang="en">
  <head>
@@ -22,6 +22,12 @@
   <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../images/favicon.png" />
+
+  <!-- data table plugins -->
+  <link rel="stylesheet" href="../css/dataTables.bootstrap5.min.css">
+  <link href="../DataTables/DataTables-1.13.4/css/datatables.bootstrap5.min.css" rel="stylesheet"/>
+  <link href="../DataTables/DataTables-1.13.4/css/bootstrap.min.css" rel="stylesheet"/>
+
 </head>
 <body class="">
 
@@ -34,7 +40,7 @@
       </div>
     </div>
           <!-- partial:partials/_navbar.html -->
-        <?php  include "../partials/navbar.php";?>
+         <?php  include "../partials/navbar.php";?>
           <!-- partial -->
           <div class="container-fluid page-body-wrapper">
             <!-- partial:partials/_settings-panel.html -->
@@ -47,194 +53,88 @@
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-            <div class="col-sm-12">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title text-center">Crime View</h4>
+ <!-- data table start-->
+  <div class="container">
+    <div class="row">
+      <div class="col">
+     
+      <form action="" method="POST">
+           <table id="mytable" class="table table-striped" style="width:100%">
+                     <thead>
+                        <tr>
+                          <th>CrimeID</th>
+                          <th>Register Date</th>
+                           <th>Crime Type</th>
+                           <th>Crime Place</th>
+                           <th>Victam</th>
+                           <th>Criminal</th>
+                           <th>Officer</th>
+                           <th>Witness</th>
+                           <th>EVIDENCE</th>
+                           <th>CRIME ITEMS</th>
+                           <th>Crime Status</th>
+                           <th>NOTES</th>
+                           <th>ACTION</th>
+                           <th>ACTION</th>  
+                                 
+                         </tr>
+                       </thead>
+                         <tbody>
+                           <tr>
+                             <?php 
+                                 include '../config.php';
+                                 $result = mysqli_query($con, "SELECT * FROM crimerecord_table " );
+                                   while ($row = mysqli_fetch_assoc($result)){
+                                   $id = $row['cr_id'];
+                              ?>
+                               <td> <?php  echo $id; ?> </td>
+                               <td> <?php  echo $row['cr_registerDate']; ?> </td>
+                               <td> <?php  echo @$row['cr_type'];?> </td>
+                               <td> <?php  echo @$row['cr_place']; ?> </td>
+                               <td> <?php  echo @$row['cr_victam']; ?> </td>
+                               <td> <?php  echo @$row['cr_criminal']; ?> </td>
+                               <td> <?php  echo @$row['cr_officer']; ?> </td>
+                               <td> <?php  echo @$row['cr_witness']; ?> </td>
+                               <td> <?php  echo  @$row['cr_evidence']; ?> </td>
+                               <td> <?php  echo @$row['cr_items']; ?> </td>
+                               <td> <?php  echo @$row['cr_status']; ?> </td>
+                               <td> <?php  echo @$row['cr_note'];  ?> </td>
+                               <td><a href="crimeEdit.php?id=<?php echo $id; ?>"  class="btn btn-success">EDIT</a></td>
+                               <td><a href="crimeDelete.php?id=<?php echo $id; ?>"  class="btn btn-danger btn-delete" id="btndelete">DELETE</a> </td>
+                            </tr>
+                               <?php  
 
-                  <form action="#" method="POST">
-                  <div class="row flex-grow">
-                          <div class="col-12 grid-margin stretch-card">
-                            <div class="card card-rounded">
-                              <div class="card-body">
-                                <div class="d-sm-flex justify-content-between align-items-start">
-                                  <div>
-                                    <!-- <h4 class="card-title card-title-dash">Pending Requests</h4>
-                                   <p class="card-subtitle card-subtitle-dash">You have 50+ new requests</p> -->
-                                  </div>
-                                  <div>
-                                    <a href="CrimeRecord.php"><button class="btn btn-primary btn-lg text-white mb-0 me-0" type="submit">Add new member</button></a>
-                                  </div>
-                                </div>
-                                <div class="table-responsive  mt-1">
-                                  <table class="table select-table table ">
-                                    <thead>
-                                      <tr>
-                                        <!-- <th>
-                                          <div class="form-check form-check-flat mt-0">
-                                            <label class="form-check-label">
-                                              <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
-                                          </div>
-                                        </th> -->
-                                        <th>CrimeID</th>
-                                        <th>Register Date</th>
-                                        <th>Crime Type</th>
-                                        <th>Crime Place</th>
-                                        <th>Victam</th>
-                                        <th>Criminal</th>
-                                        <th>Officer</th>
-                                        <th>Witness</th>
-                                        <th>EVIDENCE</th>
-                                        <th>CRIME ITEMS</th>
-                                        <th>Crime Status</th>
-                                        <th>NOTES</th>
-                                        <th>ACTION</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <?php 
-                                         include '../config.php';
+                                 }
+                               
+                                 ?>
+                             </tbody>
+                             <tfoot>
 
-                                          $result = mysqli_query($con, "SELECT * FROM crimerecord_table " );
-                                          
-
-                                           while ($row = mysqli_fetch_assoc($result)){
-                                            $id = $row['cr_id'];
-                                          
-                                         
-                                          
-                                  
-                                          ?>
-                                          <td>
-                                        <p>
-                                          <?php 
-                                            echo $id;
-                                            //echo $row['cr_id'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo $row['cr_registerDate'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['cr_type'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['cr_place'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['cr_victam'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['cr_criminal'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['cr_officer'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['cr_witness'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo  @$row['cr_evidence'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['cr_items'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['cr_status'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['cr_note']; 
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                          <a href="crimeEdit.php?id=<?php echo $id; ?>"  class="btn btn-success">EDIT</a>
-                                        </td>
-                                        <td>
-                                          <a href="crimeDelete.php?id=<?php echo $id; ?>"  class="btn btn-danger btn-delete" id="btndelete">DELETE</a>
-                                        </td>
-
-                                       
-                                      </tr>
-                                      <?php  
-
-                                        }
-                                      
-                                        ?>
-                                      
-                                       
-                                    </tbody>
-                                  </table>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        </form>
-              </div>
-             </div>
-            </div>
+                         </tfoot>
+                       </table>
+                    
+                      
+                    </div>
+                  </div>
+                </div>
+          </form>
           </div>
+        </div>
+      </div>
+  <!-- data table end -->
+           
+   </div>
         <!-- content-wrapper ends -->
 
-        <!-- partial:partials/_footer.html -->
-        <!-- <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2021. All rights reserved.</span>
-          </div>
-        </footer> -->
-        <!-- partial -->
-      </div>
-      <!-- main-panel ends -->
-    </div>
-    <!-- page-body-wrapper ends -->
+    
+   </div>
+  <!-- main-panel ends -->
   </div>
-  <!-- container-scroller -->
+<!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+
+ 
 
  <!-- plugins:js -->
  <script src="../vendors/js/vendor.bundle.base.js"></script>
@@ -242,7 +142,7 @@
   <!-- Plugin js for this page -->
   <script src="../vendors/chart.js/Chart.min.js"></script>
   <script src="../vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-  <!-- <script src="../vendors/progressbar.js/progressbar.min.js"></script> -->
+  <script src="../vendors/progressbar.js/progressbar.min.js"></script>
 
   <!-- End plugin js for this page -->
   <!-- inject:js -->
@@ -250,105 +150,26 @@
   <script src="../js/hoverable-collapse.js"></script>
   <script src="../js/template.js"></script>
   <script src="../js/settings.js"></script>
-  <script src="../js/todolist.js"></script>
+  <!-- <script src="../js/todolist.js"></script> -->
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="../js/jquery.cookie.js" type="text/javascript"></script>
+  <!-- <script src="../js/jquery.cookie.js" type="text/javascript"></script>
   <script src="../js/dashboard.js"></script>
-  <!-- <script src="../js/Chart.roundedBarCharts.js"></script> -->
+  <script src="../js/Chart.roundedBarCharts.js"></script> -->
   <!-- End custom js for this page-->
 
-  <!-- sweetAlert code -->
-  <script src="../js/sweetalert.min.js"></script>
-  <script src="../js/jquery-3.7.0.min.js"></script>
-  <script src="confirmDelete.js" type="text/javascript"></script>
+ <!-- Data table plugins -->
 
+<script src="../DataTables/jQuery-3.6.0/jquery-3.6.0.js"></script>
+<script src="../DataTables/DataTables-1.13.4/js/jquery.dataTables.min.js"></script>
+<script  src="../DataTables/DataTables-1.13.4/js/dataTables.bootstrap5.min.js"></script>
 
- 
-<script>
-  
-
-$(document).ready(function (){
-  $('#btndelete').on('click', function(e){
-    e.preventDefault();
-    var ID = $(this).val();
-    alert(ID);
-
-    swal({
-  title: "Are You Sure ",
-  text: "Once deleted, you will not be able to recover this file!",
-  icon: "warning",
-  buttons: true,
-  dangerMode: true,
-})
-.then((willDelete) => {
-  if (willDelete) {
-        $.ajax({
-          type: "POST",
-          url: "crimeDelete.php",
-          data:
-          {
-            'id': ID,
-            '#btndelete': true
-
-          },
-  
-          success: function (response) 
-          {
-                if (response == 200) {
-                  swal ("Success!", "Your Data is Deleted", "success");
-
-                  
-                } else if (response == 500){
-                  swal ("Success!", "Your Data is Deleted", "success");
-                }
-           };
-
-    });
-  }
-   
-    });
-
-
-   });
-
+<script> 
+$(document).ready(function () {
+    $('#mytable').DataTable();
 });
-
-
-
-
-//   $('.btndelete').on('click', function(e){
-//     e.preventDefault();
-
-//     const href = $(this).attr('href')
-//     swal ({
-//       type: 'success',
-//     title: 'Your title',
-//     text: 'Your text',
-//     showCancelButton: true,
-//     confirmButtonColor: 'grey',
-//     confirmButtonText: 'Delete Record'
-
-//     }).then ((resul) => { 
-//       if(result.value){
-//         document.location.href = href;
-//       }
-
-//     })
-//   })
-// $(#btnDelete).on('click', function(){
-
-//   swal.fire({
-//     type: 'success',
-//     title: 'Your title',
-//     text: 'Your text'
-// })
-
-// })
-
-
 </script>
+
 </body>
 
 </html>
-
