@@ -1,9 +1,6 @@
 
 $(document).ready(function () {
-  var table = $('#example').DataTable({
-
-  buttons:['Copy', 'pdf', 'csv', 'exel', 'print'] 
-
+  $('#example').DataTable();
 });
 
 // table.buttons().container().appendTo('#example_wrapper.col-md:eq(0)')
