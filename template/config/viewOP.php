@@ -22,6 +22,11 @@
   <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../images/favicon.png" />
+  
+  <!-- data table plugins -->
+  <link rel="stylesheet" href="../css/dataTables.bootstrap5.min.css">
+  <link href="../DataTables/DataTables-1.13.4/css/datatables.bootstrap5.min.css" rel="stylesheet"/>
+  <link href="../DataTables/DataTables-1.13.4/css/bootstrap.min.css" rel="stylesheet"/>
  
 </head>
 <body class="">
@@ -48,271 +53,82 @@
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-            <div class="col-sm-12">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title text-center">View OP Record </h4>
+
+           
                   <form action="#" method="GET">
-                  <div class="row flex-grow">
-                          <div class="col-12 grid-margin stretch-card">
-                            <div class="card card-rounded">
-                              <div class="card-body ">
-                                <div class="d-sm-flex justify-content-between align-items-start">
-                                  <div>
-                                    <!-- <h4 class="card-title card-title-dash">Pending Requests</h4> -->
-                                   <!-- <p class="card-subtitle card-subtitle-dash">You have 50+ new requests</p> -->
-                                  </div>
-                                  <div>
-                                    <a href="CrimeRecord.php"><button class="btn btn-primary btn-lg text-white mb-0 me-0" type="submit">Add new member</button></a>
-                                  </div>
-                                </div>
-                                <div class="table-responsive  mt-1 ">
-                                  <table class="table select-table ">
-                                    
-                                    <thead>
-                                      <tr >
-                                        <!-- <th>
-                                          <div class="form-check form-check-flat mt-0">
-                                            <label class="form-check-label">
-                                              <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
-                                          </div>
-                                        </th> -->
-                                      
-                                        
-                                        <th><strong class =" text text-dark">ID</strong></th>
-                                        <th class="text-dark">RegisterDate</th>
-                                        <th class="text-dark">Fullname</th>
-                                        <th><strong class =" text text-dark">Image</strong></th>
-                                        <th class="text-dark">Height</th>
-                                        <th class="text-dark">Age</th>
-                                        <th class="text-dark">Weight</th>
-                                        <th class="text-dark">DB</th>
-                                        <th class="text-dark">PB</th>
-                                        <th class="text-dark">Address</th>
-                                        <th class="text-dark">Phone</th>
-                                        <th class="text-dark">Mother</th>
-                                        <th class="text-dark">Job</th>
-                                        <th class="text-dark">Reason</th>
-                                        <th class="text-dark">Marriage</th>
-                                        <th class="text-dark">Medicul</th>
-                                        <th class="text-dark">Belongs</th>
-                                        <th class="text-dark">CellNo</th>
-                                        <th class="text-dark">Officer</th>
-                                        <th class="text-dark">Note</th>
-                                        <th class="text-dark">ACTION</th>
-                                        
+                    <table class="table select-table " id="mytable">
+                          
+                          <thead>
+                            <tr >
+                            
+                              <th><strong class =" text text-dark">ID</strong></th>
+                              <th class="text-dark">RegisterDate</th>
+                              <th class="text-dark">Fullname</th>
+                              <th><strong class =" text text-dark">Image</strong></th>
+                              <th class="text-dark">Height</th>
+                              <th class="text-dark">Age</th>
+                              <th class="text-dark">Weight</th>
+                              <th class="text-dark">DB</th>
+                              <th class="text-dark">PB</th>
+                              <th class="text-dark">Address</th>
+                              <th class="text-dark">Phone</th>
+                              <th class="text-dark">Mother</th>
+                              <th class="text-dark">Job</th>
+                              <th class="text-dark">Reason</th>
+                              <th class="text-dark">Marriage</th>
+                              <th class="text-dark">Medicul</th>
+                              <th class="text-dark">Belongs</th>
+                              <th class="text-dark">CellNo</th>
+                              <th class="text-dark">Officer</th>
+                              <th class="text-dark">Note</th>
+                              <th class="text-dark">ACTION</th>
+                              <th class="text-dark">ACTION</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <?php 
+                                include '../config.php';
+                                $result = mysqli_query($con, "SELECT * FROM op_table " );
+                                  while ($row = mysqli_fetch_assoc($result)){
+                                  $opID = $row['op_id'];
+                                ?>
+                                <td><?php echo $opID; ?></td>
+                                <td><?php echo $row['op_register_date']; ?></td>
+                                <td><?php echo @$row['op_fullname']; ?></td>
+                                <td><?php echo $row['op_image']; ?></td>
+                                <td><?php echo @$row['op_height']; ?></td>
+                                <td><?php echo @$row['op_age']; ?></td>
+                                <td><?php echo @$row['op_weight']; ?></td>
+                                <td><?php echo @$row['op_dateof_birth']; ?></td>
+                                <td><?php echo @$row['op_placeof_birth'];?></td>
+                                <td><?php echo @$row['op_mothers_name'];  ?></td>
+                                <td><?php echo  @$row['op_address']; ?></td>
+                                <td><?php echo @$row['op_tellephone']; ?></td>
+                                <td><?php echo @$row['op_job'];  ?></td>
+                                <td><?php echo @$row['op_reason'];  ?></td>
+                                <td><?php echo @$row['op_marriage_status'];  ?></td>
+                                <td><?php echo @$row['op_medical_status'];  ?></td> 
+                                <td><?php echo @$row['op_personal_belongs'];   ?></td>
+                                <td><?php echo @$row['op_cell_no'];   ?></td>
+                                <td><?php echo @$row['op_officer'];  ?></td>
+                                <td><?php echo @$row['op_notes'];   ?></td>
+                                <td> <a href="OPEdit.php?id=<?php echo $opID; ?>"  class="btn btn-success">EDIT</a></td>
+                                <td> <a href="OPDelete.php?id=<?php echo $opID; ?>"  class="btn btn-danger">DELETE</a></td>
+                           
+                            </tr>
+                           <?php } ?>
+                        </tbody>
+                        <tfoot>
 
-                                        
-                                      </tr>
-                                      
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <?php 
-                                         include '../config.php';
-
-                                      
-
-                                          $result = mysqli_query($con, "SELECT * FROM op_table " );
-                                          
-
-                                           while ($row = mysqli_fetch_assoc($result)){
-                                            $opID = $row['op_id'];
-                                          
-                                         
-                                          ?>
-                                         
-                                          <td>
-                                        <p>
-                                          <?php 
-                                            echo $opID;
-                                           
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo $row['op_register_date'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['op_fullname'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo $row['op_image'];
-                                           
-                                          ?>
-                                        </p>
-                                        </td>
-                                       
-                                        
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['op_height'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['op_age'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['op_weight'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['op_dateof_birth'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['op_placeof_birth'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['op_mothers_name']; 
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo  @$row['op_address'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['op_tellephone'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        
-                                        
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['op_job']; 
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['op_reason']; 
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['op_marriage_status']; 
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['op_medical_status']; 
-                                          ?>
-                                        </p>
-                                        </td>
-                                        
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['op_personal_belongs']; 
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['op_cell_no']; 
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['op_officer']; 
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['op_notes']; 
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                          <a href="OPEdit.php?id=<?php echo $opID; ?>"  class="btn btn-success">EDIT</a>
-                                        </td>
-                                        <td>
-                                          <a href="OPDelete.php?id=<?php echo $opID; ?>"  class="btn btn-danger">DELETE</a>
-                                          
-                                        </td>
-                                        <td>
-                                        
-                                      
-                                        
-                                        </td>
-
-                                       
-                                      </tr>
-                                      <?php  
-
-
-                                        }
-
-                                      
-                                        ?>
-                                    </tbody>
-                                  </table>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        </form>
+                        </tfoot>
+                    </table>
+                  </form>
               </div>
-             </div>
-            </div>
-          </div>
         <!-- content-wrapper ends -->
+        <!-- footer start -->
 
-        <!-- partial:partials/_footer.html -->
-        <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2021. All rights reserved.</span>
-          </div>
-        </footer>
-        <!-- partial -->
+        <!-- footer end -->
       </div>
       <!-- main-panel ends -->
     </div>
@@ -342,6 +158,19 @@
   <script src="../js/Chart.roundedBarCharts.js"></script>
  
   <!-- End custom js for this page-->
+   <!-- Data table plugins -->
+
+<script src="../DataTables/jQuery-3.6.0/jquery-3.6.0.js"></script>
+<script src="../DataTables/DataTables-1.13.4/js/jquery.dataTables.min.js"></script>
+<script  src="../DataTables/DataTables-1.13.4/js/dataTables.bootstrap5.min.js"></script>
+
+<script> 
+$(document).ready(function () {
+    $('#mytable').DataTable({
+      scrollX: true,
+    });
+});
+</script>
 </body>
 
 </html>
