@@ -165,7 +165,9 @@
 
 <script> 
 $(document).ready(function () {
-    $('#mytable').DataTable();
+    $('#mytable').DataTable({
+      scrollX: true,
+    });
 });
 </script>
 
