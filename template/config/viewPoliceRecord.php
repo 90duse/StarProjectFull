@@ -22,6 +22,10 @@
   <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../images/favicon.png" />
+   <!-- data table plugins -->
+  <link rel="stylesheet" href="../css/dataTables.bootstrap5.min.css">
+  <link href="../DataTables/DataTables-1.13.4/css/datatables.bootstrap5.min.css" rel="stylesheet"/>
+  <link href="../DataTables/DataTables-1.13.4/css/bootstrap.min.css" rel="stylesheet"/>
  
 </head>
 <body class="">
@@ -48,245 +52,74 @@
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-            <div class="col-sm-12">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title text-center">Police Record View</h4>
                   <form action="#" method="GET">
-                  <div class="row flex-grow">
-                          <div class="col-12 grid-margin stretch-card">
-                            <div class="card card-rounded">
-                              <div class="card-body">
-                                <div class="d-sm-flex justify-content-between align-items-start">
-                                  <div>
-                                    <h4 class="card-title card-title-dash">Pending Requests</h4>
-                                   <p class="card-subtitle card-subtitle-dash">You have 50+ new requests</p>
-                                  </div>
-                                  <div>
-                                    <a href="CrimeRecord.php"><button class="btn btn-primary btn-lg text-white mb-0 me-0" type="submit">Add new member</button></a>
-                                  </div>
-                                </div>
-                                <div class="table-responsive  mt-1">
-                                  <table class="table select-table">
-                                    <thead>
-                                      <tr>
-                                        <!-- <th>
-                                          <div class="form-check form-check-flat mt-0">
-                                            <label class="form-check-label">
-                                              <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
-                                          </div>
-                                        </th> -->
-                                        <th>PoliceID</th>
-                                        <th>RegisterDate</th>
-                                        <th>Fullname</th>
-                                        <th>Height</th>
-                                        <th>Age</th>
-                                        <th>Weight</th>
-                                        <th>DB</th>
-                                        <th>PB</th>
-                                        <th>Address</th>
-                                        <th>Phone</th>
-                                        <th>Email</th>
-                                        <th>Mother</th>
-                                        <th>Education</th>
-                                        <th>Trained</th>
-                                        <th>Marriage</th>
-                                        <th>Medicul</th>
-                                        <th>Rank</th>
-                                        <th>Note</th>
-                                        <th>sweetalert</th>
+                    <table class="table select-table" id="mytable">
+                      <thead>
+                        <tr>
+                          <th class="text text-dark">ID</th>
+                          <th class="text text-dark">RegisterDate</th>
+                          <th class="text text-dark">Fullname</th>
+                          <th class="text text-dark">Height</th>
+                          <th class="text text-dark">Age</th>
+                          <th class="text text-dark">Weight</th>
+                          <th class="text text-dark">DB</th>
+                          <th class="text text-dark">PB</th>
+                          <th class="text text-dark">Address</th>
+                          <th class="text text-dark">Phone</th>
+                          <th class="text text-dark">Email</th>
+                          <th class="text text-dark">Mother</th>
+                          <th class="text text-dark">Education</th>
+                          <th class="text text-dark">Trained</th>
+                          <th class="text text-dark">Marriage</th>
+                          <th class="text text-dark">Medicul</th>
+                          <th class="text text-dark">Rank</th>
+                          <th class="text text-dark">Note</th>
+                          <th class="text text-dark">Edit</th>
+                          <th class="text text-dark">Delete</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <?php 
+                            include '../config.php';
+                            $result = mysqli_query($con, "SELECT * FROM policeregistration_table" );
+                              while ($row = mysqli_fetch_assoc($result)){
+                              $policeID = $row['p_ID'];
+                            ?>
+                            <td><?php echo  $policeID; ?></td>
+                            <td><?php echo $row['p_registration_date']; ?></td>
+                            <td><?php echo @$row['p_fullname']; ?></td>
+                            <td><?php echo @$row['p_height']; ?></td>
+                            <td><?php echo @$row['p_Age']; ?></td>
+                            <td><?php echo @$row['p_weight']; ?></td>
+                            <td><?php echo @$row['p_dateOf_Birth']; ?></td>
+                            <td><?php echo @$row['p_placeOf_Birth']; ?></td>
+                            <td><?php echo  @$row['p_address']; ?></td>
+                            <td><?php echo @$row['p_phone']; ?></td>
+                            <td><?php echo @$row['p_email']; ?></td>
+                            <td><?php echo @$row['p_mothers_name'];  ?></td>
+                            <td><?php echo @$row['p_education'];  ?></td>
+                            <td><?php echo @$row['p_trained_spot'];?></td>
+                            <td><?php echo @$row['p_marriage_status']; ?></td>
+                            <td><?php echo @$row['p_medical_status'];  ?></td>
+                            <td><?php echo @$row['p_rank'];  ?></td>
+                            <td><?php echo @$row['p_note']; ?></td>
+                            <td><a href="PoliceEdit.php?id=<?php echo $policeID; ?>"  class="btn btn-success">EDIT</a></td>
+                            <td><a href="PoliceDelete.php?ID=<?php echo $policeID; ?>"  class="btn btn-danger">DELETE</a></td>
+                        </tr>
+                        <?php } ?>
+                      </tbody>
+                      <tfoot>
 
-
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <?php 
-                                         include '../config.php';
-
-                                      
-
-                                          $result = mysqli_query($con, "SELECT * FROM policeregistration_table" );
-                                          
-
-                                           while ($row = mysqli_fetch_assoc($result)){
-                                            $policeID = $row['p_ID'];
-                                          
-                                         
-                                          
-                                  
-                                          ?>
-                                          <td>
-                                        <p>
-                                          <?php 
-                                            echo $policeID;
-                                           
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo $row['p_registration_date'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['p_fullname'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['p_height'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['p_Age'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['p_weight'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['p_dateOf_Birth'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['p_placeOf_Birth'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo  @$row['p_address'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['p_phone'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['p_email'];
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['p_mothers_name']; 
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['p_education']; 
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['p_trained_spot']; 
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['p_marriage_status']; 
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['p_medical_status']; 
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['p_rank']; 
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                        <p>
-                                          <?php 
-                                            echo @$row['p_note']; 
-                                          ?>
-                                        </p>
-                                        </td>
-                                        <td>
-                                          <a href="PoliceEdit.php?id=<?php echo $policeID; ?>"  class="btn btn-success">EDIT</a>
-                                        </td>
-                                        <td>
-                                          <a href="PoliceDelete.php?ID=<?php echo $policeID; ?>"  class="btn btn-danger">DELETE</a>
-                                          
-                                        </td>
-                                        <td>
-                                        
-                                      
-                                        
-                                        </td>
-
-                                       
-                                      </tr>
-                                      <?php  
-
-
-                                        }
-
-                                      
-                                        ?>
-                                    </tbody>
-                                  </table>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        </form>
-              </div>
-             </div>
-            </div>
+                      </tfoot>
+                    </table>
+                </form>
           </div>
         <!-- content-wrapper ends -->
 
-        <!-- partial:partials/_footer.html -->
-        <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2021. All rights reserved.</span>
-          </div>
-        </footer>
-        <!-- partial -->
+        <!-- footer start -->
+
+        <!-- footer end -->
       </div>
       <!-- main-panel ends -->
     </div>
@@ -316,6 +149,19 @@
   <script src="../js/Chart.roundedBarCharts.js"></script>
  
   <!-- End custom js for this page-->
+    <!-- Data table plugins -->
+
+  <script src="../DataTables/jQuery-3.6.0/jquery-3.6.0.js"></script>
+  <script src="../DataTables/DataTables-1.13.4/js/jquery.dataTables.min.js"></script>
+  <script  src="../DataTables/DataTables-1.13.4/js/dataTables.bootstrap5.min.js"></script>
+
+  <script> 
+  $(document).ready(function () {
+      $('#mytable').DataTable({
+        scrollX: true,
+      });
+  });
+  </script>
 </body>
 
 </html>
