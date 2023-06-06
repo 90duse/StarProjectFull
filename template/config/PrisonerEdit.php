@@ -27,10 +27,8 @@
   <link rel="shortcut icon" href="../images/favicon.png" />
 </head>
 <body class="">
-
   
-   
-      <div class="main-panel">
+  <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
             <div class="col-sm-12">
@@ -38,106 +36,103 @@
                 <div class="card-body">
                   <h4 class="card-title text-center">Prison Record</h4>
                       <?php    
-                        include '../config.php';
-                        $ID = '';
-                        $RegisterDate = '';
-                        $prisonerFullname = '';
-                        $prisonerHeight= '';
-                        $prisonerAge = '';
-                        $prisonerWeight = '';
-                        $prisonerBirthDate = '';
-                        $prisonerPlaceOfBirth = '';
-                        $prisonerAddress = '';
-                        $prisonerPhone = '';
-                        $prisonerEmail = '';
-                        $prisonerParentName = '';
-                        $prisonerEducation = '';
-                        $prisonerCrimeType = '';
-                        $prisonerMarriageStatus = '';
-                        $prisonerSentencePeriod = '';
-                        $prisonerMedicalStatus = '';
-                        $prisonerPersonalBelongs = '';
-                        $prisonerReleaseDate = '';
-                        $prisonerJudiciaryTrial = '';
-                        $prisonerLawyer = '';
-                        $prisonerCellNo = '';
-                        $prisonerBehavier= '';
-                        $prisonerNote =  '';
-                        $prisonerPhoto ='';
+                        include '../config.php'; // connection
+
+                        // variable declaration
+                        $ID =  $RegisterDate = $prisonerFullname = $prisonerHeight= $prisonerAge =  $prisonerWeight = 
+                        $prisonerBirthDate =  $prisonerPlaceOfBirth =  $prisonerAddress =  $prisonerPhone = 
+                        $prisonerEmail =   $prisonerParentName = $prisonerEducation =  $prisonerCrimeType = 
+                        $prisonerMarriageStatus =  $prisonerSentencePeriod =  $prisonerMedicalStatus = 
+                        $prisonerPersonalBelongs = $prisonerReleaseDate = $prisonerJudiciaryTrial = $prisonerLawyer =
+                        $prisonerCellNo =  $prisonerBehavier= $prisonerNote =  $prisonerPhoto = '';
                         $successMessage = 'New Record is being saved Successfully';
-                        if(isset($_GET['id'])){
-                          $id = $_GET['id'];
+    
+                          if(isset($_GET['id']))
+                          {
+                            $id = $_GET['id'];
+
+                            $sql = "SELECT * FROM `prisonerrecord` where pri_id ='$id'";
+                            $result = mysqli_query($con, $sql);
+                            if(mysqli_num_rows($result) > 0)
+                            {
+                              while ( $row = mysqli_fetch_assoc($result))
+                              {
+                                // declare variables to read form the data base
+                                @$ID = $row['pri_id'];
+                                @$RegisterDate = $row['pri_registerdate'];
+                                @$pri_Fullname = $row['pri_fullname'];
+                                @$pri_Height= $row['pri_height'];
+                                @$pri_Age = $row['pri_age'];
+                                @$pri_Weight = $row['pri_weight'];
+                                @$pri_BirthDate = $row['pri_dateof_birth'];
+                                @$pri_PlaceOfBirth = $row['pri_placeof_birth'];
+                                @$pri_Address = $row['pri_address'];
+                                @$pri_Phone = $row['pri_tellephone'];
+                                @$pri_Email = $row['pri_email'];
+                                @$pri_ParentName = $row['pri_mothers_name'];
+                                @$pri_Education = $row['pri_education'];
+                                @$pri_CrimeType = $row['pri_crimeType'];
+                                @$pri_MarriageStatus = $row['pri_marriage'];
+                                @$pri_SentencePeriod = $row['pri_sentenceperiod'];
+                                @$pri_MedicalStatus = $row['pri_medicalStatus'];
+                                @$pri_PersonalBelongs = $row['pri_personalBelongs'];
+                                @$pri_ReleaseDate = $row['pri_releaseDay'];
+                                @$pri_JudiciaryTrial =$row['pri_trial'];
+                                @$pri_Lawyer = $row['pri_lawyer'];
+                                @$pri_CellNo = $row['pri_cellNo'];
+                                @$pri_Behavier=$row['pri_behavier'];
+                                @$pri_Note = $row['pri_note'];
+                               // @$pri_image = $row['pri_image'];
+                                // @$pri_Image = $_FILES['prisonerimage']['name'];
+                                // $tmp_name = $_FILES['prisonerimage']['tmp_name'];
+                                // $imageLocation = "../images/"; 
+                             }
+                           }
+                          }  
+
+                        //  if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+                        //   if(empty($_POST['prisonerregisterdate']) && empty($_POST['prisonerfullname']) && empty($_POST['prisonerheight'])
+                        //   && empty($_POST['prisonerage']) && empty($_POST['prisonerweight']) && empty($_POST['prisonerdateofbirth'])
+                        //   && empty($_POST['prisonerplaceofbirth']) && empty($_POST['prisoneraddress']) && empty($_POST['prisonertellephone'])
+                        //   && empty($_POST['prisoneremail']) && empty($_POST['prisonermothername']) && empty($_POST['prisonerid'])
+                        //   && empty($_POST['prisonereducationlevel']) && empty($_POST['prisonermarriagestatus']) && empty($_POST['prisonermedicalstatus']) 
+                        //   && empty($_POST['prisonercrimetype']) && empty($_POST['prisonersentenceperiod']) && empty($_POST['prisonernote'])
+                        //   && empty($_POST['prisonerpersonalbelongs']) && empty($_POST['prisonerreleasedate']) && empty($_POST['prisonerjudiciarytrial'])
+                        //   && empty($_POST['prisonerlawyer']) && empty($_POST['prisonercellnumber']) && empty($_POST['prisonerbehaiver'])) 
+                        //   {
+                             
+                        //     $_SESSION['status'] = 'All Fields Must be filled.They canot be empty ';
+                        //     $_SESSION['status_code'] = 'error';
                         
-                      
-
-                        $sql = "SELECT * FROM `prisonerrecord` where pri_id ='$id'";
-                        $result = mysqli_query($con, $sql);
-                         if(mysqli_num_rows($result) > 0){
-                          while ( $row = mysqli_fetch_assoc($result)){
-
-                            // declare variables to read form the data base
-                            @$ID = $row['pri_id'];
-                            @$RegisterDate = $row['pri_registerdate'];
-                            @$pri_Fullname = $row['pri_fullname'];
-                            @$pri_Height= $row['pri_height'];
-                            @$pri_Age = $row['pri_age'];
-                            @$pri_Weight = $row['pri_weight'];
-                            @$pri_BirthDate = $row['pri_dateof_birth'];
-                            @$pri_PlaceOfBirth = $row['pri_placeof_birth'];
-                            @$pri_Address = $row['pri_address'];
-                            @$pri_Phone = $row['pri_tellephone'];
-                            @$pri_Email = $row['pri_email'];
-                            @$pri_ParentName = $row['pri_mothers_name'];
-                            @$pri_Education = $row['pri_education'];
-                            @$pri_CrimeType = $row['pri_crimeType'];
-                            @$pri_MarriageStatus = $row['pri_marriage'];
-                            @$pri_SentencePeriod = $row['pri_sentenceperiod'];
-                            @$pri_MedicalStatus = $row['pri_medicalStatus'];
-                            @$pri_PersonalBelongs = $row['pri_personalBelongs'];
-                            @$pri_ReleaseDate = $row['pri_releaseDay'];
-                            @$pri_JudiciaryTrial =$row['pri_trial'];
-                            @$pri_Lawyer = $row['pri_lawyer'];
-                            @$pri_CellNo = $row['pri_cellNo'];
-                            @$pri_Behavier=$row['pri_behavier'];
-                            @$pri_Note = $row['pri_note'];
-                           // @$pri_image = $row['pri_image'];
-                            
-                            // @$pri_Image = $_FILES['prisonerimage']['name'];
-                            // $tmp_name = $_FILES['prisonerimage']['tmp_name'];
-                            // $imageLocation = "../images/"; 
-
-                          
-                          }
-                        }
-
-                        }    
-
+                        //   }  
+                        //   else {
                       
                           //echo 'working';
-                          @$ID = $_GET['prisonerid'];
-                          @$Register_Date = $_GET['prisonerregisterdate'];
-                          @$prisonerFullname = $_GET['prisonerfullname'];
-                          @$prisonerHeight= $_GET['prisonerheight'];
-                          @$prisonerAge = $_GET['prisonerage'];
-                          @$prisonerWeight = $_GET['prisonerweight'];
-                          @$prisonerBirthDate = $_GET['prisonerdateofbirth'];
-                          @$prisonerPlaceOfBirth = $_GET['prisonerplaceofbirth'];
-                          @$prisonerAddress = $_GET['prisoneraddress'];
-                          @$prisonerPhone = $_GET['prisonertellephone'];
-                          @$prisonerEmail = $_GET['prisoneremail'];
-                          @$prisonerParentName = $_GET['prisonermothername'];
-                          @$prisonerEducation = $_GET['prisonereducationlevel'];
-                          @$prisonerCrimeType = $_GET['prisonercrimetype'];
-                          @$prisonerMarriageStatus = $_GET['prisonermarriagestatus'];
-                          @$prisonerSentencePeriod = $_GET['prisonersentenceperiod'];
-                          @$prisonerMedicalStatus = $_GET['prisonermedicalstatus'];
-                          @$prisonerPersonalBelongs = $_GET['prisonerpersonalbelongs'];
-                          @$prisonerReleaseDate = $_GET['prisonerreleasedate'];
-                          @$prisonerJudiciaryTrial =$_GET['prsionerjudiciarytrial'];
-                          @$prisonerLawyer = $_GET['prisonerlawyer'];
-                          @$prisonerCellNo = $_GET['prisonercellnumber'];
-                          @$prisonerBehavier=$_GET['prisonerbehavier'];
-                          @$prisonerNote = $_GET['prisonernote'];
+                          @$ID = $_POST['prisonerid'];
+                          @$Register_Date = $_POST['prisonerregisterdate'];
+                          @$prisonerFullname = $_POST['prisonerfullname'];
+                          @$prisonerHeight= $_POST['prisonerheight'];
+                          @$prisonerAge = $_POST['prisonerage'];
+                          @$prisonerWeight = $_POST['prisonerweight'];
+                          @$prisonerBirthDate = $_POST['prisonerdateofbirth'];
+                          @$prisonerPlaceOfBirth = $_POST['prisonerplaceofbirth'];
+                          @$prisonerAddress = $_POST['prisoneraddress'];
+                          @$prisonerPhone = $_POST['prisonertellephone'];
+                          @$prisonerEmail = $_POST['prisoneremail'];
+                          @$prisonerParentName = $_POST['prisonermothername'];
+                          @$prisonerEducation = $_POST['prisonereducationlevel'];
+                          @$prisonerCrimeType = $_POST['prisonercrimetype'];
+                          @$prisonerMarriageStatus = $_POST['prisonermarriagestatus'];
+                          @$prisonerSentencePeriod = $_POST['prisonersentenceperiod'];
+                          @$prisonerMedicalStatus = $_POST['prisonermedicalstatus'];
+                          @$prisonerPersonalBelongs = $_POST['prisonerpersonalbelongs'];
+                          @$prisonerReleaseDate = $_POST['prisonerreleasedate'];
+                          @$prisonerJudiciaryTrial =$_POST['prsionerjudiciarytrial'];
+                          @$prisonerLawyer = $_POST['prisonerlawyer'];
+                          @$prisonerCellNo = $_POST['prisonercellnumber'];
+                          @$prisonerBehavier=$_POST['prisonerbehavier'];
+                          @$prisonerNote = $_POST['prisonernote'];
                           // @$prisonerImage = $_FILES['prisonerimage']['name'];
                           // $tmp_name = $_FILES['prisonerimage']['tmp_name'];
                           // $imageLocation = "../images/"; 
@@ -155,8 +150,10 @@
                           `pri_mothers_name` = '$prisonerParentName', `pri_education` = '$prisonerEducation', `pri_crimeType` = '$prisonerCrimeType', `pri_marriage` = '$prisonerMarriageStatus', `pri_medicalStatus` = '$prisonerMedicalStatus',
                            `pri_sentenceperiod` = '$prisonerSentencePeriod', `pri_prersonalBelongs` = '$prisonerPersonalBelongs', `pri_releaseDay` = '$prisonerReleaseDate', `pri_trail` = '$prisonerJudiciaryTrial', `pri_lawyer` = '$prisonerLawyer',
                             `pri_cellNo` = '$prisonerCellNo', `pri_behavier` = '$prisonerBehavier', `pri_notes` = '$prisonerNote' WHERE `pri_id` = '$id'";
+
                          if(mysqli_query($con, $sql)){
-                          echo $successMessage ;
+                          $_SESSION['status'] = 'Your Data is Edited Successfully ';
+                          $_SESSION['status_code'] = 'success';
                          }
 
                         else{
@@ -164,12 +161,13 @@
                           // echo 'not working';
                         }
 
-
+                    //   }
+                    // }
+             
 
                         ?>
                   <form class="forms-sample" method="GET" enctype ="multipart/form-data">
-
-                  <div class="container">
+                    <div class="container">
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
@@ -330,7 +328,7 @@
                         <button type="submit" class="btn btn-primary m-2" name="btnprisoner">Submit</button>
                         <a href="viewPrisonerRecord.php"  class="btn btn-danger">BACK</a>
                       </div>
-                  </div>
+                    </div>
                    
                   </form>
                 </div>
@@ -338,8 +336,7 @@
 
             </div>
           </div>
-        </div>
-        <!-- content-wrapper ends -->
+  </div> <!-- content-wrapper ends -->
      
        
   <!-- plugins:js -->
@@ -363,6 +360,20 @@
   <script src="../js/dashboard.js"></script>
   <script src="../js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+
+  <!-- sweatAlert plugins -->
+  <script src="../js/sweetalert.min.js"></script>
+
+  <?php   if (isset($_SESSION['status'])){ }  ?> 
+  <script>
+    swal({
+    title: "<?php  echo $_SESSION['status']; ?>",
+  //text: "You clicked the button!",
+    icon: "<?php  echo $_SESSION['status_code']; ?>",
+    button: "OK!",
+    });
+  <?php unset($_SESSION['status']); ?>
+  </script>
 </body>
 
 </html>
