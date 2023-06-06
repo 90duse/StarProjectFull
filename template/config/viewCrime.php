@@ -59,7 +59,7 @@
       <div class="col">
      
       <form action="" method="POST">
-           <table id="mytable" class="table table-striped" style="width:100%">
+           <table id="mytable" class="table table-striped" >
                      <thead>
                         <tr>
                           <th>CrimeID</th>
@@ -166,7 +166,9 @@
 
 <script> 
 $(document).ready(function () {
-    $('#mytable').DataTable();
+    $('#mytable').DataTable({
+      scrollX: true,
+    });
 });
 </script>
 
