@@ -52,7 +52,7 @@
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-            <form action="#" method="GET">
+            <form action="#" method="POST">
                <table class="table select-table " id="mytable">
                   <thead>
                     <tr >
