@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-  $('#example').DataTable();
+  $('#mytable').DataTable();
 });
 
 // table.buttons().container().appendTo('#example_wrapper.col-md:eq(0)')
