@@ -22,6 +22,11 @@
   <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../images/favicon.png" />
+
+  <!-- data table plugins -->
+  <link rel="stylesheet" href="../css/dataTables.bootstrap5.min.css">
+  <link href="../DataTables/DataTables-1.13.4/css/datatables.bootstrap5.min.css" rel="stylesheet"/>
+  <link rel ="stylesheet"  href ="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css"/>
 </head>
 <body class="">
 
@@ -47,180 +52,88 @@
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-            <div class="col-sm-12">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title text-center">Complainment View</h4>
-                  <?php 
-                  include '../config.php';
+             <!-- data table start-->
+  <div class="container">
+    <div class="row">
+      <div class="col">
+     
+        <form action="" method="GET">
+      <table id="mytable" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+            <th>PoliceID</th>
+            <th>Register Date</th>
+            <th>Fullname</th>
+            <th>Rank</th>
+            <th>Com_Subject</th>
+            <th>Against Whome</th>
+            <th>Complainment</th>
+            <th>ACTION</th>
+            <th>ACTION</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <?php 
+             include '../config.php';
 
-                  if (isset($_GET['searchsubmit'])){
-                    $search = $_GET['searchsubmit'];
-                    $sql = "SELECT * FROM complainmentregistration_table WHERE cr_id LIKE '%$search%' OR co_registrationDate LIKE `%$search%` OR co_fullname LIKE `%$search%` 
-                    OR  co_rank LIKE '%$search%' OR co_subject LIKE '%$search%' OR co_againstWhom LIKE '%$search%' co_complainment LIKE '%$search%' " ;
-                    $Natiijo = mysqli_query($con, $sql);
-                    //$queryResult = myqsli_num_rows($Natiijo);
-                    
-                      if ($Natiijo > 0){
-                        while ($row = mysqli_fetch_assoc($Natiijo))
-                        {
-                          
-                           
-                          
-                 
-                          
-                          
-                          
-
-                        }
-
-
-                      } else {
-                        echo "There is no resualt matching your search";
-                      }
-                    
-                  }
-                  
-                  
-                  ?>
-                  <form action="#" method="GET">
-                     <div class="row flex-grow">
-                          <div class="search">
-                            <input type="search" name="search">
-                            <button name="searchsubmit" type="submit">Search</button>
-                           </div>
-                                <div class="table-responsive  mt-1">
-                                  <table class="table select-table" id="example">
-                                    <thead>
-                                      <tr>  
-                                        <!-- <th>
-                                          <div class="form-check form-check-flat mt-0">
-                                            <label class="form-check-label">
-                                              <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
-                                          </div>
-                                        </th> -->
-                                        <th>PoliceID</th>
-                                        <th>Register Date</th>
-                                        <th>Fullname</th>
-                                        <th>Rank</th>
-                                        <th>Com_Subject</th>
-                                        <th>Against Whome</th>
-                                        <th>Complainment</th>
-                                         <th>ACTION</th>
-                                        
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <?php 
-                                         include '../config.php';
-
-                                          $result = mysqli_query($con, "SELECT * FROM complainmentregistration_table" );
-                                          
-
-                                           while ($row = mysqli_fetch_assoc($result)){
-                                            $id = $row['co_id'];
+            $result = mysqli_query($con, "SELECT * FROM complainmentregistration_table" );
+             while ($row = mysqli_fetch_assoc($result)){
+             $id = $row['co_id'];
                                           
                                          
                                           
                                   
-                                          ?>
-                                          <td name="td_id">
-                                        
-                                          <?php 
-                                            echo $id;
-                                            //echo $row['cr_id'];
-                                          ?>
-                                        
-                                        </td>
-                                        <td>
-                                        
-                                          <?php 
-                                            echo $row['co_registrationDate'];
-                                          ?>
-                                        
-                                        </td>
-                                        <td>
-                                        
-                                          <?php 
-                                            echo @$row['co_fullname'];
-                                          ?>
-                                        
-                                        </td>
-                                        <td>
-                                        
-                                          <?php 
-                                            echo @$row['co_rank'];
-                                          ?>
-                                        
-                                        </td>
-                                        <td>
-                                        
-                                          <?php 
-                                            echo @$row['co_subject'];
-                                          ?>
-                                        
-                                        </td>
-                                        <td>
-                                        
-                                          <?php 
-                                            echo @$row['co_againstWhom'];
-                                          ?>
-                                        
-                                        </td>
-                                        <td>
-                                        
-                                          <?php 
-                                            echo @$row['co_complainment'];
-                                          ?>
-                                        
-                                        </td>
-                                        
-                                        
-                                        <td>
-                                          <a href="complainEdit.php?id=<?php echo $id; ?>"  class="btn btn-success">EDIT</a>
-                                        </td>
-                                        <td>
-                                          <a href="complainDelete.php?id=<?php echo $id; ?>"  class="btn btn-danger">DELETE</a>
-                                        </td>
-
-                                       
-                                      </tr>
-                                      <?php  
-
-                                        }
-                                      
-                                        ?>
-                                      
-                                       
-                                    </tbody>
-                                  </table>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        </form>
-              </div>
-             </div>
-            </div>
+            ?>
+            <td> <?php echo $id; ?></td> 
+            
+           <td><?php  echo $row['co_registrationDate']; ?></td> 
+            <td><?php echo @$row['co_fullname']; ?></td> 
+            <td> <?php echo @$row['co_rank']; ?></td> 
+            <td><?php  echo @$row['co_subject']; ?></td> 
+            <td><?php  echo @$row['co_againstWhom'];?></td> 
+            <td> <?php   echo @$row['co_complainment']; ?></td> 
+            <td> <a href="complainEdit.php?id=<?php echo $id; ?>"  class="btn btn-success">EDIT</a></td> 
+            <td> <a href="complainDelete.php?id=<?php echo $id; ?>"  class="btn btn-danger">DELETE</a></td> 
+             </tr>
+        
+          <?php  } ?>      
+          
+          
+               
+        </tbody>
+        <tfoot>
+            <!-- <tr>
+            <th>PoliceID</th>
+            <th>Register Date</th>
+            <th>Fullname</th>
+            <th>Rank</th>
+            <th>Com_Subject</th>
+            <th>Against Whome</th>
+            <th>Complainment</th>
+            <th>ACTION</th>
+            </tr> -->
+        </tfoot>
+     </table>
+    
+     <form>
+      </div>
+    </div>
+  </div>
+  <!-- data table end -->
+           
           </div>
         <!-- content-wrapper ends -->
 
-        <!-- partial:partials/_footer.html -->
-        <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2021. All rights reserved.</span>
-          </div>
-        </footer>
-        <!-- partial -->
+       
       </div>
       <!-- main-panel ends -->
     </div>
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
+
+ 
 
  <!-- plugins:js -->
  <script src="../vendors/js/vendor.bundle.base.js"></script>
@@ -236,17 +149,25 @@
   <script src="../js/hoverable-collapse.js"></script>
   <script src="../js/template.js"></script>
   <script src="../js/settings.js"></script>
-  <script src="../js/todolist.js"></script>
+  <!-- <script src="../js/todolist.js"></script> -->
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="../js/jquery.cookie.js" type="text/javascript"></script>
+  <!-- <script src="../js/jquery.cookie.js" type="text/javascript"></script>
   <script src="../js/dashboard.js"></script>
-  <script src="../js/Chart.roundedBarCharts.js"></script>
+  <script src="../js/Chart.roundedBarCharts.js"></script> -->
   <!-- End custom js for this page-->
 
-  <!-- data table js links -->
-  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
- <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+ <!-- Data table plugins -->
+
+<script src="../DataTables/jQuery-3.6.0/jquery-3.6.0.js"></script>
+<script src="../DataTables/DataTables-1.13.4/js/jquery.dataTables.min.js"></script>
+<script  src="../DataTables/DataTables-1.13.4/js/dataTables.bootstrap5.min.js"></script>
+
+<script> 
+$(document).ready(function () {
+    $('#mytable').DataTable();
+});
+</script>
 
 </body>
 
