@@ -100,7 +100,7 @@
                                <td> <?php  echo @$row['cr_status']; ?> </td>
                                <td> <?php  echo @$row['cr_note'];  ?> </td>
                                <td><a href="crimeEdit.php?id=<?php echo $id; ?>"  class="btn btn-success">EDIT</a></td>
-                               <td><a href="crimeDelete.php?id=<?php echo $id; ?>"  class="btn btn-danger btn-delete" id="btndelete">DELETE</a> </td>
+                               <td><a href="crimeDelete.php?id=<?php echo $id; ?>"  class="btn btn-danger btn-delete" id="btndelete" >DELETE</a> </td>
                             </tr>
                                <?php  
 
@@ -163,7 +163,7 @@
 <script src="../DataTables/jQuery-3.6.0/jquery-3.6.0.js"></script>
 <script src="../DataTables/DataTables-1.13.4/js/jquery.dataTables.min.js"></script>
 <script  src="../DataTables/DataTables-1.13.4/js/dataTables.bootstrap5.min.js"></script>
-
+<script src="confirmDelete.js"></script>
 <script> 
 $(document).ready(function () {
     $('#mytable').DataTable({
@@ -171,6 +171,7 @@ $(document).ready(function () {
     });
 });
 </script>
+
 
 </body>
 
