@@ -39,7 +39,7 @@
       </div>
     </div>
           <!-- partial:partials/_navbar.html -->
-        <?php  include "../partials/navbar.php";?>
+         <?php  include "../partials/navbar.php";?>
           <!-- partial -->
           <div class="container-fluid page-body-wrapper">
             <!-- partial:partials/_settings-panel.html -->
