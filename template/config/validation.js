@@ -67,30 +67,30 @@ function validateInput(){
 //   }
 
 
-// function validate(){
+function validate(){
    
-//     var crRegisterDate = document.getElementById("crimeRegisterDate").value;
-//     var crType =  document.getElementById("crimeType").value;
-//     var crPlace = document.getElementById("crimePlace").value;
-//     var crVictam = document.getElementById("crimeVictam").value;
-//     var crCriminal = document.getElementById("crimeCriminal").value;
-//     var crOfficer = document.getElementById("crimeOfficer").value;
-//     var crWitness = document.getElementById ("crimeWitness").value;
-//     var crEvidence = doucment.getElementById("crimeEvidence").value;
-//     var crItems = document.getElementById("crimeItems").value;
-//     var crStatus = doucment.getElementById("crimeStatus").value;
-//     var crNote = document.getElementById("crimeNote").value;
+    var crRegisterDate = document.getElementById("crimeRegisterDate").value;
+    var crType =  document.getElementById("crimeType").value;
+    var crPlace = document.getElementById("crimePlace").value;
+    var crVictam = document.getElementById("crimeVictam").value;
+    var crCriminal = document.getElementById("crimeCriminal").value;
+    var crOfficer = document.getElementById("crimeOfficer").value;
+    var crWitness = document.getElementById ("crimeWitness").value;
+    var crEvidence = doucment.getElementById("crimeEvidence").value;
+    var crItems = document.getElementById("crimeItems").value;
+    var crStatus = doucment.getElementById("crimeStatus").value;
+    var crNote = document.getElementById("crimeNote").value;
 
-//     if ( crRegisterDate == " " && crType == " " && crPlace == " " && crVictam ==" " && crCriminal == ""
-//     && crOfficer == " " && crWitness == " " && crEvidence == " " && crItems == " " && crStatus == " "
-//      && crNote == " " )
-//      { 
-//         alert("All fields must be filled");
+    if ( crRegisterDate == " " && crType == " " && crPlace == " " && crVictam ==" " && crCriminal == ""
+    && crOfficer == " " && crWitness == " " && crEvidence == " " && crItems == " " && crStatus == " "
+     && crNote == " " )
+     { 
+        alert("All fields must be filled");
 
-//      }  else if ( crRegisterDate === typeof(Date) && crType ===  typeof(String)){
-//         console.log('Your data is saved ');
-//      } else {
-//         console.log('Something else is wrong');
-//      }
+     }  else if ( crRegisterDate === typeof(Date) && crType ===  typeof(String)){
+        console.log('Your data is saved ');
+     } else {
+        console.log('Something else is wrong');
+     }
     
-// }
+}
