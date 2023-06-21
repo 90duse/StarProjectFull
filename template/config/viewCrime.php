@@ -27,6 +27,9 @@
   <link rel="stylesheet" href="../css/dataTables.bootstrap5.min.css">
   <link href="../DataTables/DataTables-1.13.4/css/datatables.bootstrap5.min.css" rel="stylesheet"/>
   <link href="../DataTables/DataTables-1.13.4/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="../DataTables/Buttons-2.3.6/css/buttons.dataTables.min.css">
+  <link rel="stylesheet" href="../DataTables/DataTables-1.13.4/css/jquery.dataTables.min.css">
+   
 
 </head>
 <body class="">
@@ -59,7 +62,7 @@
       <div class="col">
      
       <form action="" method="POST">
-           <table id="mytable" class="table table-striped" >
+           <table id="mytable" class="table table-striped"  >
                      <thead>
                         <tr>
                           <th>CrimeID</th>
@@ -158,16 +161,27 @@
   <script src="../js/Chart.roundedBarCharts.js"></script> -->
   <!-- End custom js for this page-->
 
- <!-- Data table plugins -->
+   <!-- Data table plugins -->
 
-<script src="../DataTables/jQuery-3.6.0/jquery-3.6.0.js"></script>
-<script src="../DataTables/DataTables-1.13.4/js/jquery.dataTables.min.js"></script>
-<script  src="../DataTables/DataTables-1.13.4/js/dataTables.bootstrap5.min.js"></script>
-<script src="confirmDelete.js"></script>
+  <script src="../DataTables/jQuery-3.6.0/jquery-3.5.1.js"></script>
+  <script src="../DataTables/DataTables-1.13.4/js/jquery.dataTables.min.js"></script>
+  <script  src="../DataTables/DataTables-1.13.4/js/dataTables.bootstrap5.min.js"></script>
+  <script  src="../DataTables/Buttons-2.3.6/js/dataTables.buttons.min.js"></script>
+  <script  src="../DataTables/JSZip-2.5.0/jszip.min.js"></script>
+  <script  src="../DataTables/pdfmake-0.2.7/pdfmake.min.js"></script>
+  <script  src="../DataTables/pdfmake-0.2.7/vfs_fonts.js"></script>
+  <script src="../js/buttons.html5.min.js"></script>
+  <script src="../js/buttons.print.min.js"></script> 
+
+  <script src="confirmDelete.js"></script>
 <script> 
 $(document).ready(function () {
     $('#mytable').DataTable({
       scrollX: true,
+      dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
     });
 });
 </script>
