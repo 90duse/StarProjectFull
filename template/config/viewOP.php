@@ -104,7 +104,11 @@
                                 <td><?php echo @$row['op_personal_belongs'];   ?></td>
                                 <td><?php echo @$row['op_cell_no'];   ?></td>
                                 <td><?php echo @$row['op_officer'];  ?></td>
-                                <td><?php echo @$row['op_notes'];   ?></td>
+                                <td> <details>
+                                  <summary>See More</summary>
+                                  <?php echo @$row['op_notes'];   ?>
+                                </details> </td>
+                                
                                 <td> <a href="OPEdit.php?id=<?php echo $opID; ?>"  class="btn btn-success">EDIT</a></td>
                                 <td> <a href="OPDelete.php?id=<?php echo $opID; ?>"  class="btn btn-danger">DELETE</a></td>
                            
