@@ -34,7 +34,7 @@
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
               <i class="menu-icon mdi mdi-pen-plus"></i>
-              <span class="menu-title">Crime Record</span>
+              <span class="menu-title">Case Record</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="form-elements">
@@ -45,15 +45,16 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#op" aria-expanded="false" aria-controls="form-elements">
-              <i class="menu-icon mdi mdi-book"></i>
-              <span class="menu-title">OP</span>
-              <i class="menu-arrow"></i>
+            <!-- <a class="nav-link" data-bs-toggle="collapse" href="#op" aria-expanded="false" aria-controls="form-elements"> -->
+            
+              <a href="../config/optable.php" type ="button" class="btn btn-outline-danger  nav-link"><span>OP</span></a> 
+              
             </a>
             <div class="collapse" id="op">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="../config/OP.php">Add New</a></li>
-                <li class="nav-item"><a class="nav-link" href="../config/viewOP.php">View Cases</a></li>
+             
+                <!-- <li class="nav-item"><a class="nav-link" href="../config/OP.php">Add New</a></li>
+                <li class="nav-item"><a class="nav-link" href="../config/viewOP.php">View Cases</a></li> -->
               </ul>
             </div>
           </li>
@@ -123,12 +124,19 @@
               </ul>
             </div>
           </li>
-          <li class="nav-item nav-category">help</li>
+         
+          <li class="nav-item nav-category">Reports</li>
           <li class="nav-item">
-            <a class="nav-link" href="http://bootstrapdash.com/demo/star-admin2-free/docs/documentation.html">
-              <i class="menu-icon mdi mdi-file-document"></i>
-              <span class="menu-title">Documentation</span>
+            <a class="nav-link" data-bs-toggle="collapse" href="#report" aria-expanded="false" aria-controls="auth">
+              <i class="menu-icon mdi mdi-account-circle-outline"></i>
+              <span class="menu-title">Reports</span>
+              <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="report">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="../config/reportpage.php">Reports </a></li>
+              </ul>
+            </div>
           </li>
         </ul>
       </nav>
