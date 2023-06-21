@@ -98,15 +98,13 @@
                             $_SESSION['status'] = 'They canot be empty ';
                             $_SESSION['status_code'] = 'error';
                         
-                          } else {
+                          } 
+                          else {
                             
                        
                            if(isset($_POST['btncrime'])){
+                            $crimeRegisterDate = $_POST['crimeregisterdate'];
                           
-                            //echo 'working'; 
-                            if(empty($_POST['crimetype'])){
-                               echo $ErrMessage ;
-                            } else {
                               @$crimeType = test_input($_POST['crimetype']);
                               if(!preg_match("/^['a-zA-Z']*$/", $crimeType)){
                                 $_SESSION['status'] = 'Crime Type - Only letters and white spcae is allowed' ;
@@ -114,7 +112,7 @@
                                 echo 'Only letters and white space is allowed';
    
                                  } 
-                            }
+                            
                               @$CASEID = test_input($_POST['crimeid']);
                               @$crimeRegisterDate = test_input($_POST['crimeregisterdate']);
                               @$crimePlace= test_input($_POST['crimeplace']);
@@ -127,7 +125,6 @@
                                  }
                           
                               @$crimeEvidence = test_input($_POST['crimeevidence']);
-
                               @$crimeItems = test_input($_POST['crimeitems']);
                               @$crimeStatus = test_input($_POST['crimestatus']);
                               @$crimeNote = test_input($_POST['crimenote']);
@@ -171,8 +168,8 @@
                             ?>
                         <div class="row">
                         <div class="col-lg-6">
-                        <div class="row mt-4">
-                                  <div class="col-6"> 
+                        <div class="row mt-4" hidden = "true">
+                                  <div class="col-6" > 
                                       <label for="exampleInputUsername1" class=" text text-secondary">Case ID</label>
                                   </div>
                                     <div class="col">
@@ -275,7 +272,7 @@
                       </div>
                         <div class="button">
                           <button type="submit"  class="btn btn-primary  m-2" name="btncrime" value = "submit" >Submit</button>
-                          <button class="btn btn-light">Cancel</button>
+                          <!-- <button class="btn btn-light">Cancel</button> -->
                         </div>
                     </div>
                    
@@ -290,13 +287,13 @@
           </div>
         </div>
         <!-- content-wrapper ends -->
-        <!-- partial:partials/_footer.html -->
-        <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2021. All rights reserved.</span>
-          </div>
+        <!-- partial:partials/_footer -->
+        <!-- footer  -->
+        <footer>
+        <?php  include "../partials/footer.php";?>
         </footer>
+      
+        <!-- footer end -->
         <!-- partial -->
       </div>
       <!-- main-panel ends -->
