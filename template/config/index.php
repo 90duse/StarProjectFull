@@ -34,12 +34,12 @@
               
             </div>
           </div>
-          <div class="d-flex align-items-center justify-content-between">
+          <!-- <div class="d-flex align-items-center justify-content-between">
             <a href="https://www.bootstrapdash.com/product/star-admin-pro/"><i class="mdi mdi-home me-3 text-white"></i></a>
             <button id="bannerClose" class="btn border-0 p-0">
               <i class="mdi mdi-close text-white me-0"></i>
             </button>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -232,10 +232,10 @@
                       <a class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Overview</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#audiences" role="tab" aria-selected="false">Audiences</a>
+                      <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#audiences" role="tab" aria-controls="Todolist" aria-selected="true">Todolist</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#demographics" role="tab" aria-selected="false">Demographics</a>
+                      <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#demographics" role="tab" aria-selected="false"></a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link border-0" id="more-tab" data-bs-toggle="tab" href="#more" role="tab" aria-selected="false">More</a>
@@ -249,7 +249,7 @@
                     </div>
                   </div>
                 </div>
-
+<!-- over view section start here -->
                 <div class="tab-content tab-content-basic">
                   <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview"> 
                     <div class="row ">
@@ -263,7 +263,7 @@
                               </div>
                           </div>
                           <div class="col-4">
-                            <div class="card p-3 bg-primary">
+                            <div class="card p-3 ">
                                 <div class="card-body">
                                 <h4 class="d-flex">TOTAL COPS</h4>
                                  <h5 class=" d-flex"><i class="mdi mdi-account-group"></i><span>105K</span></h5>
@@ -272,7 +272,7 @@
                               </div>
                           </div>
                           <div class="col-4">
-                            <div class="card p-3 bg-secondary">
+                            <div class="card p-3">
                                 <div class="card-body ">
                                 <h4 class="d-flex">TOTAL PRISONERS</h4>
                                  <h5 class=" d-flex"><i class="mdi mdi-account-group"></i><span>105K</span></h5>
@@ -280,7 +280,7 @@
                               </div>
                           </div>
                           <div class="col-4">
-                            <div class="card p-3  mt-2 bg-success">
+                            <div class="card p-3  mt-2 ">
                                 <div class="card-body">
                                 <h4 class="d-flex">TOTAL COMPLAINMNETS</h4>
                                  <h5 class=" d-flex"><i class="mdi mdi-account-convert"></i><span>105K</span></h5>
@@ -288,7 +288,7 @@
                               </div>
                           </div>
                           <div class="col-4 ">
-                            <div class="card  p-3 mt-2 bg-danger">
+                            <div class="card  p-3 mt-2 ">
                                 <div class="card-body">
                                 <h4 class="d-flex">TOTAL OP</h4>
                                  <h5 class=" d-flex"><i class="mdi mdi-account-edit"></i><span>105K</span></h5>
@@ -296,7 +296,7 @@
                               </div>
                           </div>
                           <div class="col-4">
-                            <div class="card  p-3 mt-2 bg-primary">
+                            <div class="card  p-3 mt-2 ">
                                 <div class="card-body">
                                 <h4 class="d-flex">TOTAL ASSETS</h4>
                                  <h5 class=" d-flex"><i class="mdi mdi-home-group"></i><span>105K</span></h5>
@@ -323,14 +323,14 @@
                           
                   </div>
                 </div>
+<!-- over view section end here -->
         <!-- content-wrapper ends -->
-        <!-- partial:partials/_footer.html -->
-        <footer class="footer mt-5">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2021. All rights reserved.</span>
-          </div>
+     
+       <!-- footer starts -->
+       <footer>
+        <?php  include "../partials/footer.php";?>
         </footer>
+       <!-- footer end -->
         <!-- partial -->
       </div>
       <!-- main-panel ends -->
