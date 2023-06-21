@@ -27,36 +27,26 @@
   <link rel="stylesheet" href="../css/dataTables.bootstrap5.min.css">
   <link href="../DataTables/DataTables-1.13.4/css/datatables.bootstrap5.min.css" rel="stylesheet"/>
   <link href="../DataTables/DataTables-1.13.4/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <link rel="stylesheet" href="../DataTables/Buttons-2.3.6/css/buttons.dataTables.min.css">
+  <link rel="stylesheet" href="../DataTables/DataTables-1.13.4/css/jquery.dataTables.min.css">
+  <!-- <link  rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"> -->
+  <!-- <link  rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"> -->
+  <!-- <link  rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css"> -->
  
 </head>
 <body class="">
 
-  <div class="container-scroller ">
-    <div class="row p-0 m-0 proBanner" id="proBanner">
-      <div class="col-md-12 p-0 m-0">
-        <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
-          
-        </div>
-      </div>
+   
+         
+   <div class="btn mt-2">
+     <a href="optable.php" class="btn btn-danger">Go Back</a>
     </div>
-          <!-- partial:partials/_navbar.html -->
-        <?php  include "../partials/navbar.php";?>
-          <!-- partial -->
-          <div class="container-fluid page-body-wrapper">
-            <!-- partial:partials/_settings-panel.html -->
-            <?php  include "../partials/settings-panel.php";?>
-            <!-- partial:partials/_sidebar.html -->
-          <?php   include "../partials/sidebar.php";?>
-            <!-- partial -->
-
-     
-      <div class="main-panel">
-        <div class="content-wrapper">
-          <div class="row">
-
-           
-                  <form action="#" method="GET">
-                    <table class="table select-table " id="mytable">
+<div class="container-fluid ">
+  <div class="container-fluid">
+    <div class="row">
+         <form action="#" method="GET">
+                    <table class="" class="display nowrap" id="mytable">
                           
                           <thead>
                             <tr >
@@ -68,6 +58,7 @@
                               <th class="text-dark">Height</th>
                               <th class="text-dark">Age</th>
                               <th class="text-dark">Weight</th>
+                              <th class="text-dark">Gender</th>
                               <th class="text-dark">DB</th>
                               <th class="text-dark">PB</th>
                               <th class="text-dark">Address</th>
@@ -100,6 +91,7 @@
                                 <td><?php echo @$row['op_height']; ?></td>
                                 <td><?php echo @$row['op_age']; ?></td>
                                 <td><?php echo @$row['op_weight']; ?></td>
+                                <td><?php echo @$row['op_gender']; ?></td>
                                 <td><?php echo @$row['op_dateof_birth']; ?></td>
                                 <td><?php echo @$row['op_placeof_birth'];?></td>
                                 <td><?php echo @$row['op_mothers_name'];  ?></td>
@@ -124,17 +116,10 @@
                         </tfoot>
                     </table>
                   </form>
-              </div>
-        <!-- content-wrapper ends -->
-        <!-- footer start -->
-
-        <!-- footer end -->
-      </div>
-      <!-- main-panel ends -->
-    </div>
-    <!-- page-body-wrapper ends -->
   </div>
-  <!-- container-scroller -->
+</div>
+     
+      
 
  <!-- plugins:js -->
  <script src="../vendors/js/vendor.bundle.base.js"></script>
@@ -160,14 +145,26 @@
   <!-- End custom js for this page-->
    <!-- Data table plugins -->
 
-<script src="../DataTables/jQuery-3.6.0/jquery-3.6.0.js"></script>
-<script src="../DataTables/DataTables-1.13.4/js/jquery.dataTables.min.js"></script>
-<script  src="../DataTables/DataTables-1.13.4/js/dataTables.bootstrap5.min.js"></script>
+  <script src="../DataTables/jQuery-3.6.0/jquery-3.5.1.js"></script>
+  <script src="../DataTables/DataTables-1.13.4/js/jquery.dataTables.min.js"></script>
+  <script  src="../DataTables/DataTables-1.13.4/js/dataTables.bootstrap5.min.js"></script>
+  <script  src="../DataTables/Buttons-2.3.6/js/dataTables.buttons.min.js"></script>
+  <script  src="../DataTables/JSZip-2.5.0/jszip.min.js"></script>
+  <script  src="../DataTables/pdfmake-0.2.7/pdfmake.min.js"></script>
+  <script  src="../DataTables/pdfmake-0.2.7/vfs_fonts.js"></script>
+  <script src="../js/buttons.html5.min.js"></script>
+  <script src="../js/buttons.print.min.js"></script> 
+
+
 
 <script> 
 $(document).ready(function () {
     $('#mytable').DataTable({
       scrollX: true,
+      dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
     });
 });
 </script>
