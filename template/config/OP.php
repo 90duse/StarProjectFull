@@ -60,7 +60,7 @@
                   <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
                       <!-- <a  href="OP.php" class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab" role="tab" aria-controls="overview" aria-selected="true">Add New</a> -->
-                    <a href="OP.php" class="nav-link"> Add New</a>
+                    <a href="OP.php" class="nav-link" class="nav-link active" > Add New</a>
                     </li>
                     <li class="nav-item">
                       <a href="viewOP.php" class="nav-link" aria-selected="true" >View OP</a>
@@ -174,11 +174,17 @@
                         ?>
                   
                   <form class="forms-sample" method="POST" enctype ="multipart/form-data">
-                  <div class="container">
+                 
+                    
+
+                     <div class="card">
+                      <div class="card-body">
                       <div class="row">
+                         <h3>Personal Information</h3>
                         <div class="col-lg-6">
+                         
                         <label for="exampleInputUsername1"></label>
-                        <input type="number"   class="form-control" id="#" name="opid" placeholder="Person ID">
+                        <input type="number"  class="form-control" id="#" name="opid" placeholder="Person ID">
                         </div>
                         <div class="col-lg-6">
                               <div class="row mt-4">
@@ -202,9 +208,8 @@
                         </div>
                         
                       </div>
-
                       <div class="row">
-                      <div class="col-lg-6">
+                        <div class="col-lg-6">
                           <div class="row">
                             <div class="col-lg-3">
                               <label for="exampleInputUsername1"></label>
@@ -225,11 +230,8 @@
                          </div> 
                         </div>
                         <div class="col-lg-6">
-                        <div class="col">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="opmothername" placeholder="Mother's Name" >
-                        </div>
-                          
+                        <input type="text" class="form-control" id="#" name="opjob" placeholder="Job" >
                         </div>
                       </div>
                       <div class="row">
@@ -247,29 +249,9 @@
                             <label for="exampleInputUsername1"></label>
                             <input type="text" class="form-control" id="#" name="opplaceofbirth" placeholder="Place of Birth" >
                           </div>
-                        
-                      </div>
-                      
+                       </div>
                       <div class="row">
-                        <div class="col-lg-6">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="opaddress" placeholder="Address" >
-                        </div>
-                        <div class="col-lg-6">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="tel" class="form-control" id="#" name="opphone" placeholder="Tellephone" >
-                        </div>
-                      </div>
-                      
-                      <div class="row">
-                        <div class="col-lg-6">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="opjob" placeholder="Job" >
-                        </div>
-                        <div class="col-lg-6">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="tel" class="form-control" id="#" name="opreason" placeholder="Reason for the Arrest" >
-                        </div>
+                     
                       </div>
                       <div class="row">
                         <div class="col-6">
@@ -287,41 +269,80 @@
                         <input type="text" class="form-control" id="#" name="opmedicalstatus" placeholder="MEDICAL STATUS" >
                         </div>
                       </div>
-
-
-                      <div class="row">
-                      <div class="col-lg-6">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="opcellno" placeholder="Cell Number" >
+                      
+                      </div>
+                     </div>
+                      
+                     <div class="card mt-2 p-4">
+                       <div class="car-body">
+                        <div class="row">
+                        <h3>Contact</h3>
+                        <div class="col-lg-6">
+                          <label for="exampleInputUsername1"></label>
+                          <input type="text" class="form-control" id="#" name="opaddress" placeholder="Address" >
                         </div>
                         <div class="col-lg-6">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="oppersonalbelongs" placeholder="Personal Belongs" >
+                          <label for="exampleInputUsername1"></label>
+                          <input type="tel" class="form-control" id="#" name="opphone" placeholder="Tellephone" >
                         </div>
                       </div>
-                    
                       <div class="row">
-                      <div class="col-6">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="opofficer" placeholder="Officer On Charge">
-                        </div>
-                       
+                      <div class="col-lg-6">
                         <div class="col">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="opnotes" placeholder="Notes">
+                        <input type="text" class="form-control" id="#" name="opmothername" placeholder="Mother's Name" >
+                        </div>
                         </div>
                       </div>
+                      
+                      </div>
+                     </div>
+                    
+                     <div class="card mt-2">
+                      <div class="card-body">
+                        <div class="row">
+                         <h3>  Detail Information</h3>
+                          <div class="col-lg-6 col-sm-12">
+                          <label for="exampleInputUsername1"></label>
+                          <input type="tel" class="form-control" id="#" name="opreason" placeholder="Reason for the Arrest" >
+                          </div>
+                          <div class="col-lg-6 col-sm-12">
+                            <label for="exampleInputUsername1"></label>
+                            <input type="text" class="form-control" id="#" name="opofficer" placeholder="Officer On Charge">
+                         </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-6 col-sm-12">
+                            <label for="exampleInputUsername1"></label>
+                            <input type="text" class="form-control" id="#" name="opcellno" placeholder="Cell No" >
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                            <label for="exampleInputUsername1"></label>
+                            <input type="text" class="form-control" id="#" name="oppersonalbelongs" placeholder="Personal Belongs" >
+                          </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                        <label for="moretext"></label>
+                        <textarea class=" mt-2 border"  name="opnote" id="" cols="120" rows="10" placeholder="Additional Info about the arrest"></textarea>
+                        </div>
+                       
+                      </div>
+
+
+
+                      </div>
+                     </div>
+
                       <div class="button">
                         <button type="submit" class="btn btn-primary m-2" name="opbtnsubmit">Submit</button>
                         <a href="optable.php" class="btn btn-secondary">go back</a>
-                        
                       </div>
-                  </div>
-                   
                   </form>
                 </div>
               </div>           
         </div>
+        
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
