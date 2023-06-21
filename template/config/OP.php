@@ -29,21 +29,11 @@
 <body class="">
 
   <div class="container-scroller ">
+
     <div class="row p-0 m-0 proBanner" id="proBanner">
       <div class="col-md-12 p-0 m-0">
         <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
-          <!-- <div class="ps-lg-1">
-            <div class="d-flex align-items-center justify-content-between">
-              <p class="mb-0 font-weight-medium me-3 buy-now-text">Free 24/7 customer support, updates, and more with this template!</p>
-              <a href="https://www.bootstrapdash.com/product/star-admin-pro/?utm_source=organic&utm_medium=banner&utm_campaign=buynow_demo" target="_blank" class="btn me-2 buy-now-btn border-0">Get Pro</a>
-            </div>
-          </div> -->
-          <!-- <div class="d-flex align-items-center justify-content-between">
-            <a href="https://www.bootstrapdash.com/product/star-admin-pro/"><i class="mdi mdi-home me-3 text-white"></i></a>
-            <button id="bannerClose" class="btn border-0 p-0">
-              <i class="mdi mdi-close text-white me-0"></i>
-            </button>
-          </div> -->
+    
         </div>
       </div>
     </div>
@@ -57,48 +47,53 @@
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
      <?php   include "../partials/sidebar.php";?>
-      <!-- partial -->
-      <div class="main-panel">
-        <div class="content-wrapper">
+     <div class="main-panel"> 
+         <div class="content-wrapper">
+            <div class="container bg-success p-3 text-center " >
+                <h4>OP</h4>
+           
+          
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="home-tab">
+                <div class="d-sm-flex align-items-center justify-content-between border-bottom">
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                      <!-- <a  href="OP.php" class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab" role="tab" aria-controls="overview" aria-selected="true">Add New</a> -->
+                    <a href="OP.php" class="nav-link"> Add New</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="viewOP.php" class="nav-link" aria-selected="true" >View OP</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#demographics" role="tab" aria-selected="false"></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link border-0" id="more-tab" data-bs-toggle="tab" href="#more" role="tab" aria-selected="false">More</a>
+                    </li>
+                  </ul>
+                  <div>
+                    <div class="btn-wrapper">
+                      <a href="#" class="btn btn-otline-dark align-items-center"><i class="icon-share"></i> Share</a>
+                      <a href="#" class="btn btn-otline-dark"><i class="icon-printer"></i> Print</a>
+                      <a href="#" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Export</a>
+                    </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+          </div>
+          </div>
+
+    
+
+    
           <div class="row">
             <div class="col-sm-12">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title text-center">OP</h4>
                       <?php    
                         include '../config.php';
-                      
-
-                        
-                        // if(isset($_POST['btnprisoner'])){
-                        //   $fileName = $_FILES['prisonerimage']['name'];
-                        //   $filetmpName = $_FILES['prisonerimage']['tmp_name'];
-                        //   $fileSize = $_FILES['prisonerimage']['size'];
-                        //   $fileError = $_FILES['prisonerimage']['error'];
-                        //   $fileType= $_FILES['prisonerimage']['type'];
-                          // $fileExt = explode('.', $fileName);
-                          // $fileActualExt = strtolower(end($fileExt));
-                          // $allowed =  array('jpg','jpeg','png');
-                          // if(in_array($fileActualExt, $allowed)){
-                          //   if($fileError === 0){
-                          //     if($fileSize < 1000000){
-                          //       $fileNewName = uniqid('.', true) . "." . $fileActualExt;
-                          //       $fileDestination = '../images/' .$fileNewName; 
-                          //       move_uploaded_file($filetmpName, $fileDestination);
-                          //     } else {
-                          //       echo "Your file is too big";
-                          //     }
-
-                          //   } else {
-
-                          //     echo "There is an Error!";
-
-                          //   }
-
-                          // } else {
-                          //   echo 'You can not upload this type of files';
-                          // }
-                          //}
                           if($_SERVER["REQUEST_METHOD"] == "POST"){
                             if(empty($_POST['opregisterdate']) && empty($_POST['opname']) && empty($_POST['opheight'])
                             && empty($_POST['opage']) && empty($_POST['opweight']) && empty($_POST['opdayofbirth'])
@@ -119,7 +114,7 @@
                               $ID = $Register_Date = $op_Fullname = $op_Height= $op_Age = 
                               $op_Weight = $op_BirthDate = $op_PlaceOfBirth =$op_Address = 
                               $op_Phone = $op_ParentName = $op_Job =  $op_Reason =  $op_MarriageStatus = 
-                              $op_MedicalStatus = $op_PersonalBelongs =  $op_Officer =  $op_CellNo =  $op_Note =  '';
+                              $op_MedicalStatus = $op_PersonalBelongs =  $op_Officer =  $op_CellNo =  $op_Note =  $op_Gender = '';
                         
                               $op_Photo ='';
 
@@ -146,6 +141,7 @@
                           @$op_Officer = $_POST['opofficer'];
                           @$op_CellNo = $_POST['opcellno'];
                           @$op_Note =  $_POST['opnote'];
+                          $op_Gender = $_POST['opgender'];
                           //$op_Photo = $_FILE['opimage'];
                           // $tmp_name = $_FILES['opimage']['tmp_name'];
                           // $imageLocation = "../images/"; 
@@ -156,24 +152,17 @@
                           //   echo mysqli_error($con);
                           // }
 
-
-
                         }
-                      
-                        
                          @$sql = "INSERT INTO `op_table` (`op_id`, `op_register_date`, `op_fullname`, `op_image`, `op_height`, `op_age`, 
-                         `op_weight`, `op_mothers_name`, `op_dayof_birth`,`op_placeof_birth`, `op_address`, `op_tellephone`, 
+                         `op_weight`, `op_gender`, `op_mothers_name`, `op_dayof_birth`,`op_placeof_birth`, `op_address`, `op_tellephone`, 
                          `op_job`, `op_marriage_status`, `op_medical_status`, `op_reason`, `op_personal_belongs`, `op_cell_no`, `op_officer`, `op_notes`) 
-                         VALUES ('', '$Register_Date', '$op_Fullname', '', '$op_Height', '$op_Age', '$op_Weight', '$op_ParentName', '$op_BirthDate', 
+                         VALUES ('', '$Register_Date', '$op_Fullname', '', '$op_Height', '$op_Age', '$op_Weight', '$op_Gender', '$op_ParentName', '$op_BirthDate', 
                          '$op_PlaceOfBirth', '$op_Address', '$op_Phone','$op_Job', '$op_MarriageStatus', '$op_MedicalStatus', '$op_Reason', '$op_PersonalBelongs', '$op_CellNo', '$op_Officer', '$op_Note')";
                          
                          if(mysqli_query($con, $sql)){
                           $_SESSION['status'] = 'Your Data is Saved Succcessfully ';
                           $_SESSION['status_code'] = 'success';
                          }
-                         
-                         
-
                         else{
                           echo mysqli_error($con);
                           // echo 'not working';
@@ -183,8 +172,8 @@
                     }
 
                         ?>
+                  
                   <form class="forms-sample" method="POST" enctype ="multipart/form-data">
-
                   <div class="container">
                       <div class="row">
                         <div class="col-lg-6">
@@ -217,17 +206,21 @@
                       <div class="row">
                       <div class="col-lg-6">
                           <div class="row">
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                               <label for="exampleInputUsername1"></label>
                               <input type="number" class="form-control" id="#" name="opheight" placeholder="Height" >
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                               <label for="exampleInputUsername1"></label>
                               <input type="number" class="form-control" id="#" name="opage" placeholder="Age" >
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                               <label for="exampleInputUsername1"></label>
                               <input type="number" class="form-control" id="#" name="opweight" placeholder="weight" >
+                            </div>
+                            <div class="col-lg-3">
+                              <label for="exampleInputUsername1"></label>
+                              <input type="text" class="form-control" id="#" name="opgender" placeholder="Gender" >
                             </div>
                          </div> 
                         </div>
@@ -320,24 +313,19 @@
                       </div>
                       <div class="button">
                         <button type="submit" class="btn btn-primary m-2" name="opbtnsubmit">Submit</button>
-                        <button class="btn btn-light">Cancel</button>
+                        <a href="optable.php" class="btn btn-secondary">go back</a>
+                        
                       </div>
                   </div>
                    
                   </form>
                 </div>
-              </div>
-
-            </div>
-          </div>
+              </div>           
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2021. All rights reserved.</span>
-          </div>
+        <?php  include "../partials/footer.php";?>
         </footer>
         <!-- partial -->
       </div>
