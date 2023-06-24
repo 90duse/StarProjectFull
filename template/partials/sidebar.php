@@ -47,7 +47,7 @@
           <li class="nav-item">
             <!-- <a class="nav-link" data-bs-toggle="collapse" href="#op" aria-expanded="false" aria-controls="form-elements"> -->
             
-              <a href="../config/optable.php" type ="button" class="btn btn-outline-danger  nav-link"><span>OP</span></a> 
+              <a href="../config/optable.php" type ="button" class="btn btn-primary  nav-link"><span>OP</span></a> 
               
             </a>
             <div class="collapse" id="op">
