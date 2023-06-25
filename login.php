@@ -23,9 +23,9 @@ $userPassword = $_POST["Password"];
 
 
  } else if(mysqli_num_rows($result) > 0 && $userRole['user_Type'] == "User"){
-  // $_SESSION['valid'] = true;
-  // $_SESSION['timeout'] = time();
-  // $_SESSION['username'] = $UsernameorEmail;
+  $_SESSION['valid'] = true;
+  $_SESSION['timeout'] = time();
+  $_SESSION['username'] = $UsernameorEmail;
   header("location: ./template/config/index.php");
 
  }
