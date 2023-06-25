@@ -20,7 +20,7 @@
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu bg-primary">
                 <li class="nav-item "><a class="nav-link" href="../config/usersRecord.php">Add New</a></li>
-                <li class="nav-item"><a class="nav-link" href="../config/viewUsers.php">View Users</a></li>
+                <li class="nav-item"><a class="nav-link" href="../config/viewUsersRecord.php">View Users</a></li>
               </ul>
             </div>
           </li>
