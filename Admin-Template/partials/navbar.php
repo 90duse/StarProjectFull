@@ -164,7 +164,6 @@
               <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i> FAQ</a>
               <form action="../../logout.php" method="POST">
                 <button type="submit" name="btnsignout" class="dropdown-item" ><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</button>
-              <!-- <a  href="../../login.php" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a> -->
               </form>
               
             </div>
