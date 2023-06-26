@@ -230,67 +230,45 @@ include "session.php";
                     </li>
                   </ul>
                   <div>
-                    <div class="btn-wrapper">
+                    <!-- <div class="btn-wrapper">
                       <a href="#" class="btn btn-otline-dark align-items-center"><i class="icon-share"></i> Share</a>
                       <a href="#" class="btn btn-otline-dark"><i class="icon-printer"></i> Print</a>
                       <a href="#" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Export</a>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
-<!-- over view section start here -->
+                <!-- over view section start here -->
                 <div class="tab-content tab-content-basic">
                   <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview"> 
-                    <div class="row ">
-                     
-                          <div class="col-4">
-                            <div class="card p-3">
-                                <div class="card-body">
-                                <h4 class="d-flex">TOTAL CASES</h4>
-                                <h5 class=" d-flex"><i class="mdi mdi-file-multiple"></i><span>105K</span></h5>
+                    <div class="row "> 
+                      <div class="row">
+                      <div class="col-md-10 ">
+                        <div class="row ">
+                            <div class="col-xl-3 col-lg-6">
+                                <div class="card l-bg-cherry">
+                                  <div class="card-statistic-3 p-4">
+                                      <div class="card-icon card-icon-large"><i class="fas fa-shopping-cart"></i></div>
+                                      <div class="mb-4">
+                                          <h5 class="card-title mb-0">Total Cases</h5>
+                                      </div>
+                                      <div class="row align-items-center mb-2 d-flex">
+                                        <div class="col-8">
+                                            <h2 class="d-flex align-items-center mb-0">
+                                                3,243
+                                            </h2>
+                                        </div>
+                                          <div class="col-4 text-right">
+                                              <span>12.5% <i class="fa fa-arrow-up"></i></span>
+                                          </div>
+                                        </div>
+                                      <div class="progress mt-1 " data-height="8" style="height: 8px;">
+                                    <div class="progress-bar l-bg-cyan" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
                                 </div>
-                              </div>
-                          </div>
-                          <div class="col-4">
-                            <div class="card p-3 ">
-                                <div class="card-body">
-                                <h4 class="d-flex">TOTAL COPS</h4>
-                                 <h5 class=" d-flex"><i class="mdi mdi-account-group"></i><span>105K</span></h5>
-                               
-                                </div>
-                              </div>
-                          </div>
-                          <div class="col-4">
-                            <div class="card p-3">
-                                <div class="card-body ">
-                                <h4 class="d-flex">TOTAL PRISONERS</h4>
-                                 <h5 class=" d-flex"><i class="mdi mdi-account-group"></i><span>105K</span></h5>
-                                </div>
-                              </div>
-                          </div>
-                          <div class="col-4">
-                            <div class="card p-3  mt-2 ">
-                                <div class="card-body">
-                                <h4 class="d-flex">TOTAL COMPLAINMNETS</h4>
-                                 <h5 class=" d-flex"><i class="mdi mdi-account-convert"></i><span>105K</span></h5>
-                                </div>
-                              </div>
-                          </div>
-                          <div class="col-4 ">
-                            <div class="card  p-3 mt-2 ">
-                                <div class="card-body">
-                                <h4 class="d-flex">TOTAL OP</h4>
-                                 <h5 class=" d-flex"><i class="mdi mdi-account-edit"></i><span>105K</span></h5>
-                                </div>
-                              </div>
-                          </div>
-                          <div class="col-4">
-                            <div class="card  p-3 mt-2 ">
-                                <div class="card-body">
-                                <h4 class="d-flex">TOTAL ASSETS</h4>
-                                 <h5 class=" d-flex"><i class="mdi mdi-home-group"></i><span>105K</span></h5>
-                                </div>
-                              </div>
-                          </div>
+                            </div>
+                           </div>
+                        </div>
+                              
+                          
                           <div class="col-4">
                             <div class="card  p-3 mt-2 bg-primary">
                                 <div class="card-body">
