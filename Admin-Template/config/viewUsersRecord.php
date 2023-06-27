@@ -1,4 +1,5 @@
-
+<?php include 'session.php';
+ ?>
 <!DOCTYPE html>
  <html lang="en">
  <head>
@@ -59,10 +60,12 @@
                   <thead>
                     <tr >
                         <td>user_ID</td>
+                        <td>User_Name</td>
                         <td>user_Email</td>
                         <td>user_Password</td>
                         <td>User_Role</td>
                         <td>created_Date</td>
+                        <td>User_Image</td>
                         <td>Edit</td>
                         <td>Delete</td>
                        
@@ -81,10 +84,12 @@
                         ?>
 
                         <td><?php echo $userID?></td>
+                        <td><?php echo $row['user_Name'];?></td>
                         <td><?php echo $row['user_Email'];?></td>
                         <td><?php echo $row['user_Password'];?></td>
                         <td><?php echo $row['user_Type'];?></td>
                         <td><?php echo $row['created_Date'];?></td>
+                        <td> <img src="<?php echo "../images/".$row['user_profile'];?>" alt="image" width="100px"></td>
                         <td><a href="usersEdit.php?id=<?php echo $userID; ?>"  class="btn btn-success">EDIT</a></td>
                         <td><a href="usersDelete.php?id=<?php echo $userID; ?>"  class="btn btn-danger">DELETE</a></td>
                         
