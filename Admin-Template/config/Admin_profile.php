@@ -1,36 +1,25 @@
 <?php 
- include 'session.php'; 
- include '../config.php';
+  include 'session.php'; 
+  include '../config.php';
 
-//  if(isset($_GET['id'])){
-//     $id = $_GET['id']; 
+    //   $userID = $userEmail = $useremail = $username = $usercreated_date = $userpassword = $userType = "";
+    //  @$userEmail =$_SESSION['username'];
+    //  $sql = "SELECT `user_ID`,`user_Name`,`user_Email`, `user_Password`, `user_Type`, `created_Date` FROM panel_users_table  WHERE user_Email = '$userEmail'";
+    //  $result = mysqli_query($con, $sql);
+    //  $resultcheck = mysqli_num_rows($result);
+    //  if($resultcheck > 0){
+    //     while ($row = mysqli_fetch_array($result)){
+    //         $userID = $row['user_ID'];
+    //         @$userType = $row['user_Type'];
+    //         @$useremail = $row['user_Email'];
+    //         @$username= $row['user_Name'];
+    //         @$userpassword = $row['user_Password'];
+    //         @$usercreated_date= $row['created_Date'];
+    //         //@$userImage = $row['user_profile'];
 
-//         $sql = "SELECT * FROM panel_users_table where user_ID ='$id'";
-//         $result = mysqli_query($con, $sql);
-//          if(mysqli_num_rows($result) > 0){
-//           while ( $row = mysqli_fetch_assoc($result)){ 
+    //     }
+    //   }
 
-//             $id = $emails = $passwords = $created_Date = " ";
-
-//             $id= $row['user_ID'];
-//             $emails = $row['user_Email'];
-//             $passwords = $row['user_Password'];
-//             $created_Date = $row['created_Date'];
-
-//           }
-//         } 
-//         else {
-//             echo mysqli_error($con);
-//         }
-//     }
-   
-
-    if(isset($_POST['btnprofile'])){ 
-     
-       
-    
-
-      }
 
 ?>
 
@@ -74,97 +63,124 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
+        
           
          <!-- Profile code start here  -->
-         <form action="#" method="POST">
-        <div class="container py-5">
-            <div class="row">
+       <div class="container">
+           <div class="row">
                 <div class="col">
-                <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
-                    <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item active" aria-current="page"><a href="index.php">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">User</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">User Profile</li>
-                    </ol>
-                </nav>
+                    <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item active" aria-current="page"><a href="index.php">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">User</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+                        </ol>
+                    </nav>
                 </div>
-            </div>
-            
-            <div class="row">
-              <div class="col-4">
-                <div class="card mb-4">
-                  <div class="card-body text-center">
-                    <img src="../images/auth/ava3.webp" alt=""
-                    class="rounded-circle img-fluid img-border-3" style="width: 200px;">
-                    <h5 class="my-3">Dabagalle</h5>
-                    <input type="text" class="" name="role">ADMIN</input>
-                    <p class="text-muted mb-4">Hargeisa, Somaliland</p>
+           </div>
+         
+            <div class="row ">
+            <div class="col-lg-4 ">
+              <form action="" method="POST">
+                <?php  
+                $userID = $userEmail = $useremail = $username = $usercreated_date = $userpassword = $userType = "";
+                
+                $result = mysqli_query($con, "SELECT * FROM panel_users_table " );
+                    while ($row = mysqli_fetch_assoc($result)){
+                       $userID = $row['user_ID'];
+                       @$userType = $row['user_Type'];
+                       @$useremail = $row['user_Email'];
+                       @$username = $row['user_Name'];
+                       @$userpassword = $row['user_Password'];
+                       @$usercreated_date= $row['created_Date'];
+                         
+                      
+                      }
+              
+
+                ?>
+
+                <div class="card">
+                  <div class="card-body">
+                    <table></table>
+                    <img src="../images/auth/policeLogo.svg.png" alt=""
+                    class="img-thumbnail img-fluid img-border-3 mx-auto d-flex " style="width: 200px;">
+                    
+                    <input type="text" class="form-control text-center mt-1" name="role" value="<?php echo $userType; ?>"></input>
+                    <p class="text-muted mb-4 text-center">Hargeisa, Somaliland</p>
                     <div class="d-flex justify-content-center mb-2">
                     </div>
                    </div>
+                  </div>
                 </div>
-              </div>
-             
-          <div class="col p-3">
-             <div class="card mb-4">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-sm-3">
-                    <p class="mb-0">Full Name</p>
+                <div class="col p-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row" hidden="true">
+                              <div class="col-sm-9">
+                               <input type="number"  hidden="true" class="form-control text-muted mb-0" name="admin_ID" value="<?php echo $userID;?>">
+                              </div>
+                         </div>
+                        
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">User Name</p>
+                                </div>
+                                <div class="col-sm-9">
+                                <input type="text" class="form-control text-muted mb-0" name="admin_name" value="<?php echo $username;?>">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">User Email</p>
+                                </div>
+                                <div class="col-sm-9">
+                                <input type="email" class="form-control text-muted mb-0" name="admin_email" value="<?php echo $useremail;?>">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">User Password</p>
+                                </div>
+                                <div class="col-sm-9">
+                                <input type="password" class="form-control text-muted mb-0" name="admin_password" value="<?php echo $userpassword;?>">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Created Date</p>
+                                </div>
+                                <div class="col-sm-9">
+                                <input type="tel" class=" form-control text-muted mb-0" name="admin_created_date" value="<?php echo $usercreated_date;?>">
+                            </div>
+                        </div>
+                        <hr>
+                        
                     </div>
-                    <div class="col-sm-9">
-                    <input type="text" class="text-muted mb-0" name="admin_name">
-                  </div>
-                  </div>
-                 <hr>
-                <div class="row">
-                <div class="col-sm-3">
-                    <p class="mb-0">Email</p>
+                   
+                    
+                    <div class="card-footer">
+                            <div class="d-grid gap-2 col-4 mx-auto">
+                                <!-- <button type="submit" name="btnprofile" class="btn btn-outline-primary btn-end">Edit</button> -->
+                                <a href="profile_edit.php?id=<?php echo $userID; ?>" type="submit" class="btn btn-outline-primary btn-end">Edit</a>
+                            </div>
+                    </div>
+                    </div>
+                
                 </div>
-                <div class="col-sm-9">
-                <input type="email" class="text-muted mb-0" name="admin_email" value="<?php echo @$emails;?>">
-                </div>
-                </div>
-                <hr>
-                <div class="row">
-                <div class="col-sm-3">
-                    <p class="mb-0">Phone</p>
-                </div>
-                <div class="col-sm-9">
-                <input type="tel" class="text-muted mb-0" name="admin_phone">
-                </div>
-                </div>
-                <hr>
-                <div class="row">
-                <div class="col-sm-3">
-                    <p class="mb-0">Created Date</p>
-                </div>
-                <div class="col-sm-9">
-                <input type="tel" class="text-muted mb-0" name="admin_created_date">
-                </div>
-                </div>
-                <hr>
-                <div class="row">
-                <div class="col-sm-3">
-                    <p class="mb-0">Address</p>
-                </div>
-                <div class="col-sm-9">
-                <input type="text" class="text-muted mb-0" name="admin_address">
-                </div>
-                </div>
-              </div>
-             </div>
+                
+             </form>
             </div>
-           </div>
-           <div class="d-grid gap-2 col-4 mx-auto">
-           <button type="submit" name="btnprofile" class="btn btn-outline-primary btn-end">Save</button>
-           </div>
-          </div>
-        </div>
-        </form>
+        <!-- row -->
+       </div> 
+       <!-- container -->
+        
           <!-- profile code end here -->
 
-                  
+            
 
       
        
