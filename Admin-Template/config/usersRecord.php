@@ -55,7 +55,7 @@
                        $ErrMessage = "<div class='alert alert-danger' role='alert'>
                        All Fields must be filled 
                      </div>";
-                     $userEmail = $userPassword = $userRole = $createdDate = " " ;
+                     $userName = $userEmail = $userPassword = $userRole = $createdDate = " " ;
                 
                        
                            if(isset($_POST['btnAddUsers'])){ 
@@ -64,9 +64,17 @@
                             $userPassword = $_POST['userpassword'];
                             $userRole = $_POST['selectUserRole'];
                             $createdDate = $_POST['createdDate'];
+                            $userName = $_POST['username'];
 
-                            $sql =  "INSERT INTO `Panel_users_table` (`user_ID`, `user_Email`, `user_Password`, `user_Type`, `created_Date`) 
-                            VALUES (' ', '$userEmail', '$userPassword', '$userRole', '$createdDate')";
+                            $userImage = $_FILES['profileimage']['name'];
+                            $userImagesize = $_FILES['profileimage']['size'];
+                            $tmp_name = $_FILES['profileimage']['tmp_name'];
+                            $imageLocation = "../images/"; 
+
+                            if(move_uploaded_file($tmp_name, $imageLocation.$userImage)){
+
+                            $sql =  "INSERT INTO `Panel_users_table` (`user_ID`, `user_Name`, `user_Email`, `user_Password`, `user_Type`, `created_Date`,`user_profile`) 
+                            VALUES (' ', '$userName', '$userEmail', '$userPassword', '$userRole', '$createdDate', '$userImage')";
                             
                             if (mysqli_query($con, $sql))
                             {
@@ -84,9 +92,10 @@
                         
 
                           }
+                        }
                           
                     ?>
-                  <form   id = "form" name="myForm "class="forms-sample"  method="POST" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> ">
+                  <form   id = "form" name="myForm "class="forms-sample"  method="POST" action = "#" enctype="multipart/form-data">
                     <div class="container">
                     <div class="row" >
                         <div class="col-lg-6">
@@ -100,6 +109,18 @@
                          </div>
                         </div>
                         
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col-lg-6">
+                            <div class="row">
+                            <div class="col-4" > 
+                                <label for="username" class=" text text-secondary">User Name</label>
+                            </div>
+                            <div class="col">
+                            <input type="text" class="form-control" id="#" name="username" placeholder="User Name" >
+                            </div>
+                         </div>
+                        </div>
                       </div>
                         <div class="row">
                         <div class="col-lg-6">
@@ -127,8 +148,8 @@
                         </div>
                       </div>
                       <div class="row">
-                      <div class="col-lg-6">
-                        <div class="row mt-4">
+                         <div class="col-lg-6">
+                            <div class="row mt-4">
                                   <div class="col-4"> 
                                       <label for="createdDate" class=" text text-secondary">User Role</label>
                                   </div>
@@ -140,6 +161,20 @@
                                   </div> 
                               </div> 
                         </div>
+                        </div>
+                        <div class="row mt-3">
+                        <div class="col-lg-6">
+                            <div class="row">
+                            <div class="col-4" > 
+                                <label for="profileimage" class=" text text-secondary">Upload Profile Photo</label>
+                            </div>
+                            <div class="col">
+                            <input type="file" class="form-control" id="#" name="profileimage" placeholder="Profile Phote" >
+                            </div>
+                         </div>
+                        </div>
+                      </div>
+                       
                       <div class="row">
                       <div class="col-lg-6">
                         <div class="row mt-4">
