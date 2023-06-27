@@ -66,12 +66,13 @@
                              if(mysqli_num_rows($result) > 0){
                               while ( $row = mysqli_fetch_assoc($result)){ 
 
-                                $id = $emails = $passwords = $created_Date = " ";
+                                $profileimage = $id = $emails = $passwords = $created_Date = " ";
 
                                 $id= $row['user_ID'];
                                 $emails = $row['user_Email'];
                                 $passwords = $row['user_Password'];
                                 $created_Date = $row['created_Date'];
+                                $profileimage = $row['user_profile'];
 
                               }
                             } 
@@ -85,9 +86,10 @@
                                 $userPassword = $_POST['userpassword'];
                                 $createdDate = $_POST['createdDate'];
                                 $userRole = $_POST['selectUserRole'];
+                                $userImage = $_POST['profileimage'];
     
                                 $sql = "UPDATE `panel_users_table` SET `user_Email` = '$userEmail', `user_Password` = '$userPassword', `user_Type` = '$userRole',
-                                 `created_Date` = '$createdDate' WHERE `panel_users_table`.`user_ID` = '$id'";
+                                 `created_Date` = '$createdDate', `user_profile`= '$userImage' WHERE `panel_users_table`.`user_ID` = '$id'";
                                 
                                 if (mysqli_query($con, $sql))
                                 {
@@ -170,6 +172,18 @@
                                   </div> 
                               </div> 
                         </div>
+                        <div class="row mt-3">
+                        <div class="col-lg-6">
+                            <div class="row">
+                            <div class="col-4" > 
+                                <label for="profileimage" class=" text text-secondary">Upload Profile Photo</label>
+                            </div>
+                            <div class="col">
+                            <input type="file" class="form-control" id="#" name="profileimage" placeholder="Profile Phote" value="<?php "../images/".$row['user_profile'];?>" >
+                            </div>
+                         </div>
+                        </div>
+                      </div>
                       <div class="row">
                       <div class="col-lg-6">
                         <div class="row mt-4">
