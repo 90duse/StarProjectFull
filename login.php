@@ -80,12 +80,20 @@ else{
   <link rel="shortcut icon" href="./Admin-Template/images/favicon.png" />
 </head>
 
-<body>
+<body class="bg bg-primary">
   <div class="container-scroller">
     <div class="container-fluid page-body-wrapper full-page-wrapper">
       <div class="content-wrapper d-flex align-items-center auth px-0">
         <div class="row w-100 mx-0">
-          <div class="col-lg-4 mx-auto">
+        <div class="col-lg-7">
+           <div class="">
+            <img src="Admin-Template/images/auth/policeLogo.svg.png" alt="image" class="m-5" 
+             width="500" >
+           </div> 
+
+        </div>
+
+          <div class="col-lg-4 ">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
               <div class="brand-logo ">
                 <img src="./Admin-Template/images/POLICEL.png " width = "100" height ="100" alt="logo">
@@ -124,7 +132,9 @@ else{
               </form>
             </div>
           </div>
+          
         </div>
+       
       </div>
       <!-- content-wrapper ends -->
     </div>
