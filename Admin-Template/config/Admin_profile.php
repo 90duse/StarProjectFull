@@ -83,19 +83,36 @@
             <div class="col-lg-4 ">
               <form action="" method="POST">
                 <?php  
-                $userID = $userEmail = $useremail = $username = $usercreated_date = $userpassword = $userType = "";
+                   $userID = $userEmail = $useremail = $username = $usercreated_date = $userpassword = $userType = "";
+                   @$userEmail =$_SESSION['username'];
+                   $sql = "SELECT `user_ID`,`user_Name`,`user_Email`, `user_Password`, `user_Type`, `created_Date` FROM panel_users_table  WHERE user_Email = '$userEmail'";
+                   $result = mysqli_query($con, $sql);
+                   $resultcheck = mysqli_num_rows($result);
+                   if($resultcheck > 0){
+                      while ($row = mysqli_fetch_array($result)){
+                          $userID = $row['user_ID'];
+                          @$userType = $row['user_Type'];
+                          @$useremail = $row['user_Email'];
+                          @$username= $row['user_Name'];
+                          @$userpassword = $row['user_Password'];
+                          @$usercreated_date= $row['created_Date'];
+                          //@$userImage = $row['user_profile'];
+
+                      }
+                    }
+                // $userID = $userEmail = $useremail = $username = $usercreated_date = $userpassword = $userType = "";
                 
-                $result = mysqli_query($con, "SELECT * FROM panel_users_table " );
-                    while ($row = mysqli_fetch_assoc($result)){
-                       $userID = $row['user_ID'];
-                       @$userType = $row['user_Type'];
-                       @$useremail = $row['user_Email'];
-                       @$username = $row['user_Name'];
-                       @$userpassword = $row['user_Password'];
-                       @$usercreated_date= $row['created_Date'];
+                // $result = mysqli_query($con, "SELECT * FROM panel_users_table " );
+                //     while ($row = mysqli_fetch_assoc($result)){
+                //        $userID = $row['user_ID'];
+                //        @$userType = $row['user_Type'];
+                //        @$useremail = $row['user_Email'];
+                //        @$username = $row['user_Name'];
+                //        @$userpassword = $row['user_Password'];
+                //        @$usercreated_date= $row['created_Date'];
                          
                       
-                      }
+                //       }
               
 
                 ?>
