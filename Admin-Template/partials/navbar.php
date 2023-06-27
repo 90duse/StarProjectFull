@@ -151,11 +151,11 @@
           </li>
           <li class="nav-item dropdown d-none d-lg-block user-dropdown">
             <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-              <img class="img-xs rounded-circle" src="../images/POLICEL.png" alt="Profile image"> </a>
+              <img class="img-xs rounded-circle" src="../images/auth/policeLogo.svg.png" alt="Profile image"> </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <div class="dropdown-header text-center">
-                <img class="img-md rounded-circle" src="../images/POLICEL.png" width = "100"alt="Profile image">
-                <p class="mb-1 mt-3 font-weight-semibold">officer</p>
+                <img class="img-md rounded-circle" src="../images/auth/policeLogo.svg.png" width = "100"alt="Profile image">
+                <p class="mb-1 mt-3 font-weight-semibold">Admin</p>
                 <p class="fw-light text-muted mb-0"><?php echo $_SESSION['username']; ?></p>
               </div>
               <a href="Admin_profile.php" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
