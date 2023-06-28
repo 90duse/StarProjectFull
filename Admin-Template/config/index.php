@@ -36,25 +36,6 @@ include "session.php";
     <!-- partial -->
   
     <div class="container-fluid page-body-wrapper">
-      <!-- partial:partials/_settings-panel.html -->
-      <!-- <div class="theme-setting-wrapper">
-        <div id="settings-trigger"><i class="ti-settings"></i></div>
-        <div id="theme-settings" class="settings-panel">
-          <i class="settings-close ti-close"></i>
-          <p class="settings-heading">SIDEBAR SKINS</p>
-          <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border me-3"></div>Light</div>
-          <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border me-3"></div>Dark</div>
-          <p class="settings-heading mt-2">HEADER SKINS</p>
-          <div class="color-tiles mx-0 px-4">
-            <div class="tiles success"></div>
-            <div class="tiles warning"></div>
-            <div class="tiles danger"></div>
-            <div class="tiles info"></div>
-            <div class="tiles dark"></div>
-            <div class="tiles default"></div>
-          </div>
-        </div>
-      </div> -->
       <div id="right-sidebar" class="settings-panel">
         <i class="settings-close ti-close"></i>
         <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
@@ -238,58 +219,140 @@ include "session.php";
                   </div>
                 </div>
                 <!-- over view section start here -->
-                <div class="tab-content tab-content-basic">
-                  <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview"> 
-                    <div class="row "> 
-                      <div class="row">
-                      <div class="col-md-10 ">
-                        <div class="row ">
-                            <div class="col-xl-3 col-lg-6">
-                                <div class="card l-bg-cherry">
-                                  <div class="card-statistic-3 p-4">
-                                      <div class="card-icon card-icon-large"><i class="fas fa-shopping-cart"></i></div>
-                                      <div class="mb-4">
-                                          <h5 class="card-title mb-0">Total Cases</h5>
-                                      </div>
-                                      <div class="row align-items-center mb-2 d-flex">
-                                        <div class="col-8">
-                                            <h2 class="d-flex align-items-center mb-0">
-                                                3,243
-                                            </h2>
-                                        </div>
-                                          <div class="col-4 text-right">
-                                              <span>12.5% <i class="fa fa-arrow-up"></i></span>
-                                          </div>
-                                        </div>
-                                      <div class="progress mt-1 " data-height="8" style="height: 8px;">
-                                    <div class="progress-bar l-bg-cyan" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
-                                </div>
-                            </div>
-                           </div>
-                        </div>
-                              
-                          
-                          <div class="col-4">
-                            <div class="card  p-3 mt-2 bg-primary">
-                                <div class="card-body">
-                                <h4 class="d-flex">TOTAL ASSETS</h4>
-                                <details>
-                                  <summary> IEW NOW </summary>
-                                  <h5 class=" d-flex"><i class="mdi mdi-home-group"></i><span>105K</span></h5>
-                                  <h5 class=" d-flex"><i class="mdi mdi-home-group"></i><span>105K</span></h5>
-                                  <h5 class=" d-flex"><i class="mdi mdi-home-group"></i><span>105K</span></h5>
-                                  <h5 class=" d-flex"><i class="mdi mdi-home-group"></i><span>105K</span></h5>
-                                  <h5 class=" d-flex"><i class="mdi mdi-home-group"></i><span>105K</span></h5>
-                               
-                                </details>
-                                </div>
-                              </div>
-                          </div>
+                 <!-- over view section start here -->
+                    
+                 <div class="row mt-2">
+                      <div class="col-lg-3 col-md-4 col-sm-12 ">
+                          <div class="card py-2 bg-info">
+                            <div class="card-body  ">
+                              <div class="row">
+                                <div class="col-8">
+                                <h4 class="d-flex">TOTAL CASES</h4>
+                                <!-- <i class="mdi mdi-file-multiple"></i> -->
+                                <?php 
+                                include '../config.php';
+                                $query = "SELECT cr_id  from crimerecord_table ORDER BY cr_id";
+                                $query_run = mysqli_query($con, $query);
+                                $row = mysqli_num_rows($query_run);
+                                echo '<h2> '.$row.'</h2>';
 
+                              ?>
+                                </div>
+                                <div class="col">
+                                  <i class="mdi mdi-file-multiple lg"></i>
+                                </div>
+
+                              </div>
+                            
+                            </div>
+
+                          </div>
+                      </div>
+                      <div class="col-lg-3 col-md-4 col-sm-12 ">
+                          <div class="card py-2 bg-info ">
+                            <div class="card-body  ">
+                            <h4 class="">TOTAL PRISONERS</h4>
+                            <!-- <i class="mdi mdi-file-multiple"></i> -->
+                            <?php 
+                           
+                            $sql = "SELECT pri_id  from `prisonerrecord` ORDER BY pri_id";
+                            $query_run = mysqli_query($con, $sql);
+                            $row = mysqli_num_rows($query_run);
+                            echo '<h2> '.$row.'</h2>';
+
+                              ?>
+                            </div>
+                          </div>
+                       </div>
+                       <div class="col-lg-3 col-md-4 col-sm-12 ">
+                          <div class="card py-2 border-danger ">
+                            <div class="card-body  ">
+                            <h4 class="">TOTAL POLICE ASSETS</h4>
+                            <!-- <i class="mdi mdi-file-multiple"></i> -->
+                            <?php 
+                           
+                            $sql = "SELECT id  from `assetregistration_table` ORDER BY id";
+                            $query_run = mysqli_query($con, $sql);
+                            $row = mysqli_num_rows($query_run);
+                            echo '<h2> '.$row.'</h2>';
+
+                              ?>
+                            </div>
+                          </div>
+                       </div>
+                       <div class="col-lg-3 col-md-4 col-sm-12 ">
+                          <div class="card py-2 bg-info ">
+                            <div class="card-body  ">
+                            <h4 class="">TOTAL POLICE</h4>
+                            <!-- <i class="mdi mdi-file-multiple"></i> -->
+                            <?php 
+                           
+                            $sql = "SELECT p_ID  from `policeregistration_table` ORDER BY p_ID";
+                            $query_run = mysqli_query($con, $sql);
+                            $row = mysqli_num_rows($query_run);
+                            echo '<h2> '.$row.'</h2>';
+
+                              ?>
+                            </div>
+                          </div>
+                       </div>
+                       <div class="col-lg-3 col-md-4 col-sm-12 mt-2">
+                          <div class="card py-2 bg-info ">
+                            <div class="card-body  ">
+                            <h4 class="">TOTAL COMPLAINMENTS</h4>
+                            <!-- <i class="mdi mdi-file-multiple"></i> -->
+                            <?php 
+                           
+                            $sql = "SELECT co_id  from `complainmentregistration_table` ORDER BY co_id";
+                            $query_run = mysqli_query($con, $sql);
+                            $row = mysqli_num_rows($query_run);
+                            echo '<h2> '.$row.'</h2>';
+
+                              ?>
+                            </div>
+                          </div>
+                       </div>
+                       <div class="col-lg-3 col-md-4 col-sm-12 mt-2">
+                          <div class="card py-2  ">
+                            <div class="card-body  ">
+                            <h4 class="">TOTAL OP</h4>
+                            <!-- <i class="mdi mdi-file-multiple"></i> -->
+                            <?php 
+                           
+                            $sql = "SELECT op_id  from `op_table` ORDER BY op_id";
+                            $query_run = mysqli_query($con, $sql);
+                            $row = mysqli_num_rows($query_run);
+                            echo '<h2> '.$row.'</h2>';
+
+                              ?>
+                            </div>
+                          </div>
+                       </div>
+                       <div class="col-lg-3 col-md-4 col-sm-12 mt-2">
+                          <div class="card py-2 bg-primary ">
+                            <div class="card-body  ">
+                            <h4 class="">TOTAL USERS</h4>
+                            <!-- <i class="mdi mdi-file-multiple"></i> -->
+                            <?php 
+                           
+                            $sql = "SELECT user_ID  from `panel_users_table` ORDER BY user_ID";
+                            $query_run = mysqli_query($con, $sql);
+                            $row = mysqli_num_rows($query_run);
+                            echo '<h2> '.$row.'</h2>';
+
+                              ?>
+                            </div>
+                          </div>
+                       </div>
+                      
+                      
+
+                        
                           
-                  </div>
-                </div>
-<!-- over view section end here -->
+
+                   </div>   
+                
+                <!-- over view section end here -->
         <!-- content-wrapper ends -->
      
        <!-- footer starts -->
