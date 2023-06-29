@@ -1,4 +1,11 @@
-<?php include 'session.php';  ?>
+<?php include 'session.php'; 
+   
+           
+    
+    
+  
+    
+    ?> 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,34 +60,105 @@
               </div>
               <hr>
             </div> 
-            <?php  include '../config.php';
-              if(isset($_POST['btnsearch'])){
-                $searchinput = $_POST['search'];
-
-               // $query = "SELECT cr_id  from crimerecord_table ORDER BY cr_id";
-              //   $queary = "SELECT `user_Name`, `user_Email`, `user_Type` FROM `panel_users_table` WHERE `user_ID` = '$searchinput'";
-              //     $query_run = mysqli_query($con, $query);
-              //     if($query_run){
-              //       echo 'We found one';
-              //     } else{
-              //       echo myqli_error($con);
-              //     }
-              }
-              
-              ?>
-             <form action="#" method="POST">
-             
-            <div class="row">
-              <div class="col-6">
-                 <div class="col-8">
-                   <input class="form-control mr-sm-2" type="search" placeholder="Search by ID, Email or Role" aria-label="Search">
-                 </div>
-              </div>
-              <div class="col-6">
-                <button type="submit" name="btnsearch" class="btn btn-outline-success"> Search</button>
+            <form action="#" method="GET">
+            <div class="container">
+              <div class="row">
+                <div class="col-6">
+                  <div class="card ">
+                  <input type="text" class="form-control-lg" name="search" placeholder="Search by ID, Email or Role" >
+                  </div>
+                </div>
+                <div class="col-2">
+                  <div class="card ">
+                     <button type="submit" name="btnsearch" class="btn btn-outline-success"> Search</button>
+                  </div>
+                </div>
+                <div class="col-2">
+                  <div class="card ">
+                    <a href="print_user_data.php" class="btn btn-outline-primary" >Print</a>
+                  
+                  </div>
+                </div>
               </div>
             </div>
             </form>
+        
+             
+          </div>
+
+          
+            
+
+          <div class="container fluid">
+            
+            <table class="table select-table " id="#">
+            <?php
+              include '../config.php';
+              $userid = $username = $searchinput = " " ;
+              if(isset($_GET['btnsearch'])){
+                @$searchinput = $_GET['search'];
+                // $searchID = $_GET['btnsearch'];
+          
+                
+          
+                $query = "SELECT * FROM `panel_users_table` WHERE `user_ID` like '%$searchinput%' or `user_Email`like '%$searchinput%' or `user_Name`like '%$searchinput%' or 
+                `user_Type` like '%$searchinput%' or `created_Date` like '%$searchinput%'";
+                $query_run = mysqli_query($con, $query);
+                if($query_run){
+                  if(mysqli_num_rows($query_run) > 0){
+                    echo '  
+                    <thead class="#">
+              
+                    <tr>
+                      <td>ID</td>
+                      <td>Email</td>
+                      <td>Email</td>
+                      <td>ID</td>
+                      <td>Email</td>
+                      <td>Email</td>
+                      <td>Email</td>
+                      
+                      
+                      
+                      
+                    </tr>
+                    
+    
+                  </thead> <hr>' ;
+                   while( $row = mysqli_fetch_assoc($query_run)){
+
+                    echo '<tbody>
+                    <tr>
+                      <td>'.$row['user_ID'].'</td>
+                      <td>'.$row['user_Name'].'</td>
+                      <td>'.$row['user_Email'].'</td>
+                      <td>'.$row['user_Type'].'</td>
+                      <td>'.$row['user_Password'].'</td>
+                      <td>'.$row['created_Date'].'</td>
+                      <td>'.$row['user_profile'].'</td>
+                      
+                     
+                      
+                    </tr>
+              
+                  </tbody>';
+                    
+                    
+                   }
+                  
+                  }
+                   else{
+                    echo '<h4>Sorry No Data is found</h4>';
+                   }
+                } else{
+                  echo myqli_error($con);
+                }
+                  
+              }
+             ?>
+              
+            </table>
+           
           </div>
 
      
@@ -121,8 +199,27 @@
   <script src="../js/dashboard.js"></script>
   <script src="../js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+    <!-- Data table plugins -->
 
+  <script src="../DataTables/jQuery-3.6.0/jquery-3.5.1.js"></script>
+  <script src="../DataTables/DataTables-1.13.4/js/jquery.dataTables.min.js"></script>
+  <script  src="../DataTables/DataTables-1.13.4/js/dataTables.bootstrap5.min.js"></script>
+  <!-- <script src="print_function.js" type="text/javascript"></script> -->
 
+  <script> 
+$(document).ready(function () {
+    $('#mytable').DataTable({
+     
+      
+    });
+});
+</script>
+
+<script type="text/javascript">
+	function PrintPage() {
+		window.print();
+	}
+</script>
 </body>
 
 
