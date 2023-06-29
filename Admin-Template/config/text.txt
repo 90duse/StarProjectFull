@@ -1,0 +1,23 @@
+ if(isset($_POST['btnsearch'])){
+                @$searchinput = $_POST['search'];
+                 $userid = $username = $searchinput = " " ;
+               //$query = "SELECT cr_id  from crimerecord_table ORDER BY cr_id";
+                $query = "SELECT * FROM `panel_users_table` WHERE `user_ID` = '$searchinput'";
+                $query_run = mysqli_query($con, $query);
+                $row = mysqli_fetch_array($query_run);
+                    if(mysqli_num_rows($row) > 0){
+                      if(gettype($searchinput == 'number')){
+                      @$userid = $row['user_ID'];
+
+                        } else if (gettype($searchinput == 'string')){
+                          @$username = $row['user_Name'];
+                        } 
+                    
+                
+                  else{
+                    echo myqli_error($con);
+                  }
+              } else{
+                echo myqli_error($con);
+              }
+            }
