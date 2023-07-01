@@ -71,11 +71,12 @@
                 <div class="col-2">
                   <div class="card ">
                      <button type="submit" name="btnsearch" class="btn btn-outline-success"> Search</button>
+                     <!-- <a href="#" type="submit" name="btnsearch"  class="btn btn-outline-success">Search</a> -->
                   </div>
                 </div>
                 <div class="col-2">
                   <div class="card ">
-                    <a href="print_user_data.php" class="btn btn-outline-primary" >Print</a>
+                    <a href="view_report_data.php" class="btn btn-outline-primary"  >Print</a>
                   
                   </div>
                 </div>
@@ -143,9 +144,9 @@
               
                   </tbody>';
                     
-                    
+               
                    }
-                  
+                   
                   }
                    else{
                     echo '<h4>Sorry No Data is found</h4>';
@@ -156,7 +157,7 @@
                   
               }
              ?>
-              
+               
             </table>
            
           </div>
