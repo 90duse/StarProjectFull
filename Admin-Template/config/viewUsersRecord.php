@@ -1,4 +1,29 @@
-<?php include 'session.php';
+<?php 
+  include 'session.php';
+  include '../config.php';
+
+  // setting the query start point value
+  $start = 0 ;
+  // setting the number of rows displaying in a page 
+  $rows_per_page = 4 ;
+  // get the total number of rows
+  $result = mysqli_query($con, "SELECT * FROM panel_users_table" );
+  $num_of_rows = mysqli_num_rows($result);
+  //calculate number of pages
+  $pages = ceil($num_of_rows / $rows_per_page);
+
+  // if the user click of the pagination button we set new starting point
+  if(isset($_GET['page-number'])){
+    $page = $_GET['page-number']-1 ;
+    $start = $page * $rows_per_page ;
+  }
+
+  $result = mysqli_query($con, "SELECT * FROM panel_users_table limit $start , $rows_per_page" );  
+
+
+//   searching code 
+
+
  ?>
 <!DOCTYPE html>
  <html lang="en">
@@ -55,9 +80,34 @@
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-            <form action="#" method="POST">
-               <table class="table select-table " id="mytable">
-                  <thead>
+          <div class="container">
+              <div class="row">
+                <div class="col-2 ">
+                  <div class="card ">
+                    <a href="print_users_record.php" class="btn btn-outline-primary">Print Report</a>
+                  </div>
+                </div>
+                <div class="col-3 offset-5 ">
+                  <div class="card ">
+                  <input type="text" class="form-control" name="search" placeholder="Search by ID, Email or Role" >
+                  </div>
+                </div>
+                <div class="col-2">
+                  <div class="card ">
+                     <button type="submit" name="btnsearch" class="btn btn-outline-success"> Search</button>
+                     <!-- <a href="#" type="submit" name="btnsearch"  class="btn btn-outline-success">Search</a> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+
+            
+            <form action="#" method="GET">
+               <table class="table select-table mt-3 " id="#">
+                
+                  <thead class="bg-dark">
                     <tr >
                         <td>user_ID</td>
                         <td>User_Name</td>
@@ -75,10 +125,10 @@
                   <tbody>
                     <tr>
                       <?php 
-                        include '../config.php';
+                        
 
                       
-                        $result = mysqli_query($con, "SELECT * FROM panel_users_table " );
+                        //$result = mysqli_query($con, "SELECT * FROM panel_users_table " );
                           while ($row = mysqli_fetch_assoc($result)){
                           $userID = $row['user_ID'];
                         ?>
@@ -98,15 +148,80 @@
                     <?php  }  ?>
                   </tbody>
                   <tfoot>
+                    
 
                   </tfoot>
                 </table>          
-              </form>
+            </form>
+
+             
+              <!-- Pagination code starts here -->
+            <div class="container">
+                <!-- Displaying page info text -->
+              <div class=""> 
+                    <?php 
+                        if(!isset($_GET['page-number'])){
+                            $page = 1 ;
+                        } else {
+                            $page = $_GET['page-number'];
+                        }
+                    ?> showing <?php echo $page; ?> of <?php echo $pages; ?> pages
+               </div>
+
+                <!-- Displaying the pagination buttons -->
+                <div class="pagination">
+
+                    <a href="?page-number=1" class="btn btn-outline-primary ">First</a>
+                    <!-- Previous Button Code -->
+                    <?php  
+                        if(isset($_GET['page-number']) && $_GET['page-number'] > 1){
+                        ?> 
+                            <a href="?page-number=<?php echo $_GET['page-number'] - 1 ?>" class="btn btn-outline-primary">Previous</a>
+                        <?php 
+                        }else {
+                        
+                        ?>  <a class="btn btn-outline-primary">Previous</a>
+                        <?php 
+                        } 
+                    ?>
+
+                    <div class="">
+                        <?php  for($counter = 1; $counter <= $pages; $counter++){
+
+                        ?>  <a href="?page-number=<?php echo $counter; ?>"class="btn btn-outline-primary"><?php echo $counter; ?></a>
+                        <?php } ?>
+                        
+                       
+                       
+                    </div>
+                <!-- Next Button code  -->
+                <?php  if(!isset($_GET['page-number'])){
+                    
+                    ?>  <a href="?page-number=2" class="btn btn-outline-primary">Next</a>
+
+                <?php 
+                    } 
+                    else { 
+                    if($_GET['page-number']>= $pages){
+                    ?> <a class="btn btn-outline-primary">Next</a>
+                    <?php 
+                    } 
+                    else{
+                        ?>
+                        <a href="?page-number=<?php  echo $_GET['page-number'] + 1;  ?>">Next</a>
+                    <?php 
+                    }
+                } 
+                ?>
+                <a href="?page-number=<?php echo $pages; ?>" class="btn btn-outline-primary">Last</a>
+              </div>
+             
+            </div>   <!-- Pagination code ends here -->
+            
+
           </div> <!-- content-wrapper ends -->
 
-       <!-- footer start -->
-
-       <!-- footer end -->
+       
       </div> <!-- main-panel ends -->
     </div> <!-- page-body-wrapper ends -->
   </div><!-- container-scroller -->
@@ -136,26 +251,11 @@
 
   <!-- Data table plugins -->
 
-  <script src="../DataTables/jQuery-3.6.0/jquery-3.5.1.js"></script>
-  <script src="../DataTables/DataTables-1.13.4/js/jquery.dataTables.min.js"></script>
-  <script  src="../DataTables/DataTables-1.13.4/js/dataTables.bootstrap5.min.js"></script>
-  <!-- <script  src="../DataTables/Buttons-2.3.6/js/dataTables.buttons.min.js"></script>
-  <script  src="../DataTables/JSZip-2.5.0/jszip.min.js"></script>
-  <script  src="../DataTables/pdfmake-0.2.7/pdfmake.min.js"></script>
-  <script  src="../DataTables/pdfmake-0.2.7/vfs_fonts.js"></script>
-  <script src="../js/buttons.html5.min.js"></script>
-  <script src="../js/buttons.print.min.js"></script>  -->
+  
 
 
 
-<script> 
-$(document).ready(function () {
-    $('#mytable').DataTable({
-     
-      
-    });
-});
-</script>
+
 </body>
 
 </html>
