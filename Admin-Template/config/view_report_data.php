@@ -31,127 +31,84 @@
   <!-- endinject -->
   <link rel="shortcut icon" href="../images/favicon.png" />
 </head>
-<body>
+<body onload="print();">
 
-    
-    <div class="container-fluid page-body-wrapper">
-      <!-- partial:partials/_sidebar.php -->
-     
-      <div class="main-panel">
-        <div class="content-wrapper">
-          <!-- over view section start here -->
-          <div class="container">
+  <div class="container">
+    <form action="" method="GET">
+      <div class="container fluid">
           
-            <div class="row">
-              <div class="col">
-                <h2></h2>
-              </div>
-              <hr>
-            </div> 
-            <form action="#" method="GET">
-            <div class="container">
-              <div class="row">
-                <div class="col-6">
-                
-               
-              </div>
-            </div>
-            </form>
+          <table class="table select-table " id="#">
+          <?php
+            include '../config.php';
+            $userid = $username = $searchinput = " " ;
+            if(isset($_GET['btnsearch'])){
+              @$searchinput = $_GET['search'];
+              // $searchID = $_GET['btnsearch'];
         
-             
-          </div>
-
-          
-            
-
-          <div class="container fluid">
-            
-            <table class="table select-table " id="#">
-            <?php
-              include '../config.php';
-              $userid = $username = $searchinput = " " ;
-              if(isset($_GET['btnsearch'])){
-                @$searchinput = $_GET['search'];
-                // $searchID = $_GET['btnsearch'];
-          
-                
-          
-                $query = "SELECT * FROM `panel_users_table` WHERE `user_ID` like '%$searchinput%' or `user_Email`like '%$searchinput%' or `user_Name`like '%$searchinput%' or 
-                `user_Type` like '%$searchinput%' or `created_Date` like '%$searchinput%'";
-                $query_run = mysqli_query($con, $query);
-                if($query_run){
-                  if(mysqli_num_rows($query_run) > 0){
-                    echo '  
-                    <thead class="#">
               
-                    <tr>
-                      <td>ID</td>
-                      <td>Email</td>
-                      <td>Email</td>
-                      <td>ID</td>
-                      <td>Email</td>
-                      <td>Email</td>
-                      <td>Email</td>
-                      
-                      
-                      
-                      
-                    </tr>
-                    
-    
-                  </thead> <hr>' ;
-                   while( $row = mysqli_fetch_assoc($query_run)){
-
-                    echo '<tbody>
-                    <tr>
-                      <td>'.$row['user_ID'].'</td>
-                      <td>'.$row['user_Name'].'</td>
-                      <td>'.$row['user_Email'].'</td>
-                      <td>'.$row['user_Type'].'</td>
-                      <td>'.$row['user_Password'].'</td>
-                      <td>'.$row['created_Date'].'</td>
-                      <td>'.$row['user_profile'].'</td>
-                      
-                     
-                      
-                    </tr>
-              
-                  </tbody>';
+        
+              $query = "SELECT * FROM `panel_users_table` WHERE `user_ID` like '%$searchinput%' or `user_Email`like '%$searchinput%' or `user_Name`like '%$searchinput%' or 
+              `user_Type` like '%$searchinput%' or `created_Date` like '%$searchinput%'";
+              $query_run = mysqli_query($con, $query);
+              if($query_run){
+                if(mysqli_num_rows($query_run) > 0){
+                  echo '  
+                  <thead class="#">
+            
+                  <tr>
+                    <td>ID</td>
+                    <td>Email</td>
+                    <td>Email</td>
+                    <td>ID</td>
+                    <td>Email</td>
+                    <td>Email</td>
+                    <td>Email</td>
                     
                     
-                   }
+                    
+                    
+                  </tr>
                   
-                  }
-                   else{
-                    echo '<h4>Sorry No Data is found</h4>';
-                   }
-                } else{
-                  echo myqli_error($con);
+  
+                </thead> <hr>' ;
+                while( $row = mysqli_fetch_assoc($query_run)){
+
+                  echo '<tbody>
+                  <tr>
+                    <td>'.$row['user_ID'].'</td>
+                    <td>'.$row['user_Name'].'</td>
+                    <td>'.$row['user_Email'].'</td>
+                    <td>'.$row['user_Type'].'</td>
+                    <td>'.$row['user_Password'].'</td>
+                    <td>'.$row['created_Date'].'</td>
+                    <td>'.$row['user_profile'].'</td>
+                    
+                  
+                    
+                  </tr>
+            
+                </tbody>';
+                  
+            
                 }
-                  
+                
+                }
+                else{
+                  echo '<h4>Sorry No Data is found</h4>';
+                }
+              } else{
+                echo myqli_error($con);
               }
-             ?>
-              
-            </table>
-           
-          </div>
-
-     
-          <!-- over view section end here -->
-        <!-- content-wrapper ends -->
-     
-       <!-- footer starts -->
-        <footer class="mt-5">
-        <?php  include "../partials/footer.php";?>
-        </footer>
-       <!-- footer end -->
-        <!-- partial -->
-      </div>
-      <!-- main-panel ends -->
-    </div>
-    <!-- page-body-wrapper ends -->
+                
+            }
+          ?>
+            
+          </table>
+        
+        </div>
+    </form>
   </div>
-  <!-- container-scroller -->
+    
 
   <!-- plugins:js -->
   <script src="../vendors/js/vendor.bundle.base.js"></script>
