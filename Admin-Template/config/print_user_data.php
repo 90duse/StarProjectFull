@@ -42,17 +42,6 @@
           <!-- over view section start here -->
           <div class="container">
             <div class="row">
-                  <div class="col">
-                      <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
-                          <ol class="breadcrumb mb-0">
-                              <li class="breadcrumb-item active" aria-current="page"><a href="index.php">Home</a></li>
-                              <li class="breadcrumb-item"><a href="#">User</a></li>
-                              <li class="breadcrumb-item active" aria-current="page">User Profile</li>
-                          </ol>
-                      </nav>
-                  </div>
-            </div>
-            <div class="row">
               <div class="col">
                 <h2>Publish a Report</h2>
               </div>
@@ -68,12 +57,6 @@
                 </div>
                 <div class="col-2">
                   <div class="card ">
-                     <button type="submit" name="btnsearch" class="btn btn-outline-success"> Search</button>
-                  </div>
-                </div>
-                <div class="col-2">
-                  <div class="card ">
-                    <a href="print_user_data.php" class="btn btn-outline-primary" >Print</a>
                      <button class="btn btn-outline-primary">Print</button>
                   </div>
                 </div>
