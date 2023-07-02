@@ -26,25 +26,7 @@
 </head>
 <body class="">
 
-  <div class="container-scroller ">
-    <div class="row p-0 m-0 proBanner" id="proBanner">
-      <div class="col-md-12 p-0 m-0">
-        <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
-          <!-- <div class="ps-lg-1">
-            <div class="d-flex align-items-center justify-content-between">
-              <p class="mb-0 font-weight-medium me-3 buy-now-text">Free 24/7 customer support, updates, and more with this template!</p>
-              <a href="https://www.bootstrapdash.com/product/star-admin-pro/?utm_source=organic&utm_medium=banner&utm_campaign=buynow_demo" target="_blank" class="btn me-2 buy-now-btn border-0">Get Pro</a>
-            </div>
-          </div> -->
-          <!-- <div class="d-flex align-items-center justify-content-between">
-            <a href="https://www.bootstrapdash.com/product/star-admin-pro/"><i class="mdi mdi-home me-3 text-white"></i></a>
-            <button id="bannerClose" class="btn border-0 p-0">
-              <i class="mdi mdi-close text-white me-0"></i>
-            </button>
-          </div> -->
-        </div>
-      </div>
-    </div>
+  
     <!-- partial:partials/_navbar.html -->
    <?php  include "../partials/navbar.php";?>
     <!-- partial -->
@@ -82,6 +64,7 @@
                       @$PoliceTrainingSpot = "";
                       @$PoliceRank = "";
                       @$PoliceNote = "";
+                      $policeGender = "" ;
                       
                       if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -90,7 +73,7 @@
                         && empty($_POST['pplaceofbirth']) && empty($_POST['paddress']) && empty($_POST['ptelephone'])
                         && empty($_POST['pemail']) && empty($_POST['pmothername']) && empty($_POST['pid'])
                         && empty($_POST['peducationlevel']) && empty($_POST['pmarriagestatus']) && empty($_POST['pmedicalstatus']) 
-                        && empty($_POST['ptrainedspot']) && empty($_POST['prank']) && empty($_POST['pnote'])) 
+                        && empty($_POST['ptrainedspot']) && empty($_POST['prank']) && empty($_POST['pgender']) && empty($_POST['pnote'])) 
                         {
                           //exit(); 
                           $_SESSION['status'] = 'They canot be empty ';
@@ -119,11 +102,12 @@
                       @$PoliceTrainingSpot = $_POST['ptrainedspot'];
                       @$PoliceRank = $_POST['prank'];
                       @$PoliceNote = $_POST['pnote'];
+                      $policeGender = $_POST['pgender'];
                       
                     }
                  
-                    $sql = "INSERT INTO `PoliceRegistration_table` (`p_ID`, `p_registration_date`, `p_fullname`, `p_height`, `p_Age`, `p_weight`, `p_dateOf_Birth`, `p_placeOf_Birth`, `p_address`, `p_phone`, `p_email`, `p_mothers_name`, `p_education`, `p_trained_spot`, `p_marriage_status`, `p_medical_status`, `p_rank`, `p_note`)
-                    VALUES (' ', '$RegisterDate', '$PoliceFullname', '$PoliceHeight', '$PoliceAge', '$PoliceWeight', '$PoliceBirthDate', '$PolicePlaceOfBirth', '$PoliceAddress', '$PolicePhone', '$PoliceEmail', '$PoliceParentName', '$PoliceEducation', '$PoliceTrainingSpot', '$PoliceMarriageStatus', '$PoliceMedicalStatus', '$PoliceRank', '$PoliceNote ')";
+                    $sql = "INSERT INTO `PoliceRegistration_table` (`p_ID`, `p_registration_date`, `p_fullname`, `p_height`, `p_Age`, `p_weight`, `p_gender`,`p_dateOf_Birth`, `p_placeOf_Birth`, `p_address`, `p_phone`, `p_email`, `p_mothers_name`, `p_education`, `p_trained_spot`, `p_marriage_status`, `p_medical_status`, `p_rank`, `p_note`)
+                    VALUES (' ', '$RegisterDate', '$PoliceFullname', '$PoliceHeight', '$PoliceAge', '$PoliceWeight', '$policeGender', '$PoliceBirthDate', '$PolicePlaceOfBirth', '$PoliceAddress', '$PolicePhone', '$PoliceEmail', '$PoliceParentName', '$PoliceEducation', '$PoliceTrainingSpot', '$PoliceMarriageStatus', '$PoliceMedicalStatus', '$PoliceRank', '$PoliceNote ')";
                  
                     if(mysqli_query($con, $sql)){
                           $_SESSION['status'] = 'Your Data is Saved Succcessfully ';
@@ -160,17 +144,21 @@
                         </div>
                         <div class="col-lg-6">
                           <div class="row">
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                               <label for="exampleInputUsername1"></label>
                               <input type="number" class="form-control" id="#" name='pheight' placeholder="Height">
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                               <label for="exampleInputUsername1"></label>
                               <input type="number" class="form-control" id="#" name='page' placeholder="Age">
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                               <label for="exampleInputUsername1"></label>
                               <input type="number" class="form-control" id="#" name='pweigth' placeholder="weight">
+                            </div>
+                            <div class="col-lg-3">
+                              <label for="exampleInputUsername1"></label>
+                              <input type="text" class="form-control" id="#" name='pgender' placeholder="Gender">
                             </div>
                          </div> 
                         </div>
