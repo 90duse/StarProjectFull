@@ -344,6 +344,34 @@ include "session.php";
                             </div>
                           </div>
                        </div>
+                       <div class="col-lg-3 col-md-4 col-sm-12 mt-2">
+                          <div class="card py-2 bg-primary ">
+                            <div class="card-body  ">
+                            <h4 class="">TOTAL MALE PRISONER</h4>
+                            <!-- <i class="mdi mdi-file-multiple"></i> -->
+                            <?php 
+                           
+                            // $sql = "SELECT * from `prisonerrecord`";
+                            // $query_run = mysqli_query($con, $sql);
+                            // $row = mysqli_fetch_array($query_run)
+                           
+                            // if(mysqli_num_rows($query_run) > 0 && $row['pri_gender'] == "Male"){
+                            //   $total = $row['pri_gender'];
+                            //   echo '<h2> '.$total.'</h2>';
+                            // }
+                           
+                            $sql = "SELECT pri_gender from `prisonerrecord` ORDER BY pri_gender";
+                            $query_run = mysqli_query($con, $sql);
+                            //$row = mysqli_fetch_array($query_run)
+                            $row = mysqli_num_rows($query_run);
+                           
+                              echo '<h2> '.$row.'</h2>';
+                            
+
+                              ?>
+                            </div>
+                          </div>
+                       </div>
                       
                       
 
