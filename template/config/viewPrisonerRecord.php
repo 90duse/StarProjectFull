@@ -1,4 +1,23 @@
-<?php include 'session.php'; ?>
+<?php include 'session.php';
+ // setting the query start point value
+ $start = 0 ;
+ // setting the number of rows displaying in a page 
+ $rows_per_page = 2 ;
+ // get the total number of rows
+ $result = mysqli_query($con, "SELECT * FROM prisonerrecord " );
+ $num_of_rows = mysqli_num_rows($result);
+ //calculate number of pages
+ $pages = ceil($num_of_rows / $rows_per_page);
+
+ // if the user click of the pagination button we set new starting point
+ if(isset($_GET['page-number'])){
+   $page = $_GET['page-number']-1 ;
+   $start = $page * $rows_per_page ;
+ }
+
+ $result = mysqli_query($con, "SELECT * FROM  prisonerrecord limit $start , $rows_per_page" );   
+
+?>
 <!DOCTYPE html>
  <html lang="en">
  <head>
@@ -32,14 +51,7 @@
 </head>
 <body class="">
 
-  <div class="container-scroller ">
-    <div class="row p-0 m-0 proBanner" id="proBanner">
-      <div class="col-md-12 p-0 m-0">
-        <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
-          
-        </div>
-      </div>
-    </div>
+  
           <!-- partial:partials/_navbar.html -->
          <?php  include "../partials/navbar.php";?>
           <!-- partial -->
@@ -55,8 +67,8 @@
         <div class="content-wrapper">
           <div class="row">
             <form action="#" method="POST">
-               <table class="table select-table " id="mytable">
-                  <thead>
+               <table class="table select-table " id="#">
+                  <thead class="bg bg-dark">
                     <tr >
                       <th><strong class =" text text-dark">ID</strong></th>
                       <th><strong class =" text text-dark">Image</strong></th>
@@ -65,6 +77,7 @@
                       <th class="text-dark">Height</th>
                       <th class="text-dark">Age</th>
                       <th class="text-dark">Weight</th>
+                      <th class="text-dark">Gender</th>
                       <th class="text-dark">DB</th>
                       <th class="text-dark">PB</th>
                       <th class="text-dark">Address</th>
@@ -90,7 +103,7 @@
                     <tr>
                       <?php 
                         include '../config.php';
-                        $result = mysqli_query($con, "SELECT * FROM prisonerrecord " );
+                         $result = mysqli_query($con, "SELECT * FROM prisonerrecord " );
                           while ($row = mysqli_fetch_assoc($result)){
                           $prisonerID = $row['pri_id'];
                         ?>
@@ -99,8 +112,9 @@
                         <td><?php echo $row['pri_registerdate'];?></td>
                         <td><?php echo @$row['pri_fullname'];?></td>
                         <td><?php echo @$row['pri_height'];?></td>
-                        <td><?php echo @$row['pri_Age'];?></td>
+                        <td><?php echo @$row['pri_age'];?></td>
                         <td><?php echo @$row['pri_weight'];?></td>
+                        <td><?php echo @$row['pri_gender'];?></td>
                         <td><?php echo @$row['pri_dateof_birth'];?></td>
                         <td><?php echo @$row['pri_placeof_birth'];?></td>
                         <td><?php echo  @$row['pri_address'];?></td>
@@ -163,7 +177,7 @@
 
   <!-- Data table plugins -->
 
-  <script src="../DataTables/jQuery-3.6.0/jquery-3.5.1.js"></script>
+  <!-- <script src="../DataTables/jQuery-3.6.0/jquery-3.5.1.js"></script>
   <script src="../DataTables/DataTables-1.13.4/js/jquery.dataTables.min.js"></script>
   <script  src="../DataTables/DataTables-1.13.4/js/dataTables.bootstrap5.min.js"></script>
   <script  src="../DataTables/Buttons-2.3.6/js/dataTables.buttons.min.js"></script>
@@ -171,20 +185,20 @@
   <script  src="../DataTables/pdfmake-0.2.7/pdfmake.min.js"></script>
   <script  src="../DataTables/pdfmake-0.2.7/vfs_fonts.js"></script>
   <script src="../js/buttons.html5.min.js"></script>
-  <script src="../js/buttons.print.min.js"></script> 
+  <script src="../js/buttons.print.min.js"></script>  -->
 
 
 
 <script> 
-$(document).ready(function () {
-    $('#mytable').DataTable({
-      scrollX: true,
-      dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    });
-});
+// $(document).ready(function () {
+//     $('#mytable').DataTable({
+//       scrollX: true,
+//       dom: 'Bfrtip',
+//         buttons: [
+//             'copy', 'csv', 'excel', 'pdf', 'print'
+//         ]
+//     });
+// });
 </script>
 </body>
 
