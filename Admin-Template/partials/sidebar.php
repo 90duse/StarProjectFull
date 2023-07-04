@@ -27,7 +27,7 @@
       
         
 
-          <li class="nav-item nav-category">pages</li>
+          <!-- <li class="nav-item nav-category">pages</li>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
               <i class="menu-icon mdi mdi-account-circle-outline"></i>
@@ -39,7 +39,7 @@
                 <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
               </ul>
             </div>
-          </li>
+          </li> -->
          
           <li class="nav-item nav-category">Reports</li>
           <li class="nav-item">
