@@ -6,12 +6,12 @@
           </button>
         </div>
         <div>
-          <a class="navbar-brand " href="index.php">
+          <!-- <a class="navbar-brand " href="index.php">
             <img src="../images/POLICEL.png" width="50" height ="50" alt="logo" />
           </a>
           <a class="navbar-brand " href="index.php">
             <img src="../images/POLICEL.png" width="50" height ="50" alt="logo" />
-          </a>
+          </a> -->
          
           
         </div>
@@ -19,7 +19,7 @@
       <div class="navbar-menu-wrapper d-flex align-items-top"> 
         <ul class="navbar-nav">
           <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-            <h1 class="welcome-text">Welcome <span class="text-black fw-bold">Captan</span></h1>
+            <h1 class="welcome-text">Welcome <span class="text-black fw-bold">Captain</span></h1>
             <h3 class="welcome-sub-text"></h3>
           </li>
         </ul>
