@@ -58,14 +58,6 @@
 </head>
 <body class="">
 
-  <div class="container-scroller ">
-    <div class="row p-0 m-0 proBanner" id="proBanner">
-      <div class="col-md-12 p-0 m-0">
-        <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
-          
-        </div>
-      </div>
-    </div>
           <!-- partial:partials/_navbar.html -->
          <?php  include "../partials/navbar.php";?>
           <!-- partial -->
@@ -80,14 +72,14 @@
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-          <div class="container">
+          <div class="container mb-1">
               <div class="row">
                 <div class="col-2 ">
-                  <div class="card ">
-                    <a href="print_users_record.php" class="btn btn-outline-primary">Print Report</a>
+                  <div class="card">
+                    <a href="print_users_record.php" class="btn btn-outline-primary ">Print Report</a>
                   </div>
                 </div>
-                <div class="col-3 offset-5 ">
+                <!-- <div class="col-3 offset-5 ">
                   <div class="card ">
                   <input type="text" class="form-control" name="search" placeholder="Search by ID, Email or Role" >
                   </div>
@@ -95,9 +87,8 @@
                 <div class="col-2">
                   <div class="card ">
                      <button type="submit" name="btnsearch" class="btn btn-outline-success"> Search</button>
-                     <!-- <a href="#" type="submit" name="btnsearch"  class="btn btn-outline-success">Search</a> -->
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
 
@@ -105,9 +96,9 @@
 
             
             <form action="#" method="GET">
-               <table class="table select-table mt-3 " id="#">
+               <table class="table select-table mt-3 " id="mytable">
                 
-                  <thead class="bg-dark">
+                  <thead class="text text-dark">
                     <tr >
                         <td>user_ID</td>
                         <td>User_Name</td>
@@ -251,7 +242,21 @@
 
   <!-- Data table plugins -->
 
-  
+   
+
+  <script src="../DataTables/jQuery-3.6.0/jquery-3.5.1.js"></script>
+  <script src="../DataTables/DataTables-1.13.4/js/jquery.dataTables.min.js"></script>
+  <script  src="../DataTables/DataTables-1.13.4/js/dataTables.bootstrap5.min.js"></script>
+  <!-- <script src="print_function.js" type="text/javascript"></script> -->
+
+  <script> 
+$(document).ready(function () {
+    $('#mytable').DataTable({
+     
+      
+    });
+});
+</script>
 
 
 
