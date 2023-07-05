@@ -72,7 +72,7 @@
               <div class="row">
                 <div class="col-2 ">
                   <div class="card ">
-                    <a href="print_users_record.php" class="btn btn-outline-primary">Print Report</a>
+                    <a href="../reports/print_police_record.php" class="btn btn-outline-primary">Print Report</a>
                   </div>
                 </div>
                 <div class="col-3 offset-5 ">
@@ -90,7 +90,8 @@
             </div>
                   <form action="#" method="GET">
                     <table class="table select-table" id="#">
-                      <thead class="bg bg-primary">
+                      <thead >
+                        <hr>
                         <tr>
                           <th class="text text-dark">ID</th>
                           <th class="text text-dark">RegisterDate</th>
