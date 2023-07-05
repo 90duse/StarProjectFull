@@ -47,7 +47,7 @@
           <li class="nav-item">
             <!-- <a class="nav-link" data-bs-toggle="collapse" href="#op" aria-expanded="false" aria-controls="form-elements"> -->
             
-              <a href="../config/optable.php" type ="button" class="btn btn-primary  nav-link"><span>OP</span></a> 
+              <a href="../config/optable.php" type ="button" class="btn btn-light  nav-link"><span>OP</span></a> 
               
             </a>
             <div class="collapse" id="op">
@@ -111,7 +111,7 @@
             </div>
           </li>
 
-          <li class="nav-item nav-category">pages</li>
+          <!-- <li class="nav-item nav-category">pages</li>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
               <i class="menu-icon mdi mdi-account-circle-outline"></i>
@@ -123,7 +123,7 @@
                 <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
               </ul>
             </div>
-          </li>
+          </li> -->
          
           <li class="nav-item nav-category">Reports</li>
           <li class="nav-item">
