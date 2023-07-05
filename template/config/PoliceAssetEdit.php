@@ -57,32 +57,18 @@
                     if(isset($_GET['id'])){
                         $id = $_GET['id']; 
                 
-                        //echo 'it is working', $id;
-                        $row ='';
-                        $assetID ='';
-                        $registerDate = '';
-                        $nameItem = '';
-                        $Height = '';
-                        $Color = '';
-                        $Weight = '';
-                        $Quantity ='';
-                        $Catogery = '';
-                        $Store ='';
-                        $Guarding ='';
-                        $GuardingNo ='';
-                        $Condition ='';
-                        $Note = '';
-                        $Delivery = '';
-                    
-                
+                      //variable declaring
+                        $row =  $assetID =  $registerDate = $nameItem = $Height = $Color =  $Weight = 
+                        $Quantity = $Catogery =  $Store = $Guarding = $GuardingNo = $Condition =  $Note = $Delivery = '';
+                      
+                     // selecting data from the database
                         $sql = "SELECT * FROM `assetregistration_table` where id ='$id'";
                         $result = mysqli_query($con, $sql);
                          if(mysqli_num_rows($result) > 0){
                           while ( $row = mysqli_fetch_assoc($result)){
 
-                            
-
-                             $assetID = $row['id'];
+                     // variable assignments   
+                            $id = $row['id'];
                             $registerDate = $row['item_Register_Date'];
                             $nameItem =  $row['Item_Name'];
                             $Height =  $row['item_Hight'];
@@ -96,60 +82,41 @@
                             $Condition =  $row['item_Condition'];
                             $Note =  $row['item_Note'];
                             $Delivery =  $row['item_Delivery'];
-
-
                 
-                           
-                
-                          }  
+                             }  
                            } 
-                         
                            else {
                             echo mysqli_error($con);
                            }
-                                                          
-                         
-                    
                     }  
-                    if (isset($_GET['btnsubmit'])){
-
                     
-                   
-                        
-                    $register_Date = '';
-                    $itemName = '';
-                    $itemHight = '';
-                    $itemColor = '';
-                    $itemWeight = '';
-                    $itemQuantity ='';
-                    $itemCatogery = '';
-                    $storeNumber ='';
-                    $guardingName ='';
-                    $guardingID ='';
-                    $itemCondition ='';
-                    $itemNote = '';
-                    $deliveryName = '';
+                    if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-                    //echo "working";
-                    // $assetID = $_GET['assetid'];
-                    @$register_Date = $_GET['assetdate'];
-                    @$itemName = $_GET['itemname'];
-                    @$itemHight = $_GET['itemhight'];
-                    @$itemColor = $_GET['itemcolor'];
-                    @$itemWeight = $_GET['itemweight'];
-                    @$itemQuantity = $_GET['itemquantity'];
-                    @$itemCatogery = $_GET['itemcategory'];
-                    @$storeNumber = $_GET['storenumber'];
-                    @$guardingName = $_GET['guardingname'];
-                    @$guardingID = $_GET['guardingid'];
-                    @$itemCondition =$_GET['itemcondition'];
-                    @$itemNote = $_GET['itemnote'];
-                    @$deliveryName = $_GET['deliveryname'];
-                    
-                       
-                      
-                      $sql = "UPDATE `assetregistration_table` SET `id` = '', `item_Register_Date` = '$register_Date', `Item_Name` = '$itemName', `item_Hight` = '$itemHight', `item_Color` = '$itemColor', `item_Weight` = '$itemWeight', `item_Quantity` = '$itemQuantity', `item_Catogery` = '$itemCatogery', `Store_Number` = '$storeNumber', `Guarding_Name` = '$guardingName', `Guarding_Police_ID` = '$guardingID', 
-                      `item_Condition` = '$itemCondition', `item_Note` = '$itemNote', `item_Delivery` = '$deliveryName' WHERE `assetregistration_table`.`id` = '$id'";
+                      if(isset($_POST['btnpoliceAssetUpdate'])){
+           
+                   // variable assigments       
+                    $id = $register_Date = $itemName = $itemHight =  $itemColor =   $itemWeight =  $itemQuantity =
+                    $itemCatogery =  $storeNumber =  $guardingName = $guardingID = $itemCondition =  $itemNote = $deliveryName ='';
+                   // variable assignments
+                     $id = $_POST['assetid'];
+                    @$register_Date = $_POST['assetdate'];
+                    @$itemName = $_POST['itemname'];
+                    @$itemHight = $_POST['itemhight'];
+                    @$itemColor = $_POST['itemcolor'];
+                    @$itemWeight = $_POST['itemweight'];
+                    @$itemQuantity = $_POST['itemquantity'];
+                    @$itemCatogery = $_POST['itemcategory'];
+                    @$storeNumber = $_POST['storenumber'];
+                    @$guardingName = $_POST['guardingname'];
+                    @$guardingID = $_POST['guardingid'];
+                    @$itemCondition =$_POST['itemcondition'];
+                    @$itemNote = $_POST['itemnote'];
+                    @$deliveryName = $_POST['deliveryname'];
+                    //updating code
+                      $sql = "UPDATE `assetregistration_table` SET `id` = '$id', `item_Register_Date` = '$register_Date', `Item_Name` = '$itemName', 
+                      `item_Hight` = '$itemHight', `item_Color` = '$itemColor', `item_Weight` = '$itemWeight', `item_Quantity` = '$itemQuantity', 
+                      `item_Catogery` = '$itemCatogery', `Store_Number` = '$storeNumber', `Guarding_Name` = '$guardingName', `Guarding_Police_ID` = '$guardingID', 
+                      `item_Condition` = '$itemCondition', `item_Note` = '$itemNote', `item_Delivery` = '$deliveryName' WHERE `id` = '$id'";
                      
                            if (mysqli_query($con, $sql)) {
                             $_SESSION['status'] = 'Congrates! You Added New Data ' ;
@@ -159,14 +126,15 @@
                           }
 
                         }
+                      }
                     ?>
                  
-                  <form class="forms-sample" action="#" method ="GET" >
+                  <form class="forms-sample" action="#" method ="POST">
                   <div class="container">
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="number" class="form-control" id="assetID" name="assetid" placeholder="Item ID" value="<?php echo $assetID; ?>">
+                        <input type="number" class="form-control" id="assetID" name="assetid" placeholder="Item ID" value="<?php echo $id; ?>">
                         </div>
                         <div class="col-lg-6">
                               <div class="row mt-4">
@@ -213,13 +181,6 @@
                             </div>
                             <div class="col">
                             <input type="text" class="form-control" id="#" name="itemcategory" placeholder="Catogery" value="<?php echo @$Catogery; ?>" >
-                            <!-- <select id="inputmarriagestatus"  name="#" class="form-control">
-                            <option selected>Choose</option>
-                            <option value="#">Arsenal</option>
-                            <option value="#">clothe</option>
-                            <option value="#">transport</option>
-                            <option value="#">Files</option>
-                          </select> -->
                             </div>
                           </div>
                         </div>
@@ -239,7 +200,7 @@
                        
                         <div class="col">
                         <label for="exampleInputUsername1"></label>
-                        <input type="number" class="form-control" id="#" name="guardingid" placeholder="Guarding Police ID" value="<?php echo @$GuardingID;?>" >
+                        <input type="number" class="form-control" id="#" name="guardingid" placeholder="Guarding Police ID" value="<?php echo @$GuardingNo;?>" >
                         </div>
                       </div>
                       <div class="row">
@@ -258,8 +219,7 @@
                         <input type="text" class="form-control" id="#" name="deliveryname"placeholder="Delivery Name" value="<?php echo @$Delivery; ?>" >
                         </div>
                       </div>
-                      <button type="submit" id="btnassetsubmit" name="btnsubmit" class="btn btn-primary mt-2 ">Submit</button>
-                    <!-- <button class="btn btn-light" id="btnassetcancel">Cancel</button> -->
+                      <button type="submit" id="#" name="btnpoliceAssetUpdate" class="btn btn-primary mt-2 ">Submit</button>
                     <a href="viewPoliceAsset.php"  class="btn btn-danger">BACK</a>
                   </div>
                     
