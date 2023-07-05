@@ -58,26 +58,18 @@
                       include '../config.php';
                       if(isset($_GET['id'])){
                         @$id = $_GET['id']; 
-                
-                        echo 'it is working', $id;
                         $row ='';
                       
-                
+                     // select query 
                         $sql = "SELECT * FROM `complainmentregistration_table` where co_id ='$id'";
                         $result = mysqli_query($con, $sql);
                          if(mysqli_num_rows($result) > 0){
                           while ( $row = mysqli_fetch_assoc($result)){
-                
-                            
-                            @$co_id = '';
-                            @$co_registerDate = '';
-                            @$co_fullname = '';
-                            @$co_rank='';
-                            @$co_subject = '';
-                            @$co_againistWhom = '';
-                            @$co_complainment = '';
-                            
-                            @$co_id = $row['co_id'];
+                            //varibale declaration 
+                            @$co_id = $co_registerDate = $co_fullname = $co_rank = 
+                            $co_subject = $co_againistWhom = $co_complainment = '';
+                            // variable assignmets
+                            @$id = $row['co_id'];
                             @$co_registerDate = $row['co_registrationDate'];
                             @$co_fullname = $row['co_fullname'];
                             @$co_rank= $row['co_rank'];
@@ -85,64 +77,50 @@
                             @$co_againistWhom = $row['co_againstWhom'];
                             @$co_complainment = $row['co_complainment'];
                             
-                
-                          }  
-                           } 
-                         
+                             }  
+                            } 
                            else {
                             echo mysqli_error($con);
                            }
-                                                          
-                         
-                    
-                    } 
-                   
-                       
-                      //$id = ''; 
-                      
-                      $complainRegisterDate='';
-                      $complainRank = '';
-                      $complainFullname ='';
-                      $complainSubject ='';
-                      $complainAgainstWhom='';
-                      $complainment = '';
-                      $complainID = '';
-                     
+                       } 
                 
-                
-                
-                          @$complainID = $_GET['complainid'];
-                          @$complainRegisterDate = $_GET['complainregisterdate'];
-                          @$complainFullname = $_GET['complainfullname'];
-                          @$complainRank= $_GET['complainrank'];
-                          @$complainSubject = $_GET['complainsubject'];
-                          @$complainAgainstWhom = $_GET['complainagainstwhom'];
-                          @$complainment = $_GET['complainment'];
-                           
+                       if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+                        if(isset($_POST['btncomplainUpdate'])){
+                         // varaible declaration
                         
-                       
-                             
-                             $sql = "UPDATE `complainmentregistration_table` SET `co_id` = '', `co_registrationDate` = '$complainRegisterDate', `co_fullname` = '$complainFullname', `co_rank` = '$complainRank', `co_subject` = '$complainSubject', `co_againstWhom` = '$complainAgainstWhom', 
-                             `co_complainment` = '$complainment' WHERE `complainmentregistration_table`.`co_id` = '$id'";
-                         
-                          if (mysqli_query($con, $sql))
-                              {
-                                echo 'Data Updated Successfully';
-                              }
-                 
-                              else 
-                              {
-                                //echo $errorMessage;
-                                echo mysqli_error($con);
-                              }
+                          $complainRegisterDate =  $complainRank =  $complainFullname =  $complainSubject =
+                          $complainAgainstWhom =  $complainment = $complainID = '';
+                    // variable assignment
+                          @$complainID = $_POST['complainid'];
+                          @$complainRegisterDate = $_POST['complainregisterdate'];
+                          @$complainFullname = $_POST['complainfullname'];
+                          @$complainRank= $_POST['complainrank'];
+                          @$complainSubject = $_POST['complainsubject'];
+                          @$complainAgainstWhom = $_POST['complainagainstwhom'];
+                          @$complainment = $_POST['complainment'];
+                        
+                       // update query 
+                             $sql = "UPDATE `complainmentregistration_table` SET `co_id` = '$complainID', `co_registrationDate` = '$complainRegisterDate', 
+                             `co_fullname` = '$complainFullname', `co_rank` = '$complainRank', `co_subject` = '$complainSubject', `co_againstWhom` = '$complainAgainstWhom', 
+                             `co_complainment` = '$complainment' WHERE `co_id` = '$id'";
+                          if (mysqli_query($con, $sql)) {
+
+                            $_SESSION['status'] = 'Congrates! You Added New Data ' ;
+                            $_SESSION['status_code'] = 'success'; 
+                          }
+                          else { echo mysqli_error($con); 
+                          }
+                        }
+                      }   
                       ?>
                  
-                 <form class="forms-sample" method="GET">
+                 <form class="forms-sample" method="POST">
                      <div class="container">
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="number" class="form-control" id="#" name="complainid" placeholder="Police ID" value="<? echo $co_id; ?>">
+                        <input type="number" class="form-control" id="#" name="complainid" placeholder="Police ID" value="<?php echo @$id; ?>">
                         </div>
                         <div class="col-lg-6">
                               <div class="row mt-4">
@@ -180,25 +158,16 @@
                       <div class="row">
                         <div class="col">
                         <label for="#"></label>
-                        <textarea type="text" class="form-control h-100" id="#" name="complainment" placeholder="Complainment" value="<?php echo @$co_complainment; ?>"></textarea>
+                        <textarea class="form-control h-100" id="#" name="complainment" placeholder="Complainment" value="<?php echo @$co_complainment; ?>"></textarea>
                         </div>
                         
                       </div> 
-                      <div class="row">
-                        <div class="col">
-                        <div class="input-group mt-5">
-                          <div class="input-group-prepend">
-                            <div class="input-group-text">
-                              <input type="checkbox" aria-label="Checkbox for following text input">
-                            </div>
-                          </div>
-                          <input type="text" class="form-control" aria-label="Text input with checkbox" name="complainsigniture" placeholder="I as Name I am sure this and I am ready to face the result">
-                        </div>
-                        </div>
+                      
+                        
                         
                       </div>
                           <div class="button mt-5">
-                            <button type="submit" class="btn btn-primary" name="btncomplain">Submit</button>
+                            <button type="submit" class="btn btn-primary" name="btncomplainUpdate">Submit</button>
                             <a href="viewComplainment.php"  class="btn btn-danger">BACK</a>
                           </div>
                      </div>
@@ -240,6 +209,22 @@
   <script src="../js/dashboard.js"></script>
   <script src="../js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+  <!-- sweet alert -->
+  <script src="../js/sweetalert.min.js"></script>
+
+  <?php   if (isset($_SESSION['status'])){
+
+  }  ?> 
+
+  <script>
+    swal({
+    title: "<?php  echo $_SESSION['status']; ?>",
+  //text: "You clicked the button!",
+    icon: "<?php  echo $_SESSION['status_code']; ?>",
+    button: "OK!",
+});
+  <?php unset($_SESSION['status']); ?>
+  </script>
 </body>
 
 </html>
