@@ -28,15 +28,7 @@
 </head>
 <body class="">
 
-  <div class="container-scroller ">
-
-    <div class="row p-0 m-0 proBanner" id="proBanner">
-      <div class="col-md-12 p-0 m-0">
-        <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
-    
-        </div>
-      </div>
-    </div>
+ 
     <!-- partial:partials/_navbar.html -->
    <?php  include "../partials/navbar.php";?>
     <!-- partial -->
@@ -49,12 +41,12 @@
      <?php   include "../partials/sidebar.php";?>
      <div class="main-panel"> 
          <div class="content-wrapper">
-            <div class="container bg-success p-3 text-center " >
+            <div class="container bg-primary p-3 text-center " >
                 <h4>OP</h4>
            
           
           <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-12 col-lg-12">
               <div class="home-tab">
                 <div class="d-sm-flex align-items-center justify-content-between border-bottom">
                   <ul class="nav nav-tabs" role="tablist">
