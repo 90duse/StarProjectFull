@@ -42,15 +42,13 @@
                    if(isset($_GET['id'])){
                     $id = $_GET['id']; 
             
-                    // echo 'it is working', $id;
-                        $row ='';
-
                         // variable declaration
                         $Register_Date = ''; 
-                         $Fullname = $Height= $Age = $Weight =
+                        $Fullname = $Height= $Age = $Weight = $Gender =
                         $BirthDate = $PlaceOfBirth = $Address = $Phone = $Email = 
                         $ParentName = $Education = $MarriageStatus = $MedicalStatus = 
                         $TrainingSpot = $Rank = $Note = "";
+                        $row = '';
 
                         $sql = "SELECT * FROM policeregistration_table where p_ID ='$id'";
                         $result = mysqli_query($con, $sql);
@@ -64,6 +62,7 @@
                             $Height = $row ['p_height'];
                             $Age =  $row['p_Age'];
                             $Weight = $row ['p_weight'];
+                            $Gender = $row['p_gender'];
                             $BirthDate = $row['p_dateOf_Birth'];
                             $PlaceOfBirth = $row['p_placeOf_Birth'];
                             $Address = $row['p_address'];
@@ -71,7 +70,7 @@
                             $Email = $row ['p_email'];
                             $ParentName = $row['p_mothers_name'];
                             $Education = $row['p_education'];
-                            $TrainingSpot = $row['p_trianed_spot'];
+                            $TrainingSpot = $row['p_trained_spot'];
                             $MarriageStatus = $row['p_marriage_status'];
                             $MedicalStatus = $row['p_medical_status'];
                             $Rank = $row ['p_rank'];
@@ -87,36 +86,37 @@
 
                     }
                      
-                  //if($_SERVER["REQUEST_METHOD"] == "GET"){
-                   if(isset($_GET['btnpoliceRecord'])){
+                  if($_SERVER["REQUEST_METHOD"] == "POST"){
+                   if(isset($_POST['btnpoliceRecord'])){
 
-                    @$RegisterDate = $PoliceFullname = $PoliceHeight= $PoliceAge = $PoliceWeight =
-                    $PoliceBirthDate = $PolicePlaceOfBirth = $PoliceAddress = $PolicePhone = $PoliceEmail = 
+                    @$RegisterDate = $PoliceFullname = $PoliceHeight= $PoliceAge = $PoliceWeight = $PoliceGender =                    $PoliceBirthDate = $PolicePlaceOfBirth = $PoliceAddress = $PolicePhone = $PoliceEmail = 
                     $PoliceParentName = $PoliceEducation = $PoliceMarriageStatus = $PoliceMedicalStatus = 
                     $PoliceTrainingSpot = $PoliceRank = $PoliceNote = "";
 
                      //echo 'working';
-                     $ID = $_GET['pid'];
-                     @$RegisterDate = $_GET['pregisterdate'];
-                     @$PoliceFullname = $_GET['pfullname'];
-                     @$PoliceHeight= $_GET['pheight'];
-                     @$PoliceAge = $_GET['page'];
-                     @$PoliceWeight = $_GET['pweight'];
-                     @$PoliceBirthDate = $_GET['pdateofbirth'];
-                     @$PolicePlaceOfBirth = $_GET['pplaceofbirth'];
-                     @$PoliceAddress = $_GET['paddress'];
-                     @$PolicePhone = $_GET['ptelephone'];
-                     @$PoliceEmail = $_GET['pemail'];
-                     @$PoliceParentName = $_GET['pmothername'];
-                     @$PoliceEducation = $_GET['peducationlevel'];
-                     @$PoliceMarriageStatus = $_GET['pmarriagestatus'];
-                     @$PoliceMedicalStatus = $_GET['pmedicalstatus'];
-                     @$PoliceTrainingSpot = $_GET['ptrainedspot'];
-                     @$PoliceRank = $_GET['prank'];
-                     @$PoliceNote = $_GET['pnote'];
+                     $id = $_POST['pid'];
+                     @$RegisterDate = $_POST['pregisterdate'];
+                     @$PoliceFullname = $_POST['pfullname'];
+                     @$PoliceHeight= $_POST['pheight'];
+                     @$PoliceAge = $_POST['page'];
+                     @$PoliceWeight = $_POST['pweight'];
+                     $PoliceGender = $_POST['pgender'];
+                     @$PoliceBirthDate = $_POST['pdateofbirth'];
+                     @$PolicePlaceOfBirth = $_POST['pplaceofbirth'];
+                     @$PoliceAddress = $_POST['paddress'];
+                     @$PolicePhone = $_POST['ptelephone'];
+                     @$PoliceEmail = $_POST['pemail'];
+                     @$PoliceParentName = $_POST['pmothername'];
+                     @$PoliceEducation = $_POST['peducationlevel'];
+                     @$PoliceMarriageStatus = $_POST['pmarriagestatus'];
+                     @$PoliceMedicalStatus = $_POST['pmedicalstatus'];
+                     @$PoliceTrainingSpot = $_POST['ptrainedspot'];
+                     @$PoliceRank = $_POST['prank'];
+                     @$PoliceNote = $_POST['pnote'];
                      
                  
-                   $sql = "UPDATE `policeregistration_table` SET `p_ID` = '', `p_registration_date` = '$RegisterDate', `p_fullname` = '$PoliceFullname', `p_height` = '$PoliceHeight', `p_Age` = '$PoliceAge', `p_weight` = '$PoliceWeight',
+                   $sql = "UPDATE `policeregistration_table` SET `p_ID` = '$id', `p_registration_date` = '$RegisterDate', `p_fullname` = '$PoliceFullname', `p_height` = '$PoliceHeight', 
+                    `p_Age` = '$PoliceAge', `p_weight` = '$PoliceWeight', `p_gender` ='$PoliceGender',
                     `p_dateOf_Birth` = '$PoliceBirthDate', `p_placeOf_Birth` = '$PolicePlaceOfBirth', `p_address` = '$PoliceAddress', `p_phone` = '$PolicePhone', `p_email` = '$PoliceEmail', 
                     `p_mothers_name` = '$PoliceParentName', `p_education` = '$PoliceEducation', `p_trained_spot` = '$PoliceTrainingSpot', `p_marriage_status` = '$PoliceMarriageStatus', `p_medical_status` = '$PoliceMedicalStatus', `p_rank` = '$PoliceRank', 
                     `p_note` = '$PoliceNote' WHERE `p_ID` = '$id'";
@@ -130,15 +130,15 @@
                      echo mysqli_error($con);
                    }
                 }
-            //}
+            }
 
                    ?>
-                 <form class="forms-sample" method='GET'>
+                 <form class="forms-sample" method='POST'>
                  <div class="container">
                      <div class="row">
                        <div class="col-lg-6">
                        <label for="exampleInputUsername1"></label>
-                       <input type="text" class="form-control" id="#" name='pid' placeholder="POLICE ID" value="<?php echo @$id; ?>">
+                       <input type="text" class="form-control" id="#" name='pid' placeholder="POLICE ID" value="<?php echo $id; ?>">
                        </div>
                        <div class="col-lg-6">
                              <div class="row mt-4">
@@ -158,17 +158,21 @@
                        </div>
                        <div class="col-lg-6">
                          <div class="row">
-                           <div class="col-lg-4">
+                           <div class="col-lg-3">
                              <label for="exampleInputUsername1"></label>
                              <input type="number" class="form-control" id="#" name='pheight' placeholder="Height" value="<?php echo @$Height; ?>" >
                            </div>
-                           <div class="col-lg-4">
+                           <div class="col-lg-3">
                              <label for="exampleInputUsername1"></label>
                              <input type="number" class="form-control" id="#" name='page' placeholder="Age" value="<?php echo @$Age; ?>" >
                            </div>
-                           <div class="col-lg-4">
+                           <div class="col-lg-3">
                              <label for="exampleInputUsername1"></label>
                              <input type="number" class="form-control" id="#" name='pweigth' placeholder="weight" value="<?php echo @$Weight; ?>" >
+                           </div>
+                           <div class="col-lg-3">
+                             <label for="exampleInputUsername1"></label>
+                             <input type="text" class="form-control" id="#" name='pgender' placeholder="gender" value="<?php echo @$Gender; ?>" >
                            </div>
                         </div> 
                        </div>
@@ -229,13 +233,6 @@
                            </div>
                            <div class="col">
                            <input type="tel" class="form-control" id="exampleInputPassword1" name='pmarriagestatus'placeholder="Marriage Status" value="<?php echo @$MarriageStatus; ?>" >
-                           <!-- <select id="inputmarriagestatus" class="form-control">
-                           <option selected>Choose</option>
-                           <option value="Married">Married</option>
-                           <option value="Single">Single</option>
-                           <option value="Separated">Saperated</option>
-                           <option value="Divorce">Divorce</option>
-                         </select> -->
                            </div>
                          </div>
                        </div>
@@ -258,7 +255,7 @@
                      </div>
                      
                  </div>
-                     <button type="submit" class="btn btn-primary mt-2" name= 'btnpoliceRecord'>Submit</button>
+                     <button type="submit" class="btn btn-success mt-2" name= 'btnpoliceRecord'>Update</button>
                      <a href="viewPoliceRecord.php"  class="btn btn-danger">BACK</a>
                  </form>
                </div>
