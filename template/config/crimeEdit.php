@@ -56,29 +56,16 @@
                       include '../config.php';
                       if(isset($_GET['id'])){
                         $id = $_GET['id']; 
-                
-                        //echo 'it is working', $id;
                         $row ='';
-                      
-                
+                    // Select Data from the Data base
                         $sql = "SELECT * FROM crimerecord_table where cr_id ='$id'";
                         $result = mysqli_query($con, $sql);
                          if(mysqli_num_rows($result) > 0){
                           while ( $row = mysqli_fetch_assoc($result)){
-                
-                            $id ='';
-                            $crimeRegisterDate = '';
-                            $crimeType = '';
-                            $crimePlace= '';
-                            $crimeVictam = '';
-                            $crimeCriminal = '';
-                            $crimeOfficer = '';
-                            $crimeWitness = '';
-                            $crimeEvidence = '';
-                            $crimeItems = '';
-                            $crimeStatus = '';
-                            $crimeNote = '';
-                
+                    //variable declartion
+                            $id =  $crimeRegisterDate =  $crimeType =  $crimePlace= $crimeVictam =   $crimeCriminal = 
+                            $crimeOfficer =  $crimeWitness =  $crimeEvidence = $crimeItems = $crimeStatus =  $crimeNote = ' ';
+                    //variable assignments
                             @$id = $row['cr_id'];
                             @$crimeRegisterDate = $row['cr_registerDate'];
                             @$crimeType = $row['cr_type'];
@@ -92,38 +79,21 @@
                             @$crimeStatus = $row['cr_status'];
                             @$crimeNote = $row['cr_note'];
                 
-                          }   //$sql =  "UPDATE crimerecord_table SET   `cr_witness` = '$witness' WHERE `cr_id` = '$id'";
-                
-                
+                             }   
                            } 
-                         
                            else {
                             echo mysqli_error($con);
                            }
-                                                          
-                         
-                    
-                    }  
+                    } 
+                      
                     if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                     if(isset($_POST['btncrimeupdate'])){
-                       
-                      //$id = ''; 
-                      $officer =''; 
-                      $RegisterDate='';
-                      $caseId = '';
-                      $witness ='';
-                      $evidence ='';
-                      $criminal ='';
-                      $note = '';
-                      $items = '';
-                      $type = '';
-                      $status ='';
-                      $place ='';
-                      $victam ='';
+                  //variable declaration
+                      $officer = $RegisterDate = $caseId =  $witness =  $evidence =$criminal =
+                      $note =  $items = $type =  $status = $place =$victam = ''; 
                 
-                
-                
+                  //variable assigments
                       @$caseId = $_POST['crimeid'];
                       @$items =  $_POST['crimeitems'];
                       @$witness =  $_POST['crimewitness'];
@@ -136,10 +106,8 @@
                       @$victam =  $_POST['crimevictam'];
                       @$RegisterDate = $_POST['crimeregisterdate'];
                       @$officer = $_POST['crimeofficer'];
-                        
-                       
-                             
-                             $sql = "UPDATE crimerecord_table SET `cr_id` = '', `cr_registerDate` = '$RegisterDate', `cr_type` = '$type', `cr_place` = '$place', `cr_victam` = '$victam', `cr_criminal` = '$criminal ',`cr_officer` = '$officer', 
+                   //Updating The Data           
+                             $sql = "UPDATE crimerecord_table SET `cr_id` = '$caseId', `cr_registerDate` = '$RegisterDate', `cr_type` = '$type', `cr_place` = '$place', `cr_victam` = '$victam', `cr_criminal` = '$criminal ',`cr_officer` = '$officer', 
                              `cr_witness` = '$witness', `cr_evindence` = '$evidence', `cr_items` = '$items',`cr_status` = '$status', `cr_note` = '$note'  WHERE `cr_id` = '$id'";
                          
                           if (mysqli_query($con, $sql))
@@ -153,9 +121,6 @@
                                 //echo $errorMessage;
                                 echo mysqli_error($con);
                               }
-                      
-                    
-                      
                              }
                             }
                       ?>
