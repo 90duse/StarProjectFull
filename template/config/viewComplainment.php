@@ -32,14 +32,14 @@
 </head>
 <body class="">
 
-  <div class="container-scroller ">
+  <!-- <div class="container-scroller ">
     <div class="row p-0 m-0 proBanner" id="proBanner">
       <div class="col-md-12 p-0 m-0">
         <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
           
         </div>
       </div>
-    </div>
+    </div> -->
           <!-- partial:partials/_navbar.html -->
         <?php  include "../partials/navbar.php";?>
           <!-- partial -->
@@ -88,8 +88,7 @@
                                   
             ?>
             <td> <?php echo $id; ?></td> 
-            
-           <td><?php  echo $row['co_registrationDate']; ?></td> 
+            <td><?php  echo $row['co_registrationDate']; ?></td> 
             <td><?php echo @$row['co_fullname']; ?></td> 
             <td> <?php echo @$row['co_rank']; ?></td> 
             <td><?php  echo @$row['co_subject']; ?></td> 
@@ -105,16 +104,7 @@
                
         </tbody>
         <tfoot>
-            <!-- <tr>
-            <th>PoliceID</th>
-            <th>Register Date</th>
-            <th>Fullname</th>
-            <th>Rank</th>
-            <th>Com_Subject</th>
-            <th>Against Whome</th>
-            <th>Complainment</th>
-            <th>ACTION</th>
-            </tr> -->
+          
         </tfoot>
      </table>
     
