@@ -46,12 +46,13 @@
   <div class="container-fluid">
     <div class="row">
          <form action="#" method="GET">
-                    <table class="" class="display nowrap" id="mytable">
+                    <table class="table select-table"  id="mytable">
                           
                           <thead>
                             <tr >
                             
                               <th><strong class =" text text-dark">ID</strong></th>
+                              <th>OpNo</th>
                               <th class="text-dark">RegisterDate</th>
                               <th class="text-dark">Fullname</th>
                               <th><strong class =" text text-dark">Image</strong></th>
@@ -85,6 +86,7 @@
                                   $opID = $row['op_id'];
                                 ?>
                                 <td><?php echo $opID; ?></td>
+                                <td><?php echo $row['opNo']; ?></td>
                                 <td><?php echo $row['op_register_date']; ?></td>
                                 <td><?php echo @$row['op_fullname']; ?></td>
                                 <td><?php echo $row['op_image']; ?></td>
@@ -109,9 +111,9 @@
                                   <?php echo @$row['op_notes'];   ?>
                                 </details> </td>
                                 
-                                <td> <a href="OPEdit.php?id=<?php echo $opID; ?>"  class="btn btn-success">EDIT</a></td>
-                                <td> <a href="OPDelete.php?id=<?php echo $opID; ?>"  class="btn btn-danger">DELETE</a></td>
-                           
+                                <td> <a href="OPEdit.php?id=<?php echo $opID; ?>"> <img src="../images/pencil-icon.svg"  alt="edit"></a></td>
+                                <td> <a href="OPDelete.php?id=<?php echo $opID; ?>" ><img src="../images/delete-icon.svg" alt="delete"></a></td>
+                               
                             </tr>
                            <?php } ?>
                         </tbody>
