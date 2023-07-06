@@ -87,7 +87,7 @@
                       <?php    
                         include '../config.php';
                           if($_SERVER["REQUEST_METHOD"] == "POST"){
-                            if(empty($_POST['opregisterdate']) && empty($_POST['opname']) && empty($_POST['opheight'])
+                            if(empty($_POST['opNo']) && empty($_POST['opregisterdate']) && empty($_POST['opname']) && empty($_POST['opheight'])
                             && empty($_POST['opage']) && empty($_POST['opweight']) && empty($_POST['opdayofbirth'])
                             && empty($_POST['opplaceofbirth']) && empty($_POST['opaddress']) && empty($_POST['opphone'])
                             && empty($_POST['opmothername']) && empty($_POST['opjob']) && empty($_POST['opreason'])
@@ -103,7 +103,7 @@
                               //echo 'working';
 
                           //Variable Declaration 
-                              $ID = $Register_Date = $op_Fullname = $op_Height= $op_Age = 
+                              $opNo = $ID = $Register_Date = $op_Fullname = $op_Height= $op_Age = 
                               $op_Weight = $op_BirthDate = $op_PlaceOfBirth =$op_Address = 
                               $op_Phone = $op_ParentName = $op_Job =  $op_Reason =  $op_MarriageStatus = 
                               $op_MedicalStatus = $op_PersonalBelongs =  $op_Officer =  $op_CellNo =  $op_Note =  $op_Gender = '';
@@ -115,6 +115,7 @@
                               // Variable Assigment
 
                           @$ID = $_POST['opid'];
+                          $opNo  = $_POST['opNo'];
                           @$Register_Date = $_POST['opregisterdate'];
                           @$op_Fullname = $_POST['opname'];
                           @$op_Height= $_POST['opheight'];
@@ -145,10 +146,10 @@
                           // }
 
                         }
-                         @$sql = "INSERT INTO `op_table` (`op_id`, `op_register_date`, `op_fullname`, `op_image`, `op_height`, `op_age`, 
+                         @$sql = "INSERT INTO `op_table` (`op_id`, `opNo`, `op_register_date`, `op_fullname`, `op_image`, `op_height`, `op_age`, 
                          `op_weight`, `op_gender`, `op_mothers_name`, `op_dayof_birth`,`op_placeof_birth`, `op_address`, `op_tellephone`, 
                          `op_job`, `op_marriage_status`, `op_medical_status`, `op_reason`, `op_personal_belongs`, `op_cell_no`, `op_officer`, `op_notes`) 
-                         VALUES ('', '$Register_Date', '$op_Fullname', '', '$op_Height', '$op_Age', '$op_Weight', '$op_Gender', '$op_ParentName', '$op_BirthDate', 
+                         VALUES ('', '$opNo', '$Register_Date', '$op_Fullname', '', '$op_Height', '$op_Age', '$op_Weight', '$op_Gender', '$op_ParentName', '$op_BirthDate', 
                          '$op_PlaceOfBirth', '$op_Address', '$op_Phone','$op_Job', '$op_MarriageStatus', '$op_MedicalStatus', '$op_Reason', '$op_PersonalBelongs', '$op_CellNo', '$op_Officer', '$op_Note')";
                          
                          if(mysqli_query($con, $sql)){
@@ -173,11 +174,16 @@
                       <div class="card-body">
                       <div class="row">
                          <h3>Personal Information</h3>
-                        <div class="col-lg-6">
+                        <div class="col-lg-6" hidden="true">
                          
                         <label for="exampleInputUsername1"></label>
                         <input type="number"  class="form-control" id="#" name="opid" placeholder="Person ID">
                         </div>
+                        <div class="col-lg-6">
+                         
+                         <label for="exampleInputUsername1"></label>
+                         <input type="text"  class="form-control" id="#" name="opNo" placeholder="OPNO">
+                         </div>
                         <div class="col-lg-6">
                               <div class="row mt-4">
                                   <div class="col-6"> 
@@ -189,6 +195,7 @@
                               </div> 
                           </div>
                       </div>
+                      
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
