@@ -69,8 +69,9 @@
                            $_CellNo = '';
                            $_Note =  '';
                            $_Photo ='';
-                              //variable assignment
+                              //variable assignment database value
                               @$ID = $row['op_id'];
+                              $opno = $row['opNo'];
                               @$Register_Date = $row['op_register_date'];
                               @$Fullname = $row['op_fullname'];
                               @$Height= $row['op_height'];
@@ -126,9 +127,10 @@
                         $op_Photo ='';
                         $successMessage = 'New Record is being saved Successfully';
 
-                        // Variable Assigment
+                        // Variable Assigment textbox  value
 
-                    //@$ID = $_GET['opid'];
+                    $ID = $_GET['opid'];
+                    $op_number = $_GET['opnumber'];
                     @$Register_Date = $_GET['opregisterdate'];
                     @$op_Fullname = $_GET['opname'];
                     @$op_Height= $_GET['opheight'];
@@ -161,11 +163,12 @@
                     Successfully Recorded Your Data 
                    </div>"; 
                         
-                         @$sql = " UPDATE `op_table` SET `op_id`= '',`op_register_date`= '$Register_Date',`op_fullname`= '$op_Fullname',`op_image`= '',`op_height`='$op_Height',
+                         @$sql = " UPDATE `op_table` SET `op_id` = '', `opNo` = '$op_number',`op_register_date`= '$Register_Date',`op_fullname`= '$op_Fullname',`op_image`= '',`op_height`='$op_Height',
                          `op_age`='$op_Age',`op_weight`='$op_Weight', `op_gender`='$op_gender',`op_mothers_name`='$op_ParentName',`op_dayof_birth`='$op_BirthDate',`op_placeof_birth`='$op_PlaceOfBirth',`op_address`='$op_Address',
                          `op_tellephone`='$op_Phone',`op_job`='$op_Job',`op_marriage_status`='$op_MarriageStatus',`op_medical_status`='$op_MedicalStatus',`op_reason`='$op_Reason',`op_personal_belongs`='$op_PersonalBelongs',
                          `op_cell_no`='$op_CellNo',`op_officer`='$op_Officer',`op_notes`='$op_Note' WHERE `op_id` = '$id'";
 
+                          
                          if(mysqli_query($con, $sql)){
                         //   echo @$successMessage;
                                 $_SESSION['status'] = 'Congrates! You Added New Data ' ;
@@ -193,9 +196,14 @@
                     <div class="card">
                          <div class="card-body">
                           <div class="row">
-                              <div class="col-lg-6">
+                              <div class="col-lg-6" hidden="true">
                               <label for="exampleInputUsername1"></label>
                               <input type="number" class="form-control" id="#" name="opid" placeholder="Person ID" value = "<?php echo $ID; ?>">
+                              </div>
+                              <div class="col-lg-6">
+                         
+                              <label for="exampleInputUsername1"></label>
+                              <input type="text"  class="form-control" id="#" name="opnumber" placeholder="OPNO" value = "<?php echo $opno; ?>">
                               </div>
                               <div class="col-lg-6">
                                 <div class="row mt-4">
@@ -203,7 +211,7 @@
                                       <label for="exampleInputUsername1" class=" text text-secondary">Registerd Date</label>
                                     </div>
                                   <div class="col">
-                                    <input type="date" class="form-control" id="#" name="opregisterdate" placeholder="date" value="<?php echo @$Register_Date;?>" Required>
+                                    <input type="date" class="form-control" id="#" name="opregisterdate" placeholder="date" value="<?php echo @$Register_Date;?>" >
                                     </div>
                                   </div> 
                               </div>
@@ -216,7 +224,7 @@
                               </div>
                               <div class="col-lg-6">
                                 <label for="exampleInputUsername1"></label>
-                                <input type="text" class="form-control" id="#" name="opname" placeholder="FULLNAME" value="<?php echo @$Fullname;?>" Required>
+                                <input type="text" class="form-control" id="#" name="opname" placeholder="FULLNAME" value="<?php echo @$Fullname;?>" >
                               </div>
                            </div>
                            <div class="row">
@@ -224,15 +232,15 @@
                           <div class="row">
                             <div class="col-lg-3">
                               <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="#" name="opheight" placeholder="Height" value="<?php echo @$Height;?>" Required>
+                              <input type="number" class="form-control" id="#" name="opheight" placeholder="Height" value="<?php echo @$Height;?>" >
                             </div>
                             <div class="col-lg-3">
                               <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="#" name="opage" placeholder="Age"value="<?php echo @$Age;?>" Required>
+                              <input type="number" class="form-control" id="#" name="opage" placeholder="Age"value="<?php echo @$Age;?>" >
                             </div>
                             <div class="col-lg-3">
                               <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="#" name="opweight" placeholder="weight" value="<?php echo @$Weight;?>" Required>
+                              <input type="number" class="form-control" id="#" name="opweight" placeholder="weight" value="<?php echo @$Weight;?>" >
                             </div>
                             <div class="col-lg-3">
                               <label for="exampleInputUsername1"></label>
@@ -242,7 +250,7 @@
                         </div>
                           <div class="col-lg-6">
                             <label for="exampleInputUsername1"></label>
-                            <input type="text" class="form-control" id="#" name="opjob" placeholder="Job" value="<?php echo @$Job;?>"Required>
+                            <input type="text" class="form-control" id="#" name="opjob" placeholder="Job" value="<?php echo @$Job;?>">
                             </div>
                         </div>
                               <div class="row">
@@ -252,13 +260,13 @@
                                             <label for="exampleInputUsername1" class=" text text-secondary">Day Of Birth</label>
                                         </div>
                                           <div class="col">
-                                          <input type="date" class="form-control" id="#" name="opdayofbirth" placeholder="date"value="<?php echo @$BirthDate;?>" Required>
+                                          <input type="date" class="form-control" id="#" name="opdayofbirth" placeholder="date"value="<?php echo @$BirthDate;?>" >
                                           </div>
                                     </div> 
                                 </div>
                                 <div class="col-lg-6">
                                   <label for="exampleInputUsername1"></label>
-                                  <input type="text" class="form-control" id="#" name="opplaceofbirth" placeholder="Place of Birth" value="<?php echo @$PlaceOfBirth;?>"Required>
+                                  <input type="text" class="form-control" id="#" name="opplaceofbirth" placeholder="Place of Birth" value="<?php echo @$PlaceOfBirth;?>">
                                 </div>
                               
                             </div>
@@ -272,13 +280,13 @@
                                   <label for="inputmarriagestatus" class=" text text-secondary">Marriage status</label>
                                   </div>
                                   <div class="col">
-                                  <input type="text"  class="form-control" id="#" name="opmarriagestatus" value="<?php echo @$MarriageStatus;?>" Required>
+                                  <input type="text"  class="form-control" id="#" name="opmarriagestatus" value="<?php echo @$MarriageStatus;?>" >
                                   </div>
                                 </div>
                               </div>
                               <div class="col-lg-6">
                               <label for="exampleInputUsername1"></label>
-                              <input type="text" class="form-control" id="#" name="opmedicalstatus" placeholder="MEDICAL STATUS" value="<?php echo @$MedicalStatus;?>" Required>
+                              <input type="text" class="form-control" id="#" name="opmedicalstatus" placeholder="MEDICAL STATUS" value="<?php echo @$MedicalStatus;?>" >
                               </div>
                             </div>
                        </div>
@@ -291,18 +299,18 @@
                         <div class="row">
                           <div class="col-lg-6">
                           <label for="exampleInputUsername1"></label>
-                          <input type="text" class="form-control" id="#" name="opaddress" placeholder="Address"value="<?php echo @$Address;?>" Required>
+                          <input type="text" class="form-control" id="#" name="opaddress" placeholder="Address"value="<?php echo @$Address;?>" >
                           </div>
                           <div class="col-lg-6">
                           <label for="exampleInputUsername1"></label>
-                          <input type="tel" class="form-control" id="#" name="opphone" placeholder="Tellephone" value="<?php echo @$Phone;?>" Required>
+                          <input type="tel" class="form-control" id="#" name="opphone" placeholder="Tellephone" value="<?php echo @$Phone;?>" >
                           </div>
                         </div>
                          <div class="row">
                          <div class="col-lg-6">
                           <div class="col">
                           <label for="exampleInputUsername1"></label>
-                          <input type="text" class="form-control" id="#" name="opmothername" placeholder="Mother's Name" value="<?php echo @$ParentName;?>"Required>
+                          <input type="text" class="form-control" id="#" name="opmothername" placeholder="Mother's Name" value="<?php echo @$ParentName;?>">
                           </div>
                          </div>
                          </div>
@@ -317,7 +325,7 @@
                       <h3>Detail Information</h3>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="tel" class="form-control" id="#" name="opreason" placeholder="Reason for the Arrest" value="<?php echo @$Reason;?>" Required>
+                        <input type="tel" class="form-control" id="#" name="opreason" placeholder="Reason for the Arrest" value="<?php echo @$Reason;?>" >
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
@@ -327,11 +335,11 @@
                       <div class="row">
                        <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="opcellno" placeholder="Cell Number" value="<?php echo @$CellNo;?>" Required>
+                        <input type="text" class="form-control" id="#" name="opcellno" placeholder="Cell Number" value="<?php echo @$CellNo;?>" >
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="oppersonalbelongs" placeholder="Personal Belongs" value="<?php echo @$PersonalBelongs;?>" Required>
+                        <input type="text" class="form-control" id="#" name="oppersonalbelongs" placeholder="Personal Belongs" value="<?php echo @$PersonalBelongs;?>" >
                         </div>
                       </div>
                       <div class="row">
