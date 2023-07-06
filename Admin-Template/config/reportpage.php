@@ -76,7 +76,7 @@
                 </div>
                 <div class="col-2">
                   <div class="card ">
-                    <a href="view_report_data.php" class="btn btn-outline-primary"  >Print</a>
+                    <a href="view_report_data.php" class="btn btn-outline-primary" onclick="PrintPage();"  >Print</a>
                   
                   </div>
                 </div>
