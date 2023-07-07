@@ -8,7 +8,7 @@ if(isset($_GET['id'])){
      $PoliceAssetsql = "DELETE FROM assetregistration_table WHERE id =$id";
      $result = mysqli_query($con, $PoliceAssetsql);
      if($result){
-        echo 'working';
+        echo 'Your Data is Being Deleted Successfully';
      } else{
         echo mysqli_error($con);
      }
