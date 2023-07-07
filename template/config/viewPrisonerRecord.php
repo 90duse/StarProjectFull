@@ -51,9 +51,9 @@
         <div class="content-wrapper">
           <div class="row">
             <form action="#" method="POST">
-               <table class="table select-table " id="mytable">
+               <table class="table table-striped " id="mytable">
                 <h2>Manage Prisoner Data</h2>
-                  <thead class="bg bg-primary">
+                  <thead class="#">
                     <tr >
                       <th><strong class =" text text-dark">ID</strong></th>
                       <th><strong class =" text text-dark">Image</strong></th>
@@ -117,8 +117,8 @@
                         <td><?php echo @$row['pri_cellNo'];?></td>
                         <td><?php echo @$row['pri_behavier'];?></td>
                         <td><?php echo @$row['pri_notes']; ?></td>
-                        <td><a href="PrisonerEdit.php?id=<?php echo $prisonerID; ?>"  class="btn btn-success">EDIT</a></td>
-                        <td><a href="PrisonerDelete.php?id=<?php echo $prisonerID; ?>"  class="btn btn-danger">DELETE</a></td>
+                        <td><a href="PrisonerEdit.php?id=<?php echo $prisonerID; ?>"><img src="../images/pencil-icon.svg"  alt="edit"></a></td>
+                        <td><a href="PrisonerDelete.php?id=<?php echo $prisonerID; ?>"><img src="../images/delete-icon.svg"  alt="delete"></a></td>
                        
                     </tr>
                     <?php  }  ?>
