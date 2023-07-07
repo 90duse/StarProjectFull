@@ -48,11 +48,17 @@
               <span class="menu-title">Reports</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="report">
+             <div class="collapse" id="report">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../config/reportpage.php">Reports </a></li>
+                <li class="nav-item"> <a class="nav-link" href="../config/reportpage.php">users Report</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../Reports/PoliceReportpage.php">Police Report</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../Reports/PrisonerReportpage.php">Prisoner Report</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../Reports/CaseReportpage.php">Case Report</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../Reports/AssetReportpage.php">Asset Report</a></li>
               </ul>
+              
             </div>
+            
           </li>
         </ul>
 </nav>
