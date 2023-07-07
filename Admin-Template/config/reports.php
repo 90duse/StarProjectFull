@@ -77,17 +77,17 @@
           
           <form action="" method="GET">
             <div class="container">
-            <div class="card card-body">
+              <div class="card card-body">
                 <div class="row">
-                <div class="col-2">
-                      <label for="select" class="label-control text text-dark">Choose The Table</label>
-                     </div>
+                 
                     <div class="col-4">
-                        <select name="select" id="#" class="form-control">
-                            <option value="police">Choose</option>
+                        <div class="data">
+                        <select name="Select" id="#" class="form-control">
+                            <option value="#">Choose</option>
                             <option value="police">Police</option>
                             <option value="prisoner">Prisoner</option>
                         </select>
+                        </div>
                      </div>
                     <div class="col-4">
                        <button type="submit" name="btnsubmit" class="btn btn-primary">Submit</button>
