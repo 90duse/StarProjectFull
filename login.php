@@ -1,5 +1,4 @@
 <?php    
-// $result = mysqli_query($con,"select * from registration where Username='$UsernameorEmail' or Email='$UsernameorEmail' ");
 session_start();
 include './Admin-Template/config.php'; 
 
@@ -12,7 +11,6 @@ $userPassword = $_POST["Password"];
  $sql = "SELECT * FROM panel_users_table WHERE  user_Email = '$UsernameorEmail' AND user_Password = '$userPassword' ";
  $result = mysqli_query($con, $sql);
  $userRole = mysqli_fetch_array($result); 
- //(mysqli_num_rows($result) > 0
  if(mysqli_num_rows($result) > 0 && $userRole['user_Type'] == "Admin"){
  
  
