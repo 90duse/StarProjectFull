@@ -60,7 +60,8 @@
                                     
                       <thead>
                         <tr >
-                          <th><strong class =" text text-dark">ID</strong></th>
+                          <th><strong class =" text text-dark">No</strong></th>
+                          <th><strong class =" text text-dark">Item_ID</strong></th>
                           <th class="text-dark">RegisterDate</th>
                           <th class="text-dark">Name</th>
                           <th class="text-dark">Height</th>
@@ -74,8 +75,8 @@
                           <th class="text-dark">Condition</th>
                           <th class="text-dark">Note</th>
                           <th class="text-dark">Deliver</th>
-                          <th class="text-dark">ACTION</th>
-                          <th class="text-dark">ACTION</th>
+                          <th class="text-dark">Edit</th>
+                          <th class="text-dark">Delete</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -87,6 +88,7 @@
                               $itemID = $row['id'];
                             ?>
                             <td><?php echo $itemID; ?></td>
+                            <td><?php echo $row['item_id']; ?></td>
                             <td><?php echo $row['item_Register_Date']; ?></td>
                             <td><?php echo @$row['Item_Name']; ?></td>
                             <td><?php echo @$row['item_Hight']; ?></td>
@@ -100,8 +102,8 @@
                             <td><?php echo @$row['item_Condition'];  ?></td>
                             <td><?php echo @$row['item_Note'];  ?></td>
                             <td><?php echo @$row['item_Delivery'];  ?></td>
-                            <td><a href="PoliceAssetEdit.php?id=<?php echo $itemID; ?>"  class="btn btn-success">EDIT</a></td>
-                            <td><a href="PoliceAssetDelete.php?id=<?php echo $itemID; ?>"  class="btn btn-danger">DELETE</a></td>
+                            <td><a href="PoliceAssetEdit.php?id=<?php echo $itemID; ?>"><img src="../images/pencil-icon.svg"  alt="edit"></a></td>
+                            <td><a href="PoliceAssetDelete.php?id=<?php echo $itemID; ?>"><img src="../images/delete-icon.svg"  alt="edit"></a></td>
                           </tr>
                         <?php  } ?>
                       </tbody>
