@@ -70,8 +70,8 @@
                            <th>CRIME ITEMS</th>
                            <th>Crime Status</th>
                            <th>NOTES</th>
-                           <th>ACTION</th>
-                           <th>ACTION</th>  
+                           <th>EDITE</th>
+                           <th>DELETE</th>  
                                  
                          </tr>
                        </thead>
@@ -95,8 +95,8 @@
                                <td> <?php  echo @$row['cr_items']; ?> </td>
                                <td> <?php  echo @$row['cr_status']; ?> </td>
                                <td> <?php  echo @$row['cr_note'];  ?> </td>
-                               <td><a href="crimeEdit.php?id=<?php echo $id; ?>"  class="btn btn-success">EDIT</a></td>
-                               <td><a href="crimeDelete.php?id=<?php echo $id; ?>"  class="btn btn-danger btn-delete" id="btndelete" >DELETE</a> </td>
+                               <td><a href="crimeEdit.php?id=<?php echo $id; ?>"><img src="../images/pencil-icon.svg"  alt="edit"></a></td>
+                               <td><a href="crimeDelete.php?id=<?php echo $id; ?>" id="btndelete" ><img src="../images/delete-icon.svg"  alt="delete"></a></td>
                             </tr>
                                <?php  
 
