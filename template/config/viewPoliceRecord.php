@@ -144,8 +144,8 @@
                             <td><?php echo @$row['p_medical_status'];  ?></td>
                             <td><?php echo @$row['p_rank'];  ?></td>
                             <td><?php echo @$row['p_note']; ?></td>
-                            <td><a href="PoliceEdit.php?id=<?php echo $policeID; ?>"  class="btn btn-success">EDIT</a></td>
-                            <td><a href="PoliceDelete.php?ID=<?php echo $policeID; ?>"  class="btn btn-danger">DELETE</a></td>
+                            <td><a href="PoliceEdit.php?id=<?php echo $policeID; ?>"><img src="../images/pencil-icon.svg" style="color: green;" alt="edit"></a></td>
+                            <td><a href="PoliceDelete.php?ID=<?php echo $policeID; ?>"><img src="../images/delete-icon.svg"  alt="delete"></a></td>
                         </tr>
                         <?php } ?>
                       </tbody>
