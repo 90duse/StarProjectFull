@@ -83,7 +83,7 @@
 
                             @$ID = $_POST['prisonerid'];
                             @$RegisterDate = $_POST['prisonerregisterdate'];
-                            @$prisonerFullname = $_POST['prisonerfullname'];
+                            @$prisonerFullname = $_POST['prisonername'];
                             @$prisonerHeight= $_POST['prisonerheight'];
                             @$prisonerAge = $_POST['prisonerage'];
                             @$prisonerWeight = $_POST['prisonerweight'];
@@ -101,11 +101,11 @@
                             @$prisonerMedicalStatus = $_POST['prisonermedicalstatus'];
                             @$prisonerPersonalBelongs = $_POST['prisonerpersonalbelongs'];
                             @$prisonerReleaseDate = $_POST['prisonerreleasedate'];
-                            @$prisonerJudiciaryTrial =$_POST['prsionerjudiciarytrial'];
+                            @$prisonerJudiciaryTrial =$_POST['prisonerjudiciarytrial'];
                             @$prisonerLawyer = $_POST['prisonerlawyer'];
                             @$prisonerCellNo = $_POST['prisonercellnumber'];
                             @$prisonerBehavier=$_POST['prisonerbehavier'];
-                            @$prisonerNote = $_POST['prisonernote'];
+                            @$prisonerNote = $_POST['prisonernotes'];
                             $prisonerImage = $_FILES['prisonerimage']['name'];
                             $tmp_name = $_FILES['prisonerimage']['tmp_name'];
                             $imageLocation = "../images/"; 
