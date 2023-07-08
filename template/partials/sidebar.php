@@ -98,6 +98,19 @@
             </div>
           </li>
           <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#incidents" aria-expanded="false" aria-controls="icons">
+              <i class="menu-icon mdi mdi-account-group"></i>
+              <span class="menu-title">Online Incident Reporting</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="incidents">
+              <ul class="nav flex-column sub-menu">
+                <!-- <li class="nav-item"> <a class="nav-link" href="../config/ComplaintForm.php">Add New</a></li> -->
+                <li class="nav-item"><a class="nav-link" href="../config/viewOnlineReports.php">View Incidents</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#iconss" aria-expanded="false" aria-controls="icons">
               <i class="menu-icon mdi mdi-home-analytics"></i>
               <span class="menu-title">Police Asset Record</span>
