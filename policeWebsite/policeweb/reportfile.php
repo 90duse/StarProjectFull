@@ -16,41 +16,14 @@
 
         <!-- For favicon png -->
 		<link rel="shortcut icon" type="image/icon" href="assets/images/policeLogo.svg.png"/>
-       
-        <!--font-awesome.min.css-->
-        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-
-        <!--linear icon css-->
-		<link rel="stylesheet" href="assets/css/linearicons.css">
-
-		<!--animate.css-->
-        <link rel="stylesheet" href="assets/css/animate.css">
-
-        <!--owl.carousel.css-->
-        <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-		<link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
-		
-        <!--bootstrap.min.css-->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-		
-		<!-- bootsnav -->
-		<link rel="stylesheet" href="assets/css/bootsnav.css" >	
-        
-        <!--style.css-->
-        <link rel="stylesheet" href="assets/css/style.css">
-        
-        <!--responsive.css-->
-        <link rel="stylesheet" href="assets/css/responsive.css">
+     
         
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		
-        <!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+        
+        <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
+      
     </head>
 	
 	<body>
@@ -61,7 +34,9 @@
 				<div class="row">
 					<div class="col-6">
                       <input type="text" class="form-control">
-                      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#my">View</button>
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#my">
+                          Launch static backdrop modal
+                      </button>
 					</div>
 					<div class="col-6">
                         <!-- Button trigger modal -->
@@ -76,30 +51,33 @@
 	
 		
 		
-      <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ex">
-        Launch demo modal
-        </button>
+     <!-- Button trigger modal -->
+        
 
         <!-- Modal -->
-        <div class="modal fade" id="ex" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="my" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                ...
+                
+
+
+
+
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary">Understood</button>
             </div>
             </div>
         </div>
         </div>
-	
+            
 
 		
 
@@ -163,7 +141,43 @@
         <!--Custom JS-->
         <script src="assets/js/custom.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-        
+        <script>
+            var myModal = document.getElementById('myModal')
+            var myInput = document.getElementById('myInput')
+
+            myModal.addEventListener('shown.bs.modal', function () {
+            myInput.focus()
+})
+        </script>
     </body>
 	
 </html>
+
+
+<div class="container">
+			<!-- navbar -->
+	 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+	   <div class="container-fluid">
+			<a class="navbar-brand my-2" href="#">POLICE</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mx-auto ">
+			<li class="nav-item">
+			<a class="nav-link active" aria-current="page" href="#">Home</a>
+			</li>
+			<li class="nav-item">
+			<a class="nav-link" href="#">About</a>
+			</li>
+			
+			<li class="nav-item">
+			<a class="nav-link " href="#" tabindex="-1" aria-disabled="true">contact</a>
+			</li>
+		</ul>
+		
+		</div>
+	   </div>
+      </nav>
+     <!-- navbar end -->
+</div>
