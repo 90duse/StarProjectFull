@@ -104,6 +104,9 @@
                         <td>User_Name</td>
                         <td>user_Email</td>
                         <td>user_Password</td>
+                        <td>Region</td>
+                        <td>City</td>
+                        <td>Department</td>
                         <td>User_Role</td>
                         <td>created_Date</td>
                         <td>User_Image</td>
@@ -128,6 +131,9 @@
                         <td><?php echo $row['user_Name'];?></td>
                         <td><?php echo $row['user_Email'];?></td>
                         <td><?php echo $row['user_Password'];?></td>
+                        <td><?php echo $row['region'];?></td>
+                        <td><?php echo $row['City'];?></td>
+                        <td><?php echo $row['department'];?></td>
                         <td><?php echo $row['user_Type'];?></td>
                         <td><?php echo $row['created_Date'];?></td>
                         <td> <img src="<?php echo "../images/".$row['user_profile'];?>" alt="image" width="100px"></td>
