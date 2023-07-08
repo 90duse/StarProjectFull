@@ -95,6 +95,7 @@
 													<button class="btn-cart welcome-add-cart welcome-more-info" onclick="window.location.href='#'">
 														more info
 													</button>
+
 												</div><!--/.welcome-hero-txt-->
 											</div><!--/.single-welcome-hero-->
 										</div><!--/.col-->
@@ -253,6 +254,7 @@
 		</header><!--/.welcome-hero-->
 		<!--welcome-hero end -->
 
+
 		<!--populer-products start -->
 		<section id="populer-products" class="populer-products">
 			<div class="container">
@@ -320,7 +322,7 @@
 		</section><!--/.populer-products-->
 		<!--populer-products end-->
 
-		
+		<!-- modal -->
 
 		<section>
 			<div class="container">
