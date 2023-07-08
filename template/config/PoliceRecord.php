@@ -106,8 +106,12 @@
                       
                     }
                  
-                    $sql = "INSERT INTO `PoliceRegistration_table` (`p_ID`, `p_registration_date`, `p_fullname`, `p_height`, `p_Age`, `p_weight`, `p_gender`,`p_dateOf_Birth`, `p_placeOf_Birth`, `p_address`, `p_phone`, `p_email`, `p_mothers_name`, `p_education`, `p_trained_spot`, `p_marriage_status`, `p_medical_status`, `p_rank`, `p_note`)
-                    VALUES (' ', '$RegisterDate', '$PoliceFullname', '$PoliceHeight', '$PoliceAge', '$PoliceWeight', '$policeGender', '$PoliceBirthDate', '$PolicePlaceOfBirth', '$PoliceAddress', '$PolicePhone', '$PoliceEmail', '$PoliceParentName', '$PoliceEducation', '$PoliceTrainingSpot', '$PoliceMarriageStatus', '$PoliceMedicalStatus', '$PoliceRank', '$PoliceNote ')";
+                    $sql = "INSERT INTO `PoliceRegistration_table` (`p_ID`, `p_registration_date`, `p_fullname`, `p_height`, `p_Age`, `p_weight`, 
+                    `p_gender`,`p_dateOf_Birth`, `p_placeOf_Birth`, `p_address`, `p_phone`, `p_email`, `p_mothers_name`, `p_education`, `p_trained_spot`,
+                     `p_marriage_status`, `p_medical_status`, `p_rank`, `p_note`)
+                    VALUES (' ', '$RegisterDate', '$PoliceFullname', '$PoliceHeight', '$PoliceAge', '$PoliceWeight', '$policeGender', '$PoliceBirthDate', 
+                    '$PolicePlaceOfBirth', '$PoliceAddress', '$PolicePhone', '$PoliceEmail', '$PoliceParentName', '$PoliceEducation', '$PoliceTrainingSpot',
+                     '$PoliceMarriageStatus', '$PoliceMedicalStatus', '$PoliceRank', '$PoliceNote ')";
                  
                     if(mysqli_query($con, $sql)){
                           $_SESSION['status'] = 'Your Data is Saved Succcessfully ';
