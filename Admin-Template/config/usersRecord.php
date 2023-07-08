@@ -65,6 +65,9 @@
                             $userRole = $_POST['selectUserRole'];
                             $createdDate = $_POST['createdDate'];
                             $userName = $_POST['username'];
+                            $gobolka = $_POST['selectgobol'];
+                            $city = $_POST['selectcity'];
+                            $department = $_POST['qaybta'];
 
                             $userImage = $_FILES['profileimage']['name'];
                             $userImagesize = $_FILES['profileimage']['size'];
@@ -73,8 +76,8 @@
 
                             if(move_uploaded_file($tmp_name, $imageLocation.$userImage)){
 
-                            $sql =  "INSERT INTO `Panel_users_table` (`user_ID`, `user_Name`, `user_Email`, `user_Password`, `user_Type`, `created_Date`,`user_profile`) 
-                            VALUES (' ', '$userName', '$userEmail', '$userPassword', '$userRole', '$createdDate', '$userImage')";
+                            $sql =  "INSERT INTO `Panel_users_table` (`user_ID`, `user_Name`, `user_Email`, `user_Password`, `region`, `City`, `department`,`user_Type`, `created_Date`,`user_profile`) 
+                            VALUES (' ', '$userName', '$userEmail', '$userPassword', '$gobolka', '$city', '$department', '$userRole', '$createdDate', '$userImage')";
                             
                             if (mysqli_query($con, $sql))
                             {
@@ -110,11 +113,12 @@
                         </div>
                         
                       </div>
+                      
                       <div class="row mb-3">
                         <div class="col-lg-6">
                             <div class="row">
                             <div class="col-4" > 
-                                <label for="username" class=" text text-secondary">User Name</label>
+                                <label for="username" class=" text text-secondary">Magaca Saldhiga</label>
                             </div>
                             <div class="col">
                             <input type="text" class="form-control" id="#" name="username" placeholder="User Name" >
@@ -148,6 +152,60 @@
                         </div>
                       </div>
                       <div class="row">
+                         <div class="col-lg-6">
+                            <div class="row mt-4">
+                                  <div class="col-4"> 
+                                      <label for="createdDate" class=" text text-secondary">Gobolka</label>
+                                  </div>
+                                  <div class="col">
+                                    
+                                    <select name="selectgobol" id="selectgobol" class="form-control" onchange="choose(this.id,'selectcity')">
+                                    <option value="">Dooro Gobol</option>
+                                      <option value="Maroodijeex">Maroodijeex</option>
+                                      <option value="Togdheer">Togdheer</option>
+                                      <!-- <option value="Sanaag">Sanaag</option>
+                                      <option value="Awdal">Awdal</option>
+                                      <option value="Saaxil">Saaxil</option> -->
+                                    </select>
+                                  </div> 
+                              </div> 
+                        </div>
+                        </div>
+                        <div class="row">
+                         <div class="col-lg-6">
+                            <div class="row mt-4">
+                                  <div class="col-4"> 
+                                      <label for="selectcity" class=" text text-secondary">Magaalada</label>
+                                  </div>
+                                  <div class="col">
+                                  
+                                    <select name="selectcity" id="selectcity" class="form-control"> </select>
+                                    
+                                   
+                                  </div> 
+                              </div> 
+                        </div>
+                        </div>
+                        <div class="row">
+                         <div class="col-lg-6">
+                            <div class="row mt-4">
+                                  <div class="col-4"> 
+                                      <label for="selectcity" class=" text text-secondary">Qaybta</label>
+                                  </div>
+                                  <div class="col">
+                                  
+                                    <select name="qaybta" id="#" class="form-control"> 
+                                      <option value="">-- Dooro Qaybta --</option>
+                                      <option value="Qaybta Bari">Qaybta Bari</option>
+                                      <option value="Qaybta Galbeed">Qaybta Galbeed</option>
+                                    </select>
+                                    
+                                   
+                                  </div> 
+                              </div> 
+                        </div>
+                        </div>
+                        <div class="row">
                          <div class="col-lg-6">
                             <div class="row mt-4">
                                   <div class="col-4"> 
@@ -263,7 +321,32 @@
   <?php unset($_SESSION['status']); ?>
   </script>
 
+<script>
+function choose(s1,s2){
+  var s1 = document.getElementById(s1);
+  var s2 = document.getElementById(s2);
 
+  s2.innerHTML = '';
+  if(s1.value == 'Maroodijeex'){
+    var optionArray = ['Hargeisa|hargeisa', 'Dacarbudhuq|dacarbudhuq','Dacarbudhuq|dacarbudhuq','Dacarbudhuq|dacarbudhuq'];
+  } 
+  else if (s1.value == 'Togdheer'){
+    var optionArray = ['Burco|burco', 'Oog|oog', 'Caynaba|caynaba', 'Buuhoodle|buuhoodle'];
+  }
+  for(var option in optionArray){
+   
+
+    var pair = optionArray[option].split("|");
+				var newoption = document.createElement("option");
+
+        newoption.value = pair[0];
+				newoption.innerHTML=pair[1];
+				s2.options.add(newoption);
+  }
+
+}
+
+</script>
 
 
 </body>
