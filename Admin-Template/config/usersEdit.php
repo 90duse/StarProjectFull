@@ -66,13 +66,16 @@
                              if(mysqli_num_rows($result) > 0){
                               while ( $row = mysqli_fetch_assoc($result)){ 
 
-                                $profileimage = $id = $emails = $passwords = $created_Date = " ";
+                                $profileimage = $id = $emails = $passwords = $created_Date = $region = $city =  $department = " ";
 
                                 $id= $row['user_ID'];
                                 $emails = $row['user_Email'];
                                 $passwords = $row['user_Password'];
                                 $created_Date = $row['created_Date'];
                                 $profileimage = $row['user_profile'];
+                                $region = $row['region'];
+                                $city = $row['City'];
+                                $department = $row['department'];
 
                               }
                             } 
@@ -87,8 +90,12 @@
                                 $createdDate = $_POST['createdDate'];
                                 $userRole = $_POST['selectUserRole'];
                                 $userImage = $_POST['profileimage'];
+                                $userRegion = $_POST['selectgobol'];
+                                $userCity = $_POST['selectcity'];
+                                $userDepartment =$_POST['qaybta'];
     
-                                $sql = "UPDATE `panel_users_table` SET `user_Email` = '$userEmail', `user_Password` = '$userPassword', `user_Type` = '$userRole',
+                                $sql = "UPDATE `panel_users_table` SET `user_Email` = '$userEmail', `user_Password` = '$userPassword', 
+                                `region` = '$userRegion', `City`= '$userCity', `department`= '$userDepartment', `user_Type` = '$userRole',
                                  `created_Date` = '$createdDate', `user_profile`= '$userImage' WHERE `panel_users_table`.`user_ID` = '$id'";
                                 
                                 if (mysqli_query($con, $sql))
@@ -158,6 +165,60 @@
                               </div> 
                         </div>
                       </div>
+                      <div class="row">
+                         <div class="col-lg-6">
+                            <div class="row mt-4">
+                                  <div class="col-4"> 
+                                      <label for="createdDate" class=" text text-secondary">Gobolka</label>
+                                  </div>
+                                  <div class="col">
+                                    
+                                    <select name="selectgobol" id="selectgobol" class="form-control" onchange="choose(this.id,'selectcity')" value="<?php echo @$region;?>">
+                                    <option value="">Dooro Gobol</option>
+                                      <option value="Maroodijeex">Maroodijeex</option>
+                                      <option value="Togdheer">Togdheer</option>
+                                      <!-- <option value="Sanaag">Sanaag</option>
+                                      <option value="Awdal">Awdal</option>
+                                      <option value="Saaxil">Saaxil</option> -->
+                                    </select>
+                                  </div> 
+                              </div> 
+                        </div>
+                        </div>
+                        <div class="row">
+                         <div class="col-lg-6">
+                            <div class="row mt-4">
+                                  <div class="col-4"> 
+                                      <label for="selectcity" class=" text text-secondary">Magaalada</label>
+                                  </div>
+                                  <div class="col">
+                                  
+                                    <select name="selectcity" id="selectcity" class="form-control" value="<?php echo @$city;?>"> </select>
+                                    
+                                   
+                                  </div> 
+                              </div> 
+                        </div>
+                        </div>
+                        <div class="row">
+                         <div class="col-lg-6">
+                            <div class="row mt-4">
+                                  <div class="col-4"> 
+                                      <label for="selectcity" class=" text text-secondary">Qaybta</label>
+                                  </div>
+                                  <div class="col">
+                                  
+                                    <select name="qaybta" id="#" class="form-control" value="<?php echo @$department;?>"> 
+                                      <option value="">-- Dooro Qaybta --</option>
+                                      <option value="Qaybta Bari">Qaybta Bari</option>
+                                      <option value="Qaybta Galbeed">Qaybta Galbeed</option>
+                                    </select>
+                                    
+                                   
+                                  </div> 
+                              </div> 
+                        </div>
+                        </div>
                       <div class="row">
                       <div class="col-lg-6">
                         <div class="row mt-4">
@@ -274,7 +335,32 @@
 
 
 
+<script>
+function choose(s1,s2){
+  var s1 = document.getElementById(s1);
+  var s2 = document.getElementById(s2);
 
+  s2.innerHTML = '';
+  if(s1.value == 'Maroodijeex'){
+    var optionArray = ['Hargeisa|hargeisa', 'Dacarbudhuq|dacarbudhuq','Dacarbudhuq|dacarbudhuq','Dacarbudhuq|dacarbudhuq'];
+  } 
+  else if (s1.value == 'Togdheer'){
+    var optionArray = ['Burco|burco', 'Oog|oog', 'Caynaba|caynaba', 'Buuhoodle|buuhoodle'];
+  }
+  for(var option in optionArray){
+   
+
+    var pair = optionArray[option].split("|");
+				var newoption = document.createElement("option");
+
+        newoption.value = pair[0];
+				newoption.innerHTML=pair[1];
+				s2.options.add(newoption);
+  }
+
+}
+
+</script>
 </body>
 
 </html>
