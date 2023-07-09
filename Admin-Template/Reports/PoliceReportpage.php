@@ -34,7 +34,7 @@
        <!-- data table plugins -->
   <link rel="stylesheet" href="../css/dataTables.bootstrap5.min.css">
   <link href="../DataTables/DataTables-1.13.4/css/datatables.bootstrap5.min.css" rel="stylesheet"/>
-  <link href="../DataTables/DataTables-1.13.4/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- <link href="../DataTables/DataTables-1.13.4/css/bootstrap.min.css" rel="stylesheet"/> -->
   <link rel="stylesheet" href="../DataTables/Buttons-2.3.6/css/buttons.dataTables.min.css">
   <link rel="stylesheet" href="../DataTables/DataTables-1.13.4/css/jquery.dataTables.min.css">
 </head>
@@ -49,38 +49,70 @@
       <div class="main-panel">
         <div class="content-wrapper">
           <!-- over view section start here -->
-          <div class="container">
-            <div class="row">
-                  
-            </div>
-            <div class="row">
-              <div class="col">
-                <h2>Generate a Report</h2>
-              </div>
-              <hr>
-            </div> 
-            <form action="#" method="GET">
-            <div class="container">
+          <form action="" method="POST">
+        <div class="card">
+        <div class="card-body">
+           <div class="container">
               <div class="row">
-                <div class="col-6">
-                  <div class="card ">
-                  <input type="text" class="form-control-lg" name="search" placeholder="Search Here" >
-                  </div>
-                </div>
-                <div class="col-2">
-                  <div class="card ">
-                     <button type="submit" name="btnsearch" class="btn btn-outline-success"> Search</button>
-                     <!-- <a href="#" type="submit" name="btnsearch"  class="btn btn-outline-success">Search</a> -->
-                  </div>
-                </div>
-                
+                    <div class="col">
+                        <h2>Generate Police Report</h2>
+                    </div>
+                    <hr>
               </div>
-            </div>
-            </form>
-        
-             
-          </div>
-
+              <div class="row">
+                 <div class="col-lg-3">
+                      <div class="row mt-4">
+                            <div class="col-4"> 
+                                <label for="createdDate" class=" text text-secondary">Magaalada</label>
+                            </div>
+                            <div class="col">
+                            
+                            <select name="selectcity" id="selectcity" class="form-control" onchange="choose(this.id,'selectstation')">
+                            <option value="" class="text text-center"> -- Dooro Magaalada --</option>
+                                <option value="Hargeisa">Hargeisa</option>
+                                <option value="Burco">Burco</option>
+                               
+                            </select>
+                                    </div> 
+                                </div> 
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="row mt-4 ">
+                                    <div class="col-4"> 
+                                        <label for="selectstation" class=" text text-secondary">Saldhiga</label>
+                                    </div>
+                                    <div class="col">
+                                      <select name="selectstation" id="selectstation" class="form-control"> </select>
+                                    </div> 
+                                </div> 
+                            </div>
+                            <div class="col-lg-3">
+                           <div class="row mt-4">
+                            <div class="col-4"> 
+                                <label for="" class=" text text-secondary">Qaybta</label>
+                            </div>
+                            <div class="col">
+                            
+                            <select name="selectdepartment" id="" class="form-control" >
+                            <option value="" class="text text-center"> -- Dooro --</option>
+                                <option value="qaybta Bari">Qaybta Bari</option>
+                                <option value="Qaybta Galbeed">Qaybta Galbeed</option>
+                                <!-- <option value="Asset">Asset</option> -->
+                               
+                            </select>
+                                    </div> 
+                                </div> 
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="row mt-4">
+                                    <button type="search" name="btnsearch" class="btn btn-outline-primary"> Generate</button>
+                                </div> 
+                            </div>
+                      </div> 
+                  </div>
+                </div>
+              </div>
+            </form> 
           
             
 
@@ -89,35 +121,53 @@
             <table class="table select-table " id="mytable">
             <?php
               include '../config.php';
-              $userid = $username = $searchinput = " " ;
-              if(isset($_GET['btnsearch'])){
-                @$searchinput = $_GET['search'];
-                // $searchID = $_GET['btnsearch'];
+              $city = $station = $searchinput = " " ;
+              if(isset($_POST['btnsearch'])){
+                 $searchinput = $_POST['btnsearch'];
+              
+                $city = $_POST['selectcity'];
+                $station = $_POST['selectstation'];
+                $department = $_POST['qaybta'];
           
-                //$sql = "INSERT INTO `PoliceRegistration_table` (`p_ID`, `p_registration_date`, `p_fullname`, `p_height`, `p_Age`, `p_weight`, `p_gender`,`p_dateOf_Birth`, 
-                //`p_placeOf_Birth`, `p_address`, `p_phone`, `p_email`, `p_mothers_name`, `p_education`, `p_trained_spot`, `p_marriage_status`, `p_medical_status`, `p_rank`, `p_note`)
+               
           
-                $query = "SELECT * FROM `policeregistration_table` WHERE `p_ID` like '%$searchinput%' or `p_fullname`like '%$searchinput%' or `p_gender`like '%$searchinput%' or 
-                `p_registration_date` like '%$searchinput%' or `p_phone` like '%$searchinput%' or `p_rank` like '%$searchinput%' or `p_trained_spot` like '%$searchinput%' or `p_marriage_status` like '%$searchinput%'
-                or `p_address` like '%$searchinput%' or `p_Age` like '%$searchinput%' or `p_education` like '%$searchinput%'  ";
+                $query = "SELECT * FROM `policeregistration_table` WHERE `city` like '$city' or `station` like '$station' or `qaybta` like '$department'";
                 $query_run = mysqli_query($con, $query);
                 if($query_run){
+                  if(empty($gobolka) && empty($city)){
+                    echo 'Your Search is incomplete';
+                  } else{
                   if(mysqli_num_rows($query_run) > 0){
                     echo '  
                     <thead class="#">
                     <h2 class="text text-center">POLICE ADMIN</h2>
               
                     <tr>
-                      <td>ID</td>
-                      <td>Name</td>
-                      <td>Gender</td>
-                      <td>RegisterDate</td>
-                      <td>Phone</td>
-                      <td>Age</td>
-                      <td>Education</td>
-                      <td>marraige_status</td>
-                      <td>rank</td>
-                      <td>address</td>
+                    <th class="text text-dark">ID</th>
+                    <th class="text text-dark">ID</th>
+                    <th class="text text-dark">RegisterDate</th>
+                    <th class="text text-dark">City</th>
+                    <th class="text text-dark">Station</th>
+                    <th class="text text-dark">Qaybta</th>
+                    <th class="text text-dark">Fullname</th>
+                    <th class="text text-dark">Height</th>
+                    <th class="text text-dark">Age</th>
+                    <th class="text text-dark">Weight</th>
+                    <th class="text text-dark">Gender</th>
+                    <th class="text text-dark">DB</th>
+                    <th class="text text-dark">PB</th>
+                    <th class="text text-dark">Address</th>
+                    <th class="text text-dark">Phone</th>
+                    <th class="text text-dark">Email</th>
+                    <th class="text text-dark">Mother</th>
+                    <th class="text text-dark">Education</th>
+                    <th class="text text-dark">Trained</th>
+                    <th class="text text-dark">Marriage</th>
+                    <th class="text text-dark">Medicul</th>
+                    <th class="text text-dark">Rank</th>
+                    <th class="text text-dark">Note</th>
+                   
+                      
                      
 
                   
@@ -134,16 +184,30 @@
 
                     echo '<tbody>
                     <tr>
-                      <td>'.$row['p_ID'].'</td>
-                      <td>'.$row['p_fullname'].'</td>
-                      <td>'.$row['p_gender'].'</td>
-                      <td>'.$row['p_registration_date'].'</td>
-                      <td>'.$row['p_phone'].'</td>
-                      <td>'.$row['p_Age'].'</td>
-                      <td>'.$row['p_education'].'</td>
-                      <td>'.$row['p_marriage_status'].'</td>
-                      <td>'.$row['p_rank'].'</td>
-                      <td>'.$row['p_address'].'</td>
+                    <td>'.$row['p_ID'].'</td>
+                    <td>'.$row['policeID'].'</td>
+                    <td>'.$row['p_registration_date'].'</td>
+                    <td>'.$row['city'].'</td>
+                    <td>'.$row['station'].'</td>
+                    <td>'.$row['qaybta'].'</td>
+                    <td>'.$row['p_fullname'].'</td>
+                    <td>'.$row['p_height'].'</td>
+                    <td>'.$row['p_Age'].'</td>
+                    <td>'.$row['p_weight'].'</td>
+                    <td>'.$row['p_gender'].'</td>
+                    <td>'.$row['p_dateOf_Birth'].'</td>
+                    <td>'.$row['p_placeOf_Birth'].'</td>
+                    <td>'.$row['p_address'].'</td>
+                    <td>'.$row['p_phone'].'</td>
+                    <td>'.$row['p_email'].'</td>
+                    <td>'.$row['p_mothers_name'].'</td>
+                    <td>'.$row['p_education'] .'</td>
+                    <td>'.$row['p_trained_spot'].'</td>
+                    <td>'.$row['p_marriage_status'].'</td>
+                    <td>'.$row['p_medical_status'].'</td>
+                    <td>'.$row['p_rank'].'</td>
+                    <td>'.$row['p_note'].'</td>
+                    
 
                       
                       
@@ -160,7 +224,8 @@
                    else{
                     echo '<h4>Sorry No Data is found</h4>';
                    }
-                } else{
+                } }
+                else{
                   echo myqli_error($con);
                 }
                   
@@ -234,6 +299,33 @@ $(document).ready(function () {
 	function PrintPage() {
 		window.print();
 	}
+</script>
+<!-- Nested Select Function -->
+<script>
+    function choose(s1,s2){
+    var s1 = document.getElementById(s1);
+    var s2 = document.getElementById(s2);
+
+    s2.innerHTML = '';
+    if(s1.value == 'Hargeisa'){
+        var optionArray = ['Koodbuur|koodbuur', 'Daloodho|daloodho', '26kaJune|26kajune'];
+    } 
+    else if (s1.value == 'Burco'){
+        var optionArray = ['Saldhiga Dhexe|saldhiga dhexe', 'Palaza|palaza'];
+    }
+    for(var option in optionArray){
+    
+
+        var pair = optionArray[option].split("|");
+                    var newoption = document.createElement("option");
+
+            newoption.value = pair[0];
+                    newoption.innerHTML=pair[1];
+                    s2.options.add(newoption);
+    }
+
+    }
+
 </script>
 </body>
 
