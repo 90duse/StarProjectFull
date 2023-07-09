@@ -84,7 +84,10 @@
                      
                     if(isset($_POST['btnpoliceRecord'])){
                       //echo 'working';
-                      //$ID = $_POST['pid'];
+                      $policeID = $_POST['policeid'];
+                      $city = $_POST['city'];
+                      $qaybta = $_POST['qaybta'];
+                      $station = $_POST['stationname'];
                       @$RegisterDate = $_POST['pregisterdate'];
                       @$PoliceFullname = $_POST['pfullname'];
                       @$PoliceHeight= $_POST['pheight'];
@@ -106,10 +109,10 @@
                       
                     }
                  
-                    $sql = "INSERT INTO `PoliceRegistration_table` (`p_ID`, `p_registration_date`, `p_fullname`, `p_height`, `p_Age`, `p_weight`, 
+                    $sql = "INSERT INTO `PoliceRegistration_table` (`p_ID`,`policeID`, `p_registration_date`,`city`,`station`,`qaybta`, `p_fullname`, `p_height`, `p_Age`, `p_weight`, 
                     `p_gender`,`p_dateOf_Birth`, `p_placeOf_Birth`, `p_address`, `p_phone`, `p_email`, `p_mothers_name`, `p_education`, `p_trained_spot`,
                      `p_marriage_status`, `p_medical_status`, `p_rank`, `p_note`)
-                    VALUES (' ', '$RegisterDate', '$PoliceFullname', '$PoliceHeight', '$PoliceAge', '$PoliceWeight', '$policeGender', '$PoliceBirthDate', 
+                    VALUES (' ', '$policeID', '$RegisterDate', '$city', '$station', '$qaybta', '$PoliceFullname', '$PoliceHeight', '$PoliceAge', '$PoliceWeight', '$policeGender', '$PoliceBirthDate', 
                     '$PolicePlaceOfBirth', '$PoliceAddress', '$PolicePhone', '$PoliceEmail', '$PoliceParentName', '$PoliceEducation', '$PoliceTrainingSpot',
                      '$PoliceMarriageStatus', '$PoliceMedicalStatus', '$PoliceRank', '$PoliceNote ')";
                  
@@ -126,9 +129,13 @@
                   <form class="forms-sample" method='POST'>
                   <div class="container">
                       <div class="row">
+                        <div class="col-lg-6" hidden="true">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="number" class="form-control" id="#" name='pid' placeholder="POLICE ID">
+                        </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name='pid' placeholder="POLICE ID">
+                        <input type="number" class="form-control" id="#" name='policeid' placeholder="POLICE ID">
                         </div>
                         <div class="col-lg-6">
                               <div class="row mt-4">
@@ -141,6 +148,32 @@
                               </div> 
                           </div>
                       </div>
+                      <div class="row">
+                      <div class="col-lg-6">
+                              <div class="row mt-4">
+                                  <div class="col-4"> 
+                                      <label for="exampleInputUsername1" class=" text text-secondary">Magaalada</label>
+                                  </div>
+                                    <div class="col">
+                                    <input type="text" class="form-control" id="#" name='city' placeholder="Magaalada">
+                                    </div>
+                              </div> 
+                          </div>
+                         <div class="col-lg-6">
+                              <div class="row mt-4">
+                                  <div class="col-6"> 
+                                  <input type="text" class="form-control" id="#" name='qaybta' placeholder="Qaybta">
+                                  </div>
+                                    <div class="col">
+                                    <input type="text" class="form-control" id="#" name='stationname' placeholder="Station">
+                                    </div>
+                              </div> 
+                          </div>
+                     </div>
+                  
+                  
+                     
+                      
                       <div class="row">
                         <div class="col-lg-6">
                           <label for="exampleInputUsername1"></label>
