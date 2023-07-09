@@ -252,6 +252,13 @@
                         <input type="textarea" class="form-control" id="crimeNote" name="crimenote" placeholder="NOTES" >
                         </div>
                       </div>
+                      <div class="row">
+                        <div class="col-lg-6" hidden="true">
+                        <label for="#"></label>
+                        <input type="number" class="form-control" id="cr_userID" name="crimestatus" placeholder="cr_userID" >
+                        </div>
+                        
+                      </div>
                         <div class="button">
                           <button type="submit"  class="btn btn-primary  m-2" name="btncrime" value = "submit" >Submit</button>
                           <!-- <button class="btn btn-light">Cancel</button> -->
