@@ -95,6 +95,8 @@
                         <tr>
                           <th class="text text-dark">ID</th>
                           <th class="text text-dark">RegisterDate</th>
+                          <th class="text text-dark">City</th>
+                          <th class="text text-dark">Station</th>
                           <th class="text text-dark">Fullname</th>
                           <th class="text text-dark">Height</th>
                           <th class="text text-dark">Age</th>
@@ -128,6 +130,8 @@
                             <td><?php echo  $policeID; ?></td>
                             <td><?php echo $row['p_registration_date']; ?></td>
                             <td><?php echo @$row['p_fullname']; ?></td>
+                            <td><?php echo @$row['city']; ?></td>
+                            <td><?php echo @$row['station']; ?></td>
                             <td><?php echo @$row['p_height']; ?></td>
                             <td><?php echo @$row['p_Age']; ?></td>
                             <td><?php echo @$row['p_weight']; ?></td>
