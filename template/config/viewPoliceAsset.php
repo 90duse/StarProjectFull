@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>POLICE MANAGEMENT SYSTEM </title>
+  <title>Saldhiga Daloodho </title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../vendors/feather/feather.css">
   <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css">
@@ -33,14 +33,7 @@
 </head>
 <body class="">
 
-  <div class="container-scroller ">
-    <div class="row p-0 m-0 proBanner" id="proBanner">
-      <div class="col-md-12 p-0 m-0">
-        <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
-          
-        </div>
-      </div>
-    </div>
+ 
           <!-- partial:partials/_navbar.html -->
         <?php  include "../partials/navbar.php";?>
           <!-- partial -->
@@ -55,65 +48,63 @@
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-                  <form action="#" method="POST">
-                    <table class="table select-table " id="mytable">
-                                    
-                      <thead>
-                        <tr >
-                          <th><strong class =" text text-dark">No</strong></th>
-                          <th><strong class =" text text-dark">Item_ID</strong></th>
-                          <th class="text-dark">RegisterDate</th>
-                          <th class="text-dark">Name</th>
-                          <th class="text-dark">Height</th>
-                          <th class="text-dark">Color</th>
-                          <th class="text-dark">Weight</th>
-                          <th class="text-dark">Quantity</th>
-                          <th class="text-dark">Catogery</th>
-                          <th class="text-dark">Store_Number</th>
-                          <th class="text-dark">Gaurdian_Name</th>
-                          <th class="text-dark">Gaurdian_ID</th>
-                          <th class="text-dark">Condition</th>
-                          <th class="text-dark">Note</th>
-                          <th class="text-dark">Deliver</th>
-                          <th class="text-dark">Edit</th>
-                          <th class="text-dark">Delete</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <?php 
-                            include '../config.php';
-                            $result = mysqli_query($con, "SELECT * FROM assetregistration_table " );
-                              while ($row = mysqli_fetch_assoc($result)){
-                              $itemID = $row['id'];
-                            ?>
-                            <td><?php echo $itemID; ?></td>
-                            <td><?php echo $row['item_id']; ?></td>
-                            <td><?php echo $row['item_Register_Date']; ?></td>
-                            <td><?php echo @$row['Item_Name']; ?></td>
-                            <td><?php echo @$row['item_Hight']; ?></td>
-                            <td><?php echo @$row['item_Color']; ?></td>
-                            <td><?php echo @$row['item_Weight']; ?></td>
-                            <td><?php echo @$row['item_Quantity']; ?></td>
-                            <td><?php echo @$row['item_Catogery']; ?></td>
-                            <td><?php echo  @$row['Store_Number']; ?></td>
-                            <td><?php echo @$row['Guarding_Name']; ?></td>
-                            <td><?php echo @$row['Guarding_Police_ID'];  ?></td>
-                            <td><?php echo @$row['item_Condition'];  ?></td>
-                            <td><?php echo @$row['item_Note'];  ?></td>
-                            <td><?php echo @$row['item_Delivery'];  ?></td>
-                            <td><a href="PoliceAssetEdit.php?id=<?php echo $itemID; ?>"><img src="../images/pencil-icon.svg"  alt="edit"></a></td>
-                            <td><a href="PoliceAssetDelete.php?id=<?php echo $itemID; ?>"><img src="../images/delete-icon.svg"  alt="edit"></a></td>
-                          </tr>
-                        <?php  } ?>
-                      </tbody>
-                      <tfoot>
+              <form action="#" method="POST">
+                <table class="table select-table " id="mytable">
+                                
+                  <thead>
+                    <tr >
+                      <th><strong class =" text text-dark">No</strong></th>
+                      <th><strong class =" text text-dark">Item_ID</strong></th>
+                      <th class="text-dark">RegisterDate</th>
+                      <th class="text-dark">Region</th>
+                      <th class="text-dark">City</th>
+                      <th class="text-dark">Qaybta</th>
+                      <th class="text-dark">station</th>
+                      <th class="text-dark">Name</th>
+                      <th class="text-dark">Color</th>
+                      <th class="text-dark">Quantity</th>
+                      <th class="text-dark">Catogery</th>
+                      <th class="text-dark">Store_Number</th>
+                      <th class="text-dark">Gaurdian_Name</th>
+                      <th class="text-dark">Note</th>
+                      <th class="text-dark">Edit</th>
+                      <th class="text-dark">Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <?php 
+                        include '../config.php';
+                        $result = mysqli_query($con, "SELECT * FROM assetregistration_table " );
+                          while ($row = mysqli_fetch_assoc($result)){
+                          $itemID = $row['id'];
+                        ?>
+                        <td><?php echo $itemID; ?></td>
+                        <td><?php echo $row['item_id']; ?></td>
+                        <td><?php echo $row['item_Register_Date']; ?></td>
+                        <td><?php echo @$row['region']; ?></td>
+                        <td><?php echo @$row['city']; ?></td>
+                        <td><?php echo @$row['Qaybta']; ?></td>
+                        <td><?php echo @$row['Station']; ?></td>
+                        <td><?php echo @$row['Item_Name']; ?></td>
+                        <td><?php echo @$row['item_Color']; ?></td>
+                        <td><?php echo @$row['item_Quantity']; ?></td>
+                        <td><?php echo @$row['item_Catogery']; ?></td>
+                        <td><?php echo  @$row['Store_Number']; ?></td>
+                        <td><?php echo @$row['Guarding_Name']; ?></td>
+                        <td><?php echo @$row['item_Note'];  ?></td>
+                        <td><a href="PoliceAssetEdit.php?id=<?php echo $itemID; ?>"><img src="../images/pencil-icon.svg"  alt="edit"></a></td>
+                        <td><a href="PoliceAssetDelete.php?id=<?php echo $itemID; ?>"><img src="../images/delete-icon.svg"  alt="edit"></a></td>
+                      </tr>
+                    <?php  } ?>
+                  </tbody>
+                  <tfoot>
 
-                      </tfoot>
-                    </table>
-                  </form>
-                </div>
-        <!-- content-wrapper ends -->
+                  </tfoot>
+                </table>
+              </form>
+          </div>
+        
 
        <!-- Footer Start -->
 
