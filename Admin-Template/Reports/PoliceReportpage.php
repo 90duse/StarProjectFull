@@ -136,6 +136,7 @@
                 if($query_run){
                   if(empty($gobolka) && empty($city)){
                     echo 'Your Search is incomplete';
+                  
                   } else{
                   if(mysqli_num_rows($query_run) > 0){
                     echo '  
