@@ -70,18 +70,18 @@
                      // variable assignments   
                             $id = $row['id'];
                             $registerDate = $row['item_Register_Date'];
+                            $gobolka =  $row['region'];
+                            $magaalada =  $row['city'];
+                            $qaybta =  $row['Qaybta'];
+                            $saldhiga =  $row['Station'];
                             $nameItem =  $row['Item_Name'];
-                            $Height =  $row['item_Hight'];
                             $Color =  $row['item_Color'];
-                            $Weight =  $row['item_Weight'];
                             $Quantity =  $row['item_Quantity'];
                             $Catogery =  $row['item_Catogery'];
                             $Store = $row['Store_Number'];
                             $Guarding =  $row['Guarding_Name'];
-                            $GuardingNo =  $row['Guarding_Police_ID'];
-                            $Condition =  $row['item_Condition'];
                             $Note =  $row['item_Note'];
-                            $Delivery =  $row['item_Delivery'];
+                           
                 
                              }  
                            } 
@@ -95,28 +95,25 @@
                       if(isset($_POST['btnpoliceAssetUpdate'])){
            
                    // variable assigments       
-                    $id = $register_Date = $itemName = $itemHight =  $itemColor =   $itemWeight =  $itemQuantity =
-                    $itemCatogery =  $storeNumber =  $guardingName = $guardingID = $itemCondition =  $itemNote = $deliveryName ='';
+                    $id = $register_Date = $itemName = $itemID =  $itemColor =   $region =  $itemQuantity =
+                    $itemCatogery =  $storeNumber =  $guardingName = $city = $station =  $itemNote = $department ='';
                    // variable assignments
                      $id = $_POST['assetid'];
                     @$register_Date = $_POST['assetdate'];
+
                     @$itemName = $_POST['itemname'];
-                    @$itemHight = $_POST['itemhight'];
                     @$itemColor = $_POST['itemcolor'];
-                    @$itemWeight = $_POST['itemweight'];
                     @$itemQuantity = $_POST['itemquantity'];
                     @$itemCatogery = $_POST['itemcategory'];
                     @$storeNumber = $_POST['storenumber'];
                     @$guardingName = $_POST['guardingname'];
-                    @$guardingID = $_POST['guardingid'];
-                    @$itemCondition =$_POST['itemcondition'];
                     @$itemNote = $_POST['itemnote'];
-                    @$deliveryName = $_POST['deliveryname'];
+                   
                     //updating code
-                      $sql = "UPDATE `assetregistration_table` SET `id` = '$id', `item_Register_Date` = '$register_Date', `Item_Name` = '$itemName', 
-                      `item_Hight` = '$itemHight', `item_Color` = '$itemColor', `item_Weight` = '$itemWeight', `item_Quantity` = '$itemQuantity', 
-                      `item_Catogery` = '$itemCatogery', `Store_Number` = '$storeNumber', `Guarding_Name` = '$guardingName', `Guarding_Police_ID` = '$guardingID', 
-                      `item_Condition` = '$itemCondition', `item_Note` = '$itemNote', `item_Delivery` = '$deliveryName' WHERE `id` = '$id'";
+                      $sql = "UPDATE `assetregistration_table` SET `id` = '$id', `item_id`= '$itemID', `item_Register_Date` = '$register_Date', `region` = '$region', 
+                       `city` = '$city', `Qaybta` = '$department', `Station` = '$station',`Item_Name` = '$itemName', `item_Color` = '$itemColor', `item_Quantity` = '$itemQuantity', 
+                      `item_Catogery` = '$itemCatogery', `Store_Number` = '$storeNumber', `Guarding_Name` = '$guardingName', `item_Note` = '$itemNote' WHERE `id` = '$id'";
+                      
                      
                            if (mysqli_query($con, $sql)) {
                             $_SESSION['status'] = 'Congrates! You Added New Data ' ;
@@ -149,25 +146,43 @@
                       </div>
                       <div class="row">
                         <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="#" name="gobolka" placeholder="Gobolka" value="<?php echo $gobolka; ?>" >
+                        </div>
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="#" name="city" placeholder="City" value="<?php echo $magaalada ?>">
+                        </div>
+                        <div class="col-lg-6" >
+                        <label for=""></label>
+                        <input type="text" class="form-control" id="#" name="qaybta" placeholder="Qaybta" value="<?php echo $qaybta ?>">
+                        </div>
+                        <div class="col-lg-6">
+                              <div class="row mt-4">
+                                  <div class="col-6"> 
+                                      <label for="" class=" text text-secondary ">Station</label>
+                                  </div>
+                                    <div class="col">
+                                    <input type="text" class="form-control" id="#" name="station" placeholder="Station"  value="<?php echo $saldhiga ?>">
+                                    </div>
+                              </div> 
+                          </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
                           <label for="exampleInputUsername1"></label>
                           <input type="text" class="form-control" id="#" name="itemname" placeholder="Item Name" value="<?php echo @$nameItem; ?>" >
                         </div>
                         <div class="col-lg-6">
-                          <div class="row">
-                            <div class="col-lg-4">
-                              <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="#" name="itemhight" placeholder=" Item Hight" value="<?php echo $Height;?>" >
-                            </div>
-                            <div class="col-lg-4">
+                         
+                            
+                           
                               <label for="exampleInputUsername1"></label>
                               <input type="text" class="form-control" id="#" name="itemcolor" placeholder="Color" value="<?php echo @$Color; ?>" >
-                            </div>
-                            <div class="col-lg-4">
-                              <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="#" name="itemweight" placeholder=" Item weight" value="<?php echo @$Weight; ?>" >
-                            </div>
-                         </div> 
-                        </div>
+                           
+                           
+                         
+                       
                       </div>
                       <div class="row">
                           <div class="col-lg-6">
@@ -196,32 +211,17 @@
                         <input type="text" class="form-control" id="#" name="guardingname" placeholder="Guarding Name" value="<?php echo @$Guarding;?>" >
                         </div>
                       </div>
+                     
                       <div class="row">
-                       
-                        <div class="col">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="number" class="form-control" id="#" name="guardingid" placeholder="Guarding Police ID" value="<?php echo @$GuardingNo;?>" >
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-lg-6">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="itemcondition" placeholder="Item Condition" value="<?php echo @$Condition;?> ">
-                        </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
                         <input type="text" class="form-control" id="#" name="itemnote" placeholder="Note" value="<?php echo @$Note;?>" >
                         </div>
                       </div>
-                      <div class="row">
-                        <div class="col ">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="deliveryname"placeholder="Delivery Name" value="<?php echo @$Delivery; ?>" >
-                        </div>
-                      </div>
-                      <button type="submit" id="#" name="btnpoliceAssetUpdate" class="btn btn-primary mt-2 ">Submit</button>
-                    <a href="viewPoliceAsset.php"  class="btn btn-danger">BACK</a>
+                  
                   </div>
+                  <button type="submit" id="#" name="btnpoliceAssetUpdate" class="btn btn-primary mt-2 ">Submit</button>
+                    <a href="viewPoliceAsset.php"  class="btn btn-danger mt-2" >BACK</a>
                     
                     
                   </form>
