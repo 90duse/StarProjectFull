@@ -54,7 +54,7 @@
                  <li class="nav-item"> <a class="nav-link" href="../Reports/PoliceReportpage.php">Police Report</a></li>
                 <!-- <li class="nav-item"> <a class="nav-link" href="../Reports/PrisonerReportpage.php">Prisoner Report</a></li> -->
                 <li class="nav-item"> <a class="nav-link" href="../Reports/CaseReportpage.php">Case Report</a></li>
-                <!-- <li class="nav-item"> <a class="nav-link" href="../Reports/AssetReportpage.php">Asset Report</a></li>  -->
+                 <li class="nav-item"> <a class="nav-link" href="../Reports/AssetReportpage.php">Asset Report</a></li> 
               </ul>
               
             </div>
