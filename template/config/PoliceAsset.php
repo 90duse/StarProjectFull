@@ -6,7 +6,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>POLICE MANAGEMENT SYSTEM </title>
+  <title> </title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../vendors/feather/feather.css">
   <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css">
@@ -50,17 +50,17 @@
 
                     // Varaible declartion
                     $successMessage = 'Congrate! Your Data has being Saved Successfully';
-                    $register_date = $itemName =  $itemHight = $itemColor = $itemWeight = $itemQuantity = 
-                    $itemCatogery =  $storeNumber = $guardingName =  $guardingID =  $itemCondition = $itemNote = $deliveryName = '';
+                    $register_date = $itemName =  $station = $itemColor = $department = $itemQuantity = 
+                    $itemCatogery =  $storeNumber = $guardingName =  $gobolka =  $city = $itemNote = '';
                    
                       if($_SERVER["REQUEST_METHOD"] == "POST")
                       {
 
-                          if(empty($_POST['assetdate']) && empty($_POST['itemname']) && empty($_POST['itemheight'])
-                              && empty($_POST['itemcolor']) && empty($_POST['itemweight']) && empty($_POST['itemquantity'])
-                              && empty($_POST['itemcategory']) && empty($_POST['storenumber']) && empty($_POST['guardingid']) 
-                              && empty($_POST['guardingname']) && empty($_POST['itemcondition']) && empty($_POST['itemnote']) 
-                              && empty($_POST['deliveryname'])  )
+                          if(empty($_POST['assetdate']) && empty($_POST['itemname']) && empty($_POST['gobolka'])
+                              && empty($_POST['itemcolor']) && empty($_POST['qaybta']) && empty($_POST['itemquantity'])
+                              && empty($_POST['itemcategory']) && empty($_POST['storenumber']) && empty($_POST['city']) 
+                              && empty($_POST['guardingname']) && empty($_POST['station']) && empty($_POST['itemnote']) )
+                              
                               { 
                                 //exit(); 
                                 $_SESSION['status'] = 'All fields Must be Filled, They canot be empty ';
@@ -79,21 +79,17 @@
                           $station = $_POST['station'];
                           @$register_date = $_POST['assetdate'];
                           @$itemName = $_POST['itemname'];
-                          @$itemHight = $_POST['itemheight'];
                           @$itemColor = $_POST['itemcolor'];
-                          @$itemWeight = $_POST['itemweight'];
                           @$itemQuantity = $_POST['itemquantity'];
                           @$itemCatogery = $_POST['itemcategory'];
                           @$storeNumber = $_POST['storenumber'];
                           @$guardingName = $_POST['guardingname'];
-                          @$guardingID = $_POST['guardingid'];
-                          @$itemCondition =$_POST['itemcondition'];
                           @$itemNote = $_POST['itemnote'];
-                          @$deliveryName = $_POST['deliveryname'];
+                        
                           }
                           // inserting query 
-                      $sql = "INSERT INTO `assetregistration_table` (`id`,`item_id`, `item_Register_Date`, `city`, `Qaybta`, `Station`, `Item_Name`, `item_Hight`, `item_Color`, `item_Weight`, `item_Quantity`, `item_Catogery`, `Store_Number`, `Guarding_Name`, `Guarding_Police_ID`, `item_Condition`, `item_Note`, `item_Delivery`)
-                      VALUES ('','$item_id', '$register_date', '$city', '$department', '$station', '$itemName', '$itemHight', '$itemColor', '$itemWeight', '$itemQuantity', '$itemCatogery', '$storeNumber', '$guardingName', '$guardingID', '$itemCondition', '$itemNote', '$deliveryName')";
+                      $sql = "INSERT INTO `assetregistration_table` (`id`,`item_id`, `item_Register_Date`, `city`, `Qaybta`, `Station`, `Item_Name`, `item_Color`, `item_Quantity`, `item_Catogery`, `Store_Number`, `Guarding_Name`, `item_Note`)
+                      VALUES ('','$item_id', '$register_date', '$city', '$department', '$station', '$itemName',  '$itemColor',  '$itemQuantity', '$itemCatogery', '$storeNumber', '$guardingName', '$itemNote')";
                    
                           if (mysqli_query($con, $sql)) 
                           {
@@ -113,13 +109,13 @@
                   <form class="forms-sample" action="#" method ="POST" >
                   <div class="container">
                       <div class="row">
-                        <div class="col-lg-6" hidden="true">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="number" class="form-control" id="#" name="itemID" placeholder="Item ID">
+                         <div class="col-lg-6" >
+                          <label for="exampleInputUsername1"></label>
+                          <input type="number" class="form-control" id="#" name="itemID" placeholder="Item ID">
                         </div>
                         <div class="col-lg-6" >
-                        <label for="exampleInputUsername1"></label>
-                        <input type="number" class="form-control" id="#" name="assetid" placeholder="ID">
+                          <label for="exampleInputUsername1" hidden="true"></label>
+                          <input type="number" class="form-control" id="#" name="assetid" placeholder="ID">
                         </div>
                         <div class="col-lg-6">
                               <div class="row mt-4">
@@ -163,20 +159,11 @@
                           <input type="text" class="form-control" id="#" name="itemname" placeholder="Item Name" >
                         </div>
                         <div class="col-lg-6">
-                          <div class="row">
-                            <div class="col-lg-4">
-                              <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="#" name="itemheight" placeholder=" Item Hight" >
-                            </div>
-                            <div class="col-lg-4">
+                          
                               <label for="exampleInputUsername1"></label>
                               <input type="text" class="form-control" id="#" name="itemcolor" placeholder="Color" >
-                            </div>
-                            <div class="col-lg-4">
-                              <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="#" name="itemweight" placeholder=" Item weight" >
-                            </div>
-                         </div> 
+                            
+                         
                         </div>
                       </div>
                       <div class="row">
@@ -206,36 +193,22 @@
                         <input type="text" class="form-control" id="#" name="guardingname" placeholder="Guarding Name" >
                         </div>
                       </div>
+                    
                       <div class="row">
-                       
-                        <div class="col">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="number" class="form-control" id="#" name="guardingid" placeholder="Guarding Police ID" >
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-lg-6">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="itemcondition" placeholder="Item Condition" >
-                        </div>
+                        
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
                         <input type="text" class="form-control" id="#" name="itemnote" placeholder="Note" >
                         </div>
                       </div>
-                      <div class="row">
-                        <div class="col ">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="deliveryname"placeholder="Delivery Name" >
-                        </div>
-                      </div>
+                     
                       <button type="submit" id="#" name="btnsubmit" class="btn btn-primary mt-2 ">Submit</button>
                     <button class="btn btn-light" id="btnassetcancel">Cancel</button>
                   </div>
                     
                     
                   </form>
-                </div>
+                
               </div>
 
             
@@ -245,14 +218,11 @@
           </div>
         </div>
         <!-- content-wrapper ends -->
-        <!-- partial:partials/_footer.html -->
+     
         <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2021. All rights reserved.</span>
-          </div>
+        <?php  include "../partials/footer.php";?>
         </footer>
-        <!-- partial -->
+        
       </div>
       <!-- main-panel ends -->
     </div>
