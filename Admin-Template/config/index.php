@@ -2,6 +2,21 @@
 include "session.php";
 
 
+$dataPoints = array(
+  array("x"=> 10, 'label'=> 'germnay'),
+  array("x"=> 20, "label"=> 'BURCO', "indexLabel"=> "Lowest"),
+  array("x"=> 30, "y"=> 50),
+  array("x"=> 40, "y"=> 45),
+  array("x"=> 50, "y"=> 52),
+  array("x"=> 60, "y"=> 68),
+  array("x"=> 70, "y"=> 38),
+  array("x"=> 80, "y"=> 71, "indexLabel"=> "Highest"),
+  array("x"=> 90, "y"=> 52),
+  array("x"=> 100, "y"=> 60),
+  array("x"=> 110, "y"=> 36),
+  array("x"=> 120, "y"=> 49),
+  array("x"=> 130, "y"=> 41)
+);
 
 ?>
 <!DOCTYPE html>
@@ -13,6 +28,8 @@ include "session.php";
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>POLICE MANAGEMENT SYSTEM </title>
   <link rel="shortcut icon" type="image/icon" href="../images/auth/policeLogo.svg.png"/>
+
+  
   <!-- plugins:css -->
   <link rel="stylesheet" href="../vendors/feather/feather.css">
   <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css">
@@ -374,14 +391,42 @@ include "session.php";
                           </div>
                        </div>
                       
-                      
-
-                        
-                          
-
                    </div>   
                 
                 <!-- over view section end here -->
+              <div class="container m-3" >
+                <div class="row">
+                  <div class="col-lg-6" id="chartContainer" style="height: 370px; width: 80%;">
+                  <?php
+ 
+                      $dataPoints = array(
+                        array("x"=> 10, 'label'=> 'germnay'),
+                        // array("x"=> 20, "label"=> 'BURCO', "indexLabel"=> "Lowest"),
+                        //array("x"=> 80, "y"=> 71, "indexLabel"=> "Highest"),
+                       
+                      );
+                     
+                      $chartarray = array();
+                      $count = 0 ;
+
+                      $chartsql = mysqli_query($con, "SELECT * from `crimerecord_table` WHERE `city` = 'Hargeisa' ");
+                      while ($row = mysqli_fetch_array($chartsql)){
+                        $test[$count]["label"] = $row['city'];
+                        $test[$count]["y"] = $row['cr_id'];
+                        $count = $count + 1 ;
+
+                      }
+                          
+                    ?>
+                  </div>
+
+                </div>
+               
+               
+              </div>
+
+
+
         <!-- content-wrapper ends -->
      
        <!-- footer starts -->
@@ -417,7 +462,35 @@ include "session.php";
   <script src="../js/jquery.cookie.js" type="text/javascript"></script>
   <script src="../js/dashboard.js"></script>
   <script src="../js/Chart.roundedBarCharts.js"></script>
+  <script src="../js/canvasjs.min.js"></script>
   <!-- End custom js for this page-->
+
+  <script>
+    window.onload = function () {
+      
+    var chart = new CanvasJS.Chart("chartContainer", {
+        animationEnabled: true,
+        exportEnabled: true,
+        theme: "light2", // "light1", "light2", "dark1", "dark2"
+        title:{
+            text: "2023 Crime Rate"
+        },
+        axisY:{
+            includeZero: false
+        },
+        data: [{
+            type: "column", //change type to bar, line, area, pie, etc
+            //indexLabel: "{y}", //Shows y value on all Data Points
+            indexLabelFontColor: "#5A5757",
+            indexLabelPlacement: "outside",   
+            dataPoints: <?php echo json_encode($test, JSON_NUMERIC_CHECK); ?>
+        }]
+    });
+    chart.render();
+      
+    }
+ </script>
+
 </body>
 
 </html>
