@@ -34,7 +34,7 @@
        <!-- data table plugins -->
   <link rel="stylesheet" href="../css/dataTables.bootstrap5.min.css">
   <link href="../DataTables/DataTables-1.13.4/css/datatables.bootstrap5.min.css" rel="stylesheet"/>
-  <link href="../DataTables/DataTables-1.13.4/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- <link href="../DataTables/DataTables-1.13.4/css/bootstrap.min.css" rel="stylesheet"/> -->
   <link rel="stylesheet" href="../DataTables/Buttons-2.3.6/css/buttons.dataTables.min.css">
   <link rel="stylesheet" href="../DataTables/DataTables-1.13.4/css/jquery.dataTables.min.css">
 </head>
@@ -48,81 +48,192 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-          <!-- over view section start here -->
-          <div class="container">
-            <div class="row">
-                  
-            </div>
-            <div class="row">
-              <div class="col">
-                <h2>Generate a Report</h2>
-              </div>
-              <hr>
-            </div> 
-            <form action="#" method="GET">
-            <div class="container">
+    
+      <!-- <form action="" method="POST">
+        <div class="card">
+          <div class="card-body">
+           <div class="container">
               <div class="row">
-                <div class="col-6">
-                  <div class="card ">
-                  <input type="text" class="form-control-lg" name="search" placeholder="Search Here" >
-                  </div>
-                </div>
-                <div class="col-2">
-                  <div class="card ">
-                     <button type="submit" name="btnsearch" class="btn btn-outline-success"> Search</button>
-                     <!-- <a href="#" type="submit" name="btnsearch"  class="btn btn-outline-success">Search</a> -->
-                  </div>
-                </div>
-                
+                    <div class="col">
+                        <h2>Generate Police Asset Report</h2>
+                    </div>
+                    <hr>
               </div>
+              <div class="row">
+                 <div class="col-lg-3">
+                      <div class="row mt-4">
+                            <div class="col-4"> 
+                                <label for="" class=" text text-secondary">Magaalada</label>
+                            </div>
+                            <div class="col">
+                            
+                            <select name="selectcity" id="selectcity" class="form-control" onchange="choose(this.id,'selectstation')">
+                            <option value="" class="text text-center"> -- Dooro Magaalada --</option>
+                                <option value="Hargeisa">Hargeisa</option>
+                                <option value="Burco">Burco</option>
+                               
+                            </select>
+                                    </div> 
+                                </div> 
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="row mt-4 ">
+                                    <div class="col-4"> 
+                                        <label for="selectstation" class=" text text-secondary">Saldhiga</label>
+                                    </div>
+                                    <div class="col">
+                                      <select name="selectstation" id="selectstation" class="form-control"> </select>
+                                    </div> 
+                                </div> 
+                            </div>
+                            <div class="col-lg-3">
+                           <div class="row mt-4">
+                            <div class="col-4"> 
+                                <label for="" class=" text text-secondary">Qaybta</label>
+                            </div>
+                            <div class="col">
+                            
+                            <select name="selectdepartment" id="" class="form-control" >
+                            <option value="" class="text text-center"> -- Dooro --</option>
+                                <option value="qaybta Bari">Qaybta Bari</option>
+                                <option value="Qaybta Galbeed">Qaybta Galbeed</option>
+                               
+                               
+                            </select>
+                                    </div> 
+                                </div> 
+                            </div>
+                            <div class="col-lg-3 mt-4">
+                               <input type="text" name="raadi" class="form-control" placeholder="Search Here">
+                            </div>
+
+                            <div class="col-lg-3 mx-auto">
+                              
+                                <div class="row mt-4">
+                                    <button type="search" name="btnsearch" class="btn btn-info"> Generate</button>
+                                </div> 
+                            </div>
+                      </div> 
+                  </div>
+                </div>
             </div>
-            </form>
-        
-             
-          </div>
+      </form>  -->
+      <form action="" method="POST">
+        <div class="card">
+        <div class="card-body">
+           <div class="container">
+              <div class="row">
+                    <div class="col">
+                        <h2>Generate Police Asset Report</h2>
+                    </div>
+                    <hr>
+              </div>
+              <div class="row">
+                 <div class="col-lg-3">
+                      <div class="row mt-4">
+                            <div class="col-4"> 
+                                <label for="" class=" text text-secondary">Gobolka</label>
+                            </div>
+                            <div class="col">
+                            
+                            <select name="gobolka" id="selectgobol" class="form-control" onchange="choose(this.id,'selectcity')">
+                            <option value="" class="text text-center"> -- Dooro Gobolka --</option>
+                                <option value="Maroodijeex">Maroodijeex</option>
+                                <option value="Togdheer">Togdheer</option>
+                               
+                            </select>
+                                    </div> 
+                                </div> 
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="row mt-4 ">
+                                    <div class="col-4"> 
+                                        <label for="city" class=" text text-secondary">Magaalada</label>
+                                    </div>
+                                    <div class="col">
+                                      <select name="city" id="selectcity" class="form-control"> </select>
+                                    </div> 
+                                </div> 
+                            </div>
+                            <div class="col-lg-3">
+                           <div class="row mt-4">
+                            <div class="col-4"> 
+                                <label for="" class=" text text-secondary">Qaybta</label>
+                            </div>
+                            <div class="col">
+                            
+                            <select name="selectdepartment" id="" class="form-control" >
+                            <option value="" class="text text-center"> -- Dooro Qaybta--</option>
+                                <option value="Qaybta Bari">Qaybta Bari</option>
+                                <option value="Qaybta Galbeed">Qaybta Galbeed</option>
+                                <!-- <option value="Asset">Asset</option> -->
+                               
+                            </select>
+                                    </div> 
+                                </div> 
+                            </div>
+                            <div class="col-lg-3 mt-4">
+                               <input type="text" name="raadi" class="form-control" placeholder="Search Here">
+                          </div>
 
+                            <div class="col-lg-3 mx-auto">
+                                <div class="row mt-4 mx-auto">
+                                    <button type="search" name="btnsearch" class="btn btn-primary"> Generate</button>
+                                </div> 
+                            </div>
+                      </div> 
+                  </div>
+                </div>
+              </div>
+      </form> 
           
-            
 
-          <div class="container fluid">
+            <div class="container fluid">
             
             <table class="table select-table " id="mytable">
             <?php
               include '../config.php';
-              $userid = $username = $searchinput = " " ;
-              if(isset($_GET['btnsearch'])){
-                @$searchinput = $_GET['search'];
-                // $searchID = $_GET['btnsearch'];
+             
+              if(isset($_POST['btnsearch'])){
+                 $searchinput = $_POST['btnsearch'];
+                 $city = $gobolka = $searchinput = $department = $raadi = " " ;
+                $gobolka  = $_POST['gobolka'];
+                 @$city = $_POST['city'];
+                //$station = $_POST['selectstation'];
+                $department = $_POST['selectdepartment'];
+                $raadi = $_POST['raadi'];
           
+               
           
-                $query = "SELECT * FROM `assetregistration_table` WHERE `id` like '%$searchinput%' or `cr_victam`like '%$searchinput%' or `cr_criminal`like '%$searchinput%' or 
-                `cr_registerDate` like '%$searchinput%' or `cr_status` like '%$searchinput%' or `cr_officer` like '%$searchinput%' or `cr_witness` like '%$searchinput%' or `cr_type` 
-                like '%$searchinput%'";
-                 
+                $query = "SELECT * FROM `assetregistration_table` WHERE  `region` like '$raadi' or `city` like '$raadi' or `Qaybta` like '$raadi'
+                 or `Item_Name` like '$raadi' or `item_Register_Date` like '$raadi' or `item_Color` like '$raadi'
+                or `item_Quantity` like '$raadi' or `Guarding_Name` like '$raadi'";
                 $query_run = mysqli_query($con, $query);
                 if($query_run){
+                  if(empty($gobolka) && empty($city) && empty($raadi) && empty($department)){
+                    echo '<div class="alert alert-danger" role="alert">
+                    ooops! You don not choose anything to search
+                   </div>';
+                  
+                  } else{
                   if(mysqli_num_rows($query_run) > 0){
                     echo '  
                     <thead class="#">
                     <h2 class="text text-center">POLICE ADMIN</h2>
               
                     <tr>
-                      <td>ID</td>
-                      <td>Victam</td>
-                      <td>Criminal</td>
-                      <td>RegisterDate</td>
-                      <td>Status</td>
-                      <td>Ofiicer</td>
-                      <td>Witness</td>
-                      <td>CrimeType</td>
-                    
-                     
-
-                  
-                      
-                      
-                      
-                      
+                    <th class="text text-dark">ItemID</th>
+                    <th class="text text-dark">RegisterDate</th>
+                    <th class="text text-dark">Region</th>
+                    <th class="text text-dark">City</th>
+                    <th class="text text-dark">Station</th>
+                    <th class="text text-dark">Qaybta</th>
+                    <th class="text text-dark">Fullname</th>
+                    <th class="text text-dark">Amount</th>
+                    <th class="text text-dark">Color</th>
+                    <th class="text text-dark">Guardian Name</th>
+                   
+                   
                       
                     </tr>
                     
@@ -132,15 +243,19 @@
 
                     echo '<tbody>
                     <tr>
-                      <td>'.$row['cr_id'].'</td>
-                      <td>'.$row['cr_victam'].'</td>
-                      <td>'.$row['cr_criminal'].'</td>
-                      <td>'.$row['cr_registerDate'].'</td>
-                      <td>'.$row['cr_status'].'</td>
-                      <td>'.$row['cr_officer'].'</td>
-                      <td>'.$row['cr_witness'].'</td>
-                      <td>'.$row['cr_type'].'</td>
-                     
+                    <td>'.$row['item_id'].'</td>
+                    <td>'.$row['item_Register_Date'].'</td>
+                    <td>'.$row['region'].'</td>
+                    <td>'.$row['city'].'</td>
+                    <td>'.$row['Qaybta'].'</td>
+                    <td>'.$row['Station'].'</td>
+                    <td>'.$row['Item_Name'].'</td>
+                    <td>'.$row['item_Quantity'].'</td>
+                    <td>'.$row['item_Color'].'</td>
+                    <td>'.$row['Guarding_Name'].'</td>
+                   
+                  
+                    
 
                       
                       
@@ -157,7 +272,9 @@
                    else{
                     echo '<h4>Sorry No Data is found</h4>';
                    }
-                } else{
+                } 
+               }
+                else{
                   echo myqli_error($con);
                 }
                   
@@ -168,9 +285,6 @@
            
           </div>
 
-     
-          <!-- over view section end here -->
-        <!-- content-wrapper ends -->
      
        <!-- footer starts -->
         <footer class="mt-5">
@@ -218,7 +332,6 @@
   <script> 
 $(document).ready(function () {
     $('#mytable').DataTable({
-      
       dom: 'Bfrtip',
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
@@ -232,8 +345,36 @@ $(document).ready(function () {
 		window.print();
 	}
 </script>
+<!-- Nested Select Function -->
+<script>
+    function choose(s1,s2){
+    var s1 = document.getElementById(s1);
+    var s2 = document.getElementById(s2);
+
+    s2.innerHTML = '';
+    if(s1.value == 'Maroodijeex'){
+        var optionArray = ['Hargeisa|hargeisa', 'Dacarbudhuq|dacarbudhuq','Dacarbudhuq|dacarbudhuq','Dacarbudhuq|dacarbudhuq'];
+    } 
+    else if (s1.value == 'Togdheer'){
+        var optionArray = ['Burco|burco', 'Oog|oog', 'Caynaba|caynaba', 'Buuhoodle|buuhoodle'];
+    }
+    for(var option in optionArray){
+    
+
+        var pair = optionArray[option].split("|");
+                    var newoption = document.createElement("option");
+
+          newoption.value = pair[0];
+          newoption.innerHTML=pair[1];
+          s2.options.add(newoption);
+  }
+
+    }
+
+</script>
 </body>
 
 
 </html>
+
 
