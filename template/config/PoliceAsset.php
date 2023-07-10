@@ -71,7 +71,12 @@
                           if(isset($_POST["btnsubmit"]))
                           {
                           //echo "working";
-                          $asset_id = $_POST['assetid'];
+                          //$asset_id = $_POST['assetid'];
+                          $item_id = $_POST['itemID'];
+                          $gobolka = $_POST['gobolka'];
+                          $city = $_POST['city'];
+                          $department = $_POST['qaybta'];
+                          $station = $_POST['station'];
                           @$register_date = $_POST['assetdate'];
                           @$itemName = $_POST['itemname'];
                           @$itemHight = $_POST['itemheight'];
@@ -87,8 +92,8 @@
                           @$deliveryName = $_POST['deliveryname'];
                           }
                           // inserting query 
-                      $sql = "INSERT INTO `assetregistration_table` (`id`,`item_id`, `item_Register_Date`, `Item_Name`, `item_Hight`, `item_Color`, `item_Weight`, `item_Quantity`, `item_Catogery`, `Store_Number`, `Guarding_Name`, `Guarding_Police_ID`, `item_Condition`, `item_Note`, `item_Delivery`)
-                      VALUES ('','$asset_id', '$register_date', '$itemName', '$itemHight', '$itemColor', '$itemWeight', '$itemQuantity', '$itemCatogery', '$storeNumber', '$guardingName', '$guardingID', '$itemCondition', '$itemNote', '$deliveryName')";
+                      $sql = "INSERT INTO `assetregistration_table` (`id`,`item_id`, `item_Register_Date`, `city`, `Qaybta`, `Station`, `Item_Name`, `item_Hight`, `item_Color`, `item_Weight`, `item_Quantity`, `item_Catogery`, `Store_Number`, `Guarding_Name`, `Guarding_Police_ID`, `item_Condition`, `item_Note`, `item_Delivery`)
+                      VALUES ('','$item_id', '$register_date', '$city', '$department', '$station', '$itemName', '$itemHight', '$itemColor', '$itemWeight', '$itemQuantity', '$itemCatogery', '$storeNumber', '$guardingName', '$guardingID', '$itemCondition', '$itemNote', '$deliveryName')";
                    
                           if (mysqli_query($con, $sql)) 
                           {
@@ -110,11 +115,11 @@
                       <div class="row">
                         <div class="col-lg-6" hidden="true">
                         <label for="exampleInputUsername1"></label>
-                        <input type="number" class="form-control" id="#" name="#" placeholder="Item ID">
+                        <input type="number" class="form-control" id="#" name="itemID" placeholder="Item ID">
                         </div>
                         <div class="col-lg-6" >
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="assetid" placeholder="Item ID">
+                        <input type="number" class="form-control" id="#" name="assetid" placeholder="ID">
                         </div>
                         <div class="col-lg-6">
                               <div class="row mt-4">
@@ -127,6 +132,31 @@
                               </div> 
                           </div>
                       </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="#" name="gobolka" placeholder="Gobolka">
+                        </div>
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control" id="#" name="city" placeholder="City">
+                        </div>
+                        <div class="col-lg-6" >
+                        <label for=""></label>
+                        <input type="text" class="form-control" id="#" name="qaybta" placeholder="Qaybta">
+                        </div>
+                        <div class="col-lg-6">
+                              <div class="row mt-4">
+                                  <div class="col-6"> 
+                                      <label for="" class=" text text-secondary ">Station</label>
+                                  </div>
+                                    <div class="col">
+                                    <input type="text" class="form-control" id="#" name="station" placeholder="Station" >
+                                    </div>
+                              </div> 
+                          </div>
+                      </div>
+
                       <div class="row">
                         <div class="col-lg-6">
                           <label for="exampleInputUsername1"></label>
