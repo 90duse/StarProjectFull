@@ -64,7 +64,7 @@
                            <th>Incident Type</th>
                            <th>Incident Date</th>
                            <th>Incident Information</th>
-                           <th>EDITE</th>
+                          
                            <th>DELETE</th>  
                                  
                          </tr>
@@ -84,8 +84,8 @@
                                <td> <?php  echo @$row['Incident_date']; ?> </td>
                                <td> <?php  echo @$row['Incident_info']; ?> </td>
                               
-                               <td><a href="crimeEdit.php?id=<?php echo $id; ?>"><img src="../images/pencil-icon.svg"  alt="edit"></a></td>
-                               <td><a href="crimeDelete.php?id=<?php echo $id; ?>" id="btndelete" ><img src="../images/delete-icon.svg"  alt="delete"></a></td>
+                               <!-- <td><a href="crimeEdit.php?id=<?php echo $id; ?>"><img src="../images/pencil-icon.svg"  alt="edit"></a></td> -->
+                               <td><a href="OnlineReportsDelete.php?id=<?php echo $id; ?>" id="btndelete" ><img src="../images/delete-icon.svg"  alt="delete"></a></td>
                             </tr>
                                <?php  
 
