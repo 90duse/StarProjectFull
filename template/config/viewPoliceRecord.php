@@ -122,8 +122,15 @@
                         <tr>
                           <?php 
                            
-                          
-                            $result = mysqli_query($con, "SELECT * FROM policeregistration_table" );
+                           $_SESSION['station'];
+                           $res = mysqli_query($con, "SELECT * FROM policeregistration_table " );
+                           while ($row = mysqli_fetch_assoc($res)){
+                            $_SESSION['station'] = $row['station'];
+                           }
+                           $saldhiga = $_SESSION['station'];
+                           
+                            $result = mysqli_query($con, "SELECT p_ID, p_registration_date, p_fullname,city,station,p_height,p_gender,p_dateOf_Birth,p_address,p_phone,
+                            p_email,p_mothers_name,p_education,p_trained_spot,p_marriage_status, p_medical_status, p_rank, p_note FROM policeregistration_table WHERE station  ='$saldhiga'" );
                              while($row = mysqli_fetch_assoc($result)){
                               $policeID = $row['p_ID'];
                             ?>
