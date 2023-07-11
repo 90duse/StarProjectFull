@@ -17,6 +17,7 @@ $userPassword = $_POST["Password"];
   $_SESSION['valid'] = true;
   $_SESSION['timeout'] = time();
   $_SESSION['username'] = $UsernameorEmail;
+  
   header("location: Admin-Template/config/index.php");
 
 
