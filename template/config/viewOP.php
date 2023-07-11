@@ -23,16 +23,12 @@
   <!-- endinject -->
   <link rel="shortcut icon" href="../images/favicon.png" />
   
-  <!-- data table plugins -->
-  <link rel="stylesheet" href="../css/dataTables.bootstrap5.min.css">
+ <!-- data table plugins -->
+ <link rel="stylesheet" href="../css/dataTables.bootstrap5.min.css">
   <link href="../DataTables/DataTables-1.13.4/css/datatables.bootstrap5.min.css" rel="stylesheet"/>
   <link href="../DataTables/DataTables-1.13.4/css/bootstrap.min.css" rel="stylesheet"/>
-
   <link rel="stylesheet" href="../DataTables/Buttons-2.3.6/css/buttons.dataTables.min.css">
   <link rel="stylesheet" href="../DataTables/DataTables-1.13.4/css/jquery.dataTables.min.css">
-  <!-- <link  rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"> -->
-  <!-- <link  rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"> -->
-  <!-- <link  rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css"> -->
  
 </head>
 <body class="">
@@ -46,13 +42,15 @@
   <div class="container-fluid">
     <div class="row">
          <form action="#" method="GET">
-                    <table class="table select-table"  id="mytable">
+                    <table class="table table-striped"  id="mytable">
                           
                           <thead>
+
                             <tr >
                             
-                              <th><strong class =" text text-dark">ID</strong></th>
+                              <!-- <th><strong class = " text text-dark">ID</strong></th> -->
                               <th>OpNo</th>
+                              <th>station</th>
                               <th class="text-dark">RegisterDate</th>
                               <th class="text-dark">Fullname</th>
                               <th><strong class =" text text-dark">Image</strong></th>
@@ -60,21 +58,20 @@
                               <th class="text-dark">Age</th>
                               <th class="text-dark">Weight</th>
                               <th class="text-dark">Gender</th>
+                              <th class="text-dark">Mother</th>
                               <th class="text-dark">DB</th>
                               <th class="text-dark">PB</th>
                               <th class="text-dark">Address</th>
                               <th class="text-dark">Phone</th>
-                              <th class="text-dark">Mother</th>
-                              <th class="text-dark">Job</th>
-                              <th class="text-dark">Reason</th>
                               <th class="text-dark">Marriage</th>
                               <th class="text-dark">Medicul</th>
+                              <th class="text-dark">Reason</th>
                               <th class="text-dark">Belongs</th>
                               <th class="text-dark">CellNo</th>
                               <th class="text-dark">Officer</th>
                               <th class="text-dark">Note</th>
-                              <th class="text-dark">ACTION</th>
-                              <th class="text-dark">ACTION</th>
+                              <th class="text-dark">Edit</th>
+                              <th class="text-dark">Delete</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -85,8 +82,9 @@
                                   while ($row = mysqli_fetch_assoc($result)){
                                   $opID = $row['op_id'];
                                 ?>
-                                <td><?php echo $opID; ?></td>
+                                <!-- <td><?php echo $opID; ?></td> -->
                                 <td><?php echo $row['opNo']; ?></td>
+                                <td><?php echo $row['station']; ?></td>
                                 <td><?php echo $row['op_register_date']; ?></td>
                                 <td><?php echo @$row['op_fullname']; ?></td>
                                 <td><?php echo $row['op_image']; ?></td>
@@ -94,15 +92,14 @@
                                 <td><?php echo @$row['op_age']; ?></td>
                                 <td><?php echo @$row['op_weight']; ?></td>
                                 <td><?php echo @$row['op_gender']; ?></td>
-                                <td><?php echo @$row['op_dateof_birth']; ?></td>
-                                <td><?php echo @$row['op_placeof_birth'];?></td>
                                 <td><?php echo @$row['op_mothers_name'];  ?></td>
+                                <td><?php echo @$row['op_dayof_birth']; ?></td>
+                                <td><?php echo @$row['op_placeof_birth'];?></td>
                                 <td><?php echo  @$row['op_address']; ?></td>
                                 <td><?php echo @$row['op_tellephone']; ?></td>
-                                <td><?php echo @$row['op_job'];  ?></td>
-                                <td><?php echo @$row['op_reason'];  ?></td>
                                 <td><?php echo @$row['op_marriage_status'];  ?></td>
                                 <td><?php echo @$row['op_medical_status'];  ?></td> 
+                                <td><?php echo @$row['op_reason'];  ?></td>
                                 <td><?php echo @$row['op_personal_belongs'];   ?></td>
                                 <td><?php echo @$row['op_cell_no'];   ?></td>
                                 <td><?php echo @$row['op_officer'];  ?></td>
@@ -149,7 +146,7 @@
   <script src="../js/Chart.roundedBarCharts.js"></script>
  
   <!-- End custom js for this page-->
-   <!-- Data table plugins -->
+  <!-- Data table plugins -->
 
   <script src="../DataTables/jQuery-3.6.0/jquery-3.5.1.js"></script>
   <script src="../DataTables/DataTables-1.13.4/js/jquery.dataTables.min.js"></script>
