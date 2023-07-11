@@ -25,18 +25,20 @@
   <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../images/favicon.png" />
+
+  <script src="validation.js" type="text/javascript"></script>
 </head>
 <body class="">
 
  
-    <!-- partial:partials/_navbar.html -->
+    <!-- partial:partials/_navbar -->
    <?php  include "../partials/navbar.php";?>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
-      <!-- partial:partials/_settings-panel.html -->
+      <!-- partial:partials/_settings-panel -->
       <?php  include "../partials/settings-panel.php";?>
      
-      <!-- partial -->
+     
       <!-- partial:partials/_sidebar.html -->
      <?php   include "../partials/sidebar.php";?>
      <div class="main-panel"> 
@@ -51,7 +53,6 @@
                 <div class="d-sm-flex align-items-center justify-content-between border-bottom">
                   <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
-                      <!-- <a  href="OP.php" class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab" role="tab" aria-controls="overview" aria-selected="true">Add New</a> -->
                     <a href="OP.php" class="nav-link" class="nav-link active" > Add New</a>
                     </li>
                     <li class="nav-item">
@@ -65,11 +66,11 @@
                     </li>
                   </ul>
                   <div>
-                    <div class="btn-wrapper">
+                    <!-- <div class="btn-wrapper">
                       <a href="#" class="btn btn-otline-dark align-items-center"><i class="icon-share"></i> Share</a>
                       <a href="#" class="btn btn-otline-dark"><i class="icon-printer"></i> Print</a>
                       <a href="#" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Export</a>
-                    </div>
+                    </div> -->
                  </div>
                </div>
              </div>
@@ -90,7 +91,7 @@
                             if(empty($_POST['opNo']) && empty($_POST['opregisterdate']) && empty($_POST['opname']) && empty($_POST['opheight'])
                             && empty($_POST['opage']) && empty($_POST['opweight']) && empty($_POST['opdayofbirth'])
                             && empty($_POST['opplaceofbirth']) && empty($_POST['opaddress']) && empty($_POST['opphone'])
-                            && empty($_POST['opmothername']) && empty($_POST['opjob']) && empty($_POST['opreason'])
+                            && empty($_POST['opmothername']) && empty($_POST['opreason'])
                             && empty($_POST['opmarriagestatus']) && empty($_POST['opmedicalstatus']) && empty($_POST['oppersonalbelongs'])
                             && empty($_POST['opofficer']) && empty($_POST['opcellno']) && empty($_POST['opnote'])) 
                             { 
@@ -103,7 +104,7 @@
                               //echo 'working';
 
                           //Variable Declaration 
-                              $opNo = $ID = $Register_Date = $op_Fullname = $op_Height= $op_Age = 
+                             $station = $opNo = $ID = $Register_Date = $op_Fullname = $op_Height= $op_Age = 
                               $op_Weight = $op_BirthDate = $op_PlaceOfBirth =$op_Address = 
                               $op_Phone = $op_ParentName = $op_Job =  $op_Reason =  $op_MarriageStatus = 
                               $op_MedicalStatus = $op_PersonalBelongs =  $op_Officer =  $op_CellNo =  $op_Note =  $op_Gender = '';
@@ -116,6 +117,7 @@
 
                           @$ID = $_POST['opid'];
                           $opNo  = $_POST['opNo'];
+                          $station  = $_POST['station'];
                           @$Register_Date = $_POST['opregisterdate'];
                           @$op_Fullname = $_POST['opname'];
                           @$op_Height= $_POST['opheight'];
@@ -126,7 +128,6 @@
                           @$op_Address = $_POST['opaddress'];
                           @$op_Phone = $_POST['opphone'];
                           @$op_ParentName = $_POST['opmothername'];
-                          @$op_Job = $_POST['opjob'];
                           @$op_Reason = $_POST['opreason'];
                           @$op_MarriageStatus = $_POST['opmarriagestatus'];
                           @$op_MedicalStatus = $_POST['opmedicalstatus'];
@@ -146,11 +147,11 @@
                           // }
 
                         }
-                         @$sql = "INSERT INTO `op_table` (`op_id`, `opNo`, `op_register_date`, `op_fullname`, `op_image`, `op_height`, `op_age`, 
+                         @$sql = "INSERT INTO `op_table` (`op_id`, `opNo`, `station`,`op_register_date`, `op_fullname`, `op_image`, `op_height`, `op_age`, 
                          `op_weight`, `op_gender`, `op_mothers_name`, `op_dayof_birth`,`op_placeof_birth`, `op_address`, `op_tellephone`, 
-                         `op_job`, `op_marriage_status`, `op_medical_status`, `op_reason`, `op_personal_belongs`, `op_cell_no`, `op_officer`, `op_notes`) 
-                         VALUES ('', '$opNo', '$Register_Date', '$op_Fullname', '', '$op_Height', '$op_Age', '$op_Weight', '$op_Gender', '$op_ParentName', '$op_BirthDate', 
-                         '$op_PlaceOfBirth', '$op_Address', '$op_Phone','$op_Job', '$op_MarriageStatus', '$op_MedicalStatus', '$op_Reason', '$op_PersonalBelongs', '$op_CellNo', '$op_Officer', '$op_Note')";
+                         `op_marriage_status`, `op_medical_status`, `op_reason`, `op_personal_belongs`, `op_cell_no`, `op_officer`, `op_notes`) 
+                         VALUES ('', '$opNo', '$station', '$Register_Date', '$op_Fullname', '', '$op_Height', '$op_Age', '$op_Weight', '$op_Gender', '$op_ParentName', '$op_BirthDate', 
+                         '$op_PlaceOfBirth', '$op_Address', '$op_Phone', '$op_MarriageStatus', '$op_MedicalStatus', '$op_Reason', '$op_PersonalBelongs', '$op_CellNo', '$op_Officer', '$op_Note')";
                          
                          if(mysqli_query($con, $sql)){
                           $_SESSION['status'] = 'Your Data is Saved Succcessfully ';
@@ -165,8 +166,8 @@
                     }
 
                         ?>
-                  
-                  <form class="forms-sample" method="POST" enctype ="multipart/form-data">
+                  <div id="error"></div>
+                  <form id="opform" class="forms-sample" method="POST" enctype ="multipart/form-data">
                  
                     
 
@@ -179,10 +180,15 @@
                         <label for="exampleInputUsername1"></label>
                         <input type="number"  class="form-control" id="#" name="opid" placeholder="Person ID">
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-3">
                          
                          <label for="exampleInputUsername1"></label>
-                         <input type="text"  class="form-control" id="#" name="opNo" placeholder="OPNO">
+                         <input type="text"  class="form-control" id="opNo" name="opNo" placeholder="OPNO">
+                         </div>
+                         <div class="col-lg-3">
+                         
+                         <label for="exampleInputUsername1"></label>
+                         <input type="text"  class="form-control" id="#" name="station" placeholder="Station">
                          </div>
                         <div class="col-lg-6">
                               <div class="row mt-4">
@@ -190,11 +196,13 @@
                                       <label for="exampleInputUsername1" class=" text text-secondary">Registerd Date</label>
                                   </div>
                                     <div class="col">
-                                    <input type="date" class="form-control" id="#" name="opregisterdate" placeholder="date" >
+                                    <input type="date" class="form-control" id="opregisterdate" name="opregisterdate" placeholder="date" >
                                     </div>
                               </div> 
                           </div>
                       </div>
+                      <div class="row">
+                     
                       
                       <div class="row">
                         <div class="col-lg-6">
@@ -210,15 +218,17 @@
                       <div class="row">
                         <div class="col-lg-6">
                           <div class="row">
-                            <div class="col-lg-3">
+                            <div class="col-lg-6">
                               <label for="exampleInputUsername1"></label>
-                              <input type="number" class="form-control" id="#" name="opheight" placeholder="Height" >
+                              <input type="number" class="form-control" id="opheight" name="opheight" placeholder="Height" >
                             </div>
-                            <div class="col-lg-3">
+                            <div class="col-lg-6">
                               <label for="exampleInputUsername1"></label>
                               <input type="number" class="form-control" id="#" name="opage" placeholder="Age" >
                             </div>
-                            <div class="col-lg-3">
+                         </div> 
+                        </div>
+                        <div class="col-lg-3">
                               <label for="exampleInputUsername1"></label>
                               <input type="number" class="form-control" id="#" name="opweight" placeholder="weight" >
                             </div>
@@ -226,12 +236,6 @@
                               <label for="exampleInputUsername1"></label>
                               <input type="text" class="form-control" id="#" name="opgender" placeholder="Gender" >
                             </div>
-                         </div> 
-                        </div>
-                        <div class="col-lg-6">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="opjob" placeholder="Job" >
-                        </div>
                       </div>
                       <div class="row">
                           <div class="col-lg-6">
