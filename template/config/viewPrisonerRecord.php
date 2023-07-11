@@ -1,5 +1,5 @@
 <?php include 'session.php';
-
+ include '../config.php';
 
 ?>
 <!DOCTYPE html>
@@ -58,6 +58,10 @@
                       <th><strong class =" text text-dark">ID</strong></th>
                       <th><strong class =" text text-dark">Image</strong></th>
                       <th class="text-dark">RegisterDate</th>
+                      <th><strong class =" text text-dark">Region</strong></th>
+                      <th><strong class =" text text-dark">City</strong></th>
+                      <th><strong class =" text text-dark">Qaybta</strong></th>
+                      <th><strong class =" text text-dark">Station</strong></th>
                       <th class="text-dark">Fullname</th>
                       <th class="text-dark">Height</th>
                       <th class="text-dark">Age</th>
@@ -78,7 +82,7 @@
                       <th class="text-dark">Trail</th>
                       <th class="text-dark">Lawyer</th>
                       <th class="text-dark">CellNo</th>
-                      <th class="text-dark">Behaiver</th>
+                      <th class="text-dark">Note</th>
                       <th class="text-dark">Note</th>
                       <th class="text-dark">EDIT</th>
                       <th class="text-dark">DELETE</th>
@@ -87,14 +91,29 @@
                   <tbody>
                     <tr>
                       <?php 
-                        include '../config.php';
-                         $result = mysqli_query($con, "SELECT * FROM prisonerrecord " );
+                       
+                        $_SESSION['station'];
+                        $res = mysqli_query($con, "SELECT * FROM  prisonerrecord" );
+                        while ($row = mysqli_fetch_assoc($res)){
+                         $_SESSION['station'] = $row['station'];
+                         
+                        }  $sal = $_SESSION['station'];
+                           echo $sal;
+                           $result = mysqli_query($con, "SELECT pri_id, pri_photo, pri_registerdate,region, city, qaybta, station, pri_fullname,pri_height,pri_age,
+                           pri_weight, pri_gender, pri_dateof_birth, pri_placeof_birth, pri_address, pri_tellephone,
+                           pri_mothers_name,pri_crimeType, pri_marriage, pri_medicalStatus, pri_sentenceperiod,
+                           pri_prersonalBelongs, pri_releaseDay,pri_lawyer,pri_cellNo, pri_notes,prisonerID FROM prisonerrecord WHERE station = '$sal'" ); 
+                          //$result = mysqli_query($con, "SELECT * FROM prisonerrecord " );
                           while ($row = mysqli_fetch_assoc($result)){
                           $prisonerID = $row['pri_id'];
                         ?>
                         <td><?php echo  $prisonerID;?></td>
                         <td><?php echo $row['pri_photo'];?></td>
                         <td><?php echo $row['pri_registerdate'];?></td>
+                        <td><?php echo $row['region'];?></td>
+                        <td><?php echo $row['city'];?></td>
+                        <td><?php echo $row['qaybta'];?></td>
+                        <td><?php echo $row['station'];?></td>
                         <td><?php echo @$row['pri_fullname'];?></td>
                         <td><?php echo @$row['pri_height'];?></td>
                         <td><?php echo @$row['pri_age'];?></td>
@@ -115,8 +134,8 @@
                         <td><?php echo @$row['pri_trail'];?></td>
                         <td><?php echo @$row['pri_lawyer'];?></td>
                         <td><?php echo @$row['pri_cellNo'];?></td>
-                        <td><?php echo @$row['pri_behavier'];?></td>
                         <td><?php echo @$row['pri_notes']; ?></td>
+                        <td><?php echo @$row['prisonerID']; ?></td>
                         <td><a href="PrisonerEdit.php?id=<?php echo $prisonerID; ?>"><img src="../images/pencil-icon.svg"  alt="edit"></a></td>
                         <td><a href="PrisonerDelete.php?id=<?php echo $prisonerID; ?>"><img src="../images/delete-icon.svg"  alt="delete"></a></td>
                        
