@@ -6,12 +6,12 @@
           </button>
         </div>
         <div>
-          <!-- <a class="navbar-brand " href="index.php">
+          <a class="navbar-brand " href="index.php">
             <img src="../images/POLICEL.png" width="50" height ="50" alt="logo" />
           </a>
           <a class="navbar-brand " href="index.php">
             <img src="../images/POLICEL.png" width="50" height ="50" alt="logo" />
-          </a> -->
+          </a>
          
           
         </div>
