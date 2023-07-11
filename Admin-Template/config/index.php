@@ -240,12 +240,12 @@ $dataPoints = array(
                  <!-- over view section start here -->
                     
                  <div class="row mt-2">
-                      <div class="col-lg-3 col-md-4 col-sm-12 ">
-                          <div class="card py-2 bg-info">
+                      <div class="col-lg-4 col-md-4 col-sm-12 ">
+                          <div class="card bg-success">
                             <div class="card-body  ">
                               <div class="row">
                                 <div class="col-8">
-                                <h4 class="d-flex">TOTAL CASES</h4>
+                                <span>TOTAL CASES</span>
                                 <!-- <i class="mdi mdi-file-multiple"></i> -->
                                 <?php 
                                 include '../config.php';
@@ -257,7 +257,7 @@ $dataPoints = array(
                               ?>
                                 </div>
                                 <div class="col">
-                                  <i class="mdi mdi-file-multiple lg"></i>
+                                  <!-- <i class="mdi mdi-file-multiple lg"></i> -->
                                 </div>
 
                               </div>
@@ -266,10 +266,10 @@ $dataPoints = array(
 
                           </div>
                       </div>
-                      <div class="col-lg-3 col-md-4 col-sm-12 ">
-                          <div class="card py-2 bg-info ">
+                      <div class="col-lg-4 col-md-4 col-sm-12 ">
+                          <div class="card bg-success ">
                             <div class="card-body  ">
-                            <h4 class="">TOTAL PRISONERS</h4>
+                           <span>TOTAL PRISONERS</span>
                             <!-- <i class="mdi mdi-file-multiple"></i> -->
                             <?php 
                            
@@ -282,10 +282,10 @@ $dataPoints = array(
                             </div>
                           </div>
                        </div>
-                       <div class="col-lg-3 col-md-4 col-sm-12 ">
-                          <div class="card py-2 border-danger ">
+                       <div class="col-lg-4 col-md-4 col-sm-12 ">
+                          <div class="card bg-success ">
                             <div class="card-body  ">
-                            <h4 class="">TOTAL POLICE ASSETS</h4>
+                           <span>TOTAL POLICE ASSETS</span>
                             <!-- <i class="mdi mdi-file-multiple"></i> -->
                             <?php 
                            
@@ -298,10 +298,10 @@ $dataPoints = array(
                             </div>
                           </div>
                        </div>
-                       <div class="col-lg-3 col-md-4 col-sm-12 ">
-                          <div class="card py-2 bg-info ">
+                       <div class="col-lg-4 col-md-4 col-sm-12 ">
+                          <div class="card m-2  ">
                             <div class="card-body  ">
-                            <h4 class="">TOTAL POLICE</h4>
+                            <span>TOTAL POLICE</span>
                             <!-- <i class="mdi mdi-file-multiple"></i> -->
                             <?php 
                            
@@ -314,10 +314,10 @@ $dataPoints = array(
                             </div>
                           </div>
                        </div>
-                       <div class="col-lg-3 col-md-4 col-sm-12 mt-2">
-                          <div class="card py-2 bg-info ">
+                       <div class="col-lg-4 col-md-4 col-sm-12 mt-2">
+                          <div class="card  ">
                             <div class="card-body  ">
-                            <h4 class="">TOTAL COMPLAINMENTS</h4>
+                            <span>TOTAL COMPLAINMENTS</span>
                             <!-- <i class="mdi mdi-file-multiple"></i> -->
                             <?php 
                            
@@ -330,10 +330,10 @@ $dataPoints = array(
                             </div>
                           </div>
                        </div>
-                       <div class="col-lg-3 col-md-4 col-sm-12 mt-2">
-                          <div class="card py-2  ">
+                       <div class="col-lg-4 col-md-4 col-sm-12 mt-2">
+                          <div class="card  ">
                             <div class="card-body  ">
-                            <h4 class="">TOTAL OP</h4>
+                            <span>TOTAL OP</span>
                             <!-- <i class="mdi mdi-file-multiple"></i> -->
                             <?php 
                            
@@ -346,11 +346,11 @@ $dataPoints = array(
                             </div>
                           </div>
                        </div>
-                       <div class="col-lg-3 col-md-4 col-sm-12 mt-2">
-                          <div class="card py-2 bg-primary ">
+                       <div class="col-lg-4 col-md-4 col-sm-12 mt-2">
+                          <div class="card bg-danger ">
                             <div class="card-body  ">
-                            <h4 class="">TOTAL USERS</h4>
-                            <!-- <i class="mdi mdi-file-multiple"></i> -->
+                           <span>TOTAL USERS</span>
+                            <i class="mdi mdi-account"></i>
                             <?php 
                            
                             $sql = "SELECT user_ID  from `panel_users_table` ORDER BY user_ID";
@@ -362,23 +362,13 @@ $dataPoints = array(
                             </div>
                           </div>
                        </div>
-                       <div class="col-lg-3 col-md-4 col-sm-12 mt-2">
-                          <div class="card py-2 bg-primary ">
+                       <div class="col-lg-4 col-md-4 col-sm-12 mt-2">
+                          <div class="card   bg-danger">
                             <div class="card-body  ">
-                            <h4 class="">TOTAL MALE PRISONER</h4>
+                            <span>TOTAL MALE PRISONER</span>
                             <!-- <i class="mdi mdi-file-multiple"></i> -->
                             <?php 
-                           
-                            // $sql = "SELECT * from `prisonerrecord`";
-                            // $query_run = mysqli_query($con, $sql);
-                            // $row = mysqli_fetch_array($query_run)
-                           
-                            // if(mysqli_num_rows($query_run) > 0 && $row['pri_gender'] == "Male"){
-                            //   $total = $row['pri_gender'];
-                            //   echo '<h2> '.$total.'</h2>';
-                            // }
-                           
-                            $sql = "SELECT pri_gender from `prisonerrecord` ORDER BY pri_gender";
+                            $sql = "SELECT * from `prisonerrecord` WHERE `pri_gender` = 'Male' ORDER BY pri_gender";
                             $query_run = mysqli_query($con, $sql);
                             //$row = mysqli_fetch_array($query_run)
                             $row = mysqli_num_rows($query_run);
@@ -390,40 +380,56 @@ $dataPoints = array(
                             </div>
                           </div>
                        </div>
+                       <div class="col-lg-4 col-md-3 col-sm-12 mt-2">
+                          <div class="card bg-danger ">
+                            <div class="card-body  ">
+                          <span>FEMALE PRISONER</span>
+                            <!-- <i class="mdi mdi-file-multiple"></i> -->
+                            <?php 
+                            $sql = "SELECT * from `prisonerrecord` WHERE `pri_gender` = 'Male' ORDER BY pri_gender";
+                            $query_run = mysqli_query($con, $sql);
+                            //$row = mysqli_fetch_array($query_run)
+                            $row = mysqli_num_rows($query_run);
+                           
+                              echo '<h2> '.$row.'</h2>';
+                            
+
+                              ?>
+                            </div>
+                          </div>
+                       </div>
+                       
+                      
                       
                    </div>   
                 
                 <!-- over view section end here -->
-              <div class="container m-3" >
+           
+
+              <!-- google chart div start-->
+              <div class="container">
                 <div class="row">
-                  <div class="col-lg-6" id="chartContainer" style="height: 370px; width: 80%;">
-                  <?php
- 
-                      $dataPoints = array(
-                        array("x"=> 10, 'label'=> 'germnay'),
-                        // array("x"=> 20, "label"=> 'BURCO', "indexLabel"=> "Lowest"),
-                        //array("x"=> 80, "y"=> 71, "indexLabel"=> "Highest"),
-                       
-                      );
-                     
-                      $chartarray = array();
-                      $count = 0 ;
-
-                      $chartsql = mysqli_query($con, "SELECT * from `crimerecord_table` WHERE `city` = 'Hargeisa' ");
-                      while ($row = mysqli_fetch_array($chartsql)){
-                        $test[$count]["label"] = $row['city'];
-                        $test[$count]["y"] = $row['cr_id'];
-                        $count = $count + 1 ;
-
-                      }
-                          
-                    ?>
+                  <div class="col">
+                  <div id="piechart" style="width: 400px; height: 300px;">
+                  </div>
                   </div>
 
                 </div>
-               
-               
               </div>
+              
+
+              <!-- google chart div end -->
+              
+              <div class="container">
+                <div class="row">
+                  <div class="col">
+                  <div id="dual_x_div" style="width: 900px; height: 500px;"></div>
+                  </div>
+                  </div>
+
+                </div>
+              </div>
+              
 
 
 
@@ -465,31 +471,66 @@ $dataPoints = array(
   <script src="../js/canvasjs.min.js"></script>
   <!-- End custom js for this page-->
 
-  <script>
-    window.onload = function () {
-      
-    var chart = new CanvasJS.Chart("chartContainer", {
-        animationEnabled: true,
-        exportEnabled: true,
-        theme: "light2", // "light1", "light2", "dark1", "dark2"
-        title:{
-            text: "2023 Crime Rate"
-        },
-        axisY:{
-            includeZero: false
-        },
-        data: [{
-            type: "column", //change type to bar, line, area, pie, etc
-            //indexLabel: "{y}", //Shows y value on all Data Points
-            indexLabelFontColor: "#5A5757",
-            indexLabelPlacement: "outside",   
-            dataPoints: <?php echo json_encode($test, JSON_NUMERIC_CHECK); ?>
-        }]
-    });
-    chart.render();
-      
-    }
- </script>
+ <!-- google charts 1  script start here-->
+ <script type="text/javascript" src="../js/loader.js"></script>
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+ <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawStuff);
+
+      function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+          ['Galaxy', 'Distance', 'Brightness'],
+          <?php 
+           $sql = "SELECT * from `prisonerrecord`";
+           $query_run = mysqli_query($con, $sql);
+           //$row = mysqli_fetch_array($query_run)
+           while ($data = mysqli_fetch_array($query_run)){
+            $crimetype = $data['pri_crimeType'];
+            $city = $data['city'];
+            $region = $data['region'];
+          
+          
+          ?>
+           ['<?php echo $crimetype; ?>',<?php echo $city; ?> ,<?php echo $region; ?> ],
+          <?php 
+          
+           } ?>
+
+        ]);
+
+        var options = {
+          width: 800,
+          chart: {
+            title: 'Nearby galaxies',
+            subtitle: 'distance on the left, brightness on the right'
+          },
+          bars: 'vertical', // Required for Material Bar Charts.
+          series: {
+            0: { axis: 'distance' }, // Bind series 0 to an axis named 'distance'.
+            1: { axis: 'brightness' } // Bind series 1 to an axis named 'brightness'.
+          },
+          axes: {
+            x: {
+              distance: {label: 'parsecs'}, // Bottom x-axis.
+              brightness: {side: 'top', label: 'apparent magnitude'} // Top x-axis.
+            }
+          }
+        };
+
+      var chart = new google.charts.Bar(document.getElementById('dual_x_div'));
+      chart.draw(data, options);
+    };
+    </script>
+    <!-- google chart 1 scrpit ends here -->
+
+<!-- google chart 2 script -->
+
+
+   
+    
+  
+
 
 </body>
 
