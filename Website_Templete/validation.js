@@ -1,16 +1,16 @@
 function validateForm() {
-    let x = document.forms["myform"]["fullname"].value;
-    let y = document.forms["myform"]["incidenttype"].value;
-    let z = document.forms["myform"]["phone"].value;
-    if (x == "") {
+    let magaca = document.forms["myform"]["fullname"].value;
+    let dhacdada = document.forms["myform"]["incidenttype"].value;
+    let phone = document.forms["myform"]["phone"].value;
+    if (magaca == "") {
       alert("Name must be filled out");
       return false;
     }
-    if (y == "") {
+    if (dhacdada == "") {
         alert("Incident Type must be filled out");
         return false;
       }
-      if (z == "") {
+      if (phone == "") {
         alert("Phone must be filled out");
         return false;
       }
