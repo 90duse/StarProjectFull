@@ -100,20 +100,7 @@
 
                       }
                     }
-                // $userID = $userEmail = $useremail = $username = $usercreated_date = $userpassword = $userType = "";
-                
-                // $result = mysqli_query($con, "SELECT * FROM panel_users_table " );
-                //     while ($row = mysqli_fetch_assoc($result)){
-                //        $userID = $row['user_ID'];
-                //        @$userType = $row['user_Type'];
-                //        @$useremail = $row['user_Email'];
-                //        @$username = $row['user_Name'];
-                //        @$userpassword = $row['user_Password'];
-                //        @$usercreated_date= $row['created_Date'];
-                         
-                      
-                //       }
-              
+            
 
                 ?>
 
