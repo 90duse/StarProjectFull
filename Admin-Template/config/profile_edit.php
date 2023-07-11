@@ -60,20 +60,17 @@
                     </nav>
                 </div>
            </div>
-         
-            <div class="row ">
-            <div class="col-lg-4 ">
-              <form action="" method="POST">
-                <?php  
+           <?php  
                   if(isset($_GET['id'])){
                     $id = $_GET['id']; 
-              
+                    //echo 'Your id is ', $id;
+                
                   $userEmail = $useremail = $username = $usercreated_date = $userpassword = $userType = "";
                   $successMessage = "<div class='alert alert-success' role='alert'>
                   Successfully Recorded Your Data 
                  </div>";
 
-                $result = mysqli_query($con, "SELECT * FROM panel_users_table " );
+                $result = mysqli_query($con, "SELECT * FROM panel_users_table where `user_ID` ='$id'" );
                     while ($row = mysqli_fetch_assoc($result)){
                        $id = $row['user_ID'];
                        @$userType = $row['user_Type'];
@@ -81,27 +78,35 @@
                        @$username = $row['user_Name'];
                        @$userpassword = $row['user_Password'];
                        @$usercreated_date= $row['created_Date'];
-                       $userphoto = $row['user_profile'];
+                       //$userphoto = $row['user_profile'];
                          
                       
                       }
-                    }
-                      // update queary
+                    } 
+
+                    if(isset($_POST['btnprofileupdate'])){
+                      //echo 'workig';
+                    
+                      
                     $id = $role =$admin_name = $admin_Password =$admin_photo = $adminEmail = $admin_created_date = "";
-                      if(isset($_POST['btnprofile'])){
-                        $id = $row['user_ID'];
+                      
+                       $id = $_POST['admin_ID'];
                        @$Role = $_POST['role'];
                        @$admin_email = $_POST['admin_email'];
-                       @$admin_name = $_POST['admin_eame'];
-                       @$admin_password = $_POST['admin_eassword'];
+                       @$admin_name = $_POST['admin_name'];
+                       @$admin_password = $_POST['admin_password'];
                        @$admin_created_date= $_POST['admin_created_Date'];
-                       $admin_photo = $_POST['admin_profile'];
-                         
-                       $sql = "UPDATE `panel_users_table` SET `user_Email` = '$admin_email', `user_Password` = '$admin_password', `user_Type` = '$Role',
-                       `created_Date` = '$admin_created_date', `user_profile`= '$admin_photo' WHERE `panel_users_table`.`user_ID` = '$id'";
+                       //$admin_photo = $_POST['admin_profile'];
+                        // update queary 
+                        $sql = "UPDATE `panel_users_table` SET `user_Name` = '$admin_name', `user_Email` = '$admin_email', `user_Password` = '$admin_password',
+                         `user_Type` = '$Role', `created_Date` = '$admin_created_date' WHERE `user_ID` = '$id'";
+
+                      //  $sql = "UPDATE `panel_users_table` SET `user_Name`= '$admin_name', `user_Email` = '$admin_email', `user_Password` = '$admin_password', `user_Type` = '$Role',
+                      //  `created_Date` = '$admin_created_date', `user_profile`= '$admin_photo' WHERE `user_ID` = '$id'";
                       
                       if (mysqli_query($con, $sql)){
                         echo $successMessage;
+                        
 
                       } else{
                         echo mysqli_error($con);
@@ -112,6 +117,10 @@
 
 
                 ?>
+            <div class="row ">
+            <div class="col-lg-4 ">
+              <form action="" method="POST">
+              
 
                 <div class="card">
                   <div class="card-body">
@@ -158,15 +167,15 @@
                                     <p class="mb-0">User Password</p>
                                 </div>
                                 <div class="col-sm-9">
-                                <input type="password" class="form-control text-muted mb-0" name="admin_password" value="<?php echo $userpassword;?>">
+                                <input type="Password" class="form-control text-muted mb-0" name="admin_password" value="<?php echo $userpassword;?>">
                             </div>
                         </div>
-                        <hr>
+                      
                         <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">User Password</p>
+                                <div class="col-sm-3" hidden="true">
+                                    <p class="mb-0">User Profile</p>
                                 </div>
-                                <div class="col-sm-9">
+                                <div class="col-sm-9" hidden="true">
                                 <input type="file" class="form-control text-muted mb-0" name="admin_profile" value="<?php echo $userphoto;?>">
                             </div>
                         </div>
@@ -186,7 +195,7 @@
                     
                     <div class="card-footer">
                             <div class="d-grid gap-2 col-4 mx-auto">
-                                <button type="submit" name="btnprofile" class="btn btn-outline-success ">Update</button>
+                                <button type="submit" name="btnprofileupdate" class="btn btn-outline-success ">Update</button>
                             </div>
                     </div>
                     </div>
