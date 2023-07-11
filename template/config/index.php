@@ -253,11 +253,11 @@ include 'session.php';
                     
                     <div class="row mt-2">
                       <div class="col-lg-3 col-md-4 col-sm-12 ">
-                          <div class="card py-2 bg-info">
+                          <div class="card  bg-info">
                             <div class="card-body  ">
                               <div class="row">
                                 <div class="col-8">
-                                <h4 class="d-flex">TOTAL CASES</h4>
+                               <span>TOTAL CASES</span>
                                 <!-- <i class="mdi mdi-file-multiple"></i> -->
                                 <?php 
                                 include '../config.php';
@@ -268,9 +268,7 @@ include 'session.php';
 
                               ?>
                                 </div>
-                                <div class="col">
-                                  <i class="mdi mdi-file-multiple lg"></i>
-                                </div>
+                               
 
                               </div>
                             
@@ -279,9 +277,9 @@ include 'session.php';
                           </div>
                       </div>
                       <div class="col-lg-3 col-md-4 col-sm-12 ">
-                          <div class="card py-2 bg-info ">
+                          <div class="card  bg-info ">
                             <div class="card-body  ">
-                            <h4 class="">TOTAL PRISONERS</h4>
+                           <span>TOTAL PRISONERS</span>
                             <!-- <i class="mdi mdi-file-multiple"></i> -->
                             <?php 
                            
@@ -295,7 +293,7 @@ include 'session.php';
                           </div>
                        </div>
                        <div class="col-lg-3 col-md-4 col-sm-12 ">
-                          <div class="card py-2 border-danger ">
+                          <div class="card  border-danger ">
                             <div class="card-body  ">
                             <h4 class="">TOTAL POLICE ASSETS</h4>
                             <!-- <i class="mdi mdi-file-multiple"></i> -->
@@ -311,7 +309,7 @@ include 'session.php';
                           </div>
                        </div>
                        <div class="col-lg-3 col-md-4 col-sm-12 ">
-                          <div class="card py-2 bg-info ">
+                          <div class="card  bg-info ">
                             <div class="card-body  ">
                             <h4 class="">TOTAL POLICE</h4>
                             <!-- <i class="mdi mdi-file-multiple"></i> -->
@@ -327,9 +325,9 @@ include 'session.php';
                           </div>
                        </div>
                        <div class="col-lg-3 col-md-4 col-sm-12 mt-2">
-                          <div class="card py-2 bg-info ">
+                          <div class="card  bg-info ">
                             <div class="card-body  ">
-                            <h4 class="">TOTAL COMPLAINMENTS</h4>
+                           <span>TOTAL COMPLAINMENTS</span>
                             <!-- <i class="mdi mdi-file-multiple"></i> -->
                             <?php 
                            
@@ -343,9 +341,9 @@ include 'session.php';
                           </div>
                        </div>
                        <div class="col-lg-3 col-md-4 col-sm-12 mt-2">
-                          <div class="card py-2  ">
+                          <div class="card   ">
                             <div class="card-body  ">
-                            <h4 class="">TOTAL OP</h4>
+                          <span>TOTAL OP</span>
                             <!-- <i class="mdi mdi-file-multiple"></i> -->
                             <?php 
                            
@@ -358,10 +356,24 @@ include 'session.php';
                             </div>
                           </div>
                        </div>
-                      
+                       <div class="col-lg-3 col-md-4 col-sm-12 mt-2">
+                          <div class="card   ">
+                            <div class="card-body  ">
+                            <span>Total Incident</span>
+                           
+                            <?php 
+                           
+                            $sql = "SELECT id  from `online_incident_reporting` ORDER BY id";
+                            $query_run = mysqli_query($con, $sql);
+                            $row = mysqli_num_rows($query_run);
+                            echo '<h2> '.$row.'</h2>';
 
-                        
-                          
+                              ?>
+                            </div>
+                          </div>
+                       </div>
+
+                      
 
                    </div>   
 
