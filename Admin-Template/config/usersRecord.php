@@ -118,7 +118,7 @@
                         <div class="col-lg-6">
                             <div class="row">
                             <div class="col-4" > 
-                                <label for="username" class=" text text-secondary">Magaca Saldhiga</label>
+                                <label for="username" class=" text text-secondary">Magaca</label>
                             </div>
                             <div class="col">
                             <input type="text" class="form-control" id="#" name="username" placeholder="User Name" >
