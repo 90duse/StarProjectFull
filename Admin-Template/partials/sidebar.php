@@ -1,9 +1,9 @@
 <nav class="sidebar sidebar-offcanvas bg-primary" id="sidebar">
-        <ul class="nav bg-primary">
-          <li class="nav-item">
-            <a class="nav-link" href="../config/index.php">
+        <ul class="nav ">
+          <li class="nav-item ">
+            <a class="nav-link bg-primary" href="../config/index.php">
               <i class="mdi mdi-grid-large menu-icon"></i>
-              <span class="menu-title">Dashboard</span>
+              <span class="menu-title ">Dashboard</span>
             </a>
           </li>
 
@@ -52,7 +52,7 @@
               <ul class="nav flex-column sub-menu ">
                 <li class="nav-item"> <a class="nav-link " href="../Reports/userReportpage.php">Station Report</a></li>
                  <li class="nav-item"> <a class="nav-link" href="../Reports/PoliceReportpage.php">Police Report</a></li>
-                <!-- <li class="nav-item"> <a class="nav-link" href="../Reports/PrisonerReportpage.php">Prisoner Report</a></li> -->
+                <li class="nav-item"> <a class="nav-link" href="../Reports/PrisonerReportpage.php">Prisoner Report</a></li>
                 <li class="nav-item"> <a class="nav-link" href="../Reports/CaseReportpage.php">Case Report</a></li>
                  <li class="nav-item"> <a class="nav-link" href="../Reports/AssetReportpage.php">Asset Report</a></li> 
               </ul>
