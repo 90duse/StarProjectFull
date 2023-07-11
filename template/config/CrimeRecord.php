@@ -23,6 +23,12 @@
   <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../images/favicon.png" />
+
+  <script>
+
+
+
+  </script>
 </head>
 <body class="">
 
@@ -67,8 +73,6 @@
                         $data = htmlspecialchars($data);
                         return $data ;
                        }
-                  
-
                         if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                           if(empty($_POST['crimetype']) && empty($_POST['crimeplace']) && empty($_POST['crimevictam'])
@@ -82,16 +86,13 @@
                         
                           } 
                           else {
-                            
-                       
                            if(isset($_POST['btncrime'])){
                             $crimeRegisterDate = $_POST['crimeregisterdate'];
-                          
                               @$crimeType = test_input($_POST['crimetype']);
                               if(!preg_match("/^['a-zA-Z']*$/", $crimeType)){
                                 $_SESSION['status'] = 'Crime Type - Only letters and white spcae is allowed' ;
                                 $_SESSION['status_code'] = 'error';
-                                echo 'Only letters and white space is allowed';
+                               // echo 'Only letters and white space is allowed';
    
                                  } 
                             
@@ -141,13 +142,10 @@
                         } 
                       }
                     ?>
-                  <form   id = "form" name="myForm "class="forms-sample"  method="POST" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> "  onsubmit="return validateForm()" >
+                    <div id="error"></div>
+                  <form   id = "myForm" name="myForm "class="forms-sample"  method="POST" onsubmit="return validateForm()" >
                     <div class="container">
-                      <?php  //if (isset($_SESSION['status'])){
-                        // echo $_SESSION['status'];
-                        // session_destroy();
-                      //}
-                            ?>
+                   
                         <div class="row">
                         <div class="col-lg-6">
                         <div class="row mt-4">
@@ -162,7 +160,7 @@
                         <div class="col-lg-6">
                         <div class="row mt-4">
                                   <div class="col-6"> 
-                                    <?php if(isset($_POST['crimeregisterdate']) && empty($_POST['crimeregisterdate'])){
+                                    <?php if(isset($_POST['crimeregisterdate'])){
                                        $_SESSION['status'] = 'All fields must be filled' ;
                                        $_SESSION['status_code'] = 'error';
                                     }?>
@@ -176,44 +174,17 @@
                       </div>
                       <div class="row">
                         <div class="col-lg-6 " >
-                        <?php   
-                            // if(!preg_match("/^['a-zA-Z']*$/", $crimeType)){
-                            //  $_SESSION['status'] = 'Only letters and white spcae is allowed' ;
-                            //  $_SESSION['status_code'] = 'error';
-                            //  echo 'Only letters and white space is allowed';
-
-                            //   } 
-                                
-                              ?>
                         <label for="exampleInputUsername1"></label>
                         <input type="text" class="form-control" id="crimeType" name="crimetype" placeholder="Crime type" value="" >
                         <div class="error"></div>
                         </div>
                         <div class="col-lg-6">
-                          <?php   
-                              //  if(!preg_match("/^['a-zA-Z']*$/", $crimePlace)){
-                              //   $_SESSION['status'] = 'Crime Place - Only letters and white spcae is allowed' ;
-                              //   $_SESSION['status_code'] = 'error';
-                              //   echo 'Only letters and white space is allowed';
-   
-                              //    } 
-                          
-                          ?>
                         <label for="exampleInputUsername1"></label>
                         <input type="text" class="form-control" id="crimePlace" name="crimeplace" placeholder="Place" >
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-lg-6">
-                        <?php  
-                        //  if(!preg_match("/^['a-zA-Z']*$/", $crimeVictam)){
-                        //         $_SESSION['status'] = 'Crime Victam- Only letters and white spcae is allowed' ;
-                        //         $_SESSION['status_code'] = 'error';
-                        //         echo 'Only letters and white space is allowed';
-   
-                        //          } 
-                          
-                          ?>
                         <label for="exampleInputUsername1"></label>
                         <input type="text" class="form-control" id="crimeVictam" name="crimevictam" placeholder="Victam/Victams" >
                         </div>
@@ -260,8 +231,8 @@
                         
                       </div>
                         <div class="button">
-                          <button type="submit"  class="btn btn-primary  m-2" name="btncrime" value = "submit" >Submit</button>
-                          <!-- <button class="btn btn-light">Cancel</button> -->
+                          <button type="submit"  class="btn btn-primary  m-2" name="btncrime" value = "submit" onclick="validate()">Submit</button>
+                         
                         </div>
                     </div>
                    
@@ -316,7 +287,7 @@
   <!-- sweet alert -->
   <script src="../js/sweetalert.min.js"></script>
   <script def src="validation.js"></script>
-
+<!-- 
   <?php   if (isset($_SESSION['status'])){
 
   }  ?> 
@@ -329,7 +300,7 @@
     button: "OK!",
 });
   <?php unset($_SESSION['status']); ?>
-  </script>
+  </script> -->
 
 
 
