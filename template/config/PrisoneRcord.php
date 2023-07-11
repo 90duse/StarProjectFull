@@ -82,7 +82,12 @@
                             //variable Assignments
 
                             @$ID = $_POST['prisonerid'];
+                            $prisonerid = $_POST['id'];
                             @$RegisterDate = $_POST['prisonerregisterdate'];
+                            $region = $_POST['region'];
+                            $qaybta = $_POST['qaybta'];
+                            $city = $_POST['city'];
+                            $saldhiga = $_POST['saldhiga'];
                             @$prisonerFullname = $_POST['prisonername'];
                             @$prisonerHeight= $_POST['prisonerheight'];
                             @$prisonerAge = $_POST['prisonerage'];
@@ -94,17 +99,15 @@
                             @$prisonerPhone = $_POST['prisonertellephone'];
                             @$prisonerEmail = $_POST['prisoneremail'];
                             @$prisonerParentName = $_POST['prisonermothername'];
-                            @$prisonerEducation = $_POST['prisonereducationlevel'];
+                           
                             @$prisonerCrimeType = $_POST['prisonercrimetype'];
                             @$prisonerMarriageStatus = $_POST['prisonermarriagestatus'];
                             @$prisonerSentencePeriod = $_POST['prisonersentenceperiod'];
                             @$prisonerMedicalStatus = $_POST['prisonermedicalstatus'];
                             @$prisonerPersonalBelongs = $_POST['prisonerpersonalbelongs'];
                             @$prisonerReleaseDate = $_POST['prisonerreleasedate'];
-                            @$prisonerJudiciaryTrial =$_POST['prisonerjudiciarytrial'];
                             @$prisonerLawyer = $_POST['prisonerlawyer'];
                             @$prisonerCellNo = $_POST['prisonercellnumber'];
-                            @$prisonerBehavier=$_POST['prisonerbehavier'];
                             @$prisonerNote = $_POST['prisonernotes'];
                             $prisonerImage = $_FILES['prisonerimage']['name'];
                             $tmp_name = $_FILES['prisonerimage']['tmp_name'];
@@ -117,15 +120,15 @@
                             }
 
                           } 
-                         $sql = "INSERT INTO `PrisonerRecord` (`pri_id`, `pri_registerdate`, `pri_photo`, `pri_fullname`, `pri_height`, `pri_age`, 
+                         $sql = "INSERT INTO `PrisonerRecord` (`pri_id`, `pri_registerdate`, `region`, `city`, `qaybta`, `station`, `pri_photo`, `pri_fullname`, `pri_height`, `pri_age`, 
                          `pri_weight`,`pri_gender`, `pri_dateof_birth`, `pri_placeof_birth`, `pri_address`, `pri_tellephone`, `pri_mothers_name`,
-                          `pri_education`, `pri_crimeType`, `pri_marriage`, `pri_medicalStatus`, `pri_sentenceperiod`, `pri_prersonalBelongs`, 
-                          `pri_releaseDay`, `pri_trail`, `pri_lawyer`, `pri_cellNo`, `pri_behavier`, `pri_notes`) 
-                         VALUES ('', '$RegisterDate', ' ', '$prisonerFullname', '$prisonerHeight', '$prisonerAge', '$prisonerWeight', '$prisonerGender',
+                           `pri_crimeType`, `pri_marriage`, `pri_medicalStatus`, `pri_sentenceperiod`, `pri_prersonalBelongs`, 
+                          `pri_releaseDay`,  `pri_lawyer`, `pri_cellNo`,  `pri_notes`, `prisonerID`) 
+                         VALUES ('', '$RegisterDate', '$region', '$city', '$qaybta', '$saldhiga', ' ', '$prisonerFullname', '$prisonerHeight', '$prisonerAge', '$prisonerWeight', '$prisonerGender',
                           '$prisonerBirthDate', '$prisonerPlaceOfBirth', '$prisonerAddress', '$prisonerPhone', 
-                         '$prisonerParentName', '$prisonerEducation', '$prisonerCrimeType', '$prisonerMarriageStatus',
+                         '$prisonerParentName', '$prisonerCrimeType', '$prisonerMarriageStatus',
                           '$prisonerMedicalStatus', '$prisonerSentencePeriod', '$prisonerPersonalBelongs', 
-                         '$prisonerReleaseDate', '$prisonerJudiciaryTrial', '$prisonerLawyer', '$prisonerCellNo', '$prisonerBehavier', '$prisonerNote')";
+                         '$prisonerReleaseDate', '$prisonerLawyer', '$prisonerCellNo',  '$prisonerNote', '$prisonerid')";
 
                          if(mysqli_query($con, $sql))
                          {
@@ -146,9 +149,13 @@
 
                   <div class="container">
                       <div class="row">
+                        <div class="col-lg-6" hidden="true">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="number" class="form-control" id="#" name="prisonerid" placeholder="ID">
+                        </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="number" class="form-control" id="#" name="prisonerid" placeholder="Prosinor ID">
+                        <input type="number" class="form-control" id="#" name="id" placeholder="Prosinor ID">
                         </div>
                         <div class="col-lg-6">
                               <div class="row mt-4">
@@ -164,6 +171,30 @@
                       <div class="row">
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control " id="#" name="region" placeholder="Region">
+                        </div>
+                        <div class="col-lg-6">
+                          <label for="exampleInputUsername1"></label>
+                          <input type="text" class="form-control" id="#" name="city" placeholder="City" >
+                        </div>
+                        
+                        
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
+                        <input type="text" class="form-control " id="#" name="qaybta" placeholder="qaybta">
+                        </div>
+                        <div class="col-lg-6">
+                          <label for="exampleInputUsername1"></label>
+                          <input type="text" class="form-control" id="#" name="saldhiga" placeholder="saldhiga" >
+                        </div>
+                        
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-6">
+                        <label for="exampleInputUsername1"></label>
                         <input type="file" class="form-control " id="#" name="prisonerimage" placeholder="Prisoner Image">
                         </div>
                         <div class="col-lg-6">
@@ -174,7 +205,7 @@
                       </div>
 
                       <div class="row">
-                      <div class="col-lg-6">
+                        <div class="col-lg-6">
                           <div class="row">
                             <div class="col-lg-3">
                               <label for="exampleInputUsername1"></label>
@@ -232,13 +263,9 @@
                       </div>
                       
                       <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisonereducationlevel" placeholder="Education Level" >
-                        </div>
-                        <div class="col-lg-6">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="tel" class="form-control" id="#" name="prisonercrimetype" placeholder="Crime Type" >
+                        <input type="text" class="form-control" id="#" name="prisonercrimetype" placeholder="Crime Type" >
                         </div>
                       </div>
                       <div class="row">
@@ -280,10 +307,7 @@
                                     </div>
                               </div> 
                           </div>
-                        <div class="col-lg-6">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisonerjudiciarytrial" placeholder="judiciary Trial">
-                        </div>
+                       
                       </div> 
                       <div class="row">
                         <div class="col-lg-6">
@@ -292,15 +316,11 @@
                         </div>
                         <div class="col-lg-6">
                         <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisonercellnumber" placeholder="Cell Number" >
+                        <input type="text" class="form-control" id="#" name="prisonercellnumber" placeholder="Room Number" >
                         </div>
                       </div>
                       <div class="row">
-                        <div class="col-lg-6">
-                        <label for="exampleInputUsername1"></label>
-                        <input type="text" class="form-control" id="#" name="prisonerbehavier" placeholder="Behavier" >
-                        </div>
-                        <div class="col-lg-6">
+                        <div class="col">
                         <label for="exampleInputUsername1"></label>
                         <input type="text" class="form-control" id="#" name="prisonernotes" placeholder="Notes">
                         </div>
