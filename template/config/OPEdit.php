@@ -50,6 +50,7 @@
                                
                               // Variable Declaration 
                            $ID = '';
+                           $station = '';
                            $_Register_Date = '';
                            $Fullname = '';
                            $_Height= '';
@@ -60,7 +61,6 @@
                            $_Address = '';
                            $_Phone = '';
                            $_ParentName = '';
-                           $_Job = '';
                            $_Reason = '';
                            $_MarriageStatus = '';
                            $_MedicalStatus = '';
@@ -72,6 +72,7 @@
                               //variable assignment database value
                               @$ID = $row['op_id'];
                               $opno = $row['opNo'];
+                              $station = $row['station'];
                               @$Register_Date = $row['op_register_date'];
                               @$Fullname = $row['op_fullname'];
                               @$Height= $row['op_height'];
@@ -82,7 +83,6 @@
                               @$Address = $row['op_address'];
                               @$Phone = $row['op_tellephone'];
                               @$ParentName = $row['op_mothers_name'];
-                              @$Job = $row['op_job'];
                               @$Reason = $row['op_reason'];
                               @$MarriageStatus = $row['op_marriage_status'];
                               @$MedicalStatus = $row['op_medical_status'];
@@ -106,6 +106,8 @@
                          
                         // Variable Declaration 
                         $ID = '';
+                        $op_number = ' ' ;
+                        $saldhiga = '';
                         $Register_Date = '';
                         $op_Fullname = '';
                         $op_Height= '';
@@ -116,7 +118,6 @@
                         $op_Address = '';
                         $op_Phone = '';
                         $op_ParentName = '';
-                        $op_Job = '';
                         $op_Reason = '';
                         $op_MarriageStatus = '';
                         $op_MedicalStatus = '';
@@ -131,6 +132,7 @@
 
                     $ID = $_GET['opid'];
                     $op_number = $_GET['opnumber'];
+                    $saldhiga = $_GET['station'];
                     @$Register_Date = $_GET['opregisterdate'];
                     @$op_Fullname = $_GET['opname'];
                     @$op_Height= $_GET['opheight'];
@@ -142,7 +144,6 @@
                     @$op_Address = $_GET['opaddress'];
                     @$op_Phone = $_GET['opphone'];
                     @$op_ParentName = $_GET['opmothername'];
-                    @$op_Job = $_GET['opjob'];
                     @$op_Reason = $_GET['opreason'];
                     @$op_MarriageStatus = $_GET['opmarriagestatus'];
                     @$op_MedicalStatus = $_GET['opmedicalstatus'];
@@ -163,10 +164,15 @@
                     Successfully Recorded Your Data 
                    </div>"; 
                         
-                         @$sql = " UPDATE `op_table` SET `op_id` = '', `opNo` = '$op_number',`op_register_date`= '$Register_Date',`op_fullname`= '$op_Fullname',`op_image`= '',`op_height`='$op_Height',
-                         `op_age`='$op_Age',`op_weight`='$op_Weight', `op_gender`='$op_gender',`op_mothers_name`='$op_ParentName',`op_dayof_birth`='$op_BirthDate',`op_placeof_birth`='$op_PlaceOfBirth',`op_address`='$op_Address',
-                         `op_tellephone`='$op_Phone',`op_job`='$op_Job',`op_marriage_status`='$op_MarriageStatus',`op_medical_status`='$op_MedicalStatus',`op_reason`='$op_Reason',`op_personal_belongs`='$op_PersonalBelongs',
-                         `op_cell_no`='$op_CellNo',`op_officer`='$op_Officer',`op_notes`='$op_Note' WHERE `op_id` = '$id'";
+                         $sql = "UPDATE `op_table` SET `op_id` = '$ID', `opNo` = '$op_number', `station`= '$saldhiga',`op_register_date` = '$Register_Date', `op_fullname` = '$op_Fullname', `op_height` = '$op_Height', 
+                         `op_age` = '$op_Age', `op_weight` = '$op_Weight',  `op_gender` = '$op_gender', `op_mothers_name` = '$op_ParentName', `op_dayof_birth` = '$op_BirthDate', `op_placeof_birth` = '$op_PlaceOfBirth', `op_address` = '$op_Address', 
+                         `op_tellephone` = '$op_Phone', `op_marriage_status` = '$op_MarriageStatus', `op_medical_status` = '$op_MedicalStatus', `op_reason` = '$op_Reason', `op_personal_belongs` = '$op_PersonalBelongs',
+                          `op_cell_no` = '$op_CellNo', `op_officer` = '$op_Officer', `op_notes` = '$op_Note' WHERE `op_id` = '$ID'";
+
+                        //  @$sql = " UPDATE `op_table` SET `op_id` = '', `opNo` = '$op_number',`op_register_date`= '$Register_Date',`op_fullname`= '$op_Fullname',`op_image`= '',`op_height`='$op_Height',
+                        //  `op_age`='$op_Age',`op_weight`='$op_Weight', `op_gender`='$op_gender',`op_mothers_name`='$op_ParentName',`op_dayof_birth`='$op_BirthDate',`op_placeof_birth`='$op_PlaceOfBirth',`op_address`='$op_Address',
+                        //  `op_tellephone`='$op_Phone',`op_marriage_status`='$op_MarriageStatus',`op_medical_status`='$op_MedicalStatus',`op_reason`='$op_Reason',`op_personal_belongs`='$op_PersonalBelongs',
+                        //  `op_cell_no`='$op_CellNo',`op_officer`='$op_Officer',`op_notes`='$op_Note' WHERE `op_id` = '$id'";
 
                           
                          if(mysqli_query($con, $sql)){
@@ -200,11 +206,16 @@
                               <label for="exampleInputUsername1"></label>
                               <input type="number" class="form-control" id="#" name="opid" placeholder="Person ID" value = "<?php echo $ID; ?>">
                               </div>
-                              <div class="col-lg-6">
+                              <div class="col-lg-3">
                          
-                              <label for="exampleInputUsername1"></label>
-                              <input type="text"  class="form-control" id="#" name="opnumber" placeholder="OPNO" value = "<?php echo $opno; ?>">
+                              <label for=""></label>
+                              <input type="number"  class="form-control" id="#" name="opnumber" placeholder="OPNO" value = "<?php echo $opno; ?>">
                               </div>
+                              <div class="col-lg-3">
+                         
+                         <label for="exampleInputUsername1"></label>
+                         <input type="text"  class="form-control" id="#" name="station" placeholder="Station" value = "<?php echo $station; ?>">
+                         </div>
                               <div class="col-lg-6">
                                 <div class="row mt-4">
                                   <div class="col-6"> 
@@ -230,15 +241,18 @@
                            <div class="row">
                        <div class="col-lg-6">
                           <div class="row">
-                            <div class="col-lg-3">
+                            <div class="col-lg-6">
                               <label for="exampleInputUsername1"></label>
                               <input type="number" class="form-control" id="#" name="opheight" placeholder="Height" value="<?php echo @$Height;?>" >
                             </div>
-                            <div class="col-lg-3">
+                            <div class="col-lg-6">
                               <label for="exampleInputUsername1"></label>
                               <input type="number" class="form-control" id="#" name="opage" placeholder="Age"value="<?php echo @$Age;?>" >
                             </div>
-                            <div class="col-lg-3">
+                           
+                         </div> 
+                        </div>
+                        <div class="col-lg-3">
                               <label for="exampleInputUsername1"></label>
                               <input type="number" class="form-control" id="#" name="opweight" placeholder="weight" value="<?php echo @$Weight;?>" >
                             </div>
@@ -246,12 +260,7 @@
                               <label for="exampleInputUsername1"></label>
                               <input type="text" class="form-control" id="#" name="opgender" placeholder="Gender" >
                             </div>
-                         </div> 
-                        </div>
-                          <div class="col-lg-6">
-                            <label for="exampleInputUsername1"></label>
-                            <input type="text" class="form-control" id="#" name="opjob" placeholder="Job" value="<?php echo @$Job;?>">
-                            </div>
+                         
                         </div>
                               <div class="row">
                                 <div class="col-lg-6">
