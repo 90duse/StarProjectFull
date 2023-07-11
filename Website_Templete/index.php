@@ -15,33 +15,6 @@ function test_input($data){
 
         if($_SERVER["REQUEST_METHOD"] == "POST")
         { 
-            // if(empty($_POST['fullname'])){
-            //     $nameError =  'Name is Required';
-            // } else {
-            //     $fullname = test_input($_POST['fullname']);
-            // }
-            // if(empty($_POST['phone'])){
-            //     $phoneError =  'phone is Required';
-            // } else {
-            //     $phone = test_input($_POST['phone']);
-            // } 
-            // if(empty($_POST['incidenttype'])){
-            //     $typeError =  'Type is Required';
-            // } else {
-            //     $incident_type = test_input($_POST['incidenttype']);
-            // }
-            // if(empty($_POST['incidentdate'])){
-            //     $dateError =  'date is Required';
-            // } else {
-            //     $incident_date = test_input($_POST['incidentdate']);
-            // }
-            // if(empty($_POST['incidentinfo'])){
-            //     $infoError =  'info is Required';
-            // } else {
-            //     $incident_info = test_input($_POST['incidentinfo']);
-            // }
-
-            
             $fullname =$_POST['fullname'];
             $phone = $_POST['phone'];
             $incident_type = $_POST['incidenttype'];
