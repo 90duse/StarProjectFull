@@ -41,6 +41,7 @@
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"><a class="nav-link" href="../config/CrimeRecord.php">Add New</a></li>
                 <li class="nav-item"><a class="nav-link" href="../config/viewCrime.php">View Cases</a></li>
+                <li class="nav-item"><a class="nav-link" href="../config/searchCaseRecord.php">Search</a></li>
               </ul>
             </div>
           </li>
@@ -68,6 +69,7 @@
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="../config/PoliceRecord.php">Add New</a></li>
                 <li class="nav-item"><a class="nav-link" href="../config/viewPoliceRecord.php">View PRC</a></li>
+                <li class="nav-item"><a class="nav-link" href="../config/searchPoliceRecord.php">Search</a></li>
               </ul>
             </div>
           </li>
@@ -81,6 +83,7 @@
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="../config/PrisoneRcord.php">Add New</a></li>
                 <li class="nav-item"><a class="nav-link" href="../config/viewPrisonerRecord.php">View Prisoners</a></li>
+                <li class="nav-item"><a class="nav-link" href="../config/searchPrisonerRecord.php">Search</a></li>
               </ul>
             </div>
           </li>
