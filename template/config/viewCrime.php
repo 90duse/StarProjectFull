@@ -60,6 +60,11 @@
                         <tr>
                           <th>CrimeID</th>
                           <th>Register Date</th>
+                          <th>Region</th>
+                          <th>City</th>
+                          <th>Qaybta</th>
+                          <th>station</th>
+
                            <th>Crime Type</th>
                            <th>Crime Place</th>
                            <th>Victam</th>
@@ -85,6 +90,10 @@
                               ?>
                                <td> <?php  echo $id; ?> </td>
                                <td> <?php  echo $row['cr_registerDate']; ?> </td>
+                               <td> <?php  echo $row['region']; ?> </td>
+                               <td> <?php  echo $row['city']; ?> </td>
+                               <td> <?php  echo $row['qaybta']; ?> </td>
+                               <td> <?php  echo $row['station']; ?> </td>
                                <td> <?php  echo @$row['cr_type'];?> </td>
                                <td> <?php  echo @$row['cr_place']; ?> </td>
                                <td> <?php  echo @$row['cr_victam']; ?> </td>
