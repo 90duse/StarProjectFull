@@ -359,7 +359,7 @@ include 'session.php';
                        <div class="col-lg-3 col-md-4 col-sm-12 mt-2">
                           <div class="card   ">
                             <div class="card-body  ">
-                            <span>Total Incident</span>
+                            <span>Total Incident Reports</span>
                            
                             <?php 
                            
