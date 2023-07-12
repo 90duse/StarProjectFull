@@ -100,10 +100,15 @@
                               @$crimeRegisterDate = test_input($_POST['crimeregisterdate']);
                               @$crimePlace= test_input($_POST['crimeplace']);
                               @$crimeVictam = test_input($_POST['crimevictam']);
+                              @$region = test_input($_POST['region']);
+                              @$city = test_input($_POST['city']);
+                              @$qaybta = test_input($_POST['qaybta']);
+                              @$station = test_input($_POST['station']);
+
                               if(!preg_match("/^['a-zA-Z']*$/", $crimeVictam)){
                                 $_SESSION['status'] = 'Crime Victam - Only letters and white spcae is allowed' ;
                                 $_SESSION['status_code'] = 'error';
-                                echo 'Only letters and white space is allowed';
+                                //echo 'Only letters and white space is allowed';
    
                                  }
                           
@@ -119,8 +124,8 @@
                        
 
                             
-                          $sql = "INSERT INTO `CrimeRecord_Table` (`cr_id`,`cr_registerDate`, `cr_type`, `cr_place`, `cr_victam`, `cr_criminal`, `cr_officer`, `cr_witness`, `cr_evindence`, `cr_items`, `cr_status`, `cr_note`) 
-                          VALUES ('', '$crimeRegisterDate', '$crimeType', '$crimePlace', '$crimeVictam', '$crimeCriminal', '$crimeOfficer', '$crimeWitness ', '$crimeEvidence', '$crimeItems', '$crimeStatus', '$crimeNote')";
+                          $sql = "INSERT INTO `CrimeRecord_Table` (`cr_id`,`cr_registerDate`, `region`, `city`, `qaybta`, `station`, `cr_type`, `cr_place`, `cr_victam`, `cr_criminal`, `cr_officer`, `cr_witness`, `cr_evindence`, `cr_items`, `cr_status`, `cr_note`) 
+                          VALUES ('', '$crimeRegisterDate', '$region', '$city','$qaybta','$station', '$crimeType', '$crimePlace', '$crimeVictam', '$crimeCriminal', '$crimeOfficer', '$crimeWitness ', '$crimeEvidence', '$crimeItems', '$crimeStatus', '$crimeNote')";
                         
                             if (mysqli_query($con, $sql))
                             {
@@ -131,8 +136,8 @@
    
                             else 
                             {
-                              $_SESSION['status'] = 'All fields must be filled' ;
-                              $_SESSION['status_code'] = 'error';
+                              // $_SESSION['status'] = 'All fields must be filled' ;
+                              // $_SESSION['status_code'] = 'error';
                               //echo $errorMessage;
                               echo mysqli_error($con);
                             }
@@ -143,7 +148,7 @@
                       }
                     ?>
                     <div id="error"></div>
-                  <form   id = "myForm" name="myForm "class="forms-sample"  method="POST" onsubmit="return validateForm()" >
+                  <form   id = "myForm" name="myForm "class="forms-sample"  method="POST"  >
                     <div class="container">
                    
                         <div class="row">
@@ -160,14 +165,34 @@
                         <div class="col-lg-6">
                         <div class="row mt-4">
                                   <div class="col-6"> 
-                                    <?php if(isset($_POST['crimeregisterdate'])){
-                                       $_SESSION['status'] = 'All fields must be filled' ;
-                                       $_SESSION['status_code'] = 'error';
-                                    }?>
+                                  
                                       <label for="exampleInputUsername1" class=" text text-secondary">Register Date</label>
                                   </div>
                                     <div class="col">
                                     <input type="date" class="form-control" id="crimeRegisterDate" name="crimeregisterdate" placeholder="date"  >
+                                    </div>
+                              </div> 
+                        </div>
+                      </div>
+                      
+                      <div class="row">
+                        <div class="col-lg-6">
+                        <div class="row mt-4">
+                                  <div class="col-6" > 
+                                  <input type="text" class="form-control" id="#" name="region" placeholder="Region" >
+                                  </div>
+                                    <div class="col">
+                                    <input type="text" class="form-control" id="#" name="city" placeholder="City" >
+                                    </div>
+                              </div> 
+                        </div>
+                        <div class="col-lg-6">
+                        <div class="row mt-4">
+                                  <div class="col-6"> 
+                                  <input type="text" class="form-control" id="" name="qaybta" placeholder="Qaybta"  >
+                                  </div>
+                                    <div class="col">
+                                    <input type="text" class="form-control" id="" name="station" placeholder="Saldhiga"  >
                                     </div>
                               </div> 
                         </div>
@@ -231,7 +256,7 @@
                         
                       </div>
                         <div class="button">
-                          <button type="submit"  class="btn btn-primary  m-2" name="btncrime" value = "submit" onclick="validate()">Submit</button>
+                          <button type="submit"  class="btn btn-primary  m-2" name="btncrime" value = "submit" >Submit</button>
                          
                         </div>
                     </div>
@@ -286,8 +311,8 @@
 
   <!-- sweet alert -->
   <script src="../js/sweetalert.min.js"></script>
-  <script def src="validation.js"></script>
-<!-- 
+  <!-- <script def src="validation.js"></script> -->
+
   <?php   if (isset($_SESSION['status'])){
 
   }  ?> 
@@ -300,7 +325,7 @@
     button: "OK!",
 });
   <?php unset($_SESSION['status']); ?>
-  </script> -->
+  </script>
 
 
 
