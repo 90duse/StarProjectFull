@@ -43,7 +43,9 @@
      <?php   include "../partials/sidebar.php";?>
      <div class="main-panel"> 
          <div class="content-wrapper">
-            <div class="container bg-primary p-3 text-center " >
+          <div class="card mb-2">
+          <div class="card-body">
+            <div class="container  p-3 text-center " >
                 <h4>OP</h4>
            
           
@@ -53,16 +55,16 @@
                 <div class="d-sm-flex align-items-center justify-content-between border-bottom">
                   <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
-                    <a href="OP.php" class="nav-link" class="nav-link active" > Add New</a>
+                    <a href="OP.php" class="nav-link" class="nav-link active" aria-selected="true"> Add New</a>
                     </li>
                     <li class="nav-item">
                       <a href="viewOP.php" class="nav-link" aria-selected="true" >View OP</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#demographics" role="tab" aria-selected="false"></a>
+                      <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#demographics" role="tab" aria-selected="true"></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link border-0" id="more-tab" data-bs-toggle="tab" href="#more" role="tab" aria-selected="false">More</a>
+                      <a class="nav-link border-0"  href="searchOpRecord.php">Search</a>
                     </li>
                   </ul>
                   <div>
@@ -75,6 +77,8 @@
                </div>
              </div>
            </div>
+          </div>
+          </div>
           </div>
           </div>
 
