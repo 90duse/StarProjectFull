@@ -89,7 +89,7 @@
               </div>
             </div>
                   <form action="#" method="GET">
-                    <table class="table select-table" id="#">
+                    <table class="table select-table" id="mytable">
                       <thead >
                         <hr>
                         <tr>
@@ -122,7 +122,7 @@
                         <tr>
                           <?php 
                            
-                           $_SESSION['station'];
+                           @$_SESSION['station'];
                            $res = mysqli_query($con, "SELECT * FROM policeregistration_table " );
                            while ($row = mysqli_fetch_assoc($res)){
                             $_SESSION['station'] = $row['station'];
@@ -165,6 +165,7 @@
                       </tfoot>
                     </table>
                 </form>
+
 
                   <!-- Pagination code starts here -->
             <div class="container">
@@ -264,7 +265,7 @@
  
   <!-- End custom js for this page-->
     <!-- Data table plugins -->
-<!-- 
+
   <script src="../DataTables/jQuery-3.6.0/jquery-3.5.1.js"></script>
   <script src="../DataTables/DataTables-1.13.4/js/jquery.dataTables.min.js"></script>
   <script  src="../DataTables/DataTables-1.13.4/js/dataTables.bootstrap5.min.js"></script>
@@ -273,20 +274,20 @@
   <script  src="../DataTables/pdfmake-0.2.7/pdfmake.min.js"></script>
   <script  src="../DataTables/pdfmake-0.2.7/vfs_fonts.js"></script>
   <script src="../js/buttons.html5.min.js"></script>
-  <script src="../js/buttons.print.min.js"></script>  -->
+  <script src="../js/buttons.print.min.js"></script> 
 
 
 
 <script> 
-// $(document).ready(function () {
-//     $('#mytable').DataTable({
-//       scrollX: true,
-//       dom: 'Bfrtip',
-//         buttons: [
-//             'copy', 'csv', 'excel', 'pdf', 'print'
-//         ]
-//     });
-// });
+$(document).ready(function () {
+    $('#mytable').DataTable({
+      scrollX: true,
+      dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+});
 </script>
 </body>
 
